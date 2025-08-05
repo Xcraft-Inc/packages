@@ -50,7 +50,7 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'ftp://ftp.gnutls.org/gcrypt/gnutls/v3.7/gnutls-<THIS.$VERSION>.tar.xz'
+    uri: 'https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-<THIS.$VERSION>.tar.xz'
     mirrors: []
     ref: ''
     $ref: ''
