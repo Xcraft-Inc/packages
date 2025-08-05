@@ -24,6 +24,9 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
+    gnu+bc:
+      - version: ''
+        architecture: []
   make:
     xcraft+base-make:
       - version: ''

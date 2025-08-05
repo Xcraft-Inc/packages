@@ -27,6 +27,9 @@ dependency:
     x-arm-linux+gnueabihf-gcc5-glibc-cross:
       - version: ''
         architecture: []
+    gnu+bc:
+      - version: ''
+        architecture: []
 bump: []
 data:
   get:
