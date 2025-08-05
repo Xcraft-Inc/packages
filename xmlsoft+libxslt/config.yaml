@@ -25,7 +25,7 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'ftp://xmlsoft.org/libxml2/libxslt-<THIS.$VERSION>.tar.gz'
+    uri: 'http://xmlsoft.org/sources/libxslt-<THIS.$VERSION>.tar.gz'
     ref: ''
     out: ''
     externals: true
