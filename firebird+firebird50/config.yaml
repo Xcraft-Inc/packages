@@ -124,7 +124,7 @@ data:
       'writefile',
       '#!/bin/sh\n' +
       `echo "connect security.db user SYSDBA; ` +
-      `CREATE OR ALTER USER SYSDBA PASSWORD 'ynos99'; ` +
+      `CREATE OR ALTER USER SYSDBA PASSWORD 'sysdba'; ` +
       `CREATE OR ALTER USER DEV PASSWORD 'DEV';" ` +
       `| sudo -u odontos-firebird50 /opt/odontos-firebird50/bin/isql -q\n`,
       '{PEON.INSTALLDIR}/opt/firebird50/script/init_users.sh'
