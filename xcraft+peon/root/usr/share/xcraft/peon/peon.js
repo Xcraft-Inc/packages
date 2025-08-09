@@ -331,7 +331,12 @@ class Action {
     fileList.forEach((_file) => {
       const file = path.join(this._root, _file);
 
-      if (!fs.existsSync(file) || fs.statSync(file).isDirectory()) {
+      if (!fs.existsSync(file)) {
+        return;
+      }
+
+      const st = fs.statSync(file);
+      if (st.isDirectory() || st.size > 10e6) {
         return;
       }
 
