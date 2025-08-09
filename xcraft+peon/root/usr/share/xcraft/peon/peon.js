@@ -297,6 +297,7 @@ class Action {
       return true;
     } catch (ex) {
       if (ex.code !== 'EACCES') {
+        this._resp.log.err(`Fatal error with ${file}`);
         throw ex;
       }
       return false;
