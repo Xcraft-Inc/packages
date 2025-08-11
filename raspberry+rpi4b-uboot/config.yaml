@@ -18,6 +18,9 @@ dependency:
     openssl+openssl:
       - version: ''
         architecture: []
+    gnu+gnutls:
+      - version: ''
+        architecture: []
   build:
     xcraft+peon:
       - version: ''
