@@ -14,7 +14,8 @@ description:
   brief: Carnotzet Operating System
   long: ''
 dependency: {}
-bump: []
+bump:
+  - carnotzet+os-rpi4b
 data:
   get:
     uri: 'self:///root'

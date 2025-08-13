@@ -31,6 +31,8 @@ dependency:
     xcraft+base-make:
       - version: ''
         architecture: []
+bump:
+  - carnotzet+os-rpi4b
 data:
   get:
     uri: 'https://github.com/raspberrypi/linux/archive/refs/tags/stable_<THIS.$VERSION>.tar.gz'

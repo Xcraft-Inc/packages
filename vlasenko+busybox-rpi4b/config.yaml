@@ -24,7 +24,8 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
-bump: []
+bump:
+  - carnotzet+os-rpi4b
 data:
   get:
     uri: 'https://www.busybox.net/downloads/busybox-<THIS.$VERSION>.tar.bz2'
