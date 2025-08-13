@@ -51,7 +51,9 @@ data:
       makeinstall: ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- install CONFIG_PREFIX="<PEON.INSTALLDIR.X+BIN>"
     test: none
     env: {}
-  deploy: cp('<PEON.ASSETS>', '<PEON.INSTALLDIR.X+BIN>/usr/share/kmap');
+  deploy: |-
+    cp('<PEON.ASSETS>/fr_CH.kmap',   '<PEON.INSTALLDIR.X+BIN>/usr/share/kmap/fr_CH.kmap');
+    cp('<PEON.ASSETS>/busybox.conf', '<PEON.INSTALLDIR.X+BIN>/etc/busybox.conf');
   env:
     path: []
     other: {}
