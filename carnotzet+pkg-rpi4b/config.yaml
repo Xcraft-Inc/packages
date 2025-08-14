@@ -26,9 +26,6 @@ dependency:
     openjs+nodejs20-rpi4b:
       - version: ''
         architecture: []
-    epsitec+yeti-thrall-rpi4b:
-      - version: ''
-        architecture: []
 bump: []
 data:
   get:
