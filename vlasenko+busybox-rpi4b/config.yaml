@@ -54,6 +54,7 @@ data:
   deploy: |-
     cp('<PEON.ASSETS>/fr_CH.kmap',   '<PEON.INSTALLDIR.X+BIN>/usr/share/kmap/fr_CH.kmap');
     cp('<PEON.ASSETS>/busybox.conf', '<PEON.INSTALLDIR.X+BIN>/etc/busybox.conf');
+    cp('<PEON.ASSETS>/postinst',     '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
   env:
     path: []
     other: {}
