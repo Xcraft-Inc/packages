@@ -9,6 +9,7 @@ mdev -s
 mkdir -p /dev/pts
 mount -t devpts none /dev/pts # sshd
 
+fsck -a
 # Mount all filesystems
 mount -a
 
