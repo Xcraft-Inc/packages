@@ -1,0 +1,6 @@
+/etc/fstab
+/etc/group
+/etc/passwd
+/etc/shadow
+/etc/ntp.conf
+/etc/resolv.conf

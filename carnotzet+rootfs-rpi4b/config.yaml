@@ -35,7 +35,9 @@ data:
       prerm: ''
       makeall: ''
       maketest: ''
-      makeinstall: cp('<PEON.WPKG.STAG>/usr/share/carnotzet/rootfs-rpi4b/data', '<PEON.INSTALLDIR.X+BIN>');
+      makeinstall: |-
+        cp('<PEON.WPKG.STAG>/usr/share/carnotzet/rootfs-rpi4b/data', '<PEON.INSTALLDIR.X+BIN>');
+        cp('<PEON.ASSETS>/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
     test: ''
     env: {}
   deploy: ''
