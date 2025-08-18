@@ -89,7 +89,7 @@ data:
                        'gnu+glibc-rpi4b-x+bin',
                        'gnu+libstdcxx-rpi4b-x+bin',
                        'vlasenko+busybox-rpi4b-x+bin',
-                       'dosfstools+dosfstools-rpi4b-rpi4b-x+bin',
+                       'dosfstools+dosfstools-rpi4b-x+bin',
                        'unigw+wpkg-rpi4b-x+bin'
         );
         /* Deploy base hooks */
