@@ -35,6 +35,9 @@ dependency:
     vlasenko+busybox-rpi4b:
       - version: ''
         architecture: []
+    tytso+e2fsprogs-rpi4b:
+      - version: ''
+        architecture: []
     dosfstools+dosfstools-rpi4b:
       - version: ''
         architecture: []
@@ -89,6 +92,7 @@ data:
                        'gnu+glibc-rpi4b-x+bin',
                        'gnu+libstdcxx-rpi4b-x+bin',
                        'vlasenko+busybox-rpi4b-x+bin',
+                       'tytso+e2fsprogs-rpi4b-x+bin',
                        'dosfstools+dosfstools-rpi4b-x+bin',
                        'unigw+wpkg-rpi4b-x+bin'
         );
@@ -117,6 +121,7 @@ data:
                       'gnu+glibc-rpi4b-x+bin',
                       'gnu+libstdcxx-rpi4b-x+bin',
                       'vlasenko+busybox-rpi4b-x+bin',
+                      'tytso+e2fsprogs-rpi4b-x+bin',
                       'dosfstools+dosfstools-rpi4b-x+bin',
                       'unigw+wpkg-rpi4b-x+bin'
         );
