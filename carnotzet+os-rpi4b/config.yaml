@@ -35,6 +35,9 @@ dependency:
     vlasenko+busybox-rpi4b:
       - version: ''
         architecture: []
+    dosfstools+dosfstools-rpi4b:
+      - version: ''
+        architecture: []
     unigw+wpkg-rpi4b:
       - version: ''
         architecture: []
@@ -86,6 +89,7 @@ data:
                        'gnu+glibc-rpi4b-x+bin',
                        'gnu+libstdcxx-rpi4b-x+bin',
                        'vlasenko+busybox-rpi4b-x+bin',
+                       'dosfstools+dosfstools-rpi4b-rpi4b-x+bin',
                        'unigw+wpkg-rpi4b-x+bin'
         );
         /* Deploy base hooks */
@@ -113,6 +117,7 @@ data:
                       'gnu+glibc-rpi4b-x+bin',
                       'gnu+libstdcxx-rpi4b-x+bin',
                       'vlasenko+busybox-rpi4b-x+bin',
+                      'dosfstools+dosfstools-rpi4b-x+bin',
                       'unigw+wpkg-rpi4b-x+bin'
         );
         /* Remove the WPKG root directory */
