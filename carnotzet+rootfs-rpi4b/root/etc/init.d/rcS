@@ -13,7 +13,20 @@ fsck -a
 # Mount all filesystems
 mount -a
 
-echo -e "Carnotzet OS booted in $(cut -d' ' -f1 /proc/uptime) seconds\\n"
+sysctl -p >/dev/null
+syslogd >/dev/null
+crond >/dev/null
 
-# shellcheck source=/dev/null
-/etc/init.d/base &
+# Configure swap
+if [ -f /swapfile ]; then
+  swapon /swapfile
+fi
+
+# Import fr-CH keyboard map
+busybox loadkmap < /usr/share/kmap/fr_CH.kmap
+
+# Enable loopback
+ip addr add 127.0.0.1/8 dev lo
+ip link set dev lo up
+
+echo -e "Carnotzet OS booted in $(cut -d' ' -f1 /proc/uptime) seconds\\n"
