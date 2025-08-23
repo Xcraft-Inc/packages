@@ -1,6 +1,10 @@
 #!/bin/sh
 
 ssh-keygen -A
-if ! id -u sshd; then
-  adduser sshd -SH
-fi
+
+adduser sshd -SH 2>/dev/null || true
+
+chown root:root /var/empty/sshd
+chmod 755 /var/empty/sshd
+
+ln -sf /etc/sv/sshd /var/service/sshd
