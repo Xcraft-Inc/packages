@@ -1,4 +1,6 @@
 #!/bin/sh
 
+chmod 1777 /tmp
+
 ln -sf /etc/sv/network /var/service/network
 ln -sf /etc/sv/ntpd    /var/service/ntpd
