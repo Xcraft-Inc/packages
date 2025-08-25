@@ -23,7 +23,7 @@ dependency:
     openbsd+openssh-rpi4b:
       - version: ''
         architecture: []
-    openjs+nodejs20-rpi4b:
+    openjs+nodejs22-rpi4b:
       - version: ''
         architecture: []
 bump: []
