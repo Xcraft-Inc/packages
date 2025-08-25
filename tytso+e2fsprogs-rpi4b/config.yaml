@@ -21,7 +21,8 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
-bump: []
+bump:
+  - carnotzet+os-rpi4b
 data:
   get:
     uri: 'https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v<THIS.$VERSION>/e2fsprogs-<THIS.$VERSION>.tar.gz'

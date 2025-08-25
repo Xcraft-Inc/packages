@@ -21,7 +21,8 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
-bump: []
+bump:
+  - carnotzet+os-rpi4b
 data:
   get:
     uri: 'https://github.com/dosfstools/dosfstools/releases/download/v<THIS.$VERSION>/dosfstools-<THIS.$VERSION>.tar.gz'
