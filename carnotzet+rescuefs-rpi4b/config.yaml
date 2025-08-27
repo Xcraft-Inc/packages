@@ -1,0 +1,118 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: carnotzet+rescuefs-rpi4b
+version: 0.1.0
+$version: 0.1.0
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Carnotzet rescue initramfs
+  long: ''
+dependency:
+  install:
+    carnotzet+rootfs-rpi4b:
+      - version: ''
+        architecture: []
+    gnu+glibc-rpi4b:
+      - version: ''
+        architecture: []
+    vlasenko+busybox-rpi4b:
+      - version: ''
+        architecture: []
+    tytso+e2fsprogs-rpi4b:
+      - version: ''
+        architecture: []
+    dosfstools+dosfstools-rpi4b:
+      - version: ''
+        architecture: []
+  build:
+    gnu+cpio:
+      - version: ''
+        architecture: []
+    gnu+gzip:
+      - version: ''
+        architecture: []
+bump:
+  - carnotzet+os-rpi4b
+data:
+  get:
+    uri: ''
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: false
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: ''
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: |-
+        function* genRoot (rootDir, pkgs) {
+          mkdir(rootDir);
+          /* Prepare the WPKG admin directory */
+          yield exec(
+            'wpkg_static',
+            '--root', rootDir,
+            '--create-admindir', '<PEON.ASSETS>/admindir.control'
+          );
+          /* Add the Xcraft Raspberry WPKG source */
+          yield exec(
+            'wpkg_static',
+            '--root', rootDir,
+            '--add-sources', 'wpkg http://127.0.0.1:12321/ raspberry/'
+          );
+          /* Update the WPKG indices */
+          yield exec(
+            'wpkg_static',
+            '--root', rootDir,
+            '--update'
+          );
+          /* Deploy the packages */
+          yield exec(
+            'wpkg_static',
+            '--keep-original-symlink-target',
+            '--force-file-info',
+            '--skip-hooks',
+            '--root', rootDir,
+            '--install', ...pkgs
+          );
+        }
+
+        try {
+          /* Generate the root for the recovery initramfs */
+          yield* genRoot('<PEON.PROD.ROOTDIR>/var/rescue', [
+            'carnotzet+rootfs-rpi4b-x+bin',
+            'gnu+glibc-rpi4b-x+bin',
+            'vlasenko+busybox-rpi4b-x+bin',
+            'tytso+e2fsprogs-rpi4b-x+bin',
+            'dosfstools+dosfstools-rpi4b-x+bin'
+          ]);
+
+          rm('<PEON.PROD.ROOTDIR>/var/rescue/var/lib/wpkg');
+          cd('<PEON.PROD.ROOTDIR>/var/rescue');
+          mkdir('<PEON.INSTALLDIR.X+BIN>/boot');
+          yield exec('bash', '-c', 'find . | cpio -o -H newc -R +0:+0 | gzip > <PEON.INSTALLDIR.X+BIN>/boot/rescue.cpio.gz');
+        } finally {
+          rm('<PEON.PROD.ROOTDIR>/var/rescue');
+        }
+      maketest: ''
+      makeinstall: ''
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
