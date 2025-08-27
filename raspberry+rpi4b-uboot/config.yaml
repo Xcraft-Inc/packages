@@ -44,9 +44,9 @@ data:
     prepare: ''
   type: src
   configure: |-
-    !make -C <THIS.DATA.RULES.LOCATION>
-          CROSS_COMPILE=aarch64-xcraft-linux-gnu-
-          rpi_4_defconfig
+    !make -C <THIS.DATA.RULES.LOCATION> CROSS_COMPILE=aarch64-xcraft-linux-gnu- rpi_4_defconfig
+       && sed -i 's,^# CONFIG_CMD_BOOTMENU.*,CONFIG_CMD_BOOTMENU=y,' <THIS.DATA.RULES.LOCATION>/.config
+       && make -C <THIS.DATA.RULES.LOCATION> CROSS_COMPILE=aarch64-xcraft-linux-gnu- olddefconfig
   rules:
     type: script
     location: data
