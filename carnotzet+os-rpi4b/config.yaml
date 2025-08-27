@@ -17,6 +17,9 @@ dependency:
     carnotzet+rootfs-rpi4b:
       - version: ''
         architecture: []
+    carnotzet+rescuefs-rpi4b:
+      - version: ''
+        architecture: []
     raspberry+rpi4b-linux-kernel:
       - version: ''
         architecture: []
@@ -60,72 +63,59 @@ data:
     location: ''
     args:
       postinst: |-
-        mkdir('<PEON.PROD.ROOTDIR>/var/carnotzet');
-        /* Prepare the WPKG admin directory */
-        yield exec(
-          'wpkg_static',
-          '--root', '<PEON.PROD.ROOTDIR>/var/carnotzet',
-          '--create-admindir', '<PEON.ASSETS>/admindir.control'
-        );
-        /* Add the Xcraft Raspberry WPKG source */
-        yield exec(
-          'wpkg_static',
-          '--root', '<PEON.PROD.ROOTDIR>/var/carnotzet',
-          '--add-sources', 'wpkg http://127.0.0.1:12321/ raspberry/'
-        );
-        /* Update the WPKG indices */
-        yield exec(
-          'wpkg_static',
-          '--root', '<PEON.PROD.ROOTDIR>/var/carnotzet',
-          '--update'
-        );
-        /* Deploy the base packages */
-        yield exec(
-          'wpkg_static',
-          '--keep-original-symlink-target',
-          '--force-file-info',
-          '--root', '<PEON.PROD.ROOTDIR>/var/carnotzet',
-          '--install', 'carnotzet+rootfs-rpi4b-x+bin',
-                       'raspberry+rpi4b-linux-kernel-x+bin',
-                       'raspberry+rpi4b-uboot-x+bin',
-                       'raspberry+rpi4b-firmware-x+bin',
-                       'gnu+glibc-rpi4b-x+bin',
-                       'gnu+libstdcxx-rpi4b-x+bin',
-                       'vlasenko+busybox-rpi4b-x+bin',
-                       'tytso+e2fsprogs-rpi4b-x+bin',
-                       'dosfstools+dosfstools-rpi4b-x+bin',
-                       'unigw+wpkg-rpi4b-x+bin'
-        );
-        /* Deploy base hooks */
-        yield exec(
-          'wpkg_static',
-          '--root', '<PEON.PROD.ROOTDIR>/var/carnotzet',
-          '--add-hooks', '<PEON.ASSETS>/postinst'
-        );
+        function* genRoot (rootDir, pkgs) {
+          mkdir(rootDir);
+          /* Prepare the WPKG admin directory */
+          yield exec(
+            'wpkg_static',
+            '--root', rootDir,
+            '--create-admindir', '<PEON.ASSETS>/admindir.control'
+          );
+          /* Add the Xcraft Raspberry WPKG source */
+          yield exec(
+            'wpkg_static',
+            '--root', rootDir,
+            '--add-sources', 'wpkg http://127.0.0.1:12321/ raspberry/'
+          );
+          /* Update the WPKG indices */
+          yield exec(
+            'wpkg_static',
+            '--root', rootDir,
+            '--update'
+          );
+          /* Deploy the packages */
+          yield exec(
+            'wpkg_static',
+            '--keep-original-symlink-target',
+            '--force-file-info',
+            '--skip-hooks',
+            '--root', rootDir,
+            '--install', ...pkgs
+          );
+          /* Deploy global hooks */
+          yield exec(
+            'wpkg_static',
+            '--root', rootDir,
+            '--add-hooks', '<PEON.ASSETS>/postinst'
+          );
+        }
+
+        /* Generate the root for the MMC */
+        yield* genRoot('<PEON.PROD.ROOTDIR>/var/carnotzet', [
+          'carnotzet+rootfs-rpi4b-x+bin',
+          'carnotzet+rescuefs-rpi4b-x+bin',
+          'raspberry+rpi4b-linux-kernel-x+bin',
+          'raspberry+rpi4b-uboot-x+bin',
+          'raspberry+rpi4b-firmware-x+bin',
+          'gnu+glibc-rpi4b-x+bin',
+          'gnu+libstdcxx-rpi4b-x+bin',
+          'vlasenko+busybox-rpi4b-x+bin',
+          'tytso+e2fsprogs-rpi4b-x+bin',
+          'dosfstools+dosfstools-rpi4b-x+bin',
+          'unigw+wpkg-rpi4b-x+bin'
+        ]);
       prerm: |-
-        /* Remove base hooks */
-        yield exec(
-          'wpkg_static',
-          '--root', '<PEON.PROD.ROOTDIR>/var/carnotzet',
-          '--remove-hooks', 'postinst'
-        );
-        /* Remove the base packages */
-        yield exec(
-          'wpkg_static',
-          '--keep-original-symlink-target',
-          '--root', '<PEON.PROD.ROOTDIR>/var/carnotzet',
-          '--remove', 'carnotzet+rootfs-rpi4b-x+bin',
-                      'raspberry+rpi4b-linux-kernel-x+bin',
-                      'raspberry+rpi4b-uboot-x+bin',
-                      'raspberry+rpi4b-firmware-x+bin',
-                      'gnu+glibc-rpi4b-x+bin',
-                      'gnu+libstdcxx-rpi4b-x+bin',
-                      'vlasenko+busybox-rpi4b-x+bin',
-                      'tytso+e2fsprogs-rpi4b-x+bin',
-                      'dosfstools+dosfstools-rpi4b-x+bin',
-                      'unigw+wpkg-rpi4b-x+bin'
-        );
-        /* Remove the WPKG root directory */
+        /* Remove the WPKG root */
         rm('<PEON.PROD.ROOTDIR>/var/carnotzet');
     env: {}
   env:
