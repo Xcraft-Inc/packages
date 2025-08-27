@@ -1,6 +1,6 @@
 name: appimage+appimagetool
-version: 866
-$version: 866
+version: '904'
+$version: '904'
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
