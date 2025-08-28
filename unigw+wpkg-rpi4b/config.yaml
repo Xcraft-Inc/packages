@@ -28,7 +28,7 @@ bump:
   - carnotzet+os-rpi4b
 data:
   get:
-    uri: 'https://github.com/Xcraft-Inc/wpkg/archive/f2518193ec93b98eb67ecddc11e262f41e76e87f.tar.gz'
+    uri: 'https://github.com/Xcraft-Inc/wpkg/archive/651f36cc29ff9a7c6f48972eb9286490174a742d.tar.gz'
     ref: ''
     out: ''
     externals: true
@@ -48,7 +48,7 @@ data:
       && cp ../wpkg/controlled_vars/build/controlled_vars ./controlled_vars
   rules:
     type: script
-    location: data/wpkg-f2518193ec93b98eb67ecddc11e262f41e76e87f/build
+    location: data/wpkg-651f36cc29ff9a7c6f48972eb9286490174a742d/build
     args:
       postinst: ''
       prerm: ''
