@@ -21,8 +21,8 @@ mkfs.ext4 /dev/sde2 -L carnotzet
 ### Copy the boot and the root
 
 ```bash
-rsync -av var/prodroot.raspberry/linux-amd64/var/carnotzet/ /media/$USER/carnotzet/
-rsync -av var/prodroot.raspberry/linux-amd64/var/carnotzet/boot/ /media/$USER/boot/
+rsync -av --delete var/prodroot.raspberry/linux-amd64/var/carnotzet/ /media/$USER/carnotzet/
+rsync -av --delete var/prodroot.raspberry/linux-amd64/var/carnotzet/boot/ /media/$USER/boot/
 rm -f /media/$USER/carnotzet/boot/*
 chown -R 0:0 /media/$USER/carnotzet/
 
