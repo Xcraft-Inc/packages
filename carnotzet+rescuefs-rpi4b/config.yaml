@@ -37,6 +37,9 @@ dependency:
     gnu+gzip:
       - version: ''
         architecture: []
+    raspberry+rpi4b-uboot:
+      - version: ''
+        architecture: []
 bump:
   - carnotzet+os-rpi4b
 data:
@@ -101,7 +104,14 @@ data:
           rm('<PEON.PROD.ROOTDIR>/var/rescue/var/lib/wpkg');
           cd('<PEON.PROD.ROOTDIR>/var/rescue');
           mkdir('<PEON.INSTALLDIR.X+BIN>/boot');
-          yield exec('bash', '-c', 'find . | cpio -o -H newc -R +0:+0 | gzip > <PEON.INSTALLDIR.X+BIN>/boot/rescue.cpio.gz');
+          yield exec(
+            'bash', '-c',
+            'find . | cpio -o -H newc -R +0:+0 | gzip > <PEON.PROD.ROOTDIR>/var/rescue/initramfs.cpio.gz'
+          );
+          yield exec(
+            'mkimage', '-A', 'arm64', '-O', 'linux', '-T', 'ramdisk',
+            '-d', '<PEON.PROD.ROOTDIR>/var/rescue/initramfs.cpio.gz', '<PEON.INSTALLDIR.X+BIN>/boot/uRamdisk'
+          );
         } finally {
           rm('<PEON.PROD.ROOTDIR>/var/rescue');
         }
