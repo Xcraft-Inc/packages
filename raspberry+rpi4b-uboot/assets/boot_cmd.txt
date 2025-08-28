@@ -2,7 +2,7 @@ echo "=== Welcome to the Carnotzet bootloader ==="
 
 setenv bootmenu_0 "Normal boot=run boot_normal_cmd"
 setenv bootmenu_1 "Rescue boot=run boot_rescue_cmd"
-setenv bootmenu_delay 5
+setenv bootmenu_delay 3
 
 setenv boot_normal_cmd '\
 echo "=== NORMAL BOOT ==="; \
