@@ -2,5 +2,10 @@
 
 chmod 1777 /tmp
 
+if id rasp >/dev/null 2>&1 && [ ! -d /home/rasp ]; then
+  mkdir -p /home/rasp
+  chown -R rasp:rasp /home/rasp
+fi
+
 ln -sf /etc/sv/network /var/service/network
 ln -sf /etc/sv/ntpd    /var/service/ntpd
