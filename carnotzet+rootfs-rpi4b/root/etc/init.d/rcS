@@ -29,4 +29,12 @@ busybox loadkmap < /usr/share/kmap/fr_CH.kmap
 ip addr add 127.0.0.1/8 dev lo
 ip link set dev lo up
 
+# Execute all postinst scripts in case of the first boot
+if [ ! -f /var/.bootstrapped ]; then
+  for postinst in /var/lib/wpkg/*/postinst; do
+    sh "$postinst"
+  done
+  touch /var/.bootstrapped
+fi
+
 echo -e "Carnotzet OS booted in $(cut -d' ' -f1 /proc/uptime) seconds\\n"
