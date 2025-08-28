@@ -64,7 +64,9 @@ data:
     args:
       postinst: |-
         function* genRoot (rootDir, pkgs) {
+          rm(rootDir);
           mkdir(rootDir);
+
           /* Prepare the WPKG admin directory */
           yield exec(
             'wpkg_static',
