@@ -40,7 +40,8 @@ data:
           --nocache
           --noUpdateInstaller
           --locale En-us
-          --installPath <PEON.ROOTDRIVE>/xcraft/microsoft/buildtools
+          --path cache=<PEON.ROOTDRIVE>\xcraft\tmp\buildtools
+          --installPath <PEON.ROOTDRIVE>\xcraft\microsoft\buildtools
           --add Microsoft.VisualStudio.Component.Roslyn.Compiler
           --add Microsoft.Component.MSBuild
           --add Microsoft.VisualStudio.Component.CoreBuildTools
