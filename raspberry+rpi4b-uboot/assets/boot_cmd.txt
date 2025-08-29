@@ -1,7 +1,8 @@
-echo "=== Welcome to the Carnotzet bootloader ==="
+load mmc 0:1 ${loadaddr} carnotzet.env
+env import -t ${loadaddr} ${filesize}
 
-setenv bootmenu_0 "Normal boot=run boot_normal_cmd"
-setenv bootmenu_1 "Rescue boot=run boot_rescue_cmd"
+setenv bootmenu_0 "Normal Carnotzet boot=run boot_normal_cmd"
+setenv bootmenu_1 "Rescue Carnotzet boot (auto:${carnotzet_rescue})=run boot_rescue_cmd"
 setenv bootmenu_delay 3
 
 setenv boot_normal_cmd '\

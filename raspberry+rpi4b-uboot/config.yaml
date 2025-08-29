@@ -74,6 +74,7 @@ data:
         );
 
         /* Specific Carnotzet OS settings (not u-boot related) */
+        cp('<PEON.ASSETS>/carnotzet.env', '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.env');
         cp('<PEON.ASSETS>/carnotzet.cfg', '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.cfg');
         cp('<PEON.ASSETS>/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
     test: none
