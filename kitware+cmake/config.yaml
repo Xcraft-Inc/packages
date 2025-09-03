@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: kitware+cmake
-version: 3.26.4
-$version: 3.26.4
+version: 3.31.8
+$version: 3.31.8
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -36,7 +36,6 @@ data:
     out: ''
     externals: true
     prepare: ''
-    $hash: 313b6880c291bd4fe31c0aa51d6e62659282a521e695f30d5cc0d25abbd5c208.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION> ;
