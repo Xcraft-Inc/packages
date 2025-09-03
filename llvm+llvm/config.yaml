@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: llvm+llvm
-version: 16.0.6
-$version: 16.0.6
+version: 18.1.8
+$version: 18.1.8
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -39,10 +39,10 @@ data:
     uri: 'https://github.com/llvm/llvm-project/releases/download/llvmorg-<THIS.$VERSION>/llvm-project-<THIS.$VERSION>.src.tar.xz'
     mirrors: []
     ref: ''
+    $ref: ''
     out: ''
     externals: true
     prepare: ''
-    $hash: ce5e71081d17ce9e86d7cbcfa28c4b04b9300f8fb7e78422b1feb6bc52c3028e.tar.xz
   type: src
   configure: |-
     !mkdir -p "<PEON.PREFIXDIR>/bin"
