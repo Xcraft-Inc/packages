@@ -1,6 +1,6 @@
 name: microsoft+dotnet-sdk-80-darwin-arm
-version: 8.0.408
-$version: 8.0.408
+version: 8.0.413
+$version: 8.0.413
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
