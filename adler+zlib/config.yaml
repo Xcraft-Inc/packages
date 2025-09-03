@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - dev
 name: adler+zlib
-version: 1.2.12-3
-$version: 1.2.12
+version: 1.3.1
+$version: 1.3.1
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -47,7 +47,6 @@ data:
     out: ''
     externals: true
     prepare: ''
-    $hash: 91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9.tar.gz
   type: src
   configure: |-
     !<PEON.OS=win? exit 0; :>
