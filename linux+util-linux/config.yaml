@@ -1,0 +1,57 @@
+subpackage:
+  - runtime*
+name: linux+util-linux
+version: 2.41.1
+$version: 2.41.1
+distribution: toolchain/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Package of utilities distributed by the Linux Kernel Organization
+  long: ''
+dependency:
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://www.kernel.org/pub/linux/utils/util-linux/v2.41/util-linux-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=<PEON.PREFIXDIR>
+                     --disable-all-programs
+                     --enable-libuuid
+                     --enable-libsmartcols
+                     --enable-libfdisk
+                     --enable-fdisks
+                     --enable-fallocate
+  rules:
+    type: make
+    location: data/util-linux-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '-j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: install
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
