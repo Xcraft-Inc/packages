@@ -1,0 +1,51 @@
+subpackage:
+  - runtime*
+name: gnu+mtools
+version: 4.0.49
+$version: 4.0.49
+distribution: toolchain/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Collection of utilities to access MS-DOS disks
+  long: ''
+dependency:
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'http://ftp.gnu.org/gnu/mtools/mtools-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=<PEON.PREFIXDIR>
+  rules:
+    type: make
+    location: data/mtools-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '-j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: install
+    test: none
+    env: {}
+  deploy: rm('<PEON.PREFIXDIR>/share/info/dir');
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
