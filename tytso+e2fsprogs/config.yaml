@@ -1,0 +1,51 @@
+subpackage:
+  - runtime*
+name: tytso+e2fsprogs
+version: 1.47.3
+$version: 1.47.3
+distribution: toolchain/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Ext2/3/4 Filesystem Utilities
+  long: It provides the filesystem utilities for use with the ext2 filesystem. It also supports the ext3 and ext4 filesystems.
+dependency:
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v<THIS.$VERSION>/e2fsprogs-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/
+  rules:
+    type: script
+    location: data/e2fsprogs-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!make -j{PEON.CPUS.COUNT}'
+      maketest: ''
+      makeinstall: '!make install DESTDIR=<PEON.PREFIXDIR>'
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
