@@ -23,6 +23,7 @@ dependency:
         architecture: []
 bump:
   - carnotzet+os-rpi4b
+  - carnotzet+rescuefs-rpi4b
 data:
   get:
     uri: 'https://mirrors.edge.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v<THIS.$VERSION>/e2fsprogs-<THIS.$VERSION>.tar.gz'

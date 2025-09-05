@@ -16,6 +16,7 @@ description:
 dependency: {}
 bump:
   - carnotzet+os-rpi4b
+  - carnotzet+rescuefs-rpi4b
 data:
   get:
     uri: 'self:///root'

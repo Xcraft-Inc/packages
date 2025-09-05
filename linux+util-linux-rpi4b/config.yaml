@@ -28,7 +28,9 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
-bump: []
+bump:
+  - carnotzet+os-rpi4b
+  - carnotzet+rescuefs-rpi4b
 data:
   get:
     uri: 'https://www.kernel.org/pub/linux/utils/util-linux/v2.41/util-linux-<THIS.$VERSION>.tar.gz'
