@@ -43,9 +43,11 @@ data:
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
-      && ./configure --prefix=/usr/local
+      && ./configure --prefix=/usr
                      --build=$MACHTYPE
                      --host=aarch64-xcraft-linux-gnu
+                     --enable-static
+                     --disable-shared
                      --disable-all-programs
                      --enable-libuuid
                      --enable-libsmartcols
@@ -63,7 +65,10 @@ data:
     test: none
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
-  deploy: ''
+  deploy: |-
+    rm('<PEON.INSTALLDIR.X+BIN>/usr/include');
+    rm('<PEON.INSTALLDIR.X+BIN>/usr/lib');
+    rm('<PEON.INSTALLDIR.X+BIN>/usr/share/man/man3');
   env:
     path: []
     other: {}
