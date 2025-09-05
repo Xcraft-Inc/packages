@@ -1,14 +1,14 @@
+subpackage:
+  - runtime*
 name: carnotzet+os-rpi4b
-version: 0.1.0
+version: 0.1.0-53
 $version: 0.1.0
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
   email: schroeter@epsitec.ch
 architecture:
-  - linux-i386
-  - linux-amd64
-  - linux-aarch64
+  - source
 description:
   brief: Carnotzet Operating System
   long: ''
@@ -47,6 +47,25 @@ dependency:
     unigw+wpkg-rpi4b:
       - version: ''
         architecture: []
+    linux+util-linux-rpi4b:
+      - version: ''
+        architecture: []
+  build:
+    tytso+e2fsprogs:
+      - version: ''
+        architecture: []
+    linux+util-linux:
+      - version: ''
+        architecture: []
+    gnu+mtools:
+      - version: ''
+        architecture: []
+    e2tools+e2tools:
+      - version: ''
+        architecture: []
+    debian+fakeroot:
+      - version: ''
+        architecture: []
 bump: []
 data:
   get:
@@ -56,13 +75,16 @@ data:
     $ref: ''
     out: ''
     externals: false
-  type: bin
+    prepare: ''
+  type: src
   configure: ''
   rules:
-    type: configure
+    type: script
     location: ''
     args:
-      postinst: |-
+      postinst: ''
+      prerm: ''
+      makeall: |-
         function* genRoot (rootDir, pkgs) {
           rm(rootDir);
           mkdir(rootDir);
@@ -103,7 +125,7 @@ data:
         }
 
         /* Generate the root for the MMC */
-        yield* genRoot('<PEON.PROD.ROOTDIR>/var/carnotzet', [
+        yield* genRoot('carnotzet', [
           'carnotzet+rootfs-rpi4b-x+bin',
           'carnotzet+rescuefs-rpi4b-x+bin',
           'raspberry+rpi4b-linux-kernel-x+bin',
@@ -112,15 +134,30 @@ data:
           'gnu+glibc-rpi4b-x+bin',
           'gnu+libstdcxx-rpi4b-x+bin',
           'vlasenko+busybox-rpi4b-x+bin',
+          'linux+util-linux-rpi4b-x+bin',
           'tytso+e2fsprogs-rpi4b-x+bin',
           'dosfstools+dosfstools-rpi4b-x+bin',
           'unigw+wpkg-rpi4b-x+bin'
         ]);
-      prerm: |-
-        /* Remove the WPKG root */
-        rm('<PEON.PROD.ROOTDIR>/var/carnotzet');
+
+        yield exec('sh', '-c', 'fallocate -l 1G carnotzet.img');
+        yield exec('sh', '-c', 'printf "label: dos\n63,524225,0x0C,*\n524288,,,-\n" | sfdisk carnotzet.img');
+        yield exec('sh', '-c', 'mformat -i carnotzet.img@@32256 -F -v BOOT :: -N 0 -T 524225');
+        yield exec('sh', '-c', 'mcopy -i carnotzet.img@@32256 -s carnotzet/boot/* ::');
+
+        rm('carnotzet/boot');
+        mkdir('carnotzet/boot');
+        yield exec('sh', '-c', 'fakeroot mke2fs -t ext4 -b 4096 -d carnotzet -E offset=268435456 carnotzet.img 196608');
+
+        mv('carnotzet.img', '<PEON.INSTALLDIR>/opt/img/carnotzet-os-<THIS.$VERSION>.img');
+      maketest: ''
+      makeinstall: ''
+    test: none
     env: {}
+  deploy: ''
   env:
     path: []
     other: {}
   embedded: true
+  runtime:
+    configure: ''
