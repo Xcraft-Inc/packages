@@ -1,0 +1,70 @@
+subpackage:
+  - runtime*
+  - x+bin:linux-aarch64
+name: linux+util-linux-rpi4b
+version: 2.41.1
+$version: 2.41.1
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Package of utilities distributed by the Linux Kernel Organization
+  long: ''
+dependency:
+  install:
+    gnu+libncurses-rpi4b:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://www.kernel.org/pub/linux/utils/util-linux/v2.41/util-linux-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/usr/local
+                     --build=$MACHTYPE
+                     --host=aarch64-xcraft-linux-gnu
+                     --disable-all-programs
+                     --enable-libuuid
+                     --enable-libsmartcols
+                     --enable-libfdisk
+                     --enable-fdisks
+  rules:
+    type: make
+    location: data/util-linux-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '-j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: install DESTDIR=<PEON.INSTALLDIR.X+BIN>
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
