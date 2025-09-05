@@ -17,6 +17,9 @@ dependency:
     xcraft+base-build:
       - version: ''
         architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
 bump: []
 data:
   get:
