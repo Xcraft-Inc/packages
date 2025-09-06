@@ -107,7 +107,7 @@ data:
             'dosfstools+dosfstools-rpi4b-x+bin'
           ]);
 
-          rm('<PEON.PROD.ROOTDIR>/var/rescue/var/lib/wpkg');
+          rmFiles('<PEON.PROD.ROOTDIR>/var/rescue/var/lib/wpkg', /^(?!postinst$)/);
           cd('<PEON.PROD.ROOTDIR>/var/rescue');
           mkdir('<PEON.INSTALLDIR.X+BIN>/boot');
           yield exec(
