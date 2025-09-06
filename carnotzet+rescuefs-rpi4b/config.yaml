@@ -96,6 +96,8 @@ data:
           );
         }
 
+        yield cmd('pacman.syncRepository', {distribution: 'raspberry'});
+
         try {
           /* Generate the root for the recovery initramfs */
           yield* genRoot('<PEON.PROD.ROOTDIR>/var/rescue', [

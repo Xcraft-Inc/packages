@@ -124,6 +124,8 @@ data:
           );
         }
 
+        yield cmd('pacman.syncRepository', {distribution: 'raspberry'});
+
         /* Generate the root for the MMC */
         yield* genRoot('carnotzet', [
           'carnotzet+rootfs-rpi4b-x+bin',
