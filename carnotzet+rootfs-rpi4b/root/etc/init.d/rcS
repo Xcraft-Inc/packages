@@ -10,31 +10,66 @@ mkdir -p /dev/pts
 mount -t devpts none /dev/pts # sshd
 
 fsck -a
-# Mount all filesystems
-mount -a
+mount /boot
 
-sysctl -p >/dev/null
-syslogd >/dev/null
-crond >/dev/null
+boot_expand()
+{
+  # Check filesystems
+  fsck.ext4 -p /dev/mmcblk0p2 || return 1
+  # Expand EXT4 partition
+  echo ",+" | sfdisk -N2 /dev/mmcblk0 || return 1
+  resize2fs /dev/mmcblk0p2 || return 1
+  # Disable expand mode
+  mount /boot
+  sed -i "s,^carnotzet_expand=.*,carnotzet_expand=0," /boot/carnotzet.env || return 1
+  umount /boot
+  return 0
+}
 
-# Configure swap
-if [ -f /swapfile ]; then
-  swapon /swapfile
+boot_normal()
+{
+  # Mount all filesystems
+  mount -a
+
+  sysctl -p >/dev/null
+  syslogd >/dev/null
+  crond >/dev/null
+
+  # Configure swap
+  if [ -f /swapfile ]; then
+    swapon /swapfile
+  fi
+
+  # Import fr-CH keyboard map
+  busybox loadkmap < /usr/share/kmap/fr_CH.kmap
+
+  # Enable loopback
+  ip addr add 127.0.0.1/8 dev lo
+  ip link set dev lo up
+
+  # Execute all postinst scripts in case of the first boot
+  if [ ! -f /var/.bootstrapped ]; then
+    for postinst in /var/lib/wpkg/*/postinst; do
+      sh "$postinst"
+    done
+    touch /var/.bootstrapped
+  fi
+
+  printf "Carnotzet OS booted in %s seconds\\n" "$(cut -d' ' -f1 /proc/uptime)"
+}
+
+if [ -f /boot/carnotzet.env ]; then
+  . /boot/carnotzet.env
+fi
+umount /boot
+
+if [ "$carnotzet_expand" = "1" ]; then
+  if boot_expand; then
+    echo "Expand done, reboot..."
+    reboot
+    exit 0
+  fi
+  echo "RESCUE: something wrong happens"
 fi
 
-# Import fr-CH keyboard map
-busybox loadkmap < /usr/share/kmap/fr_CH.kmap
-
-# Enable loopback
-ip addr add 127.0.0.1/8 dev lo
-ip link set dev lo up
-
-# Execute all postinst scripts in case of the first boot
-if [ ! -f /var/.bootstrapped ]; then
-  for postinst in /var/lib/wpkg/*/postinst; do
-    sh "$postinst"
-  done
-  touch /var/.bootstrapped
-fi
-
-echo -e "Carnotzet OS booted in $(cut -d' ' -f1 /proc/uptime) seconds\\n"
+boot_normal
