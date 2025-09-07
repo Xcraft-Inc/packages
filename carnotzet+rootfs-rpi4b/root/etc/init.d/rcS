@@ -18,6 +18,7 @@ boot_expand()
   fsck.ext4 -p /dev/mmcblk0p2 || return 1
   # Expand EXT4 partition
   echo ",+" | sfdisk -N2 /dev/mmcblk0 || return 1
+  fsck.ext4 -fp /dev/mmcblk0p2 || return 1
   resize2fs /dev/mmcblk0p2 || return 1
   # Disable expand mode
   mount /boot
