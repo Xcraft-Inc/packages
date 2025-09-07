@@ -66,9 +66,11 @@ data:
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
   deploy: |-
-    rm('<PEON.INSTALLDIR.X+BIN>/usr/include');
-    rm('<PEON.INSTALLDIR.X+BIN>/usr/lib');
-    rm('<PEON.INSTALLDIR.X+BIN>/usr/share/man/man3');
+    !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
+    && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/pkgconfig
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.a
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.la
+    && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/share/man/man3
   env:
     path: []
     other: {}

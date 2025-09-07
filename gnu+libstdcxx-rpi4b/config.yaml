@@ -87,7 +87,12 @@ data:
       CXXFLAGS: ''
       LDFLAGS: ''
       CPPFLAGS: ''
-  deploy: ''
+  deploy: |-
+    !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.a
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.la
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib64/*.a
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib64/*.la
   env:
     path: []
     other: {}
