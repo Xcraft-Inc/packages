@@ -63,7 +63,10 @@ data:
     env:
       CC: gcc
       CXX: g++
-  deploy: ''
+  deploy: |-
+    rm('<PEON.INSTALLDIR.X+BIN>/usr/include');
+    rm('<PEON.INSTALLDIR.X+BIN>/usr/lib/pkgconfig');
+    rm('<PEON.INSTALLDIR.X+BIN>/usr/lib/cmake');
   env:
     path: []
     other:
