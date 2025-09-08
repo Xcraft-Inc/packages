@@ -50,6 +50,9 @@ dependency:
     linux+util-linux-rpi4b:
       - version: ''
         architecture: []
+    malinen+wpa-supplicant-rpi4b:
+      - version: ''
+        architecture: []
   build:
     tytso+e2fsprogs:
       - version: ''
@@ -139,6 +142,7 @@ data:
           'linux+util-linux-rpi4b-x+bin',
           'tytso+e2fsprogs-rpi4b-x+bin',
           'dosfstools+dosfstools-rpi4b-x+bin',
+          'malinen+wpa-supplicant-rpi4b-x+bin',
           'unigw+wpkg-rpi4b-x+bin'
         ]);
 
