@@ -1,0 +1,61 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: malinen+wpa-supplicant-rpi4b
+version: '2.11'
+$version: '2.11'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Linux WPA/WPA2/WPA3/IEEE 802.1X Supplicant
+  long: 'wpa_supplicant is a WPA Supplicant for Linux, BSD, Mac OS X, and Windows with support for WPA, WPA2 (IEEE 802.11i / RSN), and WPA3. It is suitable for both desktop/laptop computers and embedded systems. Supplicant is the IEEE 802.1X/WPA component that is used in the client stations. It implements key negotiation with a WPA Authenticator and it controls the roaming and IEEE 802.11 authentication/association of the wlan driver.'
+dependency:
+  install:
+    openssl+openssl3-rpi4b:
+      - version: ''
+        architecture: []
+    thom311+libnl-rpi4b:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://w1.fi/releases/wpa_supplicant-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: '!cd <THIS.DATA.RULES.LOCATION> && cp <PEON.ASSETS>/defconfig .config'
+  rules:
+    type: script
+    location: data/wpa_supplicant-<THIS.$VERSION>/wpa_supplicant
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!make -j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: '!make install DESTDIR=<PEON.INSTALLDIR.X+BIN>'
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
