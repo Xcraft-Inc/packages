@@ -23,7 +23,6 @@ boot_expand()
   # Disable expand mode
   mount /boot
   sed -i "s,^carnotzet_expand=.*,carnotzet_expand=0," /boot/carnotzet.env || return 1
-  umount /boot
   return 0
 }
 
