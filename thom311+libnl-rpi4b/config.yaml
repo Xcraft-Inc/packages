@@ -37,7 +37,7 @@ data:
                      --build=$MACHTYPE
                      --host=aarch64-xcraft-linux-gnu
                      --enable-static
-                     --enable-shared
+                     --disable-shared
   rules:
     type: script
     location: data/libnl-<THIS.$VERSION>
