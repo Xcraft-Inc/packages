@@ -50,7 +50,6 @@ data:
       && ./configure --prefix=/usr
                      --build=$MACHTYPE
                      --host=aarch64-xcraft-linux-gnu
-                     --with-libs
                      --with-ldflags="-Wl,-rpath,<PEON.PROD.ROOTDIR>/usr/lib"
                      --with-privsep-path=/var/empty/sshd
                      --disable-etc-default-login
