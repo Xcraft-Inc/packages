@@ -113,6 +113,17 @@ if [ "$network_wifi_dhcp" = "off" ]; then
     echo "Warning: failed to set default route"
   }
 
+  if [ -n "$network_wifi_dns" ]; then
+    echo "Configuring DNS..."
+    {
+      for dns in $network_wifi_dns; do
+        echo "nameserver $dns"
+      done
+    } > /etc/resolv.conf
+  else
+    echo "Warning: no DNS configured (variable network_wifi_dns empty)"
+  fi
+
   echo "Static IP configuration completed"
 
   # Supervision

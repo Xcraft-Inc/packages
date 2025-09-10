@@ -74,6 +74,17 @@ if [ "$network_wire_dhcp" = "off" ]; then
   ip route add default via "$network_wire_gw" dev "$network_wire" || {
     echo "Warning: failed to set default route"
   }
+
+  if [ -n "$network_wire_dns" ]; then
+    echo "Configuring DNS..."
+    {
+      for dns in $network_wire_dns; do
+        echo "nameserver $dns"
+      done
+    } > /etc/resolv.conf
+  else
+    echo "Warning: no DNS configured (variable network_wire_dns empty)"
+  fi
   
   echo "Static IP configuration completed"
   
