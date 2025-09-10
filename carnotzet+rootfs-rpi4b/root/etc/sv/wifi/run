@@ -162,6 +162,7 @@ if [ "$network_wifi_dhcp" = "on" ]; then
   udhcpc_exit_code=$?
 
   echo "udhcpc exited with code $udhcpc_exit_code"
+  dispose
 fi
 
 echo "Error: network_wifi_dhcp must be 'on' or 'off', got '$network_wifi_dhcp'"
