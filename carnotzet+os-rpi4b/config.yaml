@@ -23,6 +23,9 @@ dependency:
     raspberry+rpi4b-linux-kernel:
       - version: ''
         architecture: []
+    raspberry+rpi4b-linux-firmware:
+      - version: ''
+        architecture: []
     raspberry+rpi4b-uboot:
       - version: ''
         architecture: []
@@ -134,6 +137,7 @@ data:
           'carnotzet+rootfs-rpi4b-x+bin',
           'carnotzet+rescuefs-rpi4b-x+bin',
           'raspberry+rpi4b-linux-kernel-x+bin',
+          'raspberry+rpi4b-linux-firmware-x+bin',
           'raspberry+rpi4b-uboot-x+bin',
           'raspberry+rpi4b-firmware-x+bin',
           'gnu+glibc-rpi4b-x+bin',

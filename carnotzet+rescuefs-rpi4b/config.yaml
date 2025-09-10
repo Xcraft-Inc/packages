@@ -18,6 +18,9 @@ dependency:
     carnotzet+rootfs-rpi4b:
       - version: ''
         architecture: []
+    raspberry+rpi4b-linux-firmware:
+      - version: ''
+        architecture: []
     gnu+glibc-rpi4b:
       - version: ''
         architecture: []
@@ -105,6 +108,7 @@ data:
           /* Generate the root for the recovery initramfs */
           yield* genRoot('<PEON.PROD.ROOTDIR>/var/rescue', [
             'carnotzet+rootfs-rpi4b-x+bin',
+            'raspberry+rpi4b-firmware-x+bin',
             'gnu+glibc-rpi4b-x+bin',
             'vlasenko+busybox-rpi4b-x+bin',
             'linux+util-linux-rpi4b-x+bin',
