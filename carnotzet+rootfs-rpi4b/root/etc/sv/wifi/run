@@ -31,6 +31,8 @@ fi
 mkdir -p /var/run/wpa_supplicant
 
 wpa_conf="/tmp/wpa_supplicant.conf"
+touch "$wpa_conf"
+chmod 600 "$wpa_conf"
 cat > "$wpa_conf" << EOF
 ctrl_interface=/var/run/wpa_supplicant
 update_config=1
