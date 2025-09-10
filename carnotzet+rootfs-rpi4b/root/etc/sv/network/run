@@ -1,9 +1,9 @@
 #!/bin/sh
+# shellcheck disable=SC3043
 exec 2>&1
 
 echo "Start network..."
 
-# Charger la configuration
 if [ -f /boot/carnotzet.cfg ]; then
   . /boot/carnotzet.cfg
 else
@@ -11,7 +11,6 @@ else
   exit 1
 fi
 
-# Vérifier si interface réseau configurée
 if [ -z "$network_wire" ]; then
   echo "Network interfaces disabled"
   exit 0
@@ -19,26 +18,117 @@ fi
 
 echo "Configure interface $network_wire..."
 
+if ! ip link show "$network_wire" >/dev/null 2>&1; then
+  echo "Error: interface $network_wire not found"
+  exit 1
+fi
+
+dispose() {
+  echo "Dispose..."
+
+  if [ -f "/var/run/udhcpc.$network_wire.pid" ]; then
+    kill "$(cat "/var/run/udhcpc.$network_wire.pid")" 2>/dev/null
+    rm -f "/var/run/udhcpc.$network_wire.pid"
+  fi
+
+  ip link set dev "$network_wire" down 2>/dev/null
+  exit 0
+}
+
+trap dispose TERM INT
+
 if [ "$network_wire_dhcp" = "off" ]; then
-  echo "Configure static IP: $network_wire_ip/$network_wire_mask"
-  ip addr add "$network_wire_ip/$network_wire_mask" dev "$network_wire"
-  ip link set dev "$network_wire" up
-  ip route add default via "$network_wire_gw" dev "$network_wire"
+  echo "Configuring static IP: $network_wire_ip/$network_wire_mask"
+
+  if [ -z "$network_wire_ip" ] || [ -z "$network_wire_mask" ] || [ -z "$network_wire_gw" ]; then
+    echo "Error: static IP configuration incomplete"
+    dispose
+  fi
+
+  ip addr add "$network_wire_ip/$network_wire_mask" dev "$network_wire" || {
+    echo "Error: failed to set IP address"
+    dispose
+  }
+
+  ip link set dev "$network_wire" up || {
+    echo "Error: failed to bring interface up"
+    dispose
+  }
+
+  echo "Waiting for interface to be ready..."
+  timeout=10
+  counter=0
+  while [ $counter -lt $timeout ]; do
+    if ip link show "$network_wire" | grep -q "state UP"; then
+      echo "Interface $network_wire is UP"
+      break
+    fi
+    sleep 1
+    counter=$((counter + 1))
+  done
+
+  if [ $counter -eq $timeout ]; then
+    echo "Warning: Interface did not come UP within ${timeout}s"
+  fi
+
+  ip route add default via "$network_wire_gw" dev "$network_wire" || {
+    echo "Warning: failed to set default route"
+  }
+  
+  echo "Static IP configuration completed"
   
   # Supervision
   while true; do
+    if ! ip link show "$network_wire" | grep -q "state UP"; then
+      echo "Warning: Interface $network_wire went down"
+      # Try to re-up
+      ip link set dev "$network_wire" up 2>/dev/null
+    fi
+
+    if ! ping -c 1 -W 2 "$network_wire_gw" >/dev/null 2>&1; then
+      echo "Warning: Cannot reach gateway $network_wire_gw"
+    fi
+
+    echo "Interface $network_wire UP - $(date)"
     sleep 300
-    echo "Interface $network_wire enabled - $(date)"
   done
 fi
 
 if [ "$network_wire_dhcp" = "on" ]; then
-  echo "Configure DHCP for $network_wire"
-  ip link set dev "$network_wire" up
-  
-  # Run in foreground for runit
-  exec udhcpc -f -i "$network_wire"
+  echo "Configuring DHCP for $network_wire"
+
+  # Activer l'interface
+  ip link set dev "$network_wire" up || {
+    echo "Error: failed to bring interface up"
+    dispose
+  }
+
+  echo "Waiting for interface to be ready..."
+  timeout=10
+  counter=0
+  while [ $counter -lt $timeout ]; do
+    if ip link show "$network_wire" | grep -q "state UP"; then
+      echo "Interface $network_wire is UP"
+      break
+    fi
+    sleep 1
+    counter=$((counter + 1))
+  done
+
+  if [ $counter -eq $timeout ]; then
+    echo "Warning: Interface did not come UP within ${timeout}s, continuing anyway"
+  fi
+
+  echo "Starting DHCP client..."
+  udhcpc -f -i "$network_wire" -p "/var/run/udhcpc.$network_wire.pid" -s /usr/share/udhcpc/default.script &
+  udhcpc_pid=$!
+
+  wait $udhcpc_pid
+  udhcpc_exit_code=$?
+
+  echo "udhcpc exited with code $udhcpc_exit_code"
+  dispose
 fi
 
-echo "Error: unknown network settings"
-exit 1
+echo "Error: network_wire_dhcp must be 'on' or 'off', got '$network_wire_dhcp'"
+dispose
