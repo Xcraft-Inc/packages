@@ -15,10 +15,7 @@ description:
   long: ''
 dependency:
   install:
-    openssl+openssl:
-      - version: ''
-        architecture: []
-    gnu+gnutls:
+    openssl+openssl-rpi4b:
       - version: ''
         architecture: []
   build:
@@ -79,6 +76,9 @@ data:
         cp('<PEON.ASSETS>/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
     test: none
     env:
+      CFLAGS: '<PEON.ENV.CFLAGS> -I<PEON.PROD.ROOTDIR>/usr/local/include'
+      CXXFLAGS: '<PEON.ENV.CXXFLAGS> -I<PEON.PROD.ROOTDIR>/usr/local/include'
+      LDFLAGS: '<PEON.ENV.LDFLAGS> -L<PEON.PROD.ROOTDIR>/usr/local/lib'
       HOSTCFLAGS: '-O2 -g0 -fPIC -fdiagnostics-color -I<PEON.ROOTDIR>/usr/include -Wl,-rpath,<PEON.ROOTDIR>/usr/lib'
       HOSTCXXFLAGS: '-O2 -g0 -fPIC -fdiagnostics-color -I<PEON.ROOTDIR>/usr/include -Wl,-rpath,<PEON.ROOTDIR>/usr/lib -static-libstdc++'
       HOSTLDFLAGS: '-L<PEON.ROOTDIR>/usr/lib -static-libgcc -static-libstdc++'

@@ -1,0 +1,68 @@
+subpackage:
+  - runtime*
+name: openssl+openssl-rpi4b
+version: 1.1.1w
+$version: 1.1.1w
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: OpenSSL
+  long: ''
+dependency:
+  install:
+    adler+zlib-rpi4b-dev:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+    wall+perl:
+      - version: ''
+        architecture:
+          - linux-i386
+          - linux-amd64
+          - linux-aarch64
+bump: []
+data:
+  get:
+    uri: 'https://www.openssl.org/source/openssl-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && CC="${CC:-cc} $CFLAGS"
+         ./config --openssldir=/etc/ssl
+                  --prefix=<PEON.PREFIXDIR>/local
+                  no-shared
+  rules:
+    type: script
+    location: data/openssl-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!make CFLAGS= LDFLAGS= -j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: '!make CFLAGS= LDFLAGS= install_sw'
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other:
+      SSL_CERT_DIR: '/etc/ssl/certs'
+  embedded: true
+  runtime:
+    configure: ''
