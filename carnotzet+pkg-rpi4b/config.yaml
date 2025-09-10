@@ -14,12 +14,6 @@ description:
   long: ''
 dependency:
   install:
-    adler+zlib-rpi4b:
-      - version: ''
-        architecture: []
-    openssl+openssl3-rpi4b:
-      - version: ''
-        architecture: []
     openbsd+openssh-rpi4b:
       - version: ''
         architecture: []
