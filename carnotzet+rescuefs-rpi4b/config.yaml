@@ -36,14 +36,14 @@ dependency:
     malinen+wpa-supplicant-rpi4b:
       - version: ''
         architecture: []
+    raspberry+rpi4b-uboot:
+      - version: ''
+        architecture: []
   build:
     gnu+cpio:
       - version: ''
         architecture: []
     gnu+gzip:
-      - version: ''
-        architecture: []
-    raspberry+rpi4b-uboot:
       - version: ''
         architecture: []
 bump:
