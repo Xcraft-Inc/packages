@@ -1,0 +1,72 @@
+subpackage:
+  - runtime*
+  - x+bin:linux-aarch64
+name: raspberry+rpi4b-linux-firmware
+version: '20250808'
+$version: '20250808'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: mathieu@schroetersa.ch
+architecture:
+  - source
+description:
+  brief: Firmware for Linux module drivers
+  long: ''
+dependency:
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+  make:
+    xcraft+base-make:
+      - version: ''
+        architecture: []
+bump:
+  - carnotzet+os-rpi4b
+  - carnotzet+rescue-rpi4b
+data:
+  get:
+    uri: 'https://gitlab.com/kernel-firmware/linux-firmware/-/archive/<THIS.$VERSION>/linux-firmware-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: '<THIS.$VERSION>'
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: data/linux-firmware-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: ''
+      maketest: ''
+      makeinstall: |-
+        cp(
+          'brcm/brcmfmac43455-sdio.raspberrypi,4-model-b.txt',
+          '<PEON.INSTALLDIR.X+BIN>/lib/firmware/brcm/brcmfmac43455-sdio.raspberrypi,4-model-b.txt'
+        );
+        cp(
+          'cypress/cyfmac43455-sdio.bin',
+          '<PEON.INSTALLDIR.X+BIN>/lib/firmware/brcm/brcmfmac43455-sdio.bin'
+        );
+        ln(
+          'brcmfmac43455-sdio.bin',
+          '<PEON.INSTALLDIR.X+BIN>/lib/firmware/brcm/brcmfmac43455-sdio.raspberrypi,4-model-b.bin'
+        );
+        cp(
+          'cypress/cyfmac43455-sdio.clm_blob',
+          '<PEON.INSTALLDIR.X+BIN>/lib/firmware/brcm/brcmfmac43455-sdio.clm_blob'
+        );
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
