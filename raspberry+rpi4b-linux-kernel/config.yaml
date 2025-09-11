@@ -1,6 +1,7 @@
 subpackage:
   - runtime*
   - x+bin:linux-aarch64
+  - x+modules:linux-aarch64
 name: raspberry+rpi4b-linux-kernel
 version: 20250127
 $version: 20250127
@@ -61,7 +62,7 @@ data:
         !    mkdir -p "<PEON.INSTALLDIR.X+BIN>/boot"
           && make ARCH=arm64
                   CROSS_COMPILE=aarch64-xcraft-linux-gnu-
-                  INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+BIN>"
+                  INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+MODULES>"
                   modules_install
           && cp -a arch/arm64/boot/Image "<PEON.INSTALLDIR.X+BIN>/boot/"
           && cp -a arch/arm64/boot/dts/broadcom/bcm2711-rpi-4-b.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
