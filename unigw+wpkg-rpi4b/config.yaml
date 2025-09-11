@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
-  - x+bin:linux-aarch64
+  - 'x+bin:linux-aarch64'
 name: unigw+wpkg-rpi4b
-version: 1.0.2
+version: 1.0.2-11
 $version: 1.0.2
 distribution: raspberry/
 maintainer:
@@ -31,6 +31,7 @@ data:
     uri: 'https://github.com/Xcraft-Inc/wpkg/archive/1f085ae33a2f00b9a569acc82776013de1a45b00.tar.gz'
     mirrors: []
     ref: ''
+    $ref: ''
     out: ''
     externals: true
     prepare: ''
@@ -64,6 +65,7 @@ data:
         cp('<PEON.ASSETS>/prerm',            '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
         cp('<PEON.ASSETS>/conffiles',        '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
     test: none
+    env: {}
   deploy: ''
   env:
     path: []
