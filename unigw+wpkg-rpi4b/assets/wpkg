@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# This script ensures that it's possible to upgrade the GLIBC which is used
+# by WPKG at the same time. Copy of the Linux loader and libs are used
+# while executing WPKG, then all libraries can be changed on the fly without
+# surprise.
+
+WPKG="$(dirname "$0")/.wpkg"
+LIBS_PATH=/tmp/.wpkg-libs
+LOADER=/lib/ld-linux-aarch64.so.1
+
+if ! command -v "$WPKG" >/dev/null; then
+  echo "Missing wpkg command"
+  exit 1
+fi
+
+LIBS="$( \
+  "$LOADER" --list "$WPKG" \
+  | sed -e 's, *,,' -e 's,[^/]*\(/[^ ]*\).*,\1,' \
+  | grep ^/ \
+)"
+
+rm -rf "$LIBS_PATH" || exit 1
+mkdir -p "$LIBS_PATH" || exit 1
+for lib in $LIBS; do
+  cp -f "$lib" "$LIBS_PATH" || exit 1
+done
+
+exec "$LOADER" --library-path "$LIBS_PATH" "$WPKG" "$@"

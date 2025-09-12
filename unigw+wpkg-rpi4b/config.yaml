@@ -59,7 +59,8 @@ data:
           && make -j<PEON.CPUS.COUNT>
       maketest: ''
       makeinstall: |-
-        cp("wpkg-Release/tools/wpkg_static", "<PEON.INSTALLDIR.X+BIN>/usr/bin/wpkg");
+        cp("wpkg-Release/tools/wpkg_static", "<PEON.INSTALLDIR.X+BIN>/usr/bin/.wpkg");
+        cp('<PEON.ASSETS>/wpkg',             '<PEON.INSTALLDIR.X+BIN>/usr/bin/wpkg');
         cp('<PEON.ASSETS>/sources.list',     '<PEON.INSTALLDIR.X+BIN>/boot/sources.list');
         cp('<PEON.ASSETS>/postinst',         '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
         cp('<PEON.ASSETS>/prerm',            '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
