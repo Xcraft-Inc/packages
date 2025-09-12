@@ -130,7 +130,7 @@ data:
             'net/ipv6',
             'net/rfkill',
             'net/wireless'
-          ].forEach((dir) => cp(kernelDir + '/' + dir, kernelDir + '_' + / + dir));
+          ].forEach((dir) => cp(kernelDir + '/' + dir, kernelDir + '_' + '/' + dir));
           rm(kernelDir);
           mv(kernelDir + '_', kernelDir);
 
