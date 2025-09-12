@@ -6,7 +6,7 @@
 # surprise.
 
 WPKG="$(dirname "$0")/.wpkg"
-LIBS_PATH=/tmp/.wpkg-libs
+BIN_PATH=/tmp/.wpkg-bin
 LOADER=/lib/ld-linux-aarch64.so.1
 
 if ! command -v "$WPKG" >/dev/null; then
@@ -20,10 +20,12 @@ LIBS="$( \
   | grep ^/ \
 )"
 
-rm -rf "$LIBS_PATH" || exit 1
-mkdir -p "$LIBS_PATH" || exit 1
+rm -rf "$BIN_PATH" || exit 1
+mkdir -p "$BIN_PATH" || exit 1
+cp "$WPKG" "$BIN_PATH/wpkg"
+WPKG="$BIN_PATH/wpkg"
 for lib in $LIBS; do
-  cp -f "$lib" "$LIBS_PATH" || exit 1
+  cp -f "$lib" "$BIN_PATH" || exit 1
 done
 
-exec "$LOADER" --library-path "$LIBS_PATH" "$WPKG" "$@"
+exec "$LOADER" --library-path "$BIN_PATH" "$WPKG" "$@"
