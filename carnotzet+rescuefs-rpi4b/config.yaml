@@ -122,8 +122,23 @@ data:
             'malinen+wpa-supplicant-rpi4b-x+bin'
           ]);
 
+          /* Keep only essential modules */
+          const modVer = '6.6.74-v8';
+          const kernelDir = `<PEON.PROD.ROOTDIR>/var/rescue/lib/modules/${modVer}/kernel`;
+          [
+            'drivers/net/wireless/broadcom/brcm80211',
+            'net/ipv6',
+            'net/rfkill',
+            'net/wireless'
+          ].forEach((dir) => cp(kernelDir + '/' + dir, kernelDir + '_' + / + dir));
+          rm(kernelDir);
+          mv(kernelDir + '_', kernelDir);
+
+          /* Keep only postinst scripts */
           rmFiles('<PEON.PROD.ROOTDIR>/var/rescue/var/lib/wpkg', /^(?!.*[/]postinst$)/);
           cp('<PEON.ASSETS>/postinst', '<PEON.PROD.ROOTDIR>/var/rescue/var/lib/wpkg/core/postinst');
+
+          /* Generate the initramfs */
           cd('<PEON.PROD.ROOTDIR>/var/rescue');
           mkdir('<PEON.INSTALLDIR.X+BIN>/boot');
           yield exec(
