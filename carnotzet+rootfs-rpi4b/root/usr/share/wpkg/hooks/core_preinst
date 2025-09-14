@@ -1,0 +1,42 @@
+#!/bin/sh
+
+PACKAGE_NAME=$2
+WPKG_SV="/tmp/.wpkg-sv"
+
+rm -f "$WPKG_SV"
+
+if [ ! -d /etc/sv ]; then
+  exit 0
+fi
+
+# Search all installed services
+for sv in /etc/sv/*; do
+  sv="${sv##*/}"
+
+  # Retrieve the package that has been used to install the service
+  grep "etc/sv/$sv/run$" /var/lib/wpkg/*/md5sums | sed 's,^/var/lib/wpkg/\([^/]\+\)/md5sums:.*,\1,' | while IFS= read -r pkg; do
+    # Extract the list of dependencies
+    depends=$(.wpkg --showformat "\${depends}" --show "$pkg" | tr -d ',' | tr -s ' ')
+    if [ "$depends" = undefined ] || [ -z "$depends" ]; then
+      continue
+    fi
+    
+    echo "$depends" | tr ' ' '\n' | while IFS= read -r depend; do
+      # Test if the preinst package is in the dependencies
+      if [ "$depend" = "$PACKAGE_NAME" ]; then
+        if sv status "$sv" | grep -q ^run:; then
+          # This service must be stopped for this installation
+          echo "$sv" >> "$WPKG_SV"
+        fi
+      fi
+    done
+  done
+done
+
+if [ ! -f "$WPKG_SV" ]; then
+  exit 0
+fi
+
+cat "$WPKG_SV" | sort -u | while IFS= read -r sv; do
+  sv stop "$sv"
+done

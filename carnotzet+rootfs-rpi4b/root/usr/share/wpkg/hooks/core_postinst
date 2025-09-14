@@ -1,0 +1,19 @@
+#!/bin/sh
+
+ldconfig
+
+if [ ! -d /etc/sv ]; then
+  exit 0
+fi
+
+WPKG_SV="/tmp/.wpkg-sv"
+
+if [ ! -f "$WPKG_SV" ]; then
+  exit 0
+fi
+
+cat "$WPKG_SV" | sort -u | while IFS= read -r sv; do
+  sv start "$sv"
+done
+
+rm -f "$WPKG_SV"

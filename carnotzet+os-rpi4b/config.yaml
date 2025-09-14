@@ -122,12 +122,6 @@ data:
             '--root', rootDir,
             '--install', ...pkgs
           );
-          /* Deploy global hooks */
-          yield exec(
-            'wpkg_static',
-            '--root', rootDir,
-            '--add-hooks', '<PEON.ASSETS>/postinst'
-          );
         }
 
         yield cmd('pacman.syncRepository', {distribution: 'raspberry'});
