@@ -71,8 +71,7 @@ data:
     && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/cmake
   env:
     path: []
-    other:
-      SSL_CERT_DIR: '/etc/ssl/certs'
+    other: {}
   embedded: true
   runtime:
     configure: ''
