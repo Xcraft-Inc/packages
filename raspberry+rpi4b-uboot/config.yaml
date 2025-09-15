@@ -60,6 +60,7 @@ data:
         cp("tools/mkenvimage", "<PEON.INSTALLDIR>/usr/bin/mkenvimage");
         cp("tools/dumpimage", "<PEON.INSTALLDIR>/usr/bin/dumpimage");
 
+        exp('LD_LIBRARY_PATH', '<PEON.ROOTDIR>/usr/lib');
         yield exec(
           'tools/mkimage',
           '-A', 'arm64',
