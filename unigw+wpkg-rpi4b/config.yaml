@@ -14,6 +14,15 @@ description:
   brief: A Unix Packager For MS-Windows Systems
   long: ''
 dependency:
+  install:
+    openssl+openssl3-rpi4b-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    openssl+openssl3-rpi4b:
+      - version: ''
+        architecture: []
   build:
     xcraft+base-build:
       - version: ''
@@ -44,7 +53,9 @@ data:
       && make
       && cd -
       && cd <THIS.DATA.RULES.LOCATION>
+      && sed -i 's,^SET(USER_ROOT_PATH.*,SET(USER_ROOT_PATH <PEON.PROD.ROOTDIR>/usr/),' ../cmake/Toolchain-cross-aarch64-linux.cmake
       && cmake -G "Unix Makefiles"
+               -DENABLE_OPENSSL=yes
                -DCMAKE_TOOLCHAIN_FILE=../cmake/Toolchain-cross-aarch64-linux.cmake
                ..
       && cp ../wpkg/controlled_vars/build/controlled_vars ./controlled_vars
