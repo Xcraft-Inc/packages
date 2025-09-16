@@ -27,6 +27,9 @@ dependency:
     x-aarch64-linux+gnu-glibc:
       - version: ''
         architecture: []
+    gnu+gawk:
+      - version: ''
+        architecture: []
     vanrossum+python3:
       - version: ''
         architecture: []
