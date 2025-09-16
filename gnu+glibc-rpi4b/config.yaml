@@ -27,6 +27,9 @@ dependency:
     x-aarch64-linux+gnu-glibc:
       - version: ''
         architecture: []
+    vanrossum+python3:
+      - version: ''
+        architecture: []
   make:
     xcraft+base-make:
       - version: ''
