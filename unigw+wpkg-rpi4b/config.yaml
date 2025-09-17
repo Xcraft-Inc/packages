@@ -18,6 +18,9 @@ dependency:
     openssl+openssl3-rpi4b:
       - version: ''
         architecture: []
+    debian+ca-certificate-rpi4b:
+      - version: ''
+        architecture: []
     debian+ca-certificate-rpi4b-x+bin:
       - version: ''
         architecture: []
