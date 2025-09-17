@@ -155,7 +155,8 @@ data:
       maketest: ''
       makeinstall: ''
     test: none
-    env: {}
+    env:
+      PATH: <PEON.ENV.PATH>:<PEON.PROD.ROOTDIR>/usr/bin
   deploy: ''
   env:
     path: []
