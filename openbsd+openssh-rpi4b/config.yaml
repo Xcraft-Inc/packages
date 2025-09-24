@@ -35,6 +35,9 @@ dependency:
     xcraft+base-build:
       - version: ''
         architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
 data:
   get:
     uri: 'https://mirror.ungleich.ch/pub/OpenBSD/OpenSSH/portable/openssh-<THIS.$VERSION>.tar.gz'
