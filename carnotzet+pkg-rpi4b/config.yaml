@@ -20,6 +20,9 @@ dependency:
     openjs+nodejs22-rpi4b:
       - version: ''
         architecture: []
+    kelley+dnsmasq-rpi4b:
+      - version: ''
+        architecture: []
 bump: []
 data:
   get:
