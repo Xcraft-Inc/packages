@@ -17,8 +17,10 @@ for sv in /etc/sv/*; do
   grep "etc/sv/$sv/run$" /var/lib/wpkg/*/md5sums | sed 's,^/var/lib/wpkg/\([^/]\+\)/md5sums:.*,\1,' | while IFS= read -r pkg; do
     # Test if the preinst package is a service
     if [ "$pkg" = "$PACKAGE_NAME" ]; then
-      # The service must be stopped
-      echo "$sv" >> "$WPKG_SV"
+      if sv status "$sv" | grep -q ^run:; then
+        # The service must be stopped
+        echo "$sv" >> "$WPKG_SV"
+      fi
       continue
     fi
 
@@ -45,5 +47,5 @@ if [ ! -f "$WPKG_SV" ]; then
 fi
 
 cat "$WPKG_SV" | sort -u | while IFS= read -r sv; do
-  sv stop "$sv"
+  sv stop "$sv" || :
 done
