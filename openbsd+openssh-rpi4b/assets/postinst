@@ -8,3 +8,4 @@ chown root:root /var/empty/sshd
 chmod 755 /var/empty/sshd
 
 ln -sf /etc/sv/sshd /var/service/sshd
+sv up sshd || :
