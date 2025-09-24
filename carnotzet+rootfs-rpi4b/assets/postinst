@@ -7,6 +7,7 @@ if id rasp >/dev/null 2>&1 && [ ! -d /home/rasp ]; then
   chown -R rasp:rasp /home/rasp
 fi
 
+mkdir -p /var/lib/wpkg/core/hooks
 cp -f /usr/share/wpkg/hooks/core_preinst /var/lib/wpkg/core/hooks/core_preinst
 cp -f /usr/share/wpkg/hooks/core_postinst /var/lib/wpkg/core/hooks/core_postinst
 
