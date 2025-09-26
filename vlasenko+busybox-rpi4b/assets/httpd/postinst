@@ -1,0 +1,12 @@
+#!/bin/sh
+
+adduser httpd -SH 2>/dev/null || true
+
+if [ ! -d /var/httpd/www ]; then
+  mkdir -p /var/httpd/www
+  cp /usr/share/httpd/index.html /var/httpd/www/index.html
+  chown -R httpd /var/httpd/www
+fi
+
+ln -sf /etc/sv/httpd /var/service/httpd
+sv up httpd || :

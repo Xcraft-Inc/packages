@@ -1,0 +1,6 @@
+#!/bin/sh
+exec 2>&1
+
+echo "Start HTTPD daemon..."
+
+exec /usr/sbin/httpd -f -v -u httpd -c /etc/httpd/httpd.conf
