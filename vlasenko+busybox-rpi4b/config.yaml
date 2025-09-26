@@ -15,6 +15,12 @@ description:
   brief: The Swiss Army Knife of Embedded Linux
   long: ''
 dependency:
+  install:
+    vlasenko+busybox-rpi4b-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+httpd
   build:
     xcraft+peon:
       - version: ''
