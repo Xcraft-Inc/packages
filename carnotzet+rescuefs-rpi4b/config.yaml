@@ -123,7 +123,7 @@ data:
           ]);
 
           /* Keep only essential modules */
-          const modVer = '6.6.74-v8';
+          const modVer = '6.12.34-v8';
           const kernelDir = `<PEON.PROD.ROOTDIR>/var/rescue/lib/modules/${modVer}/kernel`;
           [
             'drivers/net/wireless/broadcom/brcm80211',

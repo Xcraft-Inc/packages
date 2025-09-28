@@ -1,9 +1,9 @@
 subpackage:
   - runtime*
-  - x+bin:linux-aarch64
+  - 'x+bin:linux-aarch64'
 name: raspberry+rpi4b-firmware
-version: '1.20250326'
-$version: '1.20250326'
+version: '1.20250915'
+$version: '1.20250915'
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
