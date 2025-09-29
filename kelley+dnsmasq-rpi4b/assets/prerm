@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sv stop dnsmasq || :
+rm -f /var/service/dnsmasq
+deluser dnsmasq

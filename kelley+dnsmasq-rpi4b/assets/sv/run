@@ -1,0 +1,6 @@
+#!/bin/sh
+exec 2>&1
+
+echo "Start DNSMASQ daemon..."
+
+exec /usr/sbin/dnsmasq -C /etc/dnsmasq/dnsmasq.conf -u dnsmasq -k

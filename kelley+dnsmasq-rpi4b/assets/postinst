@@ -1,0 +1,6 @@
+#!/bin/sh
+
+adduser dnsmasq -SH 2>/dev/null || true
+
+ln -sf /etc/sv/dnsmasq /var/service/dnsmasq
+sv up dnsmasq || :

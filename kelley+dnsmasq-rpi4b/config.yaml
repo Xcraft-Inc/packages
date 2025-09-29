@@ -44,7 +44,14 @@ data:
     test: none
     env:
       CC: 'aarch64-xcraft-linux-gnu-gcc'
-  deploy: ''
+  deploy: |-
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/dnsmasq');
+    cp('<PEON.ASSETS>/dnsmasq/sv/run',     '<PEON.INSTALLDIR.X+BIN>/etc/sv/dnsmasq/run');
+    cp('<PEON.ASSETS>/dnsmasq/sv/log/run', '<PEON.INSTALLDIR.X+BIN>/etc/sv/dnsmasq/log/run');
+    cp('<PEON.ASSETS>/postinst',           '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',              '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+    cp('<PEON.ASSETS>/dnsmasq/conffiles',  '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+    cp('<PEON.ASSETS>/dnsmasq.conf',       '<PEON.INSTALLDIR.X+BIN>/etc/dnsmasq/dnsmasq.conf');
   env:
     path: []
     other: {}
