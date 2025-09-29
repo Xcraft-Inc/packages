@@ -62,12 +62,12 @@ data:
       CC: aarch64-xcraft-linux-gnu-gcc
   deploy: |-
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/hostapd');
-    cp('<PEON.ASSETS>/hostapd/sv/run',     '<PEON.INSTALLDIR.X+BIN>/etc/sv/hostapd/run');
-    cp('<PEON.ASSETS>/hostapd/sv/log/run', '<PEON.INSTALLDIR.X+BIN>/etc/sv/hostapd/log/run');
-    cp('<PEON.ASSETS>/postinst',           '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
-    cp('<PEON.ASSETS>/prerm',              '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
-    cp('<PEON.ASSETS>/hostapd/conffiles',  '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
-    cp('<PEON.ASSETS>/hostapd.conf',       '<PEON.INSTALLDIR.X+BIN>/etc/hostapd/hostapd.conf');
+    cp('<PEON.ASSETS>/sv/run',       '<PEON.INSTALLDIR.X+BIN>/etc/sv/hostapd/run');
+    cp('<PEON.ASSETS>/sv/log/run',   '<PEON.INSTALLDIR.X+BIN>/etc/sv/hostapd/log/run');
+    cp('<PEON.ASSETS>/postinst',     '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',        '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+    cp('<PEON.ASSETS>/conffiles',    '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+    cp('<PEON.ASSETS>/hostapd.conf', '<PEON.INSTALLDIR.X+BIN>/etc/hostapd/hostapd.conf');
   env:
     path: []
     other: {}
