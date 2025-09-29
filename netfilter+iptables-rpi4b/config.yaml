@@ -1,0 +1,64 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: netfilter+iptables-rpi4b
+version: 1.8.11
+$version: 1.8.11
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: userspace program used to configure the Linux packet filtering ruleset
+  long: iptables is the userspace command line program used to configure the Linux 2.4.x and later packet filtering ruleset. It is targeted towards system administrators.
+dependency:
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://www.netfilter.org/pub/iptables/iptables-<THIS.$VERSION>.tar.xz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/usr
+                     --build=$MACHTYPE
+                     --host=aarch64-xcraft-linux-gnu
+                     --enable-static
+                     --disable-shared
+                     --disable-nftables
+  rules:
+    type: make
+    location: data/iptables-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '-j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: install DESTDIR=<PEON.INSTALLDIR.X+BIN>
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
