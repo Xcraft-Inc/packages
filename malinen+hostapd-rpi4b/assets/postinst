@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ln -sf /etc/sv/hostapd /var/service/hostapd
+sv up hostapd || :
