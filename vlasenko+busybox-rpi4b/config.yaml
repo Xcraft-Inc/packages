@@ -73,7 +73,7 @@ data:
     cp('<PEON.ASSETS>/httpd/prerm',      '<PEON.INSTALLDIR.X+HTTPD>/WPKG/prerm');
     cp('<PEON.ASSETS>/httpd/conffiles',  '<PEON.INSTALLDIR.X+HTTPD>/WPKG/conffiles');
     cp('<PEON.ASSETS>/httpd/httpd.conf', '<PEON.INSTALLDIR.X+HTTPD>/etc/httpd/httpd.conf');
-    cp('<PEON.ASSETS>/httpd/index.html', '<PEON.INSTALLDIR.X+HTTPD>/usr/share/httpd/index.html');
+    cp('<PEON.ASSETS>/httpd/www',        '<PEON.INSTALLDIR.X+HTTPD>/usr/share/httpd/www');
   env:
     path: []
     other: {}
