@@ -16,6 +16,11 @@ if [ -z "$network_wifi" ]; then
   exit 0
 fi
 
+if [ "$network_wifi_mode" != "wpa" ]; then
+  echo "WPA is disabled"
+  exit 0
+fi
+
 echo "Configure WiFi interface $network_wifi..."
   
 if ! command -v wpa_supplicant >/dev/null 2>&1; then
