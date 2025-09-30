@@ -3,4 +3,21 @@ exec 2>&1
 
 echo "Start HOSTAPD daemon..."
 
+if [ -f /boot/carnotzet.cfg ]; then
+  . /boot/carnotzet.cfg
+else
+  echo "Error: /boot/carnotzet.cfg not found"
+  exit 1
+fi
+
+if [ -z "$network_wifi" ]; then
+  echo "Wifi interfaces disabled"
+  exit 0
+fi
+
+if [ "$network_wifi_mode" != "ap" ]; then
+  echo "Access Point mode is disabled"
+  exit 0
+fi
+
 exec /usr/sbin/hostapd /etc/hostapd/hostapd.conf
