@@ -23,6 +23,12 @@ dependency:
     kelley+dnsmasq-rpi4b:
       - version: ''
         architecture: []
+    malinen+hostapd-rpi4b:
+      - version: ''
+        architecture: []
+    netfilter+iptables-rpi4b:
+      - version: ''
+        architecture: []
 bump: []
 data:
   get:
