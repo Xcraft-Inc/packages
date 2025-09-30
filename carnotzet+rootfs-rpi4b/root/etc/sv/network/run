@@ -35,7 +35,7 @@ dispose() {
   exit 0
 }
 
-trap dispose TERM INT
+trap dispose SIGTERM SIGINT
 
 if [ "$network_wire_dhcp" = "off" ]; then
   echo "Configuring static IP: $network_wire_ip/$network_wire_mask"
