@@ -20,4 +20,14 @@ if [ "$network_wifi_mode" != "ap" ]; then
   exit 0
 fi
 
-exec /usr/sbin/dnsmasq -C /etc/dnsmasq/dnsmasq.conf -u dnsmasq -k
+if [ -z "$network_wifi_dnsmasq_address" ] || [ -z "$network_wifi_dnsmasq_dhcp" ]; then
+  echo "dnsmasq settings are missing"
+  exit 1
+fi
+
+exec /usr/sbin/dnsmasq -C /etc/dnsmasq/dnsmasq.conf \
+                       -i "$network_wifi" \
+                       -A "$network_wifi_dnsmasq_address" \
+                       -F "$network_wifi_dnsmasq_dhcp" \
+                       -u dnsmasq \
+                       -k
