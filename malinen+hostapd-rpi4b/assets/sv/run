@@ -20,4 +20,29 @@ if [ "$network_wifi_mode" != "ap" ]; then
   exit 0
 fi
 
-exec /usr/sbin/hostapd /etc/hostapd/hostapd.conf
+if [ -z "$wifi_ssid" ]; then
+  echo "SSID is missing"
+  exit 1
+fi
+
+hostapd_conf="/tmp/hostapd.conf"
+cp "/etc/hostapd/hostapd.conf" "$hostapd_conf"
+chmod 600 "$hostapd_conf"
+
+update() {
+  key="$1"
+  value="$2"
+  file="$3"
+
+  if grep -q "^${key}=" "$file"; then
+    sed -i "s,^${key}=.*,${key}=${value}," "$file"
+  else
+    echo "${key}=${value}" >> "$file"
+  fi
+}
+
+update "interface" "$network_wifi" "$hostapd_conf"
+update "ssid" "$wifi_ssid" "$hostapd_conf"
+update "country_code" "${wifi_country:-CH}" "$hostapd_conf"
+
+exec /usr/sbin/hostapd "$hostapd_conf"
