@@ -3,4 +3,16 @@ exec 2>&1
 
 echo "Start HTTPD daemon..."
 
+if [ -f /boot/carnotzet.cfg ]; then
+  . /boot/carnotzet.cfg
+else
+  echo "Error: /boot/carnotzet.cfg not found"
+  exit 1
+fi
+
+# Patch the redirect IP address according to the settings
+if [ -f "/var/httpd/www/redirect.html" ]; then
+  sed -i "s,content=\"0; url=http://[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/index.html\",content=\"0; url=http://$network_wifi_ip/index.html\","
+fi
+
 exec /usr/sbin/httpd -f -v -u httpd -c /etc/httpd/httpd.conf
