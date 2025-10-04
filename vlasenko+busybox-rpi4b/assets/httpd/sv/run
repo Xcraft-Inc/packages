@@ -13,7 +13,7 @@ fi
 # Patch the redirect IP address according to the settings
 if [ -f "/var/httpd/www/redirect.html" ]; then
   sed -i \
-      "s,content=\"0; url=http://[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/index.html\",content=\"0; url=http://$network_wifi_ip/index.html\"," \
+      "s,content=\"0; url=http://[0-9]\+[.][0-9]\+[.][0-9]\+[.][0-9]\+/index.html\",content=\"0; url=http://$network_wifi_ip/index.html\"," \
       "/var/httpd/www/redirect.html"
 fi
 
