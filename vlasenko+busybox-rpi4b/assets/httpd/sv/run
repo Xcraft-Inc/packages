@@ -17,4 +17,4 @@ if [ -f "/var/httpd/www/redirect.html" ]; then
       "/var/httpd/www/redirect.html"
 fi
 
-exec /usr/sbin/httpd -f -v -u httpd -c /etc/httpd/httpd.conf
+exec /usr/sbin/httpd -f -vv -u httpd -c /etc/httpd/httpd.conf
