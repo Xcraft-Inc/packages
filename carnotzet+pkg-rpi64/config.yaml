@@ -1,0 +1,53 @@
+name: carnotzet+pkg-rpi64
+version: 0.1.0
+$version: 0.1.0
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: mathieu@schroetersa.ch
+architecture:
+  - linux-i386
+  - linux-amd64
+  - linux-aarch64
+description:
+  brief: Packages for the Carnotzet Operating System
+  long: ''
+dependency:
+  install:
+    openbsd+openssh-rpi64:
+      - version: ''
+        architecture: []
+    openjs+nodejs22-rpi64:
+      - version: ''
+        architecture: []
+    kelley+dnsmasq-rpi64:
+      - version: ''
+        architecture: []
+    malinen+hostapd-rpi64:
+      - version: ''
+        architecture: []
+    netfilter+iptables-rpi64:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: ''
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: false
+  type: bin
+  configure: ''
+  rules:
+    type: meta
+    location: ''
+    args:
+      postinst: ''
+      prerm: ''
+    env: {}
+  env:
+    path: []
+    other: {}
+  embedded: true

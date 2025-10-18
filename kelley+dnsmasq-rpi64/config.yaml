@@ -1,0 +1,60 @@
+subpackage:
+  - runtime*
+  - x+bin:linux-aarch64
+name: kelley+dnsmasq-rpi64
+version: 2.91
+$version: 2.91
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: A lightweight, caching DNS proxy with integrated DHCP server.
+  long: 'Dnsmasq provides network infrastructure for small networks: DNS, DHCP, router advertisement and network boot.'
+dependency:
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+data:
+  get:
+    uri: 'https://thekelleys.org.uk/dnsmasq/dnsmasq-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: data/dnsmasq-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!make -j<PEON.CPUS.COUNT> PREFIX=/usr'
+      maketest: ''
+      makeinstall: |-
+        !make install PREFIX=/usr DESTDIR=<PEON.INSTALLDIR.X+BIN>
+    test: none
+    env:
+      CC: 'aarch64-xcraft-linux-gnu-gcc'
+  deploy: |-
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/dnsmasq');
+    cp('<PEON.ASSETS>/sv/run',       '<PEON.INSTALLDIR.X+BIN>/etc/sv/dnsmasq/run');
+    cp('<PEON.ASSETS>/sv/log/run',   '<PEON.INSTALLDIR.X+BIN>/etc/sv/dnsmasq/log/run');
+    cp('<PEON.ASSETS>/postinst',     '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',        '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+    cp('<PEON.ASSETS>/conffiles',    '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+    cp('<PEON.ASSETS>/dnsmasq.conf', '<PEON.INSTALLDIR.X+BIN>/etc/dnsmasq/dnsmasq.conf');
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

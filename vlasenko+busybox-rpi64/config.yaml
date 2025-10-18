@@ -1,0 +1,84 @@
+subpackage:
+  - runtime*
+  - x+bin:linux-aarch64
+  - x+httpd:linux-aarch64
+name: vlasenko+busybox-rpi64
+version: 1.37.0
+$version: 1.37.0
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: The Swiss Army Knife of Embedded Linux
+  long: ''
+dependency:
+  install:
+    vlasenko+busybox-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+httpd
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump:
+  - carnotzet+os-rpi4b
+  - carnotzet+os-rpiz2w
+  - carnotzet+rescuefs-rpi4b
+  - carnotzet+rescuefs-rpiz2w
+data:
+  get:
+    uri: 'https://www.busybox.net/downloads/busybox-<THIS.$VERSION>.tar.bz2'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && make CFLAGS=-D_XOPEN_SOURCE ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- defconfig
+      && sed -i 's,^# CONFIG_STATIC.*,CONFIG_STATIC=y,' .config
+      && sed -i 's,^CONFIG_FDISK=y,# CONFIG_FDISK is not set,' .config
+  rules:
+    type: make
+    location: data/busybox-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- -j<PEON.CPUS.COUNT>
+      maketest: ''
+      makeinstall: ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- install CONFIG_PREFIX="<PEON.INSTALLDIR.X+BIN>"
+    test: none
+    env: {}
+  deploy: |-
+    cp('<PEON.ASSETS>/fr_CH.kmap',   '<PEON.INSTALLDIR.X+BIN>/usr/share/kmap/fr_CH.kmap');
+    cp('<PEON.ASSETS>/busybox.conf', '<PEON.INSTALLDIR.X+BIN>/etc/busybox.conf');
+    cp('<PEON.ASSETS>/postinst',     '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+
+    /* HTTPD */
+    mkdir('<PEON.INSTALLDIR.X+HTTPD>/var/log/httpd');
+    cp('<PEON.ASSETS>/httpd/sv/run',     '<PEON.INSTALLDIR.X+HTTPD>/etc/sv/httpd/run');
+    cp('<PEON.ASSETS>/httpd/sv/log/run', '<PEON.INSTALLDIR.X+HTTPD>/etc/sv/httpd/log/run');
+    cp('<PEON.ASSETS>/httpd/postinst',   '<PEON.INSTALLDIR.X+HTTPD>/WPKG/postinst');
+    cp('<PEON.ASSETS>/httpd/prerm',      '<PEON.INSTALLDIR.X+HTTPD>/WPKG/prerm');
+    cp('<PEON.ASSETS>/httpd/conffiles',  '<PEON.INSTALLDIR.X+HTTPD>/WPKG/conffiles');
+    cp('<PEON.ASSETS>/httpd/httpd.conf', '<PEON.INSTALLDIR.X+HTTPD>/etc/httpd/httpd.conf');
+    cp('<PEON.ASSETS>/httpd/www',        '<PEON.INSTALLDIR.X+HTTPD>/usr/share/httpd/www');
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

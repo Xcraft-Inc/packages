@@ -1,7 +1,7 @@
 subpackage:
   - runtime*
-name: carnotzet+os-rpi4b
-version: 0.1.0-53
+name: carnotzet+os-rpiz2w
+version: 0.1.0
 $version: 0.1.0
 distribution: raspberry/
 maintainer:
@@ -20,16 +20,16 @@ dependency:
     carnotzet+rescuefs-rpi4b:
       - version: ''
         architecture: []
-    raspberry+rpi4b-linux-kernel:
+    raspberry+rpiz2w-linux-kernel:
       - version: ''
         architecture: []
-    raspberry+rpi4b-linux-firmware:
+    raspberry+rpiz2w-linux-firmware:
       - version: ''
         architecture: []
-    raspberry+rpi4b-uboot:
+    raspberry+rpiz2w-uboot:
       - version: ''
         architecture: []
-    raspberry+rpi4b-firmware:
+    raspberry+rpiz2w-firmware:
       - version: ''
         architecture: []
     gnu+glibc-rpi64:
@@ -99,11 +99,11 @@ data:
         yield genRoot('carnotzet', '<PEON.ASSETS.RASPBERRY>/os', [
           'carnotzet+rootfs-rpi4b-x+bin',
           'carnotzet+rescuefs-rpi4b-x+bin',
-          'raspberry+rpi4b-linux-kernel-x+bin',
-          'raspberry+rpi4b-linux-kernel-x+modules',
-          'raspberry+rpi4b-linux-firmware-x+bin',
-          'raspberry+rpi4b-uboot-x+bin',
-          'raspberry+rpi4b-firmware-x+bin',
+          'raspberry+rpiz2w-linux-kernel-x+bin',
+          'raspberry+rpiz2w-linux-kernel-x+modules',
+          'raspberry+rpiz2w-linux-firmware-x+bin',
+          'raspberry+rpiz2w-uboot-x+bin',
+          'raspberry+rpiz2w-firmware-x+bin',
           'gnu+glibc-rpi64-x+bin',
           'gnu+libstdcxx-rpi64-x+bin',
           'vlasenko+busybox-rpi64-x+bin',
@@ -115,7 +115,7 @@ data:
         ]);
 
         yield genImage('carnotzet', 'carnotzet',
-          '<PEON.INSTALLDIR>/opt/img/carnotzet-os-rpi4b-<THIS.$VERSION>.img'
+          '<PEON.INSTALLDIR>/opt/img/carnotzet-os-rpiz2w-<THIS.$VERSION>.img'
         );
       maketest: ''
       makeinstall: ''

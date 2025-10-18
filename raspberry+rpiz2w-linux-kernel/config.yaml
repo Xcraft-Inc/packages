@@ -1,0 +1,80 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+  - 'x+modules:linux-aarch64'
+name: raspberry+rpiz2w-linux-kernel
+version: '20250702'
+$version: '20250702'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: mathieu@schroetersa.ch
+architecture:
+  - source
+description:
+  brief: The Linux Kernel for RASPBERRY Pi Zero 2 W
+  long: ''
+dependency:
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+    gnu+bc:
+      - version: ''
+        architecture: []
+  make:
+    xcraft+base-make:
+      - version: ''
+        architecture: []
+bump:
+  - carnotzet+os-rpiz2w
+data:
+  get:
+    uri: 'https://github.com/raspberrypi/linux/archive/refs/tags/stable_<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && cp <PEON.ASSETS>/logo_linux_clut224.ppm drivers/video/logo
+      && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- bcm2711_defconfig
+  rules:
+    type: script
+    location: data/linux-stable_<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: |-
+        !make ARCH=arm64
+              CROSS_COMPILE=aarch64-xcraft-linux-gnu-
+              -j<PEON.CPUS.COUNT>
+              Image modules dtbs
+      maketest: ''
+      makeinstall: |-
+        !    mkdir -p "<PEON.INSTALLDIR.X+BIN>/boot"
+          && make ARCH=arm64
+                  CROSS_COMPILE=aarch64-xcraft-linux-gnu-
+                  INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+MODULES>"
+                  modules_install
+          && cp -a arch/arm64/boot/Image "<PEON.INSTALLDIR.X+BIN>/boot/"
+          && cp -a arch/arm64/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
+    test: none
+    env:
+      KBUILD_BUILD_TIMESTAMP: ''
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

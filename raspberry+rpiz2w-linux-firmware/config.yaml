@@ -1,0 +1,72 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: raspberry+rpiz2w-linux-firmware
+version: '20250917'
+$version: '20250917'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: mathieu@schroetersa.ch
+architecture:
+  - source
+description:
+  brief: Firmware for Linux module drivers
+  long: ''
+dependency:
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+  make:
+    xcraft+base-make:
+      - version: ''
+        architecture: []
+bump:
+  - carnotzet+os-rpiz2w
+  - carnotzet+rescue-rpiz2w
+data:
+  get:
+    uri: 'https://gitlab.com/kernel-firmware/linux-firmware/-/archive/<THIS.$VERSION>/linux-firmware-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: <THIS.$VERSION>
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: data/linux-firmware-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: ''
+      maketest: ''
+      makeinstall: |-
+        cp(
+          'brcm/brcmfmac43430-sdio.raspberrypi,3-model-b.txt',
+          '<PEON.INSTALLDIR.X+BIN>/lib/firmware/brcm/brcmfmac43430-sdio.raspberrypi,3-model-b.txt'
+        );
+        cp(
+          'cypress/cyfmac43430-sdio.bin',
+          '<PEON.INSTALLDIR.X+BIN>/lib/firmware/brcm/brcmfmac43430-sdio.bin'
+        );
+        ln(
+          'brcmfmac43430-sdio.bin',
+          '<PEON.INSTALLDIR.X+BIN>/lib/firmware/brcm/brcmfmac43430-sdio.raspberrypi,3-model-bb.bin'
+        );
+        cp(
+          'cypress/cyfmac43430-sdio.clm_blob',
+          '<PEON.INSTALLDIR.X+BIN>/lib/firmware/brcm/brcmfmac43430-sdio.clm_blob'
+        );
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
