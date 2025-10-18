@@ -62,7 +62,7 @@ class Scripts {
   };
 
   genInitramfs = async (rootDir, bootDir, mkimage) => {
-    const {mkdir, exec} = this.#ctx;
+    const {cd, mkdir, exec} = this.#ctx;
 
     cd(rootDir);
     mkdir(bootDir);
