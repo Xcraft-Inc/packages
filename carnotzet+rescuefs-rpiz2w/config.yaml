@@ -108,7 +108,7 @@ data:
           cp('<PEON.ASSETS.RASPBERRY>/rescue/postinst', '<PEON.PROD.ROOTDIR>/var/rescue/var/lib/wpkg/core/postinst');
 
           /* Generate the initramfs */
-          yield ('<PEON.PROD.ROOTDIR>/var/rescue', '<PEON.INSTALLDIR.X+BIN>/boot', 'mkimage-rpiz2w');
+          yield genInitramfs('<PEON.PROD.ROOTDIR>/var/rescue', '<PEON.INSTALLDIR.X+BIN>/boot', 'mkimage-rpiz2w');
         } finally {
           rm('<PEON.PROD.ROOTDIR>/var/rescue');
         }
