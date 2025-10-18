@@ -67,14 +67,14 @@ data:
           '-O', 'linux',
           '-T', 'script',
           '-C', 'none',
-          '-d', '<PEON.ASSETS>/boot_cmd.txt',
+          '-d', '<PEON.ASSETS.RASPBERRY>/uboot/boot_cmd.txt',
           '<PEON.INSTALLDIR.X+BIN>/boot/boot.scr'
         );
 
         /* Specific Carnotzet OS settings (not u-boot related) */
-        cp('<PEON.ASSETS>/carnotzet.env', '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.env');
-        cp('<PEON.ASSETS>/carnotzet.cfg', '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.cfg');
-        cp('<PEON.ASSETS>/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+        cp('<PEON.ASSETS.RASPBERRY>/uboot/carnotzet.env', '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.env');
+        cp('<PEON.ASSETS.RASPBERRY>/uboot/carnotzet.cfg', '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.cfg');
+        cp('<PEON.ASSETS.RASPBERRY>/uboot/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
     test: none
     env:
       CFLAGS: '<PEON.ENV.CFLAGS> -I<PEON.PROD.ROOTDIR>/usr/local/include'
