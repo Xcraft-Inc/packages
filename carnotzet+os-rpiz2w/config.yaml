@@ -14,10 +14,10 @@ description:
   long: ''
 dependency:
   install:
-    carnotzet+rootfs-rpi4b:
+    carnotzet+rootfs-rpiz2w:
       - version: ''
         architecture: []
-    carnotzet+rescuefs-rpi4b:
+    carnotzet+rescuefs-rpiz2w:
       - version: ''
         architecture: []
     raspberry+rpiz2w-linux-kernel:
@@ -97,8 +97,8 @@ data:
 
         /* Generate the root for the MMC */
         yield genRoot('carnotzet', '<PEON.ASSETS.RASPBERRY>/os', [
-          'carnotzet+rootfs-rpi4b-x+bin',
-          'carnotzet+rescuefs-rpi4b-x+bin',
+          'carnotzet+rootfs-rpiz2w-x+bin',
+          'carnotzet+rescuefs-rpiz2w-x+bin',
           'raspberry+rpiz2w-linux-kernel-x+bin',
           'raspberry+rpiz2w-linux-kernel-x+modules',
           'raspberry+rpiz2w-linux-firmware-x+bin',
