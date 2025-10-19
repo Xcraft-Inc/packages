@@ -26,7 +26,7 @@ data:
     out: ''
     externals: false
     prepare: |-
-      cp('<PEON.ASSETS.RASPBERRY>/rootfs/root', '<PEON.WPKG.STAG>/usr/share/carnotzet/rootfs-rpiz2w/data');
+      cp('<PEON.ASSETS.GLOBAL>/root', '<PEON.WPKG.STAG>/usr/share/carnotzet/rootfs-rpiz2w/data');
   type: src
   configure: ''
   rules:
@@ -39,7 +39,7 @@ data:
       maketest: ''
       makeinstall: |-
         cp('<PEON.WPKG.STAG>/usr/share/carnotzet/rootfs-rpiz2w/data', '<PEON.INSTALLDIR.X+BIN>');
-        cp('<PEON.ASSETS.RASPBERRY>/rootfs/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+        cp('<PEON.ASSETS.GLOBAL>/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
         cp('<PEON.ASSETS>/postinst', '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
         cp('<PEON.ASSETS>/prerm',    '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
     test: ''

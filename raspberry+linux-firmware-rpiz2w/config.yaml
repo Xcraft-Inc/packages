@@ -1,7 +1,7 @@
 subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
-name: raspberry+rpiz2w-linux-firmware
+name: raspberry+linux-firmware-rpiz2w
 version: '20250917'
 $version: '20250917'
 distribution: raspberry/

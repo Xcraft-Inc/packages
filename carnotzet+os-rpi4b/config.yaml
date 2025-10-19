@@ -20,16 +20,16 @@ dependency:
     carnotzet+rescuefs-rpi4b:
       - version: ''
         architecture: []
-    raspberry+rpi4b-linux-kernel:
+    raspberry+linux-kernel-rpi4b:
       - version: ''
         architecture: []
-    raspberry+rpi4b-linux-firmware:
+    raspberry+linux-firmware-rpi4b:
       - version: ''
         architecture: []
-    raspberry+rpi4b-uboot:
+    raspberry+uboot-rpi4b:
       - version: ''
         architecture: []
-    raspberry+rpi4b-firmware:
+    raspberry+firmware-rpi4b:
       - version: ''
         architecture: []
     gnu+glibc-rpi64:
@@ -96,14 +96,14 @@ data:
         yield cmd('pacman.syncRepository', {distribution: 'raspberry'});
 
         /* Generate the root for the MMC */
-        yield genRoot('carnotzet', '<PEON.ASSETS.RASPBERRY>/os', [
+        yield genRoot('carnotzet', '<PEON.ASSETS.GLOBAL>', [
           'carnotzet+rootfs-rpi4b-x+bin',
           'carnotzet+rescuefs-rpi4b-x+bin',
-          'raspberry+rpi4b-linux-kernel-x+bin',
-          'raspberry+rpi4b-linux-kernel-x+modules',
-          'raspberry+rpi4b-linux-firmware-x+bin',
-          'raspberry+rpi4b-uboot-x+bin',
-          'raspberry+rpi4b-firmware-x+bin',
+          'raspberry+linux-kernel-rpi4b-x+bin',
+          'raspberry+linux-kernel-rpi4b-x+modules',
+          'raspberry+linux-firmware-rpi4b-x+bin',
+          'raspberry+uboot-rpi4b-x+bin',
+          'raspberry+firmware-rpi4b-x+bin',
           'gnu+glibc-rpi64-x+bin',
           'gnu+libstdcxx-rpi64-x+bin',
           'vlasenko+busybox-rpi64-x+bin',

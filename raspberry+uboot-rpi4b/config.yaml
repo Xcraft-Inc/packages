@@ -1,7 +1,7 @@
 subpackage:
   - runtime*
   - x+bin:linux-aarch64
-name: raspberry+rpiz2w-uboot
+name: raspberry+uboot-rpi4b
 version: '2025.04'
 $version: '2025.04'
 distribution: raspberry/
@@ -11,7 +11,7 @@ maintainer:
 architecture:
   - source
 description:
-  brief: U-boot Texas Instruments for RASPBERRY Pi Zero 2 W
+  brief: U-boot Texas Instruments for RASPBERRY Pi4 model B
   long: ''
 dependency:
   build:
@@ -28,7 +28,7 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpiz2w
+  - carnotzet+os-rpi4b
 data:
   get:
     uri: 'https://source.denx.de/u-boot/u-boot.git'
@@ -40,7 +40,7 @@ data:
     prepare: ''
   type: src
   configure: |-
-    !make -C <THIS.DATA.RULES.LOCATION> CROSS_COMPILE=aarch64-xcraft-linux-gnu- rpi_arm64_defconfig
+    !make -C <THIS.DATA.RULES.LOCATION> CROSS_COMPILE=aarch64-xcraft-linux-gnu- rpi_4_defconfig
        && sed -i 's,^# CONFIG_CMD_BOOTMENU.*,CONFIG_CMD_BOOTMENU=y,' <THIS.DATA.RULES.LOCATION>/.config
        && sed -i 's,^CONFIG_TOOLS_MKEFICAPSULE=y.*,# CONFIG_TOOLS_MKEFICAPSULE is not set,' <THIS.DATA.RULES.LOCATION>/.config
        && make -C <THIS.DATA.RULES.LOCATION> CROSS_COMPILE=aarch64-xcraft-linux-gnu- olddefconfig
@@ -56,9 +56,9 @@ data:
       maketest: ''
       makeinstall: |-
         cp("u-boot.bin", "<PEON.INSTALLDIR.X+BIN>/boot/u-boot.bin");
-        cp("tools/mkimage", "<PEON.INSTALLDIR>/usr/bin/mkimage-rpiz2w");
-        cp("tools/mkenvimage", "<PEON.INSTALLDIR>/usr/bin/mkenvimage-rpiz2w");
-        cp("tools/dumpimage", "<PEON.INSTALLDIR>/usr/bin/dumpimage-rpiz2w");
+        cp("tools/mkimage", "<PEON.INSTALLDIR>/usr/bin/mkimage-rpi4b");
+        cp("tools/mkenvimage", "<PEON.INSTALLDIR>/usr/bin/mkenvimage-rpi4b");
+        cp("tools/dumpimage", "<PEON.INSTALLDIR>/usr/bin/dumpimage-rpi4b");
 
         exp('LD_LIBRARY_PATH', '<PEON.ROOTDIR>/usr/lib');
         yield exec(
@@ -67,14 +67,14 @@ data:
           '-O', 'linux',
           '-T', 'script',
           '-C', 'none',
-          '-d', '<PEON.ASSETS.RASPBERRY>/uboot/boot_cmd.txt',
+          '-d', '<PEON.ASSETS.GLOBAL>/boot_cmd.txt',
           '<PEON.INSTALLDIR.X+BIN>/boot/boot.scr'
         );
 
         /* Specific Carnotzet OS settings (not u-boot related) */
-        cp('<PEON.ASSETS.RASPBERRY>/uboot/carnotzet.env', '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.env');
-        cp('<PEON.ASSETS.RASPBERRY>/uboot/carnotzet.cfg', '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.cfg');
-        cp('<PEON.ASSETS.RASPBERRY>/uboot/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+        cp('<PEON.ASSETS.GLOBAL>/carnotzet.env', '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.env');
+        cp('<PEON.ASSETS.GLOBAL>/carnotzet.cfg', '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.cfg');
+        cp('<PEON.ASSETS.GLOBAL>/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
     test: none
     env:
       CFLAGS: '<PEON.ENV.CFLAGS> -I<PEON.PROD.ROOTDIR>/usr/local/include'

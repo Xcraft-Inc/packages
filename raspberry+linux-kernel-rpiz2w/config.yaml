@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
   - 'x+modules:linux-aarch64'
-name: raspberry+rpiz2w-linux-kernel
+name: raspberry+linux-kernel-rpiz2w
 version: '20250702'
 $version: '20250702'
 distribution: raspberry/
@@ -46,7 +46,7 @@ data:
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
-      && cp <PEON.ASSETS.RASPBERRY>/linux-kernel/logo_linux_clut224.ppm drivers/video/logo
+      && cp <PEON.ASSETS.GLOBAL>/logo_linux_clut224.ppm drivers/video/logo
       && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- bcm2711_defconfig
   rules:
     type: script

@@ -18,10 +18,10 @@ dependency:
     carnotzet+rootfs-rpi4b:
       - version: ''
         architecture: []
-    raspberry+rpi4b-linux-kernel:
+    raspberry+linux-kernel-rpi4b:
       - version: ''
         architecture: []
-    raspberry+rpi4b-linux-firmware:
+    raspberry+linux-firmware-rpi4b:
       - version: ''
         architecture: []
     gnu+glibc-rpi64:
@@ -42,7 +42,7 @@ dependency:
     malinen+wpa-supplicant-rpi64:
       - version: ''
         architecture: []
-    raspberry+rpi4b-uboot:
+    raspberry+uboot-rpi4b:
       - version: ''
         architecture: []
   build:
@@ -78,11 +78,11 @@ data:
 
         try {
           /* Generate the root for the recovery initramfs */
-          yield genRoot('<PEON.PROD.ROOTDIR>/var/rescue', '<PEON.ASSETS.RASPBERRY>/rescue', [
+          yield genRoot('<PEON.PROD.ROOTDIR>/var/rescue', '<PEON.ASSETS.GLOBAL>', [
             'carnotzet+rootfs-rpi4b-x+bin',
-            'raspberry+rpi4b-linux-kernel-x+modules',
-            'raspberry+rpi4b-linux-firmware-x+bin',
-            'raspberry+rpi4b-firmware-x+bin',
+            'raspberry+linux-kernel-rpi4b-x+modules',
+            'raspberry+linux-firmware-rpi4b-x+bin',
+            'raspberry+firmware-rpi4b-x+bin',
             'gnu+glibc-rpi64-x+bin',
             'vlasenko+busybox-rpi64-x+bin',
             'linux+util-linux-rpi64-x+bin',
@@ -105,7 +105,7 @@ data:
 
           /* Keep only postinst scripts */
           rmFiles('<PEON.PROD.ROOTDIR>/var/rescue/var/lib/wpkg', /^(?!.*[/]postinst$)/);
-          cp('<PEON.ASSETS.RASPBERRY>/rescue/postinst', '<PEON.PROD.ROOTDIR>/var/rescue/var/lib/wpkg/core/postinst');
+          cp('<PEON.ASSETS.GLOBAL>/postinst', '<PEON.PROD.ROOTDIR>/var/rescue/var/lib/wpkg/core/postinst');
 
           /* Generate the initramfs */
           yield genInitramfs('<PEON.PROD.ROOTDIR>/var/rescue', '<PEON.INSTALLDIR.X+BIN>/boot', 'mkimage-rpi4b');

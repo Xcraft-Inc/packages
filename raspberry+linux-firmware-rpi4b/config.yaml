@@ -1,7 +1,7 @@
 subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
-name: raspberry+rpi4b-linux-firmware
+name: raspberry+linux-firmware-rpi4b
 version: '20250917'
 $version: '20250917'
 distribution: raspberry/

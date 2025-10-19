@@ -20,16 +20,16 @@ dependency:
     carnotzet+rescuefs-rpiz2w:
       - version: ''
         architecture: []
-    raspberry+rpiz2w-linux-kernel:
+    raspberry+linux-kernel-rpiz2w:
       - version: ''
         architecture: []
-    raspberry+rpiz2w-linux-firmware:
+    raspberry+linux-firmware-rpiz2w:
       - version: ''
         architecture: []
-    raspberry+rpiz2w-uboot:
+    raspberry+uboot-rpiz2w:
       - version: ''
         architecture: []
-    raspberry+rpiz2w-firmware:
+    raspberry+firmware-rpiz2w:
       - version: ''
         architecture: []
     gnu+glibc-rpi64:
@@ -96,14 +96,14 @@ data:
         yield cmd('pacman.syncRepository', {distribution: 'raspberry'});
 
         /* Generate the root for the MMC */
-        yield genRoot('carnotzet', '<PEON.ASSETS.RASPBERRY>/os', [
+        yield genRoot('carnotzet', '<PEON.ASSETS.GLOBAL>', [
           'carnotzet+rootfs-rpiz2w-x+bin',
           'carnotzet+rescuefs-rpiz2w-x+bin',
-          'raspberry+rpiz2w-linux-kernel-x+bin',
-          'raspberry+rpiz2w-linux-kernel-x+modules',
-          'raspberry+rpiz2w-linux-firmware-x+bin',
-          'raspberry+rpiz2w-uboot-x+bin',
-          'raspberry+rpiz2w-firmware-x+bin',
+          'raspberry+linux-kernel-rpiz2w-x+bin',
+          'raspberry+linux-kernel-rpiz2w-x+modules',
+          'raspberry+linux-firmware-rpiz2w-x+bin',
+          'raspberry+uboot-rpiz2w-x+bin',
+          'raspberry+firmware-rpiz2w-x+bin',
           'gnu+glibc-rpi64-x+bin',
           'gnu+libstdcxx-rpi64-x+bin',
           'vlasenko+busybox-rpi64-x+bin',
