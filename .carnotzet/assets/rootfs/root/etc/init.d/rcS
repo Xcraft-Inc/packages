@@ -12,7 +12,6 @@ done
 
 mdev -s
 
-chmod 666 /dev/tty # prefer crw-rw-rw instead of crw-rw---
 mkdir -p /dev/pts
 mount -t devpts none /dev/pts # sshd
 
