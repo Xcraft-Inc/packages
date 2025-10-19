@@ -4,6 +4,12 @@ mount -t sysfs none /sys
 mount -t debugfs none /sys/kernel/debug
 
 echo /bin/mdev > /proc/sys/kernel/hotplug
+
+# Ensure that /sys/block/mmcblk0 exists
+until [ -e /sys/block/mmcblk0 ]; do
+  sleep 0.2
+done
+
 mdev -s
 
 chmod 666 /dev/tty # prefer crw-rw-rw instead of crw-rw---
