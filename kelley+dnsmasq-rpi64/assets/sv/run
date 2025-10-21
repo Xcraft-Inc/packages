@@ -1,0 +1,33 @@
+#!/bin/sh
+exec 2>&1
+
+echo "Start DNSMASQ daemon..."
+
+if [ -f /boot/carnotzet.cfg ]; then
+  . /boot/carnotzet.cfg
+else
+  echo "Error: /boot/carnotzet.cfg not found"
+  exit 1
+fi
+
+if [ -z "$network_wifi" ]; then
+  echo "Wifi interfaces disabled"
+  exit 0
+fi
+
+if [ "$network_wifi_mode" != "ap" ]; then
+  echo "Access Point mode is disabled"
+  exit 0
+fi
+
+if [ -z "$network_wifi_dnsmasq_address" ] || [ -z "$network_wifi_dnsmasq_dhcp" ]; then
+  echo "dnsmasq settings are missing"
+  exit 1
+fi
+
+exec /usr/sbin/dnsmasq -C /etc/dnsmasq/dnsmasq.conf \
+                       -i "$network_wifi" \
+                       -A "$network_wifi_dnsmasq_address" \
+                       -F "$network_wifi_dnsmasq_dhcp" \
+                       -u dnsmasq \
+                       -k

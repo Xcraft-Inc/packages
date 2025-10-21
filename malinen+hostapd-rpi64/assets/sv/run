@@ -1,0 +1,48 @@
+#!/bin/sh
+exec 2>&1
+
+echo "Start HOSTAPD daemon..."
+
+if [ -f /boot/carnotzet.cfg ]; then
+  . /boot/carnotzet.cfg
+else
+  echo "Error: /boot/carnotzet.cfg not found"
+  exit 1
+fi
+
+if [ -z "$network_wifi" ]; then
+  echo "Wifi interfaces disabled"
+  exit 0
+fi
+
+if [ "$network_wifi_mode" != "ap" ]; then
+  echo "Access Point mode is disabled"
+  exit 0
+fi
+
+if [ -z "$wifi_ssid" ]; then
+  echo "SSID is missing"
+  exit 1
+fi
+
+hostapd_conf="/tmp/hostapd.conf"
+cp "/etc/hostapd/hostapd.conf" "$hostapd_conf"
+chmod 600 "$hostapd_conf"
+
+update() {
+  key="$1"
+  value="$2"
+  file="$3"
+
+  if grep -q "^${key}=" "$file"; then
+    sed -i "s,^${key}=.*,${key}=${value}," "$file"
+  else
+    echo "${key}=${value}" >> "$file"
+  fi
+}
+
+update "interface" "$network_wifi" "$hostapd_conf"
+update "ssid" "$wifi_ssid" "$hostapd_conf"
+update "country_code" "${wifi_country:-CH}" "$hostapd_conf"
+
+exec /usr/sbin/hostapd "$hostapd_conf"

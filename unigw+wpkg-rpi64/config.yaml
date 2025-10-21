@@ -1,0 +1,91 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: unigw+wpkg-rpi64
+version: 1.0.2-11
+$version: 1.0.2
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: A Unix Packager For MS-Windows Systems
+  long: ''
+dependency:
+  install:
+    openssl+openssl3-rpi64:
+      - version: ''
+        architecture: []
+    debian+ca-certificate-rpi64:
+      - version: ''
+        architecture: []
+    debian+ca-certificate-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump:
+  - carnotzet+os-rpi4b
+  - carnotzet+os-rpiz2w
+data:
+  get:
+    uri: 'https://github.com/Xcraft-Inc/wpkg/archive/b5729f4b6642df5f551ad509946a4eb3ff2d5d04.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !mkdir -p <THIS.DATA.RULES.LOCATION>
+      && mkdir -p <THIS.DATA.RULES.LOCATION>/../wpkg/controlled_vars/build
+      && cd <THIS.DATA.RULES.LOCATION>/../wpkg/controlled_vars/build
+      && cmake ..
+      && make
+      && cd -
+      && cd <THIS.DATA.RULES.LOCATION>
+      && sed -i 's,^SET(USER_ROOT_PATH.*,SET(USER_ROOT_PATH <PEON.PROD.ROOTDIR>/usr/),' ../cmake/Toolchain-cross-aarch64-linux.cmake
+      && cmake -G "Unix Makefiles"
+               -DENABLE_OPENSSL=yes
+               -DCMAKE_TOOLCHAIN_FILE=../cmake/Toolchain-cross-aarch64-linux.cmake
+               ..
+      && cp ../wpkg/controlled_vars/build/controlled_vars ./controlled_vars
+  rules:
+    type: script
+    location: data/wpkg-b5729f4b6642df5f551ad509946a4eb3ff2d5d04/build
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: |-
+        !export PATH="$(pwd):$PATH"
+          && make -j<PEON.CPUS.COUNT>
+      maketest: ''
+      makeinstall: |-
+        cp("wpkg-Release/tools/wpkg_static", "<PEON.INSTALLDIR.X+BIN>/usr/bin/.wpkg");
+        cp('<PEON.ASSETS>/wpkg',             '<PEON.INSTALLDIR.X+BIN>/usr/bin/wpkg');
+        cp('<PEON.ASSETS>/sources.list',     '<PEON.INSTALLDIR.X+BIN>/boot/sources.list');
+        cp('<PEON.ASSETS>/postinst',         '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+        cp('<PEON.ASSETS>/prerm',            '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+        cp('<PEON.ASSETS>/conffiles',        '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

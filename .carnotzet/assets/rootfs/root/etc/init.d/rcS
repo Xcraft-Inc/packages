@@ -1,0 +1,88 @@
+#!/bin/sh
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t debugfs none /sys/kernel/debug
+
+echo /bin/mdev > /proc/sys/kernel/hotplug
+
+# Ensure that /sys/block/mmcblk0 exists
+until [ -e /sys/block/mmcblk0 ]; do
+  sleep 0.2
+done
+
+mdev -s
+
+mkdir -p /dev/pts
+mount -t devpts none /dev/pts # sshd
+
+fsck -a
+mount /boot
+
+boot_expand()
+{
+  # Check filesystems
+  fsck.ext4 -p /dev/mmcblk0p2 || return 1
+  # Expand EXT4 partition
+  echo ",+" | sfdisk -N2 /dev/mmcblk0 || return 1
+  fsck.ext4 -fp /dev/mmcblk0p2 || return 1
+  resize2fs /dev/mmcblk0p2 || return 1
+  # Disable expand mode
+  mount /boot
+  sed -i "s,^carnotzet_expand=.*,carnotzet_expand=0," /boot/carnotzet.env || return 1
+  return 0
+}
+
+boot_normal()
+{
+  # Mount all filesystems
+  mount -a
+
+  sysctl -p >/dev/null
+  syslogd >/dev/null
+  crond >/dev/null
+
+  # Configure swap
+  if [ -f /swapfile ]; then
+    swapon /swapfile
+  fi
+
+  # For kernel 6.12
+  #  INFO: task vchiq-keep/0:84 blocked for more than 1208 seconds.
+  #        Not tainted 6.12.34-v8 #1
+  #  "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+  #  task:vchiq-keep/0    state:D stack:0     pid:84    tgid:84    ppid:2      flags:0x00000008
+  modprobe vc_sm_cma
+
+  # Import fr-CH keyboard map
+  busybox loadkmap < /usr/share/kmap/fr_CH.kmap
+
+  # Enable loopback
+  ip addr add 127.0.0.1/8 dev lo
+  ip link set dev lo up
+
+  # Execute all postinst scripts in case of the first boot
+  if [ ! -f /var/.bootstrapped ]; then
+    for postinst in /var/lib/wpkg/*/postinst; do
+      sh "$postinst"
+    done
+    touch /var/.bootstrapped
+  fi
+
+  printf "Carnotzet OS booted in %s seconds\\n" "$(cut -d' ' -f1 /proc/uptime)"
+}
+
+if [ -f /boot/carnotzet.env ]; then
+  . /boot/carnotzet.env
+fi
+umount /boot
+
+if [ "$carnotzet_expand" = "1" ]; then
+  if boot_expand; then
+    echo "Expand done, reboot..."
+    reboot
+    exit 0
+  fi
+  echo "RESCUE: something wrong happens"
+fi
+
+boot_normal

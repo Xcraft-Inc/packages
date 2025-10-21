@@ -1,0 +1,188 @@
+#!/bin/sh
+# shellcheck disable=SC3043
+exec 2>&1
+
+echo "Start network..."
+
+if [ -f /boot/carnotzet.cfg ]; then
+  . /boot/carnotzet.cfg
+else
+  echo "Error: /boot/carnotzet.cfg not found"
+  exit 1
+fi
+
+if [ -z "$network_wifi" ]; then
+  echo "Wifi interfaces disabled"
+  exit 0
+fi
+
+configure_static() {
+  echo "Configuring static IP: $network_wifi_ip/$network_wifi_mask"
+
+  if [ -z "$network_wifi_ip" ] || [ -z "$network_wifi_mask" ] || [ -z "$network_wifi_gw" ]; then
+    echo "Error: static IP configuration incomplete"
+    dispose
+  fi
+
+  ip addr add "$network_wifi_ip/$network_wifi_mask" dev "$network_wifi" || {
+    echo "Error: failed to set IP address"
+    dispose
+  }
+
+  ip link set dev "$network_wifi" up || {
+    echo "Error: failed to bring interface up"
+    dispose
+  }
+
+  ip route add default via "$network_wifi_gw" dev "$network_wifi" || {
+    echo "Warning: failed to set default route"
+  }
+
+  if [ -n "$network_wifi_dns" ]; then
+    echo "Configuring DNS..."
+    {
+      for dns in $network_wifi_dns; do
+        echo "nameserver $dns"
+      done
+    } > /etc/resolv.conf
+  else
+    echo "Warning: no DNS configured (variable network_wifi_dns empty)"
+  fi
+
+  echo "Static IP configuration completed"
+}
+
+dispose() {
+  echo "Dispose..."
+
+  if [ -f "/var/run/wpa_supplicant.$network_wifi.pid" ]; then
+    kill "$(cat "/var/run/wpa_supplicant.$network_wifi.pid")" 2>/dev/null
+    rm -f "/var/run/wpa_supplicant.$network_wifi.pid"
+  fi
+
+  if [ -f "/var/run/udhcpc.$network_wifi.pid" ]; then
+    kill "$(cat "/var/run/udhcpc.$network_wifi.pid")" 2>/dev/null
+    rm -f "/var/run/udhcpc.$network_wifi.pid"
+  fi
+
+  ip link set dev "$network_wifi" down 2>/dev/null
+  rm -f "$wpa_conf"
+  exit 0
+}
+
+trap dispose SIGTERM SIGINT
+
+echo "Configure WiFi interface $network_wifi..."
+
+modprobe brcmfmac
+
+if [ "$network_wifi_mode" != "wpa" ]; then
+  echo "WPA is disabled"
+
+  if [ "$network_wifi_mode" = "ap" ]; then
+    configure_static
+
+    # Supervision
+    while true; do
+      sleep 300
+    done
+  else
+    exit 0
+  fi
+fi
+  
+if ! command -v wpa_supplicant >/dev/null 2>&1; then
+  echo "Error: wpa_supplicant not found"
+  exit 1
+fi
+
+if [ -z "$wifi_ssid" ] || [ -z "$wifi_password" ]; then
+  echo "Error: wifi_ssid or wifi_password not configured"
+  exit 1
+fi
+
+mkdir -p /var/run/wpa_supplicant
+
+wpa_conf="/tmp/wpa_supplicant.conf"
+touch "$wpa_conf"
+chmod 600 "$wpa_conf"
+cat > "$wpa_conf" << EOF
+ctrl_interface=/var/run/wpa_supplicant
+update_config=1
+country=${wifi_country:-CH}
+
+network={
+    ssid="$wifi_ssid"
+    psk="$wifi_password"
+    key_mgmt=WPA-PSK
+    scan_ssid=1
+}
+EOF
+
+wpa_supplicant -B -i "$network_wifi" -c "$wpa_conf" -P "/var/run/wpa_supplicant.$network_wifi.pid"
+wpa_exit_code=$?
+
+if [ $wpa_exit_code -ne 0 ]; then
+  echo "Error: failed to start wpa_supplicant (exit code: $wpa_exit_code)"
+  dispose
+fi
+
+echo "Waiting for WiFi connection..."
+timeout=30
+counter=0
+while [ $counter -lt $timeout ]; do
+  if wpa_cli -i "$network_wifi" status | grep -q "wpa_state=COMPLETED"; then
+    echo "WiFi connected successfully"
+    break
+  fi
+  sleep 1
+  counter=$((counter + 1))
+done
+
+if [ $counter -eq $timeout ]; then
+  echo "Error: WiFi connection timeout after ${timeout}s"
+  dispose
+fi
+
+if [ "$network_wifi_dhcp" = "off" ]; then
+  configure_static
+
+  # Supervision
+  while true; do
+    pid_file="/var/run/wpa_supplicant.$network_wifi.pid"
+    if [ -f "$pid_file" ] && ! kill -0 "$(cat "$pid_file" 2>/dev/null)" 2>/dev/null; then
+      echo "Error: wpa_supplicant process died"
+      dispose
+    fi
+
+    if ! wpa_cli -i "$network_wifi" status | grep -q "wpa_state=COMPLETED"; then
+      echo "Warning: WiFi connection lost"
+      wpa_cli -i "$network_wifi" reassociate
+    fi
+
+    echo "Interface $network_wifi UP - $(date)"
+    sleep 300
+  done
+fi
+
+if [ "$network_wifi_dhcp" = "on" ]; then
+  echo "Configuring DHCP for $network_wifi"
+
+  ip link set dev "$network_wifi" up || {
+    echo "Error: failed to bring interface up"
+    dispose
+  }
+
+  echo "Starting DHCP client..."
+  udhcpc -f -i "$network_wifi" -p "/var/run/udhcpc.$network_wifi.pid" -s /usr/share/udhcpc/default.script &
+  udhcpc_pid=$!
+
+  wait $udhcpc_pid
+  udhcpc_exit_code=$?
+
+  echo "udhcpc exited with code $udhcpc_exit_code"
+  dispose
+fi
+
+echo "Error: network_wifi_dhcp must be 'on' or 'off', got '$network_wifi_dhcp'"
+dispose

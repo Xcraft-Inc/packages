@@ -1,0 +1,31 @@
+load mmc 0:1 ${loadaddr} carnotzet.env
+env import -t ${loadaddr} ${filesize}
+
+setenv bootmenu_delay 3
+
+if itest ${carnotzet_rescue} == 1; then
+  setenv bootmenu_0 "Rescue Carnotzet boot (default)=run boot_rescue_cmd"
+  setenv bootmenu_1 "Normal Carnotzet boot=run boot_normal_cmd"
+else
+  setenv bootmenu_0 "Normal Carnotzet boot (default)=run boot_normal_cmd"
+  setenv bootmenu_1 "Rescue Carnotzet boot=run boot_rescue_cmd"
+fi
+
+setenv boot_normal_cmd '\
+echo "=== NORMAL BOOT ==="; \
+fatload mmc 0:1 ${kernel_addr_r} Image; \
+setenv bootargs "console=serial0,115200 console=tty1 root=/dev/mmcblk0p2 rw rootwait"; \
+booti ${kernel_addr_r} - ${fdt_addr}'
+
+setenv boot_rescue_cmd '\
+echo "=== RESCUE BOOT ==="; \
+fatload mmc 0:1 ${kernel_addr_r} Image; \
+fatload mmc 0:1 ${ramdisk_addr_r} uRamdisk; \
+setenv bootargs "console=serial0,115200 console=tty1 rdinit=/sbin/init rw"; \
+booti ${kernel_addr_r} ${ramdisk_addr_r} ${fdt_addr}'
+
+if itest ${carnotzet_expand} == 1; then
+  run boot_rescue_cmd
+else
+  bootmenu
+fi

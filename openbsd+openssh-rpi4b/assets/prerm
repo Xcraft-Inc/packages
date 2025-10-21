@@ -1,4 +1,0 @@
-#!/bin/sh
-
-rm -f /var/service/sshd
-deluser sshd

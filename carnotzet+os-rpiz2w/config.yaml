@@ -1,0 +1,130 @@
+subpackage:
+  - runtime*
+name: carnotzet+os-rpiz2w
+version: 0.1.0
+$version: 0.1.0
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Carnotzet Operating System
+  long: ''
+dependency:
+  install:
+    carnotzet+rootfs-rpiz2w:
+      - version: ''
+        architecture: []
+    carnotzet+rescuefs-rpiz2w:
+      - version: ''
+        architecture: []
+    raspberry+linux-kernel-rpiz2w:
+      - version: ''
+        architecture: []
+    raspberry+linux-firmware-rpiz2w:
+      - version: ''
+        architecture: []
+    raspberry+uboot-rpiz2w:
+      - version: ''
+        architecture: []
+    raspberry+firmware-rpiz2w:
+      - version: ''
+        architecture: []
+    gnu+glibc-rpi64:
+      - version: ''
+        architecture: []
+    gnu+libstdcxx-rpi64:
+      - version: ''
+        architecture: []
+    vlasenko+busybox-rpi64:
+      - version: ''
+        architecture: []
+    tytso+e2fsprogs-rpi64:
+      - version: ''
+        architecture: []
+    dosfstools+dosfstools-rpi64:
+      - version: ''
+        architecture: []
+    unigw+wpkg-rpi64:
+      - version: ''
+        architecture: []
+    linux+util-linux-rpi64:
+      - version: ''
+        architecture: []
+    malinen+wpa-supplicant-rpi64:
+      - version: ''
+        architecture: []
+  build:
+    tytso+e2fsprogs:
+      - version: ''
+        architecture: []
+    linux+util-linux:
+      - version: ''
+        architecture: []
+    gnu+mtools:
+      - version: ''
+        architecture: []
+    e2tools+e2tools:
+      - version: ''
+        architecture: []
+    debian+fakeroot:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: ''
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: false
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: ''
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: |-
+        const {genRoot, genImage} = imp('raspberry');
+
+        yield cmd('pacman.syncRepository', {distribution: 'raspberry'});
+
+        /* Generate the root for the MMC */
+        yield genRoot('carnotzet', '<PEON.ASSETS.GLOBAL>', [
+          'carnotzet+rootfs-rpiz2w-x+bin',
+          'carnotzet+rescuefs-rpiz2w-x+bin',
+          'raspberry+linux-kernel-rpiz2w-x+bin',
+          'raspberry+linux-kernel-rpiz2w-x+modules',
+          'raspberry+linux-firmware-rpiz2w-x+bin',
+          'raspberry+uboot-rpiz2w-x+bin',
+          'raspberry+firmware-rpiz2w-x+bin',
+          'gnu+glibc-rpi64-x+bin',
+          'gnu+libstdcxx-rpi64-x+bin',
+          'vlasenko+busybox-rpi64-x+bin',
+          'linux+util-linux-rpi64-x+bin',
+          'tytso+e2fsprogs-rpi64-x+bin',
+          'dosfstools+dosfstools-rpi64-x+bin',
+          'malinen+wpa-supplicant-rpi64-x+bin',
+          'unigw+wpkg-rpi64-x+bin'
+        ]);
+
+        yield genImage('carnotzet', 'carnotzet',
+          '<PEON.INSTALLDIR>/opt/img/carnotzet-os-<THIS.$VERSION>-rpiz2w.img'
+        );
+      maketest: ''
+      makeinstall: ''
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

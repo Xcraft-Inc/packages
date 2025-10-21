@@ -17,4 +17,4 @@ else
 fi
 export CCACHE_BASEDIR
 
-ccache "$COMMAND" "$@"
+exec ccache "$COMMAND" "$@"

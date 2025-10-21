@@ -1,0 +1,56 @@
+subpackage:
+  - runtime*
+name: e2tools+e2tools
+version: 0.1.2
+$version: 0.1.2
+distribution: toolchain/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: "A set of GPL'ed utilities to read, write ext filesystem."
+  long: ''
+dependency:
+  install:
+    tytso+e2fsprogs:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://github.com/e2tools/e2tools/releases/download/v<THIS.$VERSION>/e2tools-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/
+  rules:
+    type: make
+    location: data/e2tools-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '-j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: 'install DESTDIR=<PEON.PREFIXDIR>'
+    test: none
+    env:
+      CFLAGS: <PEON.ENV.CFLAGS> -I<PEON.ROOTDIR>/usr/include/ext2fs
+  deploy: {}
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

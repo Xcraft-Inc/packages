@@ -1,0 +1,76 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: malinen+hostapd-rpi64
+version: '2.11'
+$version: '2.11'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: 'IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/WPA3/EAP/RADIUS Authenticator'
+  long: 'hostapd is a user space daemon for access point and authentication servers. It implements IEEE 802.11 access point management, IEEE 802.1X/WPA/WPA2/WPA3/EAP Authenticators, RADIUS client, EAP server, and RADIUS authentication server. The current version supports Linux (Host AP, madwifi, mac80211-based drivers) and FreeBSD (net80211).'
+dependency:
+  install:
+    openssl+openssl3-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    openssl+openssl3-rpi64:
+      - version: ''
+        architecture: []
+    thom311+libnl-rpi64:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://w1.fi/releases/hostapd-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: '!cd <THIS.DATA.RULES.LOCATION> && cp <PEON.ASSETS>/defconfig .config'
+  rules:
+    type: script
+    location: data/hostapd-<THIS.$VERSION>/hostapd
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!make -j<PEON.CPUS.COUNT> BINDIR=/usr/sbin'
+      maketest: ''
+      makeinstall: '!make install BINDIR=/usr/sbin DESTDIR=<PEON.INSTALLDIR.X+BIN>'
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+  deploy: |-
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/hostapd');
+    cp('<PEON.ASSETS>/sv/run',       '<PEON.INSTALLDIR.X+BIN>/etc/sv/hostapd/run');
+    cp('<PEON.ASSETS>/sv/log/run',   '<PEON.INSTALLDIR.X+BIN>/etc/sv/hostapd/log/run');
+    cp('<PEON.ASSETS>/postinst',     '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',        '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+    cp('<PEON.ASSETS>/conffiles',    '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+    cp('<PEON.ASSETS>/hostapd.conf', '<PEON.INSTALLDIR.X+BIN>/etc/hostapd/hostapd.conf');
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

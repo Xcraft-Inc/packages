@@ -1,14 +1,14 @@
+subpackage:
+  - runtime*
 name: carnotzet+os-rpi4b
-version: 0.1.0
+version: 0.1.0-53
 $version: 0.1.0
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
   email: schroeter@epsitec.ch
 architecture:
-  - linux-i386
-  - linux-amd64
-  - linux-aarch64
+  - source
 description:
   brief: Carnotzet Operating System
   long: ''
@@ -20,31 +20,56 @@ dependency:
     carnotzet+rescuefs-rpi4b:
       - version: ''
         architecture: []
-    raspberry+rpi4b-linux-kernel:
+    raspberry+linux-kernel-rpi4b:
       - version: ''
         architecture: []
-    raspberry+rpi4b-uboot:
+    raspberry+linux-firmware-rpi4b:
       - version: ''
         architecture: []
-    raspberry+rpi4b-firmware:
+    raspberry+uboot-rpi4b:
       - version: ''
         architecture: []
-    gnu+glibc-rpi4b:
+    raspberry+firmware-rpi4b:
       - version: ''
         architecture: []
-    gnu+libstdcxx-rpi4b:
+    gnu+glibc-rpi64:
       - version: ''
         architecture: []
-    vlasenko+busybox-rpi4b:
+    gnu+libstdcxx-rpi64:
       - version: ''
         architecture: []
-    tytso+e2fsprogs-rpi4b:
+    vlasenko+busybox-rpi64:
       - version: ''
         architecture: []
-    dosfstools+dosfstools-rpi4b:
+    tytso+e2fsprogs-rpi64:
       - version: ''
         architecture: []
-    unigw+wpkg-rpi4b:
+    dosfstools+dosfstools-rpi64:
+      - version: ''
+        architecture: []
+    unigw+wpkg-rpi64:
+      - version: ''
+        architecture: []
+    linux+util-linux-rpi64:
+      - version: ''
+        architecture: []
+    malinen+wpa-supplicant-rpi64:
+      - version: ''
+        architecture: []
+  build:
+    tytso+e2fsprogs:
+      - version: ''
+        architecture: []
+    linux+util-linux:
+      - version: ''
+        architecture: []
+    gnu+mtools:
+      - version: ''
+        architecture: []
+    e2tools+e2tools:
+      - version: ''
+        architecture: []
+    debian+fakeroot:
       - version: ''
         architecture: []
 bump: []
@@ -56,71 +81,50 @@ data:
     $ref: ''
     out: ''
     externals: false
-  type: bin
+    prepare: ''
+  type: src
   configure: ''
   rules:
-    type: configure
+    type: script
     location: ''
     args:
-      postinst: |-
-        function* genRoot (rootDir, pkgs) {
-          rm(rootDir);
-          mkdir(rootDir);
+      postinst: ''
+      prerm: ''
+      makeall: |-
+        const {genRoot, genImage} = imp('raspberry');
 
-          /* Prepare the WPKG admin directory */
-          yield exec(
-            'wpkg_static',
-            '--root', rootDir,
-            '--create-admindir', '<PEON.ASSETS>/admindir.control'
-          );
-          /* Add the Xcraft Raspberry WPKG source */
-          yield exec(
-            'wpkg_static',
-            '--root', rootDir,
-            '--add-sources', 'wpkg http://127.0.0.1:12321/ raspberry/'
-          );
-          /* Update the WPKG indices */
-          yield exec(
-            'wpkg_static',
-            '--root', rootDir,
-            '--update'
-          );
-          /* Deploy the packages */
-          yield exec(
-            'wpkg_static',
-            '--keep-original-symlink-target',
-            '--force-file-info',
-            '--skip-hooks',
-            '--root', rootDir,
-            '--install', ...pkgs
-          );
-          /* Deploy global hooks */
-          yield exec(
-            'wpkg_static',
-            '--root', rootDir,
-            '--add-hooks', '<PEON.ASSETS>/postinst'
-          );
-        }
+        yield cmd('pacman.syncRepository', {distribution: 'raspberry'});
 
         /* Generate the root for the MMC */
-        yield* genRoot('<PEON.PROD.ROOTDIR>/var/carnotzet', [
+        yield genRoot('carnotzet', '<PEON.ASSETS.GLOBAL>', [
           'carnotzet+rootfs-rpi4b-x+bin',
           'carnotzet+rescuefs-rpi4b-x+bin',
-          'raspberry+rpi4b-linux-kernel-x+bin',
-          'raspberry+rpi4b-uboot-x+bin',
-          'raspberry+rpi4b-firmware-x+bin',
-          'gnu+glibc-rpi4b-x+bin',
-          'gnu+libstdcxx-rpi4b-x+bin',
-          'vlasenko+busybox-rpi4b-x+bin',
-          'tytso+e2fsprogs-rpi4b-x+bin',
-          'dosfstools+dosfstools-rpi4b-x+bin',
-          'unigw+wpkg-rpi4b-x+bin'
+          'raspberry+linux-kernel-rpi4b-x+bin',
+          'raspberry+linux-kernel-rpi4b-x+modules',
+          'raspberry+linux-firmware-rpi4b-x+bin',
+          'raspberry+uboot-rpi4b-x+bin',
+          'raspberry+firmware-rpi4b-x+bin',
+          'gnu+glibc-rpi64-x+bin',
+          'gnu+libstdcxx-rpi64-x+bin',
+          'vlasenko+busybox-rpi64-x+bin',
+          'linux+util-linux-rpi64-x+bin',
+          'tytso+e2fsprogs-rpi64-x+bin',
+          'dosfstools+dosfstools-rpi64-x+bin',
+          'malinen+wpa-supplicant-rpi64-x+bin',
+          'unigw+wpkg-rpi64-x+bin'
         ]);
-      prerm: |-
-        /* Remove the WPKG root */
-        rm('<PEON.PROD.ROOTDIR>/var/carnotzet');
+
+        yield genImage('carnotzet', 'carnotzet',
+          '<PEON.INSTALLDIR>/opt/img/carnotzet-os-<THIS.$VERSION>-rpi4b.img'
+        );
+      maketest: ''
+      makeinstall: ''
+    test: none
     env: {}
+  deploy: ''
   env:
     path: []
     other: {}
   embedded: true
+  runtime:
+    configure: ''

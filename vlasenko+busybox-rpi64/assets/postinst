@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/bin/chmod u+s /bin/busybox

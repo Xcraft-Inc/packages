@@ -16,15 +16,17 @@ description:
 dependency: {}
 bump:
   - carnotzet+os-rpi4b
+  - carnotzet+rescuefs-rpi4b
 data:
   get:
-    uri: 'self:///root'
+    uri: ''
     mirrors: []
     ref: ''
     $ref: ''
     out: ''
     externals: false
-    prepare: "cp('.', '<PEON.WPKG.STAG>/usr/share/carnotzet/rootfs-rpi4b/data');"
+    prepare: |-
+      cp('<PEON.ASSETS.GLOBAL>/root', '<PEON.WPKG.STAG>/usr/share/carnotzet/rootfs-rpi4b/data');
   type: src
   configure: ''
   rules:
@@ -37,9 +39,9 @@ data:
       maketest: ''
       makeinstall: |-
         cp('<PEON.WPKG.STAG>/usr/share/carnotzet/rootfs-rpi4b/data', '<PEON.INSTALLDIR.X+BIN>');
-        cp('<PEON.ASSETS>/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
-        cp('<PEON.ASSETS>/postinst',  '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
-        cp('<PEON.ASSETS>/prerm',     '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+        cp('<PEON.ASSETS.GLOBAL>/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+        cp('<PEON.ASSETS>/postinst', '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+        cp('<PEON.ASSETS>/prerm',    '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
     test: ''
     env: {}
   deploy: ''
