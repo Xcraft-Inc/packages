@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: kitware+cmake
-version: 3.31.8
-$version: 3.31.8
+version: 3.31.9
+$version: 3.31.9
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
