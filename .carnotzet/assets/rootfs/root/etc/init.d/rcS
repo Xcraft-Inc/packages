@@ -65,6 +65,7 @@ boot_normal()
     for postinst in /var/lib/wpkg/*/postinst; do
       sh "$postinst"
     done
+    ldconfig
     touch /var/.bootstrapped
   fi
 
