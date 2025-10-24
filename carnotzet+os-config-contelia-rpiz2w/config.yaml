@@ -1,0 +1,58 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: carnotzet+os-config-contelia-rpiz2w
+version: '0.1.0'
+$version: '0.1.0'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: mathieu@schroetersa.ch
+architecture:
+  - source
+description:
+  brief: Base configuration files
+  long: ''
+dependency:
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+  make:
+    xcraft+base-make:
+      - version: ''
+        architecture: []
+bump:
+  - carnotzet+os-rpiz2w
+  - carnotzet+rescue-rpiz2w
+data:
+  get:
+    uri: ''
+    mirrors: []
+    ref: <THIS.$VERSION>
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: ''
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: ''
+      maketest: ''
+      makeinstall: |-
+        cp('<PEON.ASSETS>/carnotzet.d', '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.d');
+        cp('<PEON.ASSETS>/config.txt',  '<PEON.INSTALLDIR.X+BIN>/boot/config.txt');
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

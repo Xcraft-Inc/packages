@@ -14,13 +14,16 @@ description:
   long: ''
 dependency:
   install:
+    carnotzet+os-config-contelia-rpiz2w:
+      - version: ''
+        architecture: []
     carnotzet+rootfs-rpiz2w:
       - version: ''
         architecture: []
     carnotzet+rescuefs-rpiz2w:
       - version: ''
         architecture: []
-    raspberry+linux-kernel-rpiz2w:
+    raspberry+linux-kernel-contelia-rpiz2w:
       - version: ''
         architecture: []
     raspberry+linux-firmware-rpiz2w:
@@ -103,10 +106,11 @@ data:
 
         /* Generate the root for the MMC */
         yield genRoot('carnotzet', '<PEON.ASSETS.GLOBAL>', [
+          'carnotzet+os-config-contelia-rpiz2w-x+bin',
           'carnotzet+rootfs-rpiz2w-x+bin',
           'carnotzet+rescuefs-rpiz2w-x+bin',
-          'raspberry+linux-kernel-rpiz2w-x+bin',
-          'raspberry+linux-kernel-rpiz2w-x+modules',
+          'raspberry+linux-kernel-contelia-rpiz2w-x+bin',
+          'raspberry+linux-kernel-contelia-rpiz2w-x+modules',
           'raspberry+linux-firmware-rpiz2w-x+bin',
           'raspberry+uboot-rpiz2w-x+bin',
           'raspberry+firmware-rpiz2w-x+bin',
@@ -123,8 +127,6 @@ data:
           'malinen+hostapd-rpi64-x+bin',
           'vlasenko+busybox-rpi64-x+httpd'
         ]);
-
-        cp('<PEON.ASSETS>/carnotzet.d', 'carnotzet/boot/carnotzet.d');
 
         yield genImage('carnotzet', 'carnotzet',
           '<PEON.INSTALLDIR>/opt/img/carnotzet-os-contelia-<THIS.$VERSION>-rpiz2w.img'
