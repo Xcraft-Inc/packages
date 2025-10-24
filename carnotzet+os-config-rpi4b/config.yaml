@@ -1,9 +1,9 @@
 subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
-name: raspberry+firmware-rpiz2w
-version: '1.20250915'
-$version: '1.20250915'
+name: carnotzet+os-config-rpi4b
+version: '0.1.0'
+$version: '0.1.0'
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -11,7 +11,7 @@ maintainer:
 architecture:
   - source
 description:
-  brief: Firmware for RASPBERRY Pi4 model B
+  brief: Base configuration files
   long: ''
 dependency:
   build:
@@ -23,12 +23,13 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpiz2w
+  - carnotzet+os-rpi4b
+  - carnotzet+rescue-rpi4b
 data:
   get:
-    uri: 'https://github.com/raspberrypi/firmware/releases/download/<THIS.$VERSION>/raspi-firmware_<THIS.$VERSION>.orig.tar.xz'
+    uri: ''
     mirrors: []
-    ref: ''
+    ref: <THIS.$VERSION>
     $ref: ''
     out: ''
     externals: true
@@ -37,18 +38,14 @@ data:
   configure: ''
   rules:
     type: script
-    location: data/raspi-firmware-<THIS.$VERSION>
+    location: ''
     args:
       postinst: ''
       prerm: ''
       makeall: ''
       maketest: ''
       makeinstall: |-
-        cp('boot/bootcode.bin', '<PEON.INSTALLDIR.X+BIN>/boot/bootcode.bin');
-        cp('boot/start.elf',    '<PEON.INSTALLDIR.X+BIN>/boot/start.elf');
-        cp('boot/start_cd.elf', '<PEON.INSTALLDIR.X+BIN>/boot/start_cd.elf');
-        cp('boot/fixup.dat',    '<PEON.INSTALLDIR.X+BIN>/boot/fixup.dat');
-        cp('boot/fixup_cd.dat', '<PEON.INSTALLDIR.X+BIN>/boot/fixup_cd.dat');
+        cp('<PEON.ASSETS.GLOBAL>/config.txt', '<PEON.INSTALLDIR.X+BIN>/boot/config.txt');
     test: none
     env: {}
   deploy: ''

@@ -14,6 +14,9 @@ description:
   long: ''
 dependency:
   install:
+    carnotzet+os-config-rpi4b:
+      - version: ''
+        architecture: []
     carnotzet+rootfs-rpi4b:
       - version: ''
         architecture: []
@@ -97,6 +100,7 @@ data:
 
         /* Generate the root for the MMC */
         yield genRoot('carnotzet', '<PEON.ASSETS.GLOBAL>', [
+          'carnotzet+os-config-rpi4b-x+bin',
           'carnotzet+rootfs-rpi4b-x+bin',
           'carnotzet+rescuefs-rpi4b-x+bin',
           'raspberry+linux-kernel-rpi4b-x+bin',
