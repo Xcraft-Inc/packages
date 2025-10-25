@@ -34,8 +34,10 @@ dependency:
 bump:
   - carnotzet+os-rpi4b
   - carnotzet+os-rpiz2w
+  - carnotzet+os-contelia-rpiz2w
   - carnotzet+rescuefs-rpi4b
   - carnotzet+rescuefs-rpiz2w
+  - carnotzet+rescuefs-contelia-rpiz2w
 data:
   get:
     uri: 'https://www.busybox.net/downloads/busybox-<THIS.$VERSION>.tar.bz2'
