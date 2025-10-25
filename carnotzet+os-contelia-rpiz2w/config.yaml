@@ -20,7 +20,7 @@ dependency:
     carnotzet+rootfs-rpiz2w:
       - version: ''
         architecture: []
-    carnotzet+rescuefs-rpiz2w:
+    carnotzet+rescuefs-contelia-rpiz2w:
       - version: ''
         architecture: []
     raspberry+linux-kernel-contelia-rpiz2w:
@@ -108,7 +108,7 @@ data:
         yield genRoot('carnotzet', '<PEON.ASSETS.GLOBAL>', [
           'carnotzet+os-config-contelia-rpiz2w-x+bin',
           'carnotzet+rootfs-rpiz2w-x+bin',
-          'carnotzet+rescuefs-rpiz2w-x+bin',
+          'carnotzet+rescuefs-contelia-rpiz2w-x+bin',
           'raspberry+linux-kernel-contelia-rpiz2w-x+bin',
           'raspberry+linux-kernel-contelia-rpiz2w-x+modules',
           'raspberry+linux-firmware-rpiz2w-x+bin',
