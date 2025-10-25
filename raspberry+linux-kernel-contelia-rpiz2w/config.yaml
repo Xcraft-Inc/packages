@@ -70,7 +70,8 @@ data:
                   CROSS_COMPILE=aarch64-xcraft-linux-gnu-
                   INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+MODULES>"
                   modules_install
-          && scripts/dtc/dtc -@ -I dts -O dtb -o "<PEON.INSTALLDIR.X+BIN>/boot/overlays/gamepi13-st7789.dtbo" "<PEON.ASSETS>/gamepi13-st7789-overlay.dts"
+          && scripts/dtc/dtc -@ -I dts -O dtb -o "<PEON.INSTALLDIR.X+BIN>/boot/overlays/gamepi13-st7789.dtbo"     "<PEON.ASSETS>/gamepi13-st7789-overlay.dts"
+          && scripts/dtc/dtc -@ -I dts -O dtb -o "<PEON.INSTALLDIR.X+BIN>/boot/overlays/gamepi13-audremap18.dtbo" "<PEON.ASSETS>/gamepi13-audremap18-overlay.dts"
           && cp -a arch/arm64/boot/Image "<PEON.INSTALLDIR.X+BIN>/boot/"
           && cp -a arch/arm64/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
     test: none
