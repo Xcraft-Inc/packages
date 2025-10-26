@@ -1,0 +1,70 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: alsa+utils-rpi64
+version: 1.2.14
+$version: 1.2.14
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Advanced Linux Sound Architecture - Utilities
+  long: This package contains the command line utilities for the ALSA project. The package can be compiled only with the installed ALSA driver and the ALSA C library (alsa-lib).
+dependency:
+  install:
+    alsa+lib-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    alsa+lib-rpi64:
+      - version: ''
+        architecture: []
+    gnu+libncurses-rpi64:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'http://www.alsa-project.org/files/pub/utils/alsa-utils-<THIS.$VERSION>.tar.bz2'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/usr
+                     --build=$MACHTYPE
+                     --host=aarch64-xcraft-linux-gnu
+  rules:
+    type: script
+    location: data/alsa-utils-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!make -j{PEON.CPUS.COUNT}'
+      maketest: ''
+      makeinstall: '!make install DESTDIR=<PEON.INSTALLDIR.X+BIN>'
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

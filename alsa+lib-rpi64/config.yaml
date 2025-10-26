@@ -1,0 +1,65 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: alsa+lib-rpi64
+version: 1.2.14
+$version: 1.2.14
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Advanced Linux Sound Architecture (ALSA) project
+  long: The alsa-lib is a library to interface with ALSA in the Linux kernel and virtual devices using a plugin system.
+dependency:
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'http://www.alsa-project.org/files/pub/lib/alsa-lib-<THIS.$VERSION>.tar.bz2'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/usr
+                     --build=$MACHTYPE
+                     --host=aarch64-xcraft-linux-gnu
+  rules:
+    type: script
+    location: data/alsa-lib-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!make -j{PEON.CPUS.COUNT}'
+      maketest: ''
+      makeinstall: |-
+        !   make install DESTDIR=<PEON.INSTALLDIR>
+         && make install DESTDIR=<PEON.INSTALLDIR.X+BIN>
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+  deploy: |-
+    !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.a
+    && rm  -f <PEON.INSTALLDIR>/usr/lib/*.la
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.la
+    && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/pkgconfig
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
