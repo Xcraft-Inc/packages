@@ -1,0 +1,17 @@
+# DON'T EDIT THIS FILE
+network_wire=""
+
+network_wifi="wlan0"
+network_wifi_mode="ap"
+network_wifi_dhcp="off"
+
+network_wifi_ip="192.168.42.1"
+network_wifi_mask="24"
+network_wifi_gw="192.168.42.1"
+network_wifi_dns="192.168.42.1"
+
+network_wifi_dnsmasq_address="/#/192.168.42.1"
+network_wifi_dnsmasq_dhcp="192.168.42.10,192.168.42.254,255.255.255.0,15m"
+
+wifi_ssid="Contelia"
+wifi_country="CH"

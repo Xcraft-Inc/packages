@@ -17,6 +17,7 @@ dependency: {}
 bump:
   - carnotzet+os-rpiz2w
   - carnotzet+rescuefs-rpiz2w
+  - carnotzet+rescuefs-contelia-rpiz2w
 data:
   get:
     uri: ''

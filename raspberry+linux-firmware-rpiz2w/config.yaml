@@ -47,7 +47,7 @@ data:
       makeinstall: |-
         cp(
           'brcm/brcmfmac43430-sdio.raspberrypi,3-model-b.txt',
-          '<PEON.INSTALLDIR.X+BIN>/lib/firmware/brcm/brcmfmac43430-sdio.raspberrypi,3-model-b.txt'
+          '<PEON.INSTALLDIR.X+BIN>/lib/firmware/brcm/brcmfmac43430-sdio.raspberrypi,model-zero-2-w.txt'
         );
         cp(
           'cypress/cyfmac43430-sdio.bin',
@@ -55,7 +55,7 @@ data:
         );
         ln(
           'brcmfmac43430-sdio.bin',
-          '<PEON.INSTALLDIR.X+BIN>/lib/firmware/brcm/brcmfmac43430-sdio.raspberrypi,3-model-bb.bin'
+          '<PEON.INSTALLDIR.X+BIN>/lib/firmware/brcm/brcmfmac43430-sdio.raspberrypi,model-zero-2-w.bin'
         );
         cp(
           'cypress/cyfmac43430-sdio.clm_blob',

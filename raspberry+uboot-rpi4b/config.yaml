@@ -74,7 +74,8 @@ data:
         /* Specific Carnotzet OS settings (not u-boot related) */
         cp('<PEON.ASSETS.GLOBAL>/carnotzet.env', '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.env');
         cp('<PEON.ASSETS.GLOBAL>/carnotzet.cfg', '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.cfg');
-        cp('<PEON.ASSETS.GLOBAL>/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+        cp('<PEON.ASSETS.GLOBAL>/carnotzet.d',   '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.d');
+        cp('<PEON.ASSETS.GLOBAL>/conffiles',     '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
     test: none
     env:
       CFLAGS: '<PEON.ENV.CFLAGS> -I<PEON.PROD.ROOTDIR>/usr/local/include'

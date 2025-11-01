@@ -1,9 +1,9 @@
 subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
-name: dosfstools+dosfstools-rpi64
-version: '4.2'
-$version: '4.2'
+name: alsa+lib-rpi64
+version: 1.2.14
+$version: 1.2.14
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -11,8 +11,8 @@ maintainer:
 architecture:
   - source
 description:
-  brief: 'Programs to create, check and label file systems of the FAT family.'
-  long: 'dosfstools consists of the programs mkfs.fat, fsck.fat and fatlabel to create, check and label file systems of the FAT family. '
+  brief: Advanced Linux Sound Architecture (ALSA) project
+  long: The alsa-lib is a library to interface with ALSA in the Linux kernel and virtual devices using a plugin system.
 dependency:
   build:
     xcraft+base-build:
@@ -21,16 +21,10 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
-bump:
-  - carnotzet+os-rpi4b
-  - carnotzet+os-rpiz2w
-  - carnotzet+os-contelia-rpiz2w
-  - carnotzet+rescuefs-rpi4b
-  - carnotzet+rescuefs-rpiz2w
-  - carnotzet+rescuefs-contelia-rpiz2w
+bump: []
 data:
   get:
-    uri: 'https://github.com/dosfstools/dosfstools/releases/download/v<THIS.$VERSION>/dosfstools-<THIS.$VERSION>.tar.gz'
+    uri: 'http://www.alsa-project.org/files/pub/lib/alsa-lib-<THIS.$VERSION>.tar.bz2'
     mirrors: []
     ref: ''
     $ref: ''
@@ -43,20 +37,26 @@ data:
       && ./configure --prefix=/usr
                      --build=$MACHTYPE
                      --host=aarch64-xcraft-linux-gnu
-                     --enable-compat-symlinks
   rules:
     type: script
-    location: data/dosfstools-<THIS.$VERSION>
+    location: data/alsa-lib-<THIS.$VERSION>
     args:
       postinst: ''
       prerm: ''
       makeall: '!make -j{PEON.CPUS.COUNT}'
       maketest: ''
-      makeinstall: '!make install DESTDIR=<PEON.INSTALLDIR.X+BIN>'
+      makeinstall: |-
+        !   make install DESTDIR=<PEON.INSTALLDIR>
+         && make install DESTDIR=<PEON.INSTALLDIR.X+BIN>
     test: none
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
-  deploy: ''
+  deploy: |-
+    !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.a
+    && rm  -f <PEON.INSTALLDIR>/usr/lib/*.la
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.la
+    && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/pkgconfig
   env:
     path: []
     other: {}

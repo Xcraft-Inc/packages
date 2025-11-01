@@ -1,0 +1,32 @@
+/dts-v1/;
+
+/ {
+	compatible = "brcm,bcm2835";
+
+	fragment@0 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			brcm,pins = <0x12>;
+			brcm,function = <0x02>;
+			phandle = <0x01>;
+		};
+	};
+
+	fragment@1 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			bootargs = "snd_bcm2835.enable_headphones=1";
+		};
+	};
+
+	__symbols__ {
+		frag0 = "/fragment@0/__overlay__";
+	};
+
+	__fixups__ {
+		audio_pins = "/fragment@0:target:0";
+		chosen = "/fragment@1:target:0";
+	};
+};

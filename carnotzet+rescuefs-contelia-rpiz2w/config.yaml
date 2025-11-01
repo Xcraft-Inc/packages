@@ -1,0 +1,125 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: carnotzet+rescuefs-contelia-rpiz2w
+version: 0.1.0
+$version: 0.1.0
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Carnotzet rescue initramfs
+  long: ''
+dependency:
+  install:
+    carnotzet+rootfs-rpiz2w:
+      - version: ''
+        architecture: []
+    raspberry+linux-kernel-contelia-rpiz2w:
+      - version: ''
+        architecture: []
+    raspberry+linux-firmware-rpiz2w:
+      - version: ''
+        architecture: []
+    gnu+glibc-rpi64:
+      - version: ''
+        architecture: []
+    vlasenko+busybox-rpi64:
+      - version: ''
+        architecture: []
+    tytso+e2fsprogs-rpi64:
+      - version: ''
+        architecture: []
+    dosfstools+dosfstools-rpi64:
+      - version: ''
+        architecture: []
+    linux+util-linux-rpi64:
+      - version: ''
+        architecture: []
+    malinen+wpa-supplicant-rpi64:
+      - version: ''
+        architecture: []
+    raspberry+uboot-rpiz2w:
+      - version: ''
+        architecture: []
+  build:
+    gnu+cpio:
+      - version: ''
+        architecture: []
+    gnu+gzip:
+      - version: ''
+        architecture: []
+bump:
+  - carnotzet+os-contelia-rpiz2w
+data:
+  get:
+    uri: ''
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: false
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: ''
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: |-
+        const {genRoot, genInitramfs} = imp('raspberry');
+
+        yield cmd('pacman.syncRepository', {distribution: 'raspberry'});
+
+        try {
+          /* Generate the root for the recovery initramfs */
+          yield genRoot('<PEON.PROD.ROOTDIR>/var/rescue', '<PEON.ASSETS.GLOBAL>', [
+            'carnotzet+rootfs-rpiz2w-x+bin',
+            'raspberry+linux-kernel-contelia-rpiz2w-x+modules',
+            'raspberry+linux-firmware-rpiz2w-x+bin',
+            'gnu+glibc-rpi64-x+bin',
+            'vlasenko+busybox-rpi64-x+bin',
+            'linux+util-linux-rpi64-x+bin',
+            'tytso+e2fsprogs-rpi64-x+bin',
+            'dosfstools+dosfstools-rpi64-x+bin',
+            'malinen+wpa-supplicant-rpi64-x+bin'
+          ]);
+
+          /* Keep only essential modules */
+          const modVer = '6.12.34-v8';
+          const kernelDir = `<PEON.PROD.ROOTDIR>/var/rescue/lib/modules/${modVer}/kernel`;
+          [
+            'drivers/net/wireless/broadcom/brcm80211',
+            'net/ipv6',
+            'net/rfkill',
+            'net/wireless'
+          ].forEach((dir) => cp(kernelDir + '/' + dir, kernelDir + '_' + '/' + dir));
+          rm(kernelDir);
+          mv(kernelDir + '_', kernelDir);
+
+          /* Keep only postinst scripts */
+          rmFiles('<PEON.PROD.ROOTDIR>/var/rescue/var/lib/wpkg', /^(?!.*[/]postinst$)/);
+          cp('<PEON.ASSETS.GLOBAL>/postinst', '<PEON.PROD.ROOTDIR>/var/rescue/var/lib/wpkg/core/postinst');
+
+          /* Generate the initramfs */
+          yield genInitramfs('<PEON.PROD.ROOTDIR>/var/rescue', '<PEON.INSTALLDIR.X+BIN>/boot', 'mkimage-rpiz2w');
+        } finally {
+          rm('<PEON.PROD.ROOTDIR>/var/rescue');
+        }
+      maketest: ''
+      makeinstall: ''
+    test: none
+    env:
+      PATH: <PEON.ENV.PATH>:<PEON.PROD.ROOTDIR>/usr/bin
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

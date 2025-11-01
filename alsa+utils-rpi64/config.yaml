@@ -1,9 +1,9 @@
 subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
-name: dosfstools+dosfstools-rpi64
-version: '4.2'
-$version: '4.2'
+name: alsa+utils-rpi64
+version: 1.2.14
+$version: 1.2.14
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -11,9 +11,21 @@ maintainer:
 architecture:
   - source
 description:
-  brief: 'Programs to create, check and label file systems of the FAT family.'
-  long: 'dosfstools consists of the programs mkfs.fat, fsck.fat and fatlabel to create, check and label file systems of the FAT family. '
+  brief: Advanced Linux Sound Architecture - Utilities
+  long: This package contains the command line utilities for the ALSA project. The package can be compiled only with the installed ALSA driver and the ALSA C library (alsa-lib).
 dependency:
+  install:
+    alsa+lib-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    alsa+lib-rpi64:
+      - version: ''
+        architecture: []
+    gnu+libncurses-rpi64:
+      - version: ''
+        architecture: []
   build:
     xcraft+base-build:
       - version: ''
@@ -21,16 +33,10 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
-bump:
-  - carnotzet+os-rpi4b
-  - carnotzet+os-rpiz2w
-  - carnotzet+os-contelia-rpiz2w
-  - carnotzet+rescuefs-rpi4b
-  - carnotzet+rescuefs-rpiz2w
-  - carnotzet+rescuefs-contelia-rpiz2w
+bump: []
 data:
   get:
-    uri: 'https://github.com/dosfstools/dosfstools/releases/download/v<THIS.$VERSION>/dosfstools-<THIS.$VERSION>.tar.gz'
+    uri: 'http://www.alsa-project.org/files/pub/utils/alsa-utils-<THIS.$VERSION>.tar.bz2'
     mirrors: []
     ref: ''
     $ref: ''
@@ -43,10 +49,9 @@ data:
       && ./configure --prefix=/usr
                      --build=$MACHTYPE
                      --host=aarch64-xcraft-linux-gnu
-                     --enable-compat-symlinks
   rules:
     type: script
-    location: data/dosfstools-<THIS.$VERSION>
+    location: data/alsa-utils-<THIS.$VERSION>
     args:
       postinst: ''
       prerm: ''

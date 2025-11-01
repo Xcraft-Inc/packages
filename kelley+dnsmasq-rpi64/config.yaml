@@ -46,6 +46,7 @@ data:
       CC: 'aarch64-xcraft-linux-gnu-gcc'
   deploy: |-
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/dnsmasq');
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/lib/misc');
     cp('<PEON.ASSETS>/sv/run',       '<PEON.INSTALLDIR.X+BIN>/etc/sv/dnsmasq/run');
     cp('<PEON.ASSETS>/sv/log/run',   '<PEON.INSTALLDIR.X+BIN>/etc/sv/dnsmasq/log/run');
     cp('<PEON.ASSETS>/postinst',     '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');

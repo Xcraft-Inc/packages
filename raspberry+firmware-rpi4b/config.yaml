@@ -44,8 +44,10 @@ data:
       makeall: ''
       maketest: ''
       makeinstall: |-
-        cp('boot/start4.elf', '<PEON.INSTALLDIR.X+BIN>/boot/start4.elf');
-        cp('<PEON.ASSETS.GLOBAL>/config.txt', '<PEON.INSTALLDIR.X+BIN>/boot/config.txt');
+        cp('boot/start4.elf',   '<PEON.INSTALLDIR.X+BIN>/boot/start4.elf');
+        cp('boot/start4cd.elf', '<PEON.INSTALLDIR.X+BIN>/boot/start4cd.elf');
+        cp('boot/fixup4.dat',   '<PEON.INSTALLDIR.X+BIN>/boot/fixup4.dat');
+        cp('boot/fixup4cd.dat', '<PEON.INSTALLDIR.X+BIN>/boot/fixup4cd.dat');
     test: none
     env: {}
   deploy: ''

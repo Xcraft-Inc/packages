@@ -1,7 +1,7 @@
 subpackage:
   - runtime*
-name: carnotzet+os-rpi4b
-version: 0.1.0-53
+name: carnotzet+os-contelia-rpiz2w
+version: 0.1.0
 $version: 0.1.0
 distribution: raspberry/
 maintainer:
@@ -14,25 +14,25 @@ description:
   long: ''
 dependency:
   install:
-    carnotzet+os-config-rpi4b:
+    carnotzet+os-config-contelia-rpiz2w:
       - version: ''
         architecture: []
-    carnotzet+rootfs-rpi4b:
+    carnotzet+rootfs-rpiz2w:
       - version: ''
         architecture: []
-    carnotzet+rescuefs-rpi4b:
+    carnotzet+rescuefs-contelia-rpiz2w:
       - version: ''
         architecture: []
-    raspberry+linux-kernel-rpi4b:
+    raspberry+linux-kernel-contelia-rpiz2w:
       - version: ''
         architecture: []
-    raspberry+linux-firmware-rpi4b:
+    raspberry+linux-firmware-rpiz2w:
       - version: ''
         architecture: []
-    raspberry+uboot-rpi4b:
+    raspberry+uboot-rpiz2w:
       - version: ''
         architecture: []
-    raspberry+firmware-rpi4b:
+    raspberry+firmware-rpiz2w:
       - version: ''
         architecture: []
     gnu+glibc-rpi64:
@@ -57,6 +57,15 @@ dependency:
       - version: ''
         architecture: []
     malinen+wpa-supplicant-rpi64:
+      - version: ''
+        architecture: []
+    kelley+dnsmasq-rpi64:
+      - version: ''
+        architecture: []
+    malinen+hostapd-rpi64:
+      - version: ''
+        architecture: []
+    alsa+utils-rpi64:
       - version: ''
         architecture: []
   build:
@@ -100,14 +109,14 @@ data:
 
         /* Generate the root for the MMC */
         yield genRoot('carnotzet', '<PEON.ASSETS.GLOBAL>', [
-          'carnotzet+os-config-rpi4b-x+bin',
-          'carnotzet+rootfs-rpi4b-x+bin',
-          'carnotzet+rescuefs-rpi4b-x+bin',
-          'raspberry+linux-kernel-rpi4b-x+bin',
-          'raspberry+linux-kernel-rpi4b-x+modules',
-          'raspberry+linux-firmware-rpi4b-x+bin',
-          'raspberry+uboot-rpi4b-x+bin',
-          'raspberry+firmware-rpi4b-x+bin',
+          'carnotzet+os-config-contelia-rpiz2w-x+bin',
+          'carnotzet+rootfs-rpiz2w-x+bin',
+          'carnotzet+rescuefs-contelia-rpiz2w-x+bin',
+          'raspberry+linux-kernel-contelia-rpiz2w-x+bin',
+          'raspberry+linux-kernel-contelia-rpiz2w-x+modules',
+          'raspberry+linux-firmware-rpiz2w-x+bin',
+          'raspberry+uboot-rpiz2w-x+bin',
+          'raspberry+firmware-rpiz2w-x+bin',
           'gnu+glibc-rpi64-x+bin',
           'gnu+libstdcxx-rpi64-x+bin',
           'vlasenko+busybox-rpi64-x+bin',
@@ -115,11 +124,19 @@ data:
           'tytso+e2fsprogs-rpi64-x+bin',
           'dosfstools+dosfstools-rpi64-x+bin',
           'malinen+wpa-supplicant-rpi64-x+bin',
-          'unigw+wpkg-rpi64-x+bin'
+          'unigw+wpkg-rpi64-x+bin',
+
+          /* Extra for Captive Portal */
+          'kelley+dnsmasq-rpi64-x+bin',
+          'malinen+hostapd-rpi64-x+bin',
+          'vlasenko+busybox-rpi64-x+httpd',
+
+          /* Audio */
+          'alsa+utils-rpi64-x+bin'
         ]);
 
         yield genImage('carnotzet', 'carnotzet',
-          '<PEON.INSTALLDIR>/opt/img/carnotzet-os-<THIS.$VERSION>-rpi4b.img'
+          '<PEON.INSTALLDIR>/opt/img/carnotzet-os-contelia-<THIS.$VERSION>-rpiz2w.img'
         );
       maketest: ''
       makeinstall: ''
