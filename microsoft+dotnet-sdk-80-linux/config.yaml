@@ -28,6 +28,7 @@ data:
     $ref: ''
     out: ''
     externals: true
+    $hash: 8.0.408@2f8dcfb5b7e3dcf220c42d39ecc1b0333617aceeceb148862a9232207113e39b.tar.gz
   type: bin
   configure: |-
     yield exec(

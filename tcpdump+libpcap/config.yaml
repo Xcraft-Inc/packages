@@ -32,7 +32,7 @@ data:
     ref: ''
     out: ''
     externals: true
-    $hash: 635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094.tar.gz
+    $hash: 1.9.1@635237637c5b619bcceba91900666b64d56ecb7be63f298f601ec786ce087094.tar.gz
   type: src
   configure: '!cd <THIS.DATA.RULES.LOCATION> && ./configure --prefix=<PEON.PREFIXDIR> --disable-remote --disable-usb --disable-netmap --disable-bluetooth --enable-dbus --disable-rdma'
   rules:

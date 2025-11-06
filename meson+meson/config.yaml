@@ -41,7 +41,7 @@ data:
     out: ''
     externals: true
     prepare: ''
-    $hash: b1db3a153087549497ee52b1c938d2134e0338214fe14f7efd16fecd57b639f5.tar.gz
+    $hash: 1.2.1@b1db3a153087549497ee52b1c938d2134e0338214fe14f7efd16fecd57b639f5.tar.gz
   type: src
   configure: ''
   rules:

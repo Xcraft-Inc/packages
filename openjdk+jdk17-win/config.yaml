@@ -21,6 +21,7 @@ data:
     ref: ''
     out: ''
     externals: true
+    $hash: 17.0.2@b2208206bda47f2e0c971a39e057a5ec32c40b503d71e486790cb728d926b615.zip
   type: bin
   configure: "mv ('data/jdk-<THIS.$VERSION>', 'root/opt/openjdk17');"
   rules:

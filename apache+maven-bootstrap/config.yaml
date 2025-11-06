@@ -24,7 +24,7 @@ data:
     $ref: ''
     out: ''
     externals: true
-    $hash: 26ad91d751b3a9a53087aefa743f4e16a17741d3915b219cf74112bf87a438c5.tar.gz
+    $hash: 3.6.3@26ad91d751b3a9a53087aefa743f4e16a17741d3915b219cf74112bf87a438c5.tar.gz
   type: bin
   configure: 'mv(''data/apache-maven-<THIS.$VERSION>'', ''root/opt/maven-bootstrap'');'
   rules:

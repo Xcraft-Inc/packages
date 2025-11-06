@@ -52,6 +52,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 2.10@20df7ae5154b3830355f8ab4269123a87affdea59fe74fe9292a91d0d7e17b2f.tar.gz
   type: src
   configure: '!cd <THIS.DATA.RULES.LOCATION> && cp <PEON.ASSETS>/defconfig .config'
   rules:

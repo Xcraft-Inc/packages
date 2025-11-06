@@ -42,7 +42,7 @@ data:
     out: ''
     externals: true
     prepare: ''
-    $hash: 74b420d09d7f528e84f97aa330f0dd69a98a6053e7a4e01767eed115038807bf.tar.xz
+    $hash: 7.0.3@74b420d09d7f528e84f97aa330f0dd69a98a6053e7a4e01767eed115038807bf.tar.xz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>

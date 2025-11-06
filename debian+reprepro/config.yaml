@@ -60,7 +60,7 @@ data:
     out: ''
     externals: true
     prepare: ''
-    $hash: 055a7f8b670680df951a64d79f25fb5b3eb850fa7f3235b016c597178c51e1c7.tar.gz
+    $hash: 5.3.0@055a7f8b670680df951a64d79f25fb5b3eb850fa7f3235b016c597178c51e1c7.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>

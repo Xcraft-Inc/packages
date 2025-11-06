@@ -40,7 +40,7 @@ data:
     out: ''
     externals: true
     prepare: ''
-    $hash: 048617a2f03bc48ba22253e14d9242c25c03d192af11116a0f026ffda034ff29.tar.gz
+    $hash: 0.1.40@048617a2f03bc48ba22253e14d9242c25c03d192af11116a0f026ffda034ff29.tar.gz
   type: src
   configure: '!cd <THIS.DATA.RULES.LOCATION>/ && perl Makefile.PL PREFIX=<PEON.PREFIXDIR>'
   rules:

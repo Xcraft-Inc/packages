@@ -33,7 +33,7 @@ data:
     out: ''
     externals: true
     prepare: ''
-    $hash: e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995.tar.gz
+    $hash: 2.6.4@e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995.tar.gz
   type: src
   configure: '!cd <THIS.DATA.RULES.LOCATION> && ./configure --prefix=<PEON.PREFIXDIR> --disable-libfl <PEON.OS=linux?CFLAGS=-D_GNU_SOURCE:>'
   rules:

@@ -21,7 +21,7 @@ data:
     ref: ''
     out: ''
     externals: true
-    $hash: e8b3ec7a7077711223d31156e771f11723cd7af31c2017f1bd2eda20855940fb.tar.gz
+    $hash: 22.0.2@e8b3ec7a7077711223d31156e771f11723cd7af31c2017f1bd2eda20855940fb.tar.gz
   type: bin
   configure: 'mv (''data/jdk-<THIS.$VERSION>.jdk'', ''root/opt/openjdk'');'
   rules:

@@ -28,7 +28,7 @@ data:
     ref: ''
     out: ''
     externals: true
-    $hash: e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da.tar.xz
+    $hash: 13.2.0@e275e76442a6067341a27f04c5c6b83d8613144004c0413528863dc6b5c743da.tar.xz
   type: bin
   configure: 'mv(''data/gcc-<THIS.$VERSION>'', ''root/var/x-mingw-w64/gcc'');'
   rules:

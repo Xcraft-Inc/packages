@@ -21,6 +21,7 @@ data:
     ref: ''
     out: ''
     externals: true
+    $hash: 2.44@0cdd76777a0dfd3dd3a63f215f030208ddb91c2361d2bcc02acec0f1c16b6a2e.tar.gz
   type: bin
   configure: "mv('data/binutils-<THIS.$VERSION>', 'root/var/x-aarch64-linux/binutils');"
   rules:

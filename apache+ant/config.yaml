@@ -32,14 +32,14 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'https://downloads.apache.org/ant/source/apache-ant-<THIS.$VERSION>-src.tar.gz'
+    uri: 'https://archive.apache.org/dist/ant/source/apache-ant-<THIS.$VERSION>-src.tar.gz'
     mirrors: []
     ref: ''
     $ref: ''
     out: ''
     externals: true
     prepare: ''
-    $hash: da006f4c888d41d0f3f213565e48aeff73e4d8a6196e494121d8da1e567a8406.tar.gz
+    $hash: 1.10.13@da006f4c888d41d0f3f213565e48aeff73e4d8a6196e494121d8da1e567a8406.tar.gz
   type: src
   configure: ''
   rules:

@@ -24,7 +24,7 @@ data:
     mirrors: []
     ref: ''
     $ref: ''
-    $hash: 8b69868ae26b02b82c96c57c6f27d1bd1dce88db9c14ec40b2c100cd13013aa8.tar.gz
+    $hash: 2025.7.0@8b69868ae26b02b82c96c57c6f27d1bd1dce88db9c14ec40b2c100cd13013aa8.tar.gz
     out: ''
     externals: true
     prepare: ''

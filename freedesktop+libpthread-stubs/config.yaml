@@ -23,7 +23,7 @@ data:
     ref: ''
     out: ''
     externals: true
-    $hash: 593196cc746173d1e25cb54a93a87fd749952df68699aab7e02c085530e87747.tar.gz
+    $hash: 0.5@593196cc746173d1e25cb54a93a87fd749952df68699aab7e02c085530e87747.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>

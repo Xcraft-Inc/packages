@@ -31,7 +31,7 @@ data:
     out: ''
     externals: true
     prepare: ''
-    $hash: 7589a2381a8419e68654a47623ce7dfcb756815c8fee726b98f90bf668af7bc6.tar.gz
+    $hash: 8.1.2@7589a2381a8419e68654a47623ce7dfcb756815c8fee726b98f90bf668af7bc6.tar.gz
   type: src
   configure: |-
     !{bash}

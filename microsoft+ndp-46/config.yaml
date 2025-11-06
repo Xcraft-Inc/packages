@@ -22,7 +22,7 @@ data:
     ref: ''
     out: ''
     externals: true
-    $hash: 0c32151c7b29e7dcde9524db04ac6fa86f4532cb99c747639d05f7c335ee95ae.exe
+    $hash: 4.6.1@0c32151c7b29e7dcde9524db04ac6fa86f4532cb99c747639d05f7c335ee95ae.exe
   type: bin
   configure: ''
   rules:

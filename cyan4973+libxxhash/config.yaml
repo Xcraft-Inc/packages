@@ -26,7 +26,7 @@ data:
     out: ''
     externals: true
     prepare: ''
-    $hash: 3bb6b7d6f30c591dd65aaaff1c8b7a5b94d81687998ca9400082c739a690436c.tar.gz
+    $hash: 0.8.1@3bb6b7d6f30c591dd65aaaff1c8b7a5b94d81687998ca9400082c739a690436c.tar.gz
   type: src
   configure: ''
   rules:

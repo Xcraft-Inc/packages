@@ -32,7 +32,7 @@ data:
     ref: ''
     out: ''
     externals: true
-    $hash: 0c86305c141bf602d064bcce7f28b49ec80e75f4f847096fd4fca9b54330bbd1.tar.gz
+    $hash: 0.74@0c86305c141bf602d064bcce7f28b49ec80e75f4f847096fd4fca9b54330bbd1.tar.gz
   type: src
   configure: '!cd <THIS.DATA.RULES.LOCATION>/ && perl Build.PL'
   rules:

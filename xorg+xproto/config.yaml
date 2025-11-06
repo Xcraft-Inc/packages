@@ -27,7 +27,7 @@ data:
     out: ''
     externals: true
     prepare: ''
-    $hash: c791aad9b5847781175388ebe2de85cb5f024f8dabf526d5d699c4f942660cc3.tar.gz
+    $hash: 2023.2@c791aad9b5847781175388ebe2de85cb5f024f8dabf526d5d699c4f942660cc3.tar.gz
   type: src
   configure: '!cd <THIS.DATA.RULES.LOCATION> && ./configure --prefix=<PEON.PREFIXDIR> --disable-specs --without-fop --without-xmlto --without-xsltproc'
   rules:

@@ -31,6 +31,7 @@ data:
     $ref: ''
     out: ''
     externals: true
+    $hash: 8.5.0@d308841a511bb830a6100397b0042db24ce11f642dab6ea6ee44842e5325ed50.tar.xz
   type: bin
   configure: |-
     mv('data/gcc-<THIS.$VERSION>', 'root/var/x-arm-linux/gcc8');
