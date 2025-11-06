@@ -1,6 +1,6 @@
 name: appimage+appimagetool
-version: '904'
-$version: '904'
+version: '907'
+$version: '907'
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -24,6 +24,7 @@ data:
     $ref: ''
     out: ''
     externals: true
+    $hash: 907@398cabd8f7fb62ae81ec359f93b06c07151f994477fb2c1b48990a7af4afaca9.AppImage
   type: bin
   configure: |-
     mv('appimagetool-<THIS.$VERSION>-x86_64.AppImage', 'root/usr/bin/appimagetool-x86_64.AppImage');
