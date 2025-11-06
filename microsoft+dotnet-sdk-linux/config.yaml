@@ -1,6 +1,6 @@
 name: microsoft+dotnet-sdk-linux
-version: 23.1.0
-$version: 23.1.0
+version: 33.0.0
+$version: 33.0.0
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -8,7 +8,7 @@ maintainer:
 architecture:
   - linux-amd64
 description:
-  brief: '.NET Core SDK 6.0, 8.0 and 9.0'
+  brief: '.NET Core SDK 6.0, 8.0, 9.0 and 10.0'
   long: ''
 dependency:
   install:
@@ -34,6 +34,10 @@ dependency:
       - version: ''
         architecture:
           - linux-amd64
+    microsoft+dotnet-sdk-100-linux:
+      - version: ''
+        architecture:
+          - linux-amd64
 bump: []
 data:
   get:
@@ -55,6 +59,7 @@ data:
     cp('<PEON.ROOTDIR>/usr/share/microsoft/dotnet-sdk-60-linux/cache/data', 'root/opt/dotnet-sdk');
     cp('<PEON.ROOTDIR>/usr/share/microsoft/dotnet-sdk-80-linux/cache/data', 'root/opt/dotnet-sdk');
     cp('<PEON.ROOTDIR>/usr/share/microsoft/dotnet-sdk-90-linux/cache/data', 'root/opt/dotnet-sdk');
+    cp('<PEON.ROOTDIR>/usr/share/microsoft/dotnet-sdk-100-linux/cache/data', 'root/opt/dotnet-sdk');
   rules:
     type: move
     location: root
