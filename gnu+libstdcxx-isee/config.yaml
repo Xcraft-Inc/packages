@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: gnu+libstdcxx-isee
-version: '10.5.0'
-$version: '10.5.0'
+version: 10.5.0
+$version: 10.5.0
 distribution: isee/
 maintainer:
   name: Mathieu Schroeter

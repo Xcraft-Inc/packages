@@ -1,9 +1,9 @@
 subpackage:
   - runtime*
-  - x+bin:linux-aarch64
+  - 'x+bin:linux-aarch64'
 name: kelley+dnsmasq-rpi64
-version: 2.91
-$version: 2.91
+version: '2.91'
+$version: '2.91'
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -11,7 +11,7 @@ maintainer:
 architecture:
   - source
 description:
-  brief: A lightweight, caching DNS proxy with integrated DHCP server.
+  brief: 'A lightweight, caching DNS proxy with integrated DHCP server.'
   long: 'Dnsmasq provides network infrastructure for small networks: DNS, DHCP, router advertisement and network boot.'
 dependency:
   build:
@@ -40,11 +40,10 @@ data:
       prerm: ''
       makeall: '!make -j<PEON.CPUS.COUNT> PREFIX=/usr'
       maketest: ''
-      makeinstall: |-
-        !make install PREFIX=/usr DESTDIR=<PEON.INSTALLDIR.X+BIN>
+      makeinstall: '!make install PREFIX=/usr DESTDIR=<PEON.INSTALLDIR.X+BIN>'
     test: none
     env:
-      CC: 'aarch64-xcraft-linux-gnu-gcc'
+      CC: aarch64-xcraft-linux-gnu-gcc
   deploy: |-
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/dnsmasq');
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/lib/misc');

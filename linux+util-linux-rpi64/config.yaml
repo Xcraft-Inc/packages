@@ -1,6 +1,6 @@
 subpackage:
   - runtime*
-  - x+bin:linux-aarch64
+  - 'x+bin:linux-aarch64'
 name: linux+util-linux-rpi64
 version: 2.41.1
 $version: 2.41.1

@@ -43,7 +43,7 @@ data:
     args:
       postinst: ''
       prerm: ''
-      makeall: -j<PEON.CPUS.COUNT>
+      makeall: '-j<PEON.CPUS.COUNT>'
       maketest: ''
       makeinstall: install CONFIG_PREFIX="<PEON.INSTALLDIR>/var/linux/rootfs"
     test: none

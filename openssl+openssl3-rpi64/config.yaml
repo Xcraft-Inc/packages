@@ -1,6 +1,6 @@
 subpackage:
   - runtime*
-  - x+bin:linux-aarch64
+  - 'x+bin:linux-aarch64'
 name: openssl+openssl3-rpi64
 version: 3.5.0
 $version: 3.5.0

@@ -63,7 +63,7 @@ data:
   env:
     path: []
     other:
-      SSL_CERT_DIR: '/etc/ssl/certs'
+      SSL_CERT_DIR: /etc/ssl/certs
   embedded: true
   runtime:
     configure: ''

@@ -10,7 +10,7 @@ maintainer:
 architecture:
   - source
 description:
-  brief: "A set of GPL'ed utilities to read, write ext filesystem."
+  brief: 'A set of GPL''ed utilities to read, write ext filesystem.'
   long: ''
 dependency:
   install:
@@ -44,7 +44,7 @@ data:
       prerm: ''
       makeall: '-j<PEON.CPUS.COUNT>'
       maketest: ''
-      makeinstall: 'install DESTDIR=<PEON.PREFIXDIR>'
+      makeinstall: install DESTDIR=<PEON.PREFIXDIR>
     test: none
     env:
       CFLAGS: <PEON.ENV.CFLAGS> -I<PEON.ROOTDIR>/usr/include/ext2fs

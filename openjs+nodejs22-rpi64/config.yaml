@@ -75,8 +75,7 @@ data:
       LIBRARY_PATH: ''
       LD_LIBRARY_PATH: ''
       PKG_CONFIG_PATH: ''
-  deploy: |-
-    !  rm -rf "<PEON.INSTALLDIR.X+BIN>/usr/include"
+  deploy: '!  rm -rf "<PEON.INSTALLDIR.X+BIN>/usr/include"'
   env:
     path: []
     other: {}

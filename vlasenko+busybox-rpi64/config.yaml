@@ -1,7 +1,7 @@
 subpackage:
   - runtime*
-  - x+bin:linux-aarch64
-  - x+httpd:linux-aarch64
+  - 'x+bin:linux-aarch64'
+  - 'x+httpd:linux-aarch64'
 name: vlasenko+busybox-rpi64
 version: 1.37.0
 $version: 1.37.0

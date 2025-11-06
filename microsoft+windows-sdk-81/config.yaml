@@ -1,6 +1,6 @@
 name: microsoft+windows-sdk-81
 version: 8.1-1
-$version: 8.1
+$version: '8.1'
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter

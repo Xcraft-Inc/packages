@@ -41,8 +41,7 @@ data:
         !cargo build --release
                      --no-default-features
       maketest: ''
-      makeinstall: |-
-        cp('target/release/sccache<PEON.OS=win?.exe:>', '<PEON.PREFIXDIR>/bin/sccache<PEON.OS=win?.exe:>');
+      makeinstall: 'cp(''target/release/sccache<PEON.OS=win?.exe:>'', ''<PEON.PREFIXDIR>/bin/sccache<PEON.OS=win?.exe:>'');'
     test: none
     env: {}
   deploy: ''

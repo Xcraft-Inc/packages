@@ -1,6 +1,6 @@
 subpackage:
   - runtime*
-  - x+bin:linux-aarch64
+  - 'x+bin:linux-aarch64'
 name: openjs+nodejs20-rpi64
 version: 20.19.0
 $version: 20.19.0
@@ -55,8 +55,7 @@ data:
       prerm: ''
       makeall: '!make -j{PEON.CPUS.COUNT}'
       maketest: ''
-      makeinstall: |-
-        !make install DESTDIR=<PEON.INSTALLDIR.X+BIN>
+      makeinstall: '!make install DESTDIR=<PEON.INSTALLDIR.X+BIN>'
     test: none
     env:
       CC: aarch64-xcraft-linux-gnu-gcc

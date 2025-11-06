@@ -23,7 +23,7 @@ data:
     externals: true
     $hash: 2.40@d7f82c4047decf43a6f769ac32456a92ddb6932409a585c633cdd4e9df23d956.tar.gz
   type: bin
-  configure: "mv('data/binutils-<THIS.$VERSION>', 'root/var/x-x86-linux/binutils');"
+  configure: 'mv(''data/binutils-<THIS.$VERSION>'', ''root/var/x-x86-linux/binutils'');'
   rules:
     type: move
     location: root

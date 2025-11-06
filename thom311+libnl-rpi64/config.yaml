@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: thom311+libnl-rpi64
-version: '3.11.0'
-$version: '3.11.0'
+version: 3.11.0
+$version: 3.11.0
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -11,7 +11,7 @@ architecture:
   - source
 description:
   brief: Netlink Protocol Library Suite (libnl)
-  long: 'The libnl suite is a collection of libraries providing APIs to netlink protocol based Linux kernel interfaces.'
+  long: The libnl suite is a collection of libraries providing APIs to netlink protocol based Linux kernel interfaces.
 dependency:
   build:
     xcraft+peon:
