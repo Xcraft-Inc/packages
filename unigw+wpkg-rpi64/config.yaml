@@ -41,7 +41,7 @@ bump:
   - carnotzet+os-rpiz2w
 data:
   get:
-    uri: 'https://github.com/Xcraft-Inc/wpkg/archive/b5729f4b6642df5f551ad509946a4eb3ff2d5d04.tar.gz'
+    uri: 'https://github.com/Xcraft-Inc/wpkg/archive/1ed944aefdf353467e3fd524b3966a5e16dda8e2.tar.gz'
     mirrors: []
     ref: ''
     $ref: ''
@@ -65,7 +65,7 @@ data:
       && cp ../wpkg/controlled_vars/build/controlled_vars ./controlled_vars
   rules:
     type: script
-    location: data/wpkg-b5729f4b6642df5f551ad509946a4eb3ff2d5d04/build
+    location: data/wpkg-1ed944aefdf353467e3fd524b3966a5e16dda8e2/build
     args:
       postinst: ''
       prerm: ''
