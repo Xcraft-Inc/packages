@@ -15,7 +15,7 @@ description:
   long: ''
 dependency:
   install:
-    carnotzet+rootfs-rpiz2w:
+    carnotzet+rootfs-contelia-rpiz2w:
       - version: ''
         architecture: []
     raspberry+linux-kernel-contelia-rpiz2w:
@@ -79,7 +79,7 @@ data:
         try {
           /* Generate the root for the recovery initramfs */
           yield genRoot('<PEON.PROD.ROOTDIR>/var/rescue', '<PEON.ASSETS.GLOBAL>', [
-            'carnotzet+rootfs-rpiz2w-x+bin',
+            'carnotzet+rootfs-contelia-rpiz2w-x+bin',
             'raspberry+linux-kernel-contelia-rpiz2w-x+modules',
             'raspberry+linux-firmware-rpiz2w-x+bin',
             'gnu+glibc-rpi64-x+bin',

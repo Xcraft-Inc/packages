@@ -1,7 +1,7 @@
 subpackage:
   - runtime*
   - x+bin:linux-aarch64
-name: carnotzet+rootfs-rpiz2w
+name: carnotzet+rootfs-contelia-rpiz2w
 version: 0.1.0-5
 $version: 0.1.0
 distribution: raspberry/
@@ -15,8 +15,8 @@ description:
   long: ''
 dependency: {}
 bump:
-  - carnotzet+os-rpiz2w
-  - carnotzet+rescuefs-rpiz2w
+  - carnotzet+os-contelia-rpiz2w
+  - carnotzet+rescuefs-contelia-rpiz2w
 data:
   get:
     uri: ''
@@ -39,6 +39,7 @@ data:
       maketest: ''
       makeinstall: |-
         cp('<PEON.WPKG.STAG>/usr/share/carnotzet/rootfs-rpiz2w/data', '<PEON.INSTALLDIR.X+BIN>');
+        cp('<PEON.ASSETS>/mdev.conf',        '<PEON.INSTALLDIR.X+BIN>/etc/mdev.conf');
         cp('<PEON.ASSETS.GLOBAL>/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
         cp('<PEON.ASSETS.GLOBAL>/postinst',  '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
         cp('<PEON.ASSETS.GLOBAL>/prerm',     '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');

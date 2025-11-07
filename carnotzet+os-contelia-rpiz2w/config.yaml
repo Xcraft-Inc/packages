@@ -17,7 +17,7 @@ dependency:
     carnotzet+os-config-contelia-rpiz2w:
       - version: ''
         architecture: []
-    carnotzet+rootfs-rpiz2w:
+    carnotzet+rootfs-contelia-rpiz2w:
       - version: ''
         architecture: []
     carnotzet+rescuefs-contelia-rpiz2w:
@@ -110,7 +110,7 @@ data:
         /* Generate the root for the MMC */
         yield genRoot('carnotzet', '<PEON.ASSETS.GLOBAL>', [
           'carnotzet+os-config-contelia-rpiz2w-x+bin',
-          'carnotzet+rootfs-rpiz2w-x+bin',
+          'carnotzet+rootfs-contelia-rpiz2w-x+bin',
           'carnotzet+rescuefs-contelia-rpiz2w-x+bin',
           'raspberry+linux-kernel-contelia-rpiz2w-x+bin',
           'raspberry+linux-kernel-contelia-rpiz2w-x+modules',
