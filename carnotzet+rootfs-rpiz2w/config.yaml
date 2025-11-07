@@ -41,8 +41,8 @@ data:
       makeinstall: |-
         cp('<PEON.WPKG.STAG>/usr/share/carnotzet/rootfs-rpiz2w/data', '<PEON.INSTALLDIR.X+BIN>');
         cp('<PEON.ASSETS.GLOBAL>/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
-        cp('<PEON.ASSETS>/postinst', '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
-        cp('<PEON.ASSETS>/prerm',    '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+        cp('<PEON.ASSETS.GLOBAL>/postinst',  '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+        cp('<PEON.ASSETS.GLOBAL>/prerm',     '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
     test: ''
     env: {}
   deploy: ''
