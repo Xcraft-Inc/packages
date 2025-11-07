@@ -1,0 +1,113 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835", "brcm,bcm2708", "brcm,bcm2709";
+
+    fragment@0 {
+        target = <&gpio>;
+        __overlay__ {
+            button_pins: button_pins {
+                brcm,pins = <14 23 15 12 20 21 5 16 6 13 19 26>;
+                brcm,function = <0>; /* input */
+                brcm,pull = <2>; /* pull-up */
+            };
+        };
+    };
+
+    fragment@1 {
+        target-path = "/";
+        __overlay__ {
+            gpio_keys {
+                compatible = "gpio-keys";
+                pinctrl-names = "default";
+                pinctrl-0 = <&button_pins>;
+                status = "okay";
+
+                button_r: button@0 {
+                    label = "TR";
+                    linux,code = <103>; /* KEY_UP pour test, ou BTN_TR */
+                    gpios = <&gpio 14 1>; /* GPIO14, active low */
+                    debounce-interval = <20>;
+                };
+
+                button_l: button@1 {
+                    label = "TL";
+                    linux,code = <108>;
+                    gpios = <&gpio 23 1>;
+                    debounce-interval = <20>;
+                };
+
+                button_x: button@2 {
+                    label = "X";
+                    linux,code = <0x133>; /* BTN_NORTH */
+                    gpios = <&gpio 15 1>;
+                    debounce-interval = <20>;
+                };
+
+                button_y: button@3 {
+                    label = "Y";
+                    linux,code = <0x134>; /* BTN_WEST */
+                    gpios = <&gpio 12 1>;
+                    debounce-interval = <20>;
+                };
+
+                button_b: button@4 {
+                    label = "B";
+                    linux,code = <0x131>; /* BTN_EAST */
+                    gpios = <&gpio 20 1>;
+                    debounce-interval = <20>;
+                };
+
+                button_a: button@5 {
+                    label = "A";
+                    linux,code = <0x130>; /* BTN_SOUTH */
+                    gpios = <&gpio 21 1>;
+                    debounce-interval = <20>;
+                };
+
+                button_up: button@6 {
+                    label = "UP";
+                    linux,code = <103>; /* KEY_UP */
+                    gpios = <&gpio 5 1>;
+                    debounce-interval = <20>;
+                };
+
+                button_left: button@7 {
+                    label = "LEFT";
+                    linux,code = <105>; /* KEY_LEFT */
+                    gpios = <&gpio 16 1>;
+                    debounce-interval = <20>;
+                };
+
+                button_down: button@8 {
+                    label = "DOWN";
+                    linux,code = <108>; /* KEY_DOWN */
+                    gpios = <&gpio 6 1>;
+                    debounce-interval = <20>;
+                };
+
+                button_right: button@9 {
+                    label = "RIGHT";
+                    linux,code = <106>; /* KEY_RIGHT */
+                    gpios = <&gpio 13 1>;
+                    debounce-interval = <20>;
+                };
+
+                button_select: button@10 {
+                    label = "SELECT";
+                    linux,code = <0x13a>; /* BTN_SELECT */
+                    gpios = <&gpio 19 1>;
+                    debounce-interval = <20>;
+                };
+
+                button_start: button@11 {
+                    label = "START";
+                    linux,code = <0x13b>; /* BTN_START */
+                    gpios = <&gpio 26 1>;
+                    debounce-interval = <20>;
+                };
+            };
+        };
+    };
+};

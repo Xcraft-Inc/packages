@@ -7,3 +7,4 @@ gpu_mem=16
 dtparam=spi=on
 dtoverlay=gamepi13-st7789
 dtoverlay=gamepi13-audremap18
+dtoverlay=gamepi13-buttons
