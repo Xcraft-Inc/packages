@@ -8,7 +8,7 @@
         target = <&gpio>;
         __overlay__ {
             button_pins: button_pins {
-                brcm,pins = <14 23 15 12 20 21 5 16 6 13 19 26>;
+                brcm,pins = <14 23 15 12 21 20 5 16 6 13 19 26>;
                 brcm,function = <0>; /* input */
                 brcm,pull = <2>; /* pull-up */
             };
@@ -26,14 +26,14 @@
 
                 button_r: button@0 {
                     label = "TR";
-                    linux,code = <103>; /* KEY_UP pour test, ou BTN_TR */
+                    linux,code = <0x137>; /* BTN_TR */
                     gpios = <&gpio 14 1>; /* GPIO14, active low */
                     debounce-interval = <20>;
                 };
 
                 button_l: button@1 {
                     label = "TL";
-                    linux,code = <108>;
+                    linux,code = <0x136>; /* BTN_TL */
                     gpios = <&gpio 23 1>;
                     debounce-interval = <20>;
                 };
@@ -52,17 +52,17 @@
                     debounce-interval = <20>;
                 };
 
-                button_b: button@4 {
-                    label = "B";
+                button_a: button@4 {
+                    label = "A";
                     linux,code = <0x131>; /* BTN_EAST */
-                    gpios = <&gpio 20 1>;
+                    gpios = <&gpio 21 1>;
                     debounce-interval = <20>;
                 };
 
-                button_a: button@5 {
-                    label = "A";
+                button_b: button@5 {
+                    label = "B";
                     linux,code = <0x130>; /* BTN_SOUTH */
-                    gpios = <&gpio 21 1>;
+                    gpios = <&gpio 20 1>;
                     debounce-interval = <20>;
                 };
 
