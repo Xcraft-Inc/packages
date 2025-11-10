@@ -68,28 +68,28 @@
 
                 button_up: button@6 {
                     label = "UP";
-                    linux,code = <103>; /* KEY_UP */
+                    linux,code = <0x220>; /* BTN_DPAD_UP */
                     gpios = <&gpio 5 1>;
                     debounce-interval = <20>;
                 };
 
                 button_left: button@7 {
                     label = "LEFT";
-                    linux,code = <105>; /* KEY_LEFT */
+                    linux,code = <0x222>; /* BTN_DPAD_LEFT */
                     gpios = <&gpio 16 1>;
                     debounce-interval = <20>;
                 };
 
                 button_down: button@8 {
                     label = "DOWN";
-                    linux,code = <108>; /* KEY_DOWN */
+                    linux,code = <0x221>; /* BTN_DPAD_DOWN */
                     gpios = <&gpio 6 1>;
                     debounce-interval = <20>;
                 };
 
                 button_right: button@9 {
                     label = "RIGHT";
-                    linux,code = <106>; /* KEY_RIGHT */
+                    linux,code = <0x223>; /* BTN_DPAD_RIGHT */
                     gpios = <&gpio 13 1>;
                     debounce-interval = <20>;
                 };
