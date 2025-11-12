@@ -19,7 +19,8 @@ dependency:
     xcraft+utils:
       - version: ''
         architecture: []
-bump: []
+bump:
+  - microsoft+dotnet-sdk-linux
 data:
   get:
     uri: 'https://builds.dotnet.microsoft.com/dotnet/Sdk/<THIS.$VERSION>/dotnet-sdk-<THIS.$VERSION>-linux-x64.tar.gz'
