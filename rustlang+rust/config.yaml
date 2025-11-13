@@ -26,6 +26,9 @@ dependency:
           - darwin-i386
           - darwin-amd64
           - darwin-aarch64
+    ninja+ninja:
+      - version: ''
+        architecture: []
   make:
     xcraft+base-make:
       - version: ''
@@ -51,7 +54,7 @@ data:
                        --enable-full-bootstrap
                        --enable-llvm-static-stdcpp
                        --enable-ccache
-                       --disable-ninja
+                       --enable-ninja
                        --release-channel=stable
                        --disable-codegen-tests
   rules:
