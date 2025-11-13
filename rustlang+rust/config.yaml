@@ -62,11 +62,20 @@ data:
     args:
       postinst: ''
       prerm: ''
-      makeall: '!python3 x.py build'
+      makeall: |-
+        !
+        <PEON.OS=darwin?
+          mkdir $HOME/lib && cp {PEON.ROOTDIR}/usr/lib/libunwind.1.0.* $HOME/lib/ &&
+        :>
+          python3 x.py build
+        <PEON.OS=darwin?
+          ; rm -f $HOME/lib/libunwind.1.0.*
+        :>
       maketest: ''
       makeinstall: '!python3 x.py install && python3 x.py install cargo'
     test: none
     env:
+      RUSTFLAGS: '-C link-args=-Wl,-rpath,<PEON.ROOTDIR>/usr/lib'
       linux/CC: gcc
       linux/CXX: g++
       linux/AR: <PEON.ROOTDIR>/usr/bin/ar
