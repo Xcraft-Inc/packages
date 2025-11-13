@@ -51,7 +51,6 @@ data:
       cd <THIS.DATA.RULES.LOCATION>
         && ./configure --prefix=<PEON.PREFIXDIR>
                        --sysconfdir=etc
-                       --enable-full-bootstrap
                        --enable-llvm-static-stdcpp
                        --enable-ccache
                        --enable-ninja
