@@ -59,8 +59,8 @@ data:
       && cd ./BUILD
       && cmake -G Ninja
                -DCMAKE_INSTALL_PREFIX=<PEON.PREFIXDIR>
-               -DLLVM_ENABLE_PROJECTS='clang;clang-tools-extra;compiler-rt;lld;openmp;polly;pstl'
-               -DLLVM_ENABLE_RUNTIMES='libunwind;libcxxabi;libcxx'
+               -DLLVM_ENABLE_PROJECTS='clang;clang-tools-extra;lld;openmp;polly;pstl'
+               -DLLVM_ENABLE_RUNTIMES='compiler-rt;libunwind;libcxxabi;libcxx'
                -DLLVM_ENABLE_ZSTD=OFF
                -DLLVM_TARGETS_TO_BUILD='X86;AArch64'
                -DLLVM_CCACHE_BUILD=ON
