@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: rustlang+rust
-version: 1.89.0
-$version: 1.89.0
+version: 1.91.1
+$version: 1.91.1
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -37,7 +37,6 @@ data:
     mirrors: []
     ref: ''
     $ref: ''
-    $hash: 1.89.0@0b9d55610d8270e06c44f459d1e2b7918a5e673809c592abed9b9c600e33d95a.tar.xz
     out: ''
     externals: true
     prepare: |-
