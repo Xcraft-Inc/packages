@@ -65,7 +65,7 @@ data:
       makeall: |-
         !
         <PEON.OS=darwin?
-          mkdir $HOME/lib && cp -f {PEON.ROOTDIR}/usr/lib/libunwind.* $HOME/lib/ &&
+          mkdir -p $HOME/lib && cp -f {PEON.ROOTDIR}/usr/lib/libunwind.* $HOME/lib/ &&
         :>
           python3 x.py build
         <PEON.OS=darwin?
