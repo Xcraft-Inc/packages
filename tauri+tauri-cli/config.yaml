@@ -42,7 +42,7 @@ data:
     args:
       postinst: ''
       prerm: ''
-      makeall: '!cargo install tauri-cli@<THIS.$VERSION> --locked --root <PEON.INSTALLDIR>/opt/cargo'
+      makeall: '!cargo install tauri-cli@<THIS.$VERSION> --locked --root <PEON.INSTALLDIR>/var/lib/cargo'
       maketest: ''
       makeinstall: ''
     test: none
