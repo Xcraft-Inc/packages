@@ -72,7 +72,15 @@ data:
           ; rm -f $HOME/lib/libunwind.*
         :>
       maketest: ''
-      makeinstall: '!python3 x.py install && python3 x.py install cargo'
+      makeinstall: |-
+        !
+        <PEON.OS=darwin?
+          mkdir -p $HOME/lib && cp -f {PEON.ROOTDIR}/usr/lib/libunwind.* $HOME/lib/ &&
+        :>
+          python3 x.py install && python3 x.py install cargo
+        <PEON.OS=darwin?
+          ; rm -f $HOME/lib/libunwind.*
+        :>
     test: none
     env:
       RUSTFLAGS: '-C link-args=-Wl,-rpath,<PEON.ROOTDIR>/usr/lib'
