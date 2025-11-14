@@ -85,7 +85,8 @@ data:
       win/AR: ar
   deploy: ''
   env:
-    path: []
+    path:
+      - opt/cargo/bin
     other:
       RUSTFLAGS: '-C link-args=-Wl,-rpath,<OS.PROD.ROOTDIR>/usr/lib'
   embedded: true
