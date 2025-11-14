@@ -65,11 +65,11 @@ data:
       makeall: |-
         !
         <PEON.OS=darwin?
-          mkdir $HOME/lib && cp {PEON.ROOTDIR}/usr/lib/libunwind.1.0.* $HOME/lib/ &&
+          mkdir $HOME/lib && cp -f {PEON.ROOTDIR}/usr/lib/libunwind.* $HOME/lib/ &&
         :>
           python3 x.py build
         <PEON.OS=darwin?
-          ; rm -f $HOME/lib/libunwind.1.0.*
+          ; rm -f $HOME/lib/libunwind.*
         :>
       maketest: ''
       makeinstall: '!python3 x.py install && python3 x.py install cargo'
