@@ -1,0 +1,56 @@
+subpackage:
+  - runtime*
+name: tauri+tauri-cli
+version: 2.9.4
+$version: 2.9.4
+distribution: toolchain/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Tauri Command-Line Interface
+  long: ''
+dependency:
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    rustlang+rust:
+      - version: ''
+        architecture: []
+  make:
+    xcraft+base-make:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: ''
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: false
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: ''
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!cargo install tauri-cli@<THIS.$VERSION> --locked --root <PEON.INSTALLDIR>/opt/cargo'
+      maketest: ''
+      makeinstall: ''
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
