@@ -86,9 +86,10 @@ data:
   deploy: ''
   env:
     path:
-      - opt/cargo/bin
+      - var/lib/cargo/bin
     other:
       RUSTFLAGS: '-C link-args=-Wl,-rpath,<OS.PROD.ROOTDIR>/usr/lib'
+      CARGO_HOME: <OS.ROOTDIR>/var/lib/cargo
   embedded: true
   runtime:
     configure: ''
