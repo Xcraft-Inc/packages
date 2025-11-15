@@ -67,14 +67,12 @@ data:
       maketest: ''
       makeinstall: |-
         !  make install STRIP_OPT= DESTDIR=<PEON.INSTALLDIR.X+BIN>
-        && mkdir -p <PEON.INSTALLDIR.X+BIN>/etc/sv/sshd
-        && mkdir -p <PEON.INSTALLDIR.X+BIN>/etc/sv/sshd/log
         && mkdir -p <PEON.INSTALLDIR.X+BIN>/var/log/sshd
         && mkdir -p <PEON.INSTALLDIR.X+BIN>/var/empty/sshd
-        && cp <PEON.ASSETS>/sv/run     <PEON.INSTALLDIR.X+BIN>/etc/sv/sshd/run
-        && cp <PEON.ASSETS>/sv/log/run <PEON.INSTALLDIR.X+BIN>/etc/sv/sshd/log/run
-        && cp <PEON.ASSETS>/postinst   <PEON.INSTALLDIR.X+BIN>/WPKG/postinst
-        && cp <PEON.ASSETS>/prerm      <PEON.INSTALLDIR.X+BIN>/WPKG/prerm
+        && mkdir -p <PEON.INSTALLDIR.X+BIN>/etc/sv
+        && cp -r <PEON.ASSETS>/sv       <PEON.INSTALLDIR.X+BIN>/etc/sv/sshd
+        && cp    <PEON.ASSETS>/postinst <PEON.INSTALLDIR.X+BIN>/WPKG/postinst
+        && cp    <PEON.ASSETS>/prerm    <PEON.INSTALLDIR.X+BIN>/WPKG/prerm
     test: none
     env:
       CC: ''

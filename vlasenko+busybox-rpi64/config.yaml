@@ -72,8 +72,7 @@ data:
 
     /* HTTPD */
     mkdir('<PEON.INSTALLDIR.X+HTTPD>/var/log/httpd');
-    cp('<PEON.ASSETS>/httpd/sv/run',     '<PEON.INSTALLDIR.X+HTTPD>/etc/sv/httpd/run');
-    cp('<PEON.ASSETS>/httpd/sv/log/run', '<PEON.INSTALLDIR.X+HTTPD>/etc/sv/httpd/log/run');
+    cp('<PEON.ASSETS>/httpd/sv',         '<PEON.INSTALLDIR.X+HTTPD>/etc/sv/httpd');
     cp('<PEON.ASSETS>/httpd/postinst',   '<PEON.INSTALLDIR.X+HTTPD>/WPKG/postinst');
     cp('<PEON.ASSETS>/httpd/prerm',      '<PEON.INSTALLDIR.X+HTTPD>/WPKG/prerm');
     cp('<PEON.ASSETS>/httpd/conffiles',  '<PEON.INSTALLDIR.X+HTTPD>/WPKG/conffiles');

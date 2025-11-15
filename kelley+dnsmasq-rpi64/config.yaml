@@ -47,8 +47,7 @@ data:
   deploy: |-
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/dnsmasq');
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/lib/misc');
-    cp('<PEON.ASSETS>/sv/run',       '<PEON.INSTALLDIR.X+BIN>/etc/sv/dnsmasq/run');
-    cp('<PEON.ASSETS>/sv/log/run',   '<PEON.INSTALLDIR.X+BIN>/etc/sv/dnsmasq/log/run');
+    cp('<PEON.ASSETS>/sv',           '<PEON.INSTALLDIR.X+BIN>/etc/sv/dnsmasq');
     cp('<PEON.ASSETS>/postinst',     '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
     cp('<PEON.ASSETS>/prerm',        '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
     cp('<PEON.ASSETS>/conffiles',    '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
