@@ -1,0 +1,73 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: carnotzet+contelia
+version: 0.1.0-1
+$version: 0.1.0
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Contelia service
+  long: ''
+dependency:
+  install:
+    alsa+lib-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    alsa+lib-rpi64:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    rustlang+rust:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+  make:
+    xcraft+base-make:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://github.com/Skywalker13/contelia.git'
+    mirrors: []
+    ref: master
+    $ref: ''
+    out: ''
+    externals: false
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: data
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!cargo build -r --target aarch64-unknown-linux-gnu'
+      maketest: ''
+      makeinstall: '!install -D -m 755 target/aarch64-unknown-linux-gnu/release/contelia <PEON.PREFIXDIR.X+BIN>/bin/contelia'
+    test: none
+    env:
+      RUSTFLAGS: <PEON.ENV.RUSTFLAGS> -C linker=aarch64-xcraft-linux-gnu-gcc
+      PKG_CONFIG_ALLOW_CROSS: '1'
+      PKG_CONFIG_PATH: <PEON.PROD.ROOTDIR>/usr/lib/pkgconfig
+      PKG_CONFIG_SYSROOT_DIR: <PEON.PROD.ROOTDIR>
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
