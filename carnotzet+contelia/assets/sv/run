@@ -1,0 +1,6 @@
+#!/bin/sh
+exec 2>&1
+
+echo "Start Contelia daemon..."
+
+exec /usr/bin/contelia /var/lib/contelia

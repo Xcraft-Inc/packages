@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sv stop contelia || :
+rm -f /var/service/contelia
