@@ -32,7 +32,8 @@ dependency:
         architecture: []
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
-        architecture: []
+        architecture:
+          - linux-amd64
 bump: []
 data:
   get:

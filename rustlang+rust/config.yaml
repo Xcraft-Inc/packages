@@ -29,6 +29,9 @@ dependency:
     ninja+ninja:
       - version: ''
         architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
   make:
     xcraft+base-make:
       - version: ''
@@ -56,6 +59,16 @@ data:
                        --enable-ninja
                        --release-channel=stable
                        --disable-codegen-tests
+    <PEON.OS=linux?
+                       --host=x86_64-unknown-linux-gnu
+                       --build=x86_64-unknown-linux-gnu
+                       --target=aarch64-unknown-linux-gnu,x86_64-unknown-linux-gnu
+                       --set llvm.targets="X86;AArch64"
+                       --set target.aarch64-unknown-linux-gnu.cc=aarch64-xcraft-linux-gnu-gcc
+                       --set target.aarch64-unknown-linux-gnu.cxx=aarch64-xcraft-linux-gnu-g++
+                       --set target.aarch64-unknown-linux-gnu.ar=aarch64-xcraft-linux-gnu-ar
+                       --set target.aarch64-unknown-linux-gnu.linker=aarch64-xcraft-linux-gnu-gcc
+    :>
   rules:
     type: script
     location: src
