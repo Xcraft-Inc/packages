@@ -71,7 +71,7 @@ data:
     <PEON.OS=linux?
       ./config    --openssldir=/etc/ssl
     :>
-                  --prefix=<PEON.PREFIXDIR>
+                  --prefix=<PEON.PREFIXDIR>/openssl3
                   shared
   rules:
     type: script
