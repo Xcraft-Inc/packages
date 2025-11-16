@@ -1,7 +1,9 @@
+setenv carnotzet_delay 3
+
 load mmc 0:1 ${loadaddr} carnotzet.env
 env import -t ${loadaddr} ${filesize}
 
-setenv bootmenu_delay 3
+setenv bootmenu_delay ${carnotzet_delay}
 
 if itest ${carnotzet_rescue} == 1; then
   setenv bootmenu_0 "Rescue Carnotzet boot (default)=run boot_rescue_cmd"
