@@ -24,7 +24,7 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
-    openssl+openssl:
+    openssl+openssl3:
       - version: ''
         architecture: []
 bump:
@@ -81,9 +81,9 @@ data:
       CFLAGS: '<PEON.ENV.CFLAGS> -I<PEON.PROD.ROOTDIR>/usr/local/include'
       CXXFLAGS: '<PEON.ENV.CXXFLAGS> -I<PEON.PROD.ROOTDIR>/usr/local/include'
       LDFLAGS: '<PEON.ENV.LDFLAGS> -L<PEON.PROD.ROOTDIR>/usr/local/lib'
-      HOSTCFLAGS: '-O2 -g0 -fPIC -fdiagnostics-color -I<PEON.ROOTDIR>/usr/include -Wl,-rpath,<PEON.ROOTDIR>/usr/lib'
-      HOSTCXXFLAGS: '-O2 -g0 -fPIC -fdiagnostics-color -I<PEON.ROOTDIR>/usr/include -Wl,-rpath,<PEON.ROOTDIR>/usr/lib -static-libstdc++'
-      HOSTLDFLAGS: '-L<PEON.ROOTDIR>/usr/lib -static-libgcc -static-libstdc++'
+      HOSTCFLAGS: '-O2 -g0 -fPIC -fdiagnostics-color -I<PEON.ROOTDIR>/usr/openssl3/include -Wl,-rpath,<PEON.ROOTDIR>/usr/openssl3/lib64'
+      HOSTCXXFLAGS: '-O2 -g0 -fPIC -fdiagnostics-color -I<PEON.ROOTDIR>/usr/openssl3/include -Wl,-rpath,<PEON.ROOTDIR>/usr/openssl3/lib64 -static-libstdc++'
+      HOSTLDFLAGS: '-L<PEON.ROOTDIR>/usr/openssl3/lib64 -static-libgcc -static-libstdc++'
   deploy: ''
   env:
     path: []
