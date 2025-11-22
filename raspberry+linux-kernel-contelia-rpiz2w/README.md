@@ -1,5 +1,11 @@
 # GamePi13
 
+```
+scripts/dtc/dtc -@ -I dts -O dtb -o "<PEON.INSTALLDIR.X+BIN>/boot/overlays/gamepi13-st7789.dtbo"     "<PEON.ASSETS>/gamepi13-st7789-overlay.dts"
+scripts/dtc/dtc -@ -I dts -O dtb -o "<PEON.INSTALLDIR.X+BIN>/boot/overlays/gamepi13-audremap18.dtbo" "<PEON.ASSETS>/gamepi13-audremap18-overlay.dts"
+scripts/dtc/dtc -@ -I dts -O dtb -o "<PEON.INSTALLDIR.X+BIN>/boot/overlays/gamepi13-buttons.dtbo"    "<PEON.ASSETS>/gamepi13-buttons-overlay.dts"
+```
+
 ## st7789
 
 ### How it works

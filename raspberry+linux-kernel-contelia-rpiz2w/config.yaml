@@ -52,11 +52,8 @@ data:
       && sed -i 's,^CONFIG_SPI_BCM2835=m.*,CONFIG_SPI_BCM2835=y,' .config
       && sed -i 's,^CONFIG_FB_TFT=m.*,CONFIG_FB_TFT=y,' .config
       && sed -i 's,^CONFIG_FB_TFT_ST7789V=m.*,CONFIG_FB_TFT_ST7789V=y,' .config
-      && sed -i 's,^CONFIG_USB_SND_AUDIO=m.*,CONFIG_USB_SND_AUDIO=y,' .config
       && sed -i 's,^CONFIG_SND=m.*,CONFIG_SND=y,' .config
-      && sed -i 's,^CONFIG_SND_TIMER=m.*,CONFIG_SND_TIMER=y,' .config
-      && sed -i 's,^CONFIG_SND_PCM=m.*,CONFIG_SND_PCM=y,' .config
-      && sed -i 's,^CONFIG_SND_BCM2835=m.*,CONFIG_SND_BCM2835=y,' .config
+      && sed -i 's,^CONFIG_SND_USB_AUDIO=m.*,CONFIG_SND_USB_AUDIO=y,' .config
       && sed -i 's,^CONFIG_KEYBOARD_GPIO=m.*,CONFIG_KEYBOARD_GPIO=y,' .config
       && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- olddefconfig
   rules:
@@ -77,9 +74,7 @@ data:
                   CROSS_COMPILE=aarch64-xcraft-linux-gnu-
                   INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+MODULES>"
                   modules_install
-          && scripts/dtc/dtc -@ -I dts -O dtb -o "<PEON.INSTALLDIR.X+BIN>/boot/overlays/gamepi13-st7789.dtbo"     "<PEON.ASSETS>/gamepi13-st7789-overlay.dts"
-          && scripts/dtc/dtc -@ -I dts -O dtb -o "<PEON.INSTALLDIR.X+BIN>/boot/overlays/gamepi13-audremap18.dtbo" "<PEON.ASSETS>/gamepi13-audremap18-overlay.dts"
-          && scripts/dtc/dtc -@ -I dts -O dtb -o "<PEON.INSTALLDIR.X+BIN>/boot/overlays/gamepi13-buttons.dtbo"    "<PEON.ASSETS>/gamepi13-buttons-overlay.dts"
+          && scripts/dtc/dtc -@ -I dts -O dtb -o "<PEON.INSTALLDIR.X+BIN>/boot/overlays/tftbonnet13.dtbo" "<PEON.ASSETS>/tftbonnet13-overlay.dts"
           && cp -a arch/arm64/boot/Image "<PEON.INSTALLDIR.X+BIN>/boot/"
           && cp -a arch/arm64/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
     test: none
