@@ -3,4 +3,7 @@ exec 2>&1
 
 echo "Start Contelia daemon..."
 
+# HACK: once a proper way is found to store the default volume
+amixer set PCM 60%
+
 exec /usr/bin/contelia /var/lib/contelia
