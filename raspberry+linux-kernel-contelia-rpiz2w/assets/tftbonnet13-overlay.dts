@@ -86,8 +86,8 @@
                                         gpios = <&gpio 23 1>;
                                 };
                                 button@4 {
-                                        label = "START";      /* Controller Center */
-                                        linux,code = <0x13b>; /* BTN_START         */
+                                        label = "MODE";       /* Controller Center */
+                                        linux,code = <0x13c>; /* BTN_MODE          */
                                         gpios = <&gpio 4 1>;
                                 };
                                 button@5 {
@@ -96,8 +96,8 @@
                                         gpios = <&gpio 5 1>;
                                 };
                                 button@6 {
-                                        label = "MODE";       /* Controller A      */
-                                        linux,code = <0x13c>; /* BTN_MODE          */
+                                        label = "START";      /* Controller A      */
+                                        linux,code = <0x13b>; /* BTN_START         */
                                         gpios = <&gpio 6 1>;
                                 };
                         };
