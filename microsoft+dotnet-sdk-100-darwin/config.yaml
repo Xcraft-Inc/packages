@@ -1,0 +1,50 @@
+name: microsoft+dotnet-sdk-100-darwin
+version: 10.0.100
+$version: 10.0.100
+distribution: toolchain/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - darwin-aarch64
+description:
+  brief: .NET SDK
+  long: ''
+dependency:
+  install:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+  make:
+    xcraft+utils:
+      - version: ''
+        architecture: []
+bump:
+  - microsoft+dotnet-sdk-darwin
+data:
+  get:
+    uri: 'https://builds.dotnet.microsoft.com/dotnet/Sdk/<THIS.$VERSION>/dotnet-sdk-<THIS.$VERSION>-osx-x64.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+  type: bin
+  configure: |-
+    yield exec(
+      'writefile',
+      '#!/bin/sh\ndotnet msbuild "$@"\n',
+      'data/sdk/<THIS.$VERSION>/msbuild'
+    );
+    yield exec('chmod', 'a+x', 'data/sdk/<THIS.$VERSION>/msbuild');
+  rules:
+    type: configure
+    location: data
+    args:
+      postinst: ''
+      prerm: ''
+    env: {}
+  env:
+    path: []
+    other: {}
+  embedded: true
