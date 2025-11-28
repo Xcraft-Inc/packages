@@ -6,7 +6,7 @@ maintainer:
   name: Mathieu Schroeter
   email: schroeter@epsitec.ch
 architecture:
-  - darwin-aarch64
+  - darwin-amd64
 description:
   brief: .NET SDK
   long: ''
