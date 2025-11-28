@@ -1,6 +1,6 @@
 name: x-mingw-w64+gnu-binutils
-version: '2.45'
-$version: '2.45'
+version: 2.45.1
+$version: 2.45.1
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
