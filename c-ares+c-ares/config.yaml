@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: c-ares+c-ares
-version: 1.19.0
-$version: 1.19.0
+version: 1.34.5
+$version: 1.34.5
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -23,13 +23,13 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'https://c-ares.org/download/c-ares-<THIS.$VERSION>.tar.gz'
+    uri: 'https://github.com/c-ares/c-ares/releases/download/v<THIS.$VERSION>/c-ares-<THIS.$VERSION>.tar.gz'
     mirrors: []
     ref: ''
+    $ref: ''
     out: ''
     externals: true
     prepare: ''
-    $hash: bfceba37e23fd531293829002cac0401ef49a6dc55923f7f92236585b7ad1dd3.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
