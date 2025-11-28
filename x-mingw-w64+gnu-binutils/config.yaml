@@ -1,6 +1,6 @@
 name: x-mingw-w64+gnu-binutils
-version: '2.40'
-$version: '2.40'
+version: '2.45'
+$version: '2.45'
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -15,13 +15,15 @@ dependency:
     xcraft+peon:
       - version: ''
         architecture: []
+bump: []
 data:
   get:
     uri: 'http://ftpmirror.gnu.org/binutils/binutils-<THIS.$VERSION>.tar.gz'
+    mirrors: []
     ref: ''
+    $ref: ''
     out: ''
     externals: true
-    $hash: 2.40@d7f82c4047decf43a6f769ac32456a92ddb6932409a585c633cdd4e9df23d956.tar.gz
   type: bin
   configure: 'mv(''data/binutils-<THIS.$VERSION>'', ''root/var/x-mingw-w64/binutils'');'
   rules:
@@ -30,6 +32,7 @@ data:
     args:
       postinst: ''
       prerm: ''
+    env: {}
   env:
     path: []
     other: {}
