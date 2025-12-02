@@ -1,6 +1,6 @@
 name: x-mingw-w64+mingw-w64
-version: 11.0.0
-$version: 11.0.0
+version: 13.0.0
+$version: 13.0.0
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -19,13 +19,15 @@ dependency:
     xcraft+base-make:
       - version: ''
         architecture: []
+bump: []
 data:
   get:
     uri: 'https://download.sourceforge.net/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v<THIS.$VERSION>.tar.bz2'
+    mirrors: []
     ref: ''
+    $ref: ''
     out: ''
     externals: true
-    $hash: 11.0.0@bd0ea1633bd830204cc23a696889335e9d4a32b8619439ee17f22188695fcc5f.tar.bz2
   type: bin
   configure: 'mv(''data/mingw-w64-v<THIS.$VERSION>'', ''root/var/x-mingw-w64/mingw'');'
   rules:
@@ -34,6 +36,7 @@ data:
     args:
       postinst: ''
       prerm: ''
+    env: {}
   env:
     path: []
     other: {}
