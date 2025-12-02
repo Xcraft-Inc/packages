@@ -25,7 +25,9 @@ data:
     out: ''
     externals: true
   type: bin
-  configure: 'mv(''data/binutils-<THIS.$VERSION>'', ''root/var/x-mingw-w64/binutils'');'
+  configure: |-
+    mv('data/binutils-<THIS.$VERSION>', 'root/var/x-mingw-w64/binutils');
+    yield exec('sh', '-c', 'patch -d root/var/x-mingw-w64/binutils --binary -p1 < <PEON.ASSETS>/001_commit-zlib-1-3.patch');
   rules:
     type: move
     location: root
