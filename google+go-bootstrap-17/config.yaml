@@ -30,7 +30,7 @@ dependency:
         architecture:
           - darwin-amd64
           - darwin-aarch64
-    apple+macos-sdk-1013:
+    apple+macos-sdk-1201:
       - version: ''
         architecture:
           - darwin-i386
