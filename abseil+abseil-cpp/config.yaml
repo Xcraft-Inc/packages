@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: abseil+abseil-cpp
-version: '20230802.1'
-$version: '20230802.1'
+version: '20250814.1'
+$version: '20250814.1'
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -30,7 +30,6 @@ data:
     out: ''
     externals: true
     prepare: ''
-    $hash: 20230802.1@987ce98f02eefbaf930d6e38ab16aa05737234d7afbab2d5c4ea7adbe50c28ed.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
