@@ -1,6 +1,6 @@
 name: x-mingw-w64+gnu-gcc
-version: 14.3.0
-$version: 14.3.0
+version: 13.4.0
+$version: 13.4.0
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
