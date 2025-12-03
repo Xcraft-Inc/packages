@@ -1,5 +1,5 @@
 diff -Naur --binary zlib/aclocal.m4 zlib.next/aclocal.m4
---- a/zlib/aclocal.m4	2025-06-05 18:05:01.000000000 +0200
+--- a/zlib/aclocal.m4	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/aclocal.m4	2025-11-30 23:32:19.000000000 +0100
 @@ -1168,8 +1168,10 @@
  ]) # _AM_PROG_TAR
@@ -13,7 +13,7 @@ diff -Naur --binary zlib/aclocal.m4 zlib.next/aclocal.m4
  m4_include([../config/multi.m4])
  m4_include([../config/override.m4])
 diff -Naur --binary zlib/adler32.c zlib.next/adler32.c
---- a/zlib/adler32.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/adler32.c	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/adler32.c	2025-11-30 23:32:17.000000000 +0100
 @@ -3,12 +3,10 @@
   * For conditions of distribution and use, see copyright notice in zlib.h
@@ -87,75 +87,33 @@ diff -Naur --binary zlib/adler32.c zlib.next/adler32.c
      return adler32_combine_(adler1, adler2, len2);
  }
 diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
---- a/zlib/ChangeLog__peon__	2025-06-05 18:03:57.000000000 +0200
+--- a/zlib/ChangeLog__peon__	2025-05-23 13:02:57.557037725 +0200
 +++ b/zlib/ChangeLog__peon__	2025-11-30 23:32:17.000000000 +0100
-@@ -1,18 +1,57 @@
--2025-06-05  Release Manager
+@@ -1,14 +1,17 @@
+-2025-05-23  Release Manager
 +2025-11-03  Sam James  <sam@gentoo.org>
  
--	* GCC 13.4.0 released.
+-	* GCC 14.3.0 released.
 +	* configure: Regenerate.
-+
+ 
+-2024-08-01  Release Manager
 +2025-10-02  H.J. Lu  <hjl.tools@gmail.com>
-+
+ 
+-	* GCC 14.2.0 released.
 +	* Makefile.in: Regenerated.
 +	* aclocal.m4: Likewise.
 +	* configure: Likewise.
-+
+ 
+-2024-05-07  Release Manager
 +2025-07-31  Sam James  <sam@gentoo.org>
  
--2024-05-21  Release Manager
+-	* GCC 14.1.0 released.
 +	* configure: Regenerate.
 +	* configure.ac: Set version to 1.3.1.
-+
-+2023-10-22  Iain Sandoe  <iain@sandoe.co.uk>
  
--	* GCC 13.3.0 released.
-+	* configure: Regenerate.
-+	* configure.ac: Handle Darwin rpaths.
+ 2023-10-22  Iain Sandoe  <iain@sandoe.co.uk>
  
--2023-07-27  Release Manager
-+2023-08-07  Nick Alcock  <nick.alcock@oracle.com>
- 
--	* GCC 13.2.0 released.
-+	* configure: Regenerate.
- 
--2023-04-26  Release Manager
-+2023-08-07  Alexander von Gluck IV  <kallisti5@unixzen.com>
- 
--	* GCC 13.1.0 released.
-+	* configure: Regenerate.
-+
-+2023-08-07  Nick Alcock  <nick.alcock@oracle.com>
-+
-+	* configure: Regenerate.
-+
-+2023-08-07  Nick Alcock  <nick.alcock@oracle.com>
-+
-+	* configure: Regenerate.
-+
-+2023-08-07  H.J. Lu  <hjl.tools@gmail.com>
-+
-+	* configure: Regenerate.
-+
-+2023-08-07  H.J. Lu  <hjl.tools@gmail.com>
-+
-+	* configure: Regenerated.
-+
-+2023-06-16  Martin Jambor  <mjambor@suse.cz>
-+
-+	* Makefile.in: Regenerate.
-+	* configure: Likewise.
-+
-+2023-06-15  Marek Polacek  <polacek@redhat.com>
-+
-+	* configure.ac (--enable-host-shared): Don't set PICFLAG here.
-+	(--enable-host-pie): New check.  Set PICFLAG after this check.
-+	* configure: Regenerate.
- 
- 2022-11-23  Marek Polacek  <polacek@redhat.com>
- 
-@@ -74,6 +113,109 @@
+@@ -110,6 +113,109 @@
  
                  ChangeLog file for zlib
  
@@ -265,7 +223,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  Changes in 1.2.11 (15 Jan 2017)
  - Fix deflate stored bug when pulling last block from window
  - Permit immediate deflateParams changes before any deflate input
-@@ -169,7 +311,7 @@
+@@ -205,7 +311,7 @@
  - Fix types in contrib/minizip to match result of get_crc_table()
  - Simplify contrib/vstudio/vc10 with 'd' suffix
  - Add TOP support to win32/Makefile.msc
@@ -274,7 +232,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - Fix typos in the use of _LARGEFILE64_SOURCE in zconf.h
  - Add vc11 and vc12 build files to contrib/vstudio
  - Add gzvprintf() as an undocumented function in zlib
-@@ -369,14 +511,14 @@
+@@ -405,14 +511,14 @@
  - Use u4 type for crc_table to avoid conversion warnings
  - Apply casts in zlib.h to avoid conversion warnings
  - Add OF to prototypes for adler32_combine_ and crc32_combine_ [Miller]
@@ -291,7 +249,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - Update RFC references to use http://tools.ietf.org/html/... [Li]
  - Add --archs option, use of libtool to configure for Mac OS X [Borstel]
  
-@@ -584,7 +726,7 @@
+@@ -620,7 +726,7 @@
  - Don't use _vsnprintf on later versions of MSVC [Lowman]
  - Add CMake build script and input file [Lowman]
  - Update contrib/minizip to 1.1 [Svensson, Vollant]
@@ -300,7 +258,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - Replace gzio.c with a new set of routines with the same functionality
  - Add gzbuffer(), gzoffset(), gzclose_r(), gzclose_w() as part of above
  - Update contrib/minizip to 1.1b
-@@ -758,7 +900,7 @@
+@@ -794,7 +900,7 @@
  - Be more strict on incomplete code sets in inflate_table() and increase
    ENOUGH and MAXD -- this repairs a possible security vulnerability for
    invalid inflate input.  Thanks to Tavis Ormandy and Markus Oberhumer for
@@ -309,7 +267,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - Add ia64 support to configure for HP-UX [Smith]
  - Add error return to gzread() for format or i/o error [Levin]
  - Use malloc.h for OS/2 [Necasek]
-@@ -794,7 +936,7 @@
+@@ -830,7 +936,7 @@
  - Add Z_FIXED strategy option to deflateInit2() to force fixed trees
  - Add updated make_vms.com [Coghlan], update README
  - Create a new "examples" directory, move gzappend.c there, add zpipe.c,
@@ -318,7 +276,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - Add FAQ entry and comments in deflate.c on uninitialized memory access
  - Add Solaris 9 make options in configure [Gilbert]
  - Allow strerror() usage in gzio.c for STDC
-@@ -865,7 +1007,7 @@
+@@ -901,7 +1007,7 @@
  - Fix a big fat bug in inftrees.c that prevented decoding valid
    dynamic blocks with only literals and no distance codes --
    Thanks to "Hot Emu" for the bug report and sample file
@@ -327,7 +285,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  
  Changes in 1.2.1 (17 November 2003)
  - Remove a tab in contrib/gzappend/gzappend.c
-@@ -1043,7 +1185,7 @@
+@@ -1079,7 +1185,7 @@
      - Include additional header file on VMS for off_t typedef
  - Try to use _vsnprintf where it supplants vsprintf [Vollant]
  - Add some casts in inffast.c
@@ -336,7 +294,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
    write more than 4095 bytes before compression
  - Remove unused state from inflateBackEnd()
  - Remove exit(0) from minigzip.c, example.c
-@@ -1109,14 +1251,14 @@
+@@ -1145,14 +1251,14 @@
  - Add contrib/puff/ simple inflate for deflate format description
  
  Changes in 1.1.4 (11 March 2002)
@@ -354,7 +312,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  
  Changes in 1.1.3 (9 July 1998)
  - fix "an inflate input buffer bug that shows up on rare but persistent
-@@ -1190,7 +1332,7 @@
+@@ -1226,7 +1332,7 @@
  - remove block truncation heuristic which had very marginal effect for zlib
    (smaller lit_bufsize than in gzip 1.2.4) and degraded a little the
    compression ratio on some files. This also allows inlining _tr_tally for
@@ -363,7 +321,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - added msdos/Makefile.w32 for WIN32 Microsoft Visual C++ (Bob Frazier)
  
  Changes in 1.1.0 (24 Feb 98)
-@@ -1221,7 +1363,7 @@
+@@ -1257,7 +1363,7 @@
  - Avoid gcc 2.8.0 comparison bug a little differently than zlib 1.0.8
  - in inftrees.c, avoid cc -O bug on HP (Farshid Elahi)
  - in zconf.h move the ZLIB_DLL stuff earlier to avoid problems with
@@ -372,7 +330,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - install libz.so* with mode 755 (executable) instead of 644 (Marc Lehmann)
  - read_buf buf parameter of type Bytef* instead of charf*
  - zmemcpy parameters are of type Bytef*, not charf* (Joseph Strout)
-@@ -1235,7 +1377,7 @@
+@@ -1271,7 +1377,7 @@
  - include sys/types.h to get off_t on some systems (Marc Lehmann & QingLong)
  - use constant arrays for the static trees in trees.c instead of computing
    them at run time (thanks to Ken Raeburn for this suggestion). To create
@@ -381,7 +339,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - check return code of example in "make test" and display result
  - pass minigzip command line options to file_compress
  - simplifying code of inflateSync to avoid gcc 2.8 bug
-@@ -1274,12 +1416,12 @@
+@@ -1310,12 +1416,12 @@
  - add functions gzprintf, gzputc, gzgetc, gztell, gzeof, gzseek, gzrewind and
    gzsetparams (thanks to Roland Giersig and Kevin Ruland for some of this code)
  - Fix a deflate bug occurring only with compression level 0 (thanks to
@@ -397,7 +355,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - move MSDOS or Windows specific files to directory msdos
  - suppress the notion of partial flush to simplify the interface
    (but the symbol Z_PARTIAL_FLUSH is kept for compatibility with 1.0.4)
-@@ -1291,7 +1433,7 @@
+@@ -1327,7 +1433,7 @@
  - added Makefile.nt (thanks to Stephen Williams)
  - added the unsupported "contrib" directory:
     contrib/asm386/ by Gilles Vollant <info@winimage.com>
@@ -406,7 +364,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
     contrib/iostream/ by Kevin Ruland <kevin@rodin.wustl.edu>
          A C++ I/O streams interface to the zlib gz* functions
     contrib/iostream2/  by Tyge L√∏vset <Tyge.Lovset@cmr.no>
-@@ -1299,7 +1441,7 @@
+@@ -1335,7 +1441,7 @@
     contrib/untgz/  by "Pedro A. Aranda Guti\irrez" <paag@tid.es>
          A very simple tar.gz file extractor using zlib
     contrib/visual-basic.txt by Carlos Rios <c_rios@sonda.cl>
@@ -415,7 +373,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - pass params -f (filtered data), -h (huffman only), -1 to -9 (compression
    level) in minigzip (thanks to Tom Lane)
  
-@@ -1308,8 +1450,8 @@
+@@ -1344,8 +1450,8 @@
  - add undocumented function inflateSyncPoint() (hack for Paul Mackerras)
  - add undocumented function zError to convert error code to string
    (for Tim Smithers)
@@ -426,7 +384,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - Add EXPORT keyword for check_func (needed for Windows DLL)
  - add current directory to LD_LIBRARY_PATH for "make test"
  - create also a link for libz.so.1
-@@ -1322,7 +1464,7 @@
+@@ -1358,7 +1464,7 @@
  - allow compilation with ANSI keywords only enabled for TurboC in large model
  - avoid "versionString"[0] (Borland bug)
  - add NEED_DUMMY_RETURN for Borland
@@ -435,7 +393,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - allow compilation with CC
  - defined STDC for OS/2 (David Charlap)
  - limit external names to 8 chars for MVS (Thomas Lund)
-@@ -1332,7 +1474,7 @@
+@@ -1368,7 +1474,7 @@
  - use _fdopen instead of fdopen for MSC >= 6.0 (Thomas Fanslau)
  - added makelcc.bat for lcc-win32 (Tom St Denis)
  - in Makefile.dj2, use copy and del instead of install and rm (Frank Donahoe)
@@ -444,7 +402,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - check for unistd.h in configure (for off_t)
  - remove useless check parameter in inflate_blocks_free
  - avoid useless assignment of s->check to itself in inflate_blocks_new
-@@ -1353,7 +1495,7 @@
+@@ -1389,7 +1495,7 @@
  Changes in 1.0.4 (24 Jul 96)
  - In very rare conditions, deflate(s, Z_FINISH) could fail to produce an EOF
    bit, so the decompressor could decompress all the correct data but went
@@ -453,7 +411,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - zlibVersion and gzerror return const char* (needed for DLL)
  - port to RISCOS (no fdopen, no multiple dots, no unlink, no fileno)
  - use z_error only for DEBUG (avoid problem with DLLs)
-@@ -1383,7 +1525,7 @@
+@@ -1419,7 +1525,7 @@
  - fix array overlay in deflate.c which sometimes caused bad compressed data
  - fix inflate bug with empty stored block
  - fix MSDOS medium model which was broken in 0.99
@@ -462,7 +420,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - Bytef is define'd instead of typedef'ed (work around Borland bug)
  - added an INDEX file
  - new makefiles for DJGPP (Makefile.dj2), 32-bit Borland (Makefile.b32),
-@@ -1404,7 +1546,7 @@
+@@ -1440,7 +1546,7 @@
  - allow preset dictionary shared between compressor and decompressor
  - allow compression level 0 (no compression)
  - add deflateParams in zlib.h: allow dynamic change of compression level
@@ -471,7 +429,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - test large buffers and deflateParams in example.c
  - add optional "configure" to build zlib as a shared library
  - suppress Makefile.qnx, use configure instead
-@@ -1443,33 +1585,33 @@
+@@ -1479,33 +1585,33 @@
  - fix typo in Make_vms.com (f$trnlnm -> f$getsyi)
  - in fcalloc, normalize pointer if size > 65520 bytes
  - don't use special fcalloc for 32 bit Borland C++
@@ -513,7 +471,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  
  Changes in 0.94 (13 Aug 95)
  - support MSDOS medium model
-@@ -1478,12 +1620,12 @@
+@@ -1514,12 +1620,12 @@
  - added support for VMS
  - allow a compression level in gzopen()
  - gzflush now calls fflush
@@ -528,7 +486,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - avoid warning about (unused) pointer before start of array in deflate.c
  - avoid various warnings in gzio.c, example.c, infblock.c, adler32.c, zutil.c
  - avoid reserved word 'new' in trees.c
-@@ -1502,7 +1644,7 @@
+@@ -1538,7 +1644,7 @@
  - no memcpy on Pyramid
  - suppressed inftest.c
  - optimized fill_window, put longest_match inline for gcc
@@ -537,7 +495,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - untabify all sources to simplify patches
  
  Changes in 0.91 (2 May 95)
-@@ -1520,7 +1662,7 @@
+@@ -1556,7 +1662,7 @@
  - let again gzread copy uncompressed data unchanged (was working in 0.71)
  - deflate(Z_FULL_FLUSH), inflateReset and inflateSync are now fully implemented
  - added a test of inflateSync in example.c
@@ -546,7 +504,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - document explicitly that zalloc(64K) on MSDOS must return a normalized
    pointer (zero offset)
  - added Makefiles for Microsoft C, Turbo C, Borland C++
-@@ -1529,7 +1671,7 @@
+@@ -1565,7 +1671,7 @@
  Changes in 0.8 (29 April 95)
  - added fast inflate (inffast.c)
  - deflate(Z_FINISH) now returns Z_STREAM_END when done. Warning: this
@@ -555,7 +513,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - work around a TurboC compiler bug (bad code for b << 0, see infutil.h)
    (actually that was not a compiler bug, see 0.81 above)
  - gzread no longer reads one extra byte in certain cases
-@@ -1539,50 +1681,50 @@
+@@ -1575,50 +1681,50 @@
  
  Changes in 0.71 (14 April 95)
  - Fixed more MSDOS compilation problems :( There is still a bug with
@@ -624,7 +582,7 @@ diff -Naur --binary zlib/ChangeLog zlib.next/ChangeLog
  - added Z_HUFFMAN_ONLY
  - added gzerror()
 diff -Naur --binary zlib/CMakeLists.txt zlib.next/CMakeLists.txt
---- a/zlib/CMakeLists.txt	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/CMakeLists.txt	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/CMakeLists.txt	2025-11-30 23:32:17.000000000 +0100
 @@ -1,12 +1,11 @@
 -cmake_minimum_required(VERSION 2.4.4)
@@ -745,7 +703,7 @@ diff -Naur --binary zlib/CMakeLists.txt zlib.next/CMakeLists.txt
 +    endif()
  endif()
 diff -Naur --binary zlib/compress.c zlib.next/compress.c
---- a/zlib/compress.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/compress.c	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/compress.c	2025-11-30 23:32:17.000000000 +0100
 @@ -3,7 +3,7 @@
   * For conditions of distribution and use, see copyright notice in zlib.h
@@ -799,7 +757,7 @@ diff -Naur --binary zlib/compress.c zlib.next/compress.c
             (sourceLen >> 25) + 13;
  }
 diff -Naur --binary zlib/configure zlib.next/configure
---- a/zlib/configure	2025-06-05 18:05:01.000000000 +0200
+--- a/zlib/configure	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/configure	2025-11-30 23:32:19.000000000 +0100
 @@ -1,6 +1,6 @@
  #! /bin/sh
@@ -820,23 +778,15 @@ diff -Naur --binary zlib/configure zlib.next/configure
  PACKAGE_BUGREPORT=''
  PACKAGE_URL=''
  
-@@ -635,11 +635,14 @@
- LTLIBOBJS
- LIBOBJS
- PICFLAG
-+enable_host_pie
-+enable_host_shared
- TARGET_LIBRARY_FALSE
- TARGET_LIBRARY_TRUE
- toolexeclibdir
+@@ -643,7 +643,6 @@
  toolexecdir
+ ENABLE_DARWIN_AT_RPATH_FALSE
+ ENABLE_DARWIN_AT_RPATH_TRUE
 -CPP
-+ENABLE_DARWIN_AT_RPATH_FALSE
-+ENABLE_DARWIN_AT_RPATH_TRUE
  OTOOL64
  OTOOL
  LIPO
-@@ -647,6 +650,8 @@
+@@ -651,6 +650,8 @@
  DSYMUTIL
  RANLIB
  AR
@@ -845,18 +795,7 @@ diff -Naur --binary zlib/configure zlib.next/configure
  OBJDUMP
  LN_S
  NM
-@@ -776,8 +781,10 @@
- enable_fast_install
- with_gnu_ld
- enable_libtool_lock
-+enable_darwin_at_rpath
- with_toolexeclibdir
- enable_host_shared
-+enable_host_pie
- '
-       ac_precious_vars='build_alias
- host_alias
-@@ -1324,7 +1331,7 @@
+@@ -1330,7 +1331,7 @@
    # Omit some internal or obsolete options to make the list less imposing.
    # This message is too long to be a string in the A/UX 3.1 sh.
    cat <<_ACEOF
@@ -865,7 +804,7 @@ diff -Naur --binary zlib/configure zlib.next/configure
  
  Usage: $0 [OPTION]... [VAR=VALUE]...
  
-@@ -1395,7 +1402,7 @@
+@@ -1401,7 +1402,7 @@
  
  if test -n "$ac_init_help"; then
    case $ac_init_help in
@@ -874,19 +813,7 @@ diff -Naur --binary zlib/configure zlib.next/configure
     esac
    cat <<\_ACEOF
  
-@@ -1419,7 +1426,11 @@
-   --enable-fast-install[=PKGS]
-                           optimize for fast installation [default=yes]
-   --disable-libtool-lock  avoid locking (might break parallel builds)
-+  --enable-darwin-at-rpath
-+                          install libraries with @rpath/library-name, requires
-+                          rpaths to be added to executables
-   --enable-host-shared    build host code as shared libraries
-+  --enable-host-pie       build host code as PIE
- 
- Optional Packages:
-   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
-@@ -1511,7 +1522,7 @@
+@@ -1521,7 +1522,7 @@
  test -n "$ac_init_help" && exit $ac_status
  if $ac_init_version; then
    cat <<\_ACEOF
@@ -895,7 +822,7 @@ diff -Naur --binary zlib/configure zlib.next/configure
  generated by GNU Autoconf 2.69
  
  Copyright (C) 2012 Free Software Foundation, Inc.
-@@ -1563,6 +1574,43 @@
+@@ -1573,6 +1574,43 @@
  
  } # ac_fn_c_try_compile
  
@@ -939,7 +866,7 @@ diff -Naur --binary zlib/configure zlib.next/configure
  # ac_fn_c_try_link LINENO
  # -----------------------
  # Try to link conftest.$ac_ext, and return whether this succeeded.
-@@ -1640,43 +1688,6 @@
+@@ -1650,43 +1688,6 @@
  
  } # ac_fn_c_check_header_compile
  
@@ -983,7 +910,7 @@ diff -Naur --binary zlib/configure zlib.next/configure
  # ac_fn_c_try_run LINENO
  # ----------------------
  # Try to link conftest.$ac_ext, and return whether this succeeded. Assumes
-@@ -1879,7 +1890,7 @@
+@@ -1889,7 +1890,7 @@
  This file contains any messages produced by compilers while
  running configure, to aid debugging if configure makes a mistake.
  
@@ -992,7 +919,7 @@ diff -Naur --binary zlib/configure zlib.next/configure
  generated by GNU Autoconf 2.69.  Invocation command line was
  
    $ $0 $@
-@@ -2415,7 +2426,6 @@
+@@ -2425,7 +2426,6 @@
      NONENONEs,x,x, &&
    program_prefix=${target_alias}-
  
@@ -1000,7 +927,7 @@ diff -Naur --binary zlib/configure zlib.next/configure
  # This works around an automake problem.
  mkinstalldirs="`cd $ac_aux_dir && ${PWDCMD-pwd}`/mkinstalldirs"
  
-@@ -2906,7 +2916,7 @@
+@@ -2916,7 +2916,7 @@
  
  # Define the identity of the package.
   PACKAGE='zlib'
@@ -1009,108 +936,11 @@ diff -Naur --binary zlib/configure zlib.next/configure
  
  
  cat >>confdefs.h <<_ACEOF
-@@ -4744,48 +4754,55 @@
-   $as_echo_n "(cached) " >&6
- else
-   if test -n "$NM"; then
--  # Let the user override the test.
--  lt_cv_path_NM="$NM"
--else
--  lt_nm_to_check="${ac_tool_prefix}nm"
--  if test -n "$ac_tool_prefix" && test "$build" = "$host"; then
--    lt_nm_to_check="$lt_nm_to_check nm"
--  fi
--  for lt_tmp_nm in $lt_nm_to_check; do
--    lt_save_ifs="$IFS"; IFS=$PATH_SEPARATOR
--    for ac_dir in $PATH /usr/ccs/bin/elf /usr/ccs/bin /usr/ucb /bin; do
--      IFS="$lt_save_ifs"
--      test -z "$ac_dir" && ac_dir=.
--      tmp_nm="$ac_dir/$lt_tmp_nm"
--      if test -f "$tmp_nm" || test -f "$tmp_nm$ac_exeext" ; then
--	# Check to see if the nm accepts a BSD-compat flag.
--	# Adding the `sed 1q' prevents false positives on HP-UX, which says:
--	#   nm: unknown option "B" ignored
--	# Tru64's nm complains that /dev/null is an invalid object file
--	case `"$tmp_nm" -B /dev/null 2>&1 | sed '1q'` in
--	*/dev/null* | *'Invalid file or object type'*)
--	  lt_cv_path_NM="$tmp_nm -B"
--	  break
--	  ;;
--	*)
--	  case `"$tmp_nm" -p /dev/null 2>&1 | sed '1q'` in
--	  */dev/null*)
--	    lt_cv_path_NM="$tmp_nm -p"
--	    break
--	    ;;
--	  *)
--	    lt_cv_path_NM=${lt_cv_path_NM="$tmp_nm"} # keep the first match, but
--	    continue # so that we can try to find one that supports BSD flags
--	    ;;
--	  esac
--	  ;;
--	esac
--      fi
--    done
--    IFS="$lt_save_ifs"
--  done
--  : ${lt_cv_path_NM=no}
--fi
-+   # Let the user override the nm to test.
-+   lt_nm_to_check="$NM"
-+ else
-+   lt_nm_to_check="${ac_tool_prefix}nm"
-+   if test -n "$ac_tool_prefix" && test "$build" = "$host"; then
-+     lt_nm_to_check="$lt_nm_to_check nm"
-+   fi
-+ fi
-+ for lt_tmp_nm in "$lt_nm_to_check"; do
-+   lt_save_ifs="$IFS"; IFS=$PATH_SEPARATOR
-+   for ac_dir in $PATH /usr/ccs/bin/elf /usr/ccs/bin /usr/ucb /bin; do
-+     IFS="$lt_save_ifs"
-+     test -z "$ac_dir" && ac_dir=.
-+     # Strip out any user-provided options from the nm to test twice,
-+     # the first time to test to see if nm (rather than its options) has
-+     # an explicit path, the second time to yield a file which can be
-+     # nm'ed itself.
-+     tmp_nm_path="`$ECHO "$lt_tmp_nm" | sed 's, -.*$,,'`"
-+     case "$tmp_nm_path" in
-+     */*|*\\*) tmp_nm="$lt_tmp_nm";;
-+     *) tmp_nm="$ac_dir/$lt_tmp_nm";;
-+     esac
-+     tmp_nm_to_nm="`$ECHO "$tmp_nm" | sed 's, -.*$,,'`"
-+     if test -f "$tmp_nm_to_nm" || test -f "$tmp_nm_to_nm$ac_exeext" ; then
-+       # Check to see if the nm accepts a BSD-compat flag.
-+       # Adding the `sed 1q' prevents false positives on HP-UX, which says:
-+       #   nm: unknown option "B" ignored
-+       case `"$tmp_nm" -B "$tmp_nm_to_nm" 2>&1 | grep -v '^ *$' | sed '1q'` in
-+       *$tmp_nm*) lt_cv_path_NM="$tmp_nm -B"
-+	 break
-+	 ;;
-+       *)
-+	 case `"$tmp_nm" -p "$tmp_nm_to_nm" 2>&1 | grep -v '^ *$' | sed '1q'` in
-+	 *$tmp_nm*)
-+	   lt_cv_path_NM="$tmp_nm -p"
-+	   break
-+	   ;;
-+	 *)
-+	   lt_cv_path_NM=${lt_cv_path_NM="$tmp_nm"} # keep the first match, but
-+	   continue # so that we can try to find one that supports BSD flags
-+	   ;;
-+	 esac
-+	 ;;
-+       esac
-+     fi
-+   done
-+   IFS="$lt_save_ifs"
-+ done
-+ : ${lt_cv_path_NM=no}
- fi
- { $as_echo "$as_me:${as_lineno-$LINENO}: result: $lt_cv_path_NM" >&5
- $as_echo "$lt_cv_path_NM" >&6; }
-@@ -5507,6 +5524,526 @@
+@@ -5524,8 +5524,498 @@
  
  
  
+-plugin_option=
 +ac_ext=c
 +ac_cpp='$CPP $CPPFLAGS'
 +ac_compile='$CC -c $CFLAGS $CPPFLAGS conftest.$ac_ext >&5'
@@ -1601,18 +1431,15 @@ diff -Naur --binary zlib/configure zlib.next/configure
 +fi
 +{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for -plugin option" >&5
 +$as_echo_n "checking for -plugin option... " >&6; }
-+plugin_names="liblto_plugin.so liblto_plugin-0.dll cyglto_plugin-0.dll"
+ plugin_names="liblto_plugin.so liblto_plugin-0.dll cyglto_plugin-0.dll"
 +plugin_option=
-+for plugin in $plugin_names; do
-+  plugin_so=`${CC} ${CFLAGS} --print-prog-name $plugin`
-+  if test x$plugin_so = x$plugin; then
-+    plugin_so=`${CC} ${CFLAGS} --print-file-name $plugin`
-+  fi
-+  if test x$plugin_so != x$plugin; then
-+    plugin_option="--plugin $plugin_so"
-+    break
-+  fi
-+done
+ for plugin in $plugin_names; do
+   plugin_so=`${CC} ${CFLAGS} --print-prog-name $plugin`
+   if test x$plugin_so = x$plugin; then
+@@ -5536,7 +6026,24 @@
+     break
+   fi
+ done
 +if test -z "$plugin_option"; then
 +  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 +$as_echo "no" >&6; }
@@ -1629,34 +1456,43 @@ diff -Naur --binary zlib/configure zlib.next/configure
 +  rm -f conftest.*
 +fi
 +plugin_option="$plugin_option"
-+
+ 
 +fi
  if test -n "$ac_tool_prefix"; then
    # Extract the first word of "${ac_tool_prefix}ar", so it can be a program name with args.
  set dummy ${ac_tool_prefix}ar; ac_word=$2
-@@ -5600,6 +6137,17 @@
- fi
+@@ -5631,17 +6138,15 @@
  
  test -z "$AR" && AR=ar
-+if test -n "$plugin_option"; then
+ if test -n "$plugin_option"; then
+-  if $AR --help 2>&1 | grep -q "\--plugin"; then
+-    touch conftest.c
+-    $AR $plugin_option rc conftest.a conftest.c
+-    if test "$?" != 0; then
+-      { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: Failed: $AR $plugin_option rc" >&5
+-$as_echo "$as_me: WARNING: Failed: $AR $plugin_option rc" >&2;}
+-    else
 +  case "$AR" in
 +  *"$plugin_option"*)
 +    ;;
 +  *)
 +    if $AR --help 2>&1 | grep -q "\--plugin"; then
-+      AR="$AR $plugin_option"
-+    fi
+       AR="$AR $plugin_option"
+     fi
+-    rm -f conftest.*
+-  fi
 +    ;;
 +  esac
-+fi
+ fi
  test -z "$AR_FLAGS" && AR_FLAGS=cru
  
- 
-@@ -5804,6 +6352,17 @@
- fi
+@@ -5848,9 +6353,15 @@
  
  test -z "$RANLIB" && RANLIB=:
-+if test -n "$plugin_option" && test "$RANLIB" != ":"; then
+ if test -n "$plugin_option" && test "$RANLIB" != ":"; then
+-  if $RANLIB --help 2>&1 | grep -q "\--plugin"; then
+-    RANLIB="$RANLIB $plugin_option"
+-  fi
 +  case "$RANLIB" in
 +  *"$plugin_option"*)
 +    ;;
@@ -1666,29 +1502,10 @@ diff -Naur --binary zlib/configure zlib.next/configure
 +    fi
 +    ;;
 +  esac
-+fi
+ fi
  
  
- 
-@@ -5918,7 +6477,7 @@
-   symcode='[BCDEGQRST]'
-   ;;
- solaris*)
--  symcode='[BDRT]'
-+  symcode='[BCDRT]'
-   ;;
- sco3.2v5*)
-   symcode='[DT]'
-@@ -6934,7 +7493,7 @@
-       # darwin 5.x (macOS 10.1) onwards we only need to adjust when the
-       # deployment target is forced to an earlier version.
-       case ${MACOSX_DEPLOYMENT_TARGET-UNSET},$host in
--	UNSET,*-darwin[89]*|UNSET,*-darwin[12][0123456789]*)
-+	UNSET,*-darwin[89]*|UNSET,*-darwin[12][0-9]*)
- 	  ;;
- 	10.[012][,.]*)
- 	  _lt_dar_allow_undefined='${wl}-flat_namespace ${wl}-undefined ${wl}suppress'
-@@ -6960,144 +7519,6 @@
+@@ -7008,144 +7519,6 @@
      ;;
    esac
  
@@ -1833,160 +1650,25 @@ diff -Naur --binary zlib/configure zlib.next/configure
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for ANSI C header files" >&5
  $as_echo_n "checking for ANSI C header files... " >&6; }
  if ${ac_cv_header_stdc+:} false; then :
-@@ -8913,6 +9334,49 @@
-     darwin* | rhapsody*)
- 
- 
-+
-+  # Publish an arg to allow the user to select that Darwin host (and target)
-+  # libraries should be given install-names like @rpath/libfoo.dylib.  This
-+  # requires that the user of the library then adds an 'rpath' to the DSO that
-+  # needs access.
-+  # NOTE: there are defaults below, for systems that support rpaths.  The person
-+  # configuring can override the defaults for any system version that supports
-+  # them - they are, however, forced off for system versions without support.
-+  # Check whether --enable-darwin-at-rpath was given.
-+if test "${enable_darwin_at_rpath+set}" = set; then :
-+  enableval=$enable_darwin_at_rpath; if test "x$enable_darwin_at_rpath" = "xyes"; then
-+    # This is not supported before macOS 10.5 / Darwin9.
-+    case ${MACOSX_DEPLOYMENT_TARGET-UNSET},$host_os in
-+      UNSET,darwin[4-8]*|UNSET,rhapsody*|10.[0-4][,.]*)
-+	{ $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: Darwin @rpath library names are incompatible with OSX versions earlier than 10.5 (rpaths disabled)" >&5
-+$as_echo "$as_me: WARNING: Darwin @rpath library names are incompatible with OSX versions earlier than 10.5 (rpaths disabled)" >&2;}
-+	enable_darwin_at_rpath=no
-+      ;;
-+    esac
-+   fi
-+else
-+  case ${MACOSX_DEPLOYMENT_TARGET-UNSET},$host_os in
-+    # As above, before 10.5 / Darwin9 this does not work.
-+     UNSET,darwin[4-8]*|UNSET,rhapsody*|10.[0-4][,.]*)
-+       enable_darwin_at_rpath=no
-+       ;;
-+
-+    # We cannot build and test reliably on macOS 10.11+ (Darwin15+) without use
-+    # of rpaths, since runpaths set via DYLD_LIBRARY_PATH are elided by key
-+    # system executables (e.g. /bin/sh).  Force rpaths on for these systems.
-+      UNSET,darwin1[5-9]*|UNSET,darwin2*|10.1[1-9][,.]*|1[1-9].*[,.]* )
-+      { $as_echo "$as_me:${as_lineno-$LINENO}: @rpath library names are needed on macOS versions later than 10.11 (rpaths have been enabled)" >&5
-+$as_echo "$as_me: @rpath library names are needed on macOS versions later than 10.11 (rpaths have been enabled)" >&6;}
-+      enable_darwin_at_rpath=yes
-+      ;;
-+    # NOTE: we are not (yet) doing anything for 10.5 .. 10.10, since they can
-+    # work with either DYLD_LIBRARY_PATH or embedded rpaths.
-+
-+    esac
-+
-+fi
-+
-+
-   archive_cmds_need_lc=no
-   hardcode_direct=no
-   hardcode_automatic=yes
-@@ -8930,9 +9394,13 @@
-   esac
-   if test "$_lt_dar_can_shared" = "yes"; then
-     output_verbose_link_cmd=func_echo_all
--    archive_cmds="\$CC -dynamiclib \$allow_undefined_flag -o \$lib \$libobjs \$deplibs \$compiler_flags -install_name \$rpath/\$soname \$verstring $_lt_dar_single_mod${_lt_dsymutil}"
-+    _lt_install_name='\$rpath/\$soname'
-+    if test "x$enable_darwin_at_rpath" = "xyes"; then
-+      _lt_install_name='@rpath/\$soname'
-+    fi
-+    archive_cmds="\$CC -dynamiclib \$allow_undefined_flag -o \$lib \$libobjs \$deplibs \$compiler_flags -install_name ${_lt_install_name} \$verstring ${_lt_dsymutil}"
-     module_cmds="\$CC \$allow_undefined_flag -o \$lib -bundle \$libobjs \$deplibs \$compiler_flags${_lt_dsymutil}"
--    archive_expsym_cmds="sed 's,^,_,' < \$export_symbols > \$output_objdir/\${libname}-symbols.expsym~\$CC -dynamiclib \$allow_undefined_flag -o \$lib \$libobjs \$deplibs \$compiler_flags -install_name \$rpath/\$soname \$verstring ${_lt_dar_single_mod}${_lt_dar_export_syms}${_lt_dsymutil}"
-+    archive_expsym_cmds="sed 's,^,_,' < \$export_symbols > \$output_objdir/\${libname}-symbols.expsym~\$CC -dynamiclib \$allow_undefined_flag -o \$lib \$libobjs \$deplibs \$compiler_flags -install_name ${_lt_install_name} \$verstring ${_lt_dar_export_syms}${_lt_dsymutil}"
-     module_expsym_cmds="sed -e 's,^,_,' < \$export_symbols > \$output_objdir/\${libname}-symbols.expsym~\$CC \$allow_undefined_flag -o \$lib -bundle \$libobjs \$deplibs \$compiler_flags${_lt_dar_export_syms}${_lt_dsymutil}"
- 
-   else
-@@ -9921,7 +10389,7 @@
-   soname_spec='${libname}${release}${shared_ext}$major'
-   shlibpath_var=LIBRARY_PATH
-   shlibpath_overrides_runpath=yes
--  sys_lib_dlsearch_path_spec='/boot/home/config/lib /boot/common/lib /boot/beos/system/lib'
-+  sys_lib_dlsearch_path_spec='/boot/home/config/lib /boot/common/lib /boot/system/lib'
-   hardcode_into_libs=yes
-   ;;
- 
-@@ -10759,7 +11227,7 @@
+@@ -10854,7 +11227,7 @@
    lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
    lt_status=$lt_dlunknown
    cat > conftest.$ac_ext <<_LT_EOF
--#line 10762 "configure"
+-#line 10857 "configure"
 +#line 11230 "configure"
  #include "confdefs.h"
  
  #if HAVE_DLFCN_H
-@@ -10865,7 +11333,7 @@
+@@ -10960,7 +11333,7 @@
    lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
    lt_status=$lt_dlunknown
    cat > conftest.$ac_ext <<_LT_EOF
--#line 10868 "configure"
+-#line 10963 "configure"
 +#line 11336 "configure"
  #include "confdefs.h"
  
  #if HAVE_DLFCN_H
-@@ -11102,6 +11570,14 @@
- # Only expand once:
- 
- 
-+ if test x$enable_darwin_at_rpath = xyes; then
-+  ENABLE_DARWIN_AT_RPATH_TRUE=
-+  ENABLE_DARWIN_AT_RPATH_FALSE='#'
-+else
-+  ENABLE_DARWIN_AT_RPATH_TRUE='#'
-+  ENABLE_DARWIN_AT_RPATH_FALSE=
-+fi
-+
- 
- # Find CPP now so that any conditional tests below won't do it and
- # thereby make the resulting definitions conditional.
-@@ -11548,15 +12024,31 @@
-   multilib_arg=
- fi
- 
-+# Enable --enable-host-shared.
- # Check whether --enable-host-shared was given.
- if test "${enable_host_shared+set}" = set; then :
--  enableval=$enable_host_shared; PICFLAG=-fPIC
-+  enableval=$enable_host_shared;
-+fi
-+
-+
-+
-+# Enable --enable-host-pie.
-+# Check whether --enable-host-pie was given.
-+if test "${enable_host_pie+set}" = set; then :
-+  enableval=$enable_host_pie;
-+fi
-+
-+
-+
-+if test x$enable_host_shared = xyes; then
-+  PICFLAG=-fPIC
-+elif test x$enable_host_pie = xyes; then
-+  PICFLAG=-fPIE
- else
-   PICFLAG=
- fi
- 
- 
--
- ac_config_files="$ac_config_files Makefile"
- 
- cat >confcache <<\_ACEOF
-@@ -11732,6 +12224,10 @@
-   as_fn_error $? "conditional \"am__fastdepCC\" was never defined.
- Usually this means the macro was only invoked conditionally." "$LINENO" 5
- fi
-+if test -z "${ENABLE_DARWIN_AT_RPATH_TRUE}" && test -z "${ENABLE_DARWIN_AT_RPATH_FALSE}"; then
-+  as_fn_error $? "conditional \"ENABLE_DARWIN_AT_RPATH\" was never defined.
-+Usually this means the macro was only invoked conditionally." "$LINENO" 5
-+fi
- if test -z "${TARGET_LIBRARY_TRUE}" && test -z "${TARGET_LIBRARY_FALSE}"; then
-   as_fn_error $? "conditional \"TARGET_LIBRARY\" was never defined.
- Usually this means the macro was only invoked conditionally." "$LINENO" 5
-@@ -12133,7 +12629,7 @@
+@@ -12256,7 +12629,7 @@
  # report actual input values of CONFIG_FILES etc. instead of their
  # values after options handling.
  ac_log="
@@ -1995,7 +1677,7 @@ diff -Naur --binary zlib/configure zlib.next/configure
  generated by GNU Autoconf 2.69.  Invocation command line was
  
    CONFIG_FILES    = $CONFIG_FILES
-@@ -12190,7 +12686,7 @@
+@@ -12313,7 +12686,7 @@
  cat >>$CONFIG_STATUS <<_ACEOF || ac_write_fail=1
  ac_cs_config="`$as_echo "$ac_configure_args" | sed 's/^ //; s/[\\""\`\$]/\\\\&/g'`"
  ac_cs_version="\\
@@ -2005,7 +1687,7 @@ diff -Naur --binary zlib/configure zlib.next/configure
    with options \\"\$ac_cs_config\\"
  
 diff -Naur --binary zlib/configure.ac zlib.next/configure.ac
---- a/zlib/configure.ac	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/configure.ac	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/configure.ac	2025-11-30 23:32:17.000000000 +0100
 @@ -1,13 +1,13 @@
  dnl Process this with autoconf to create configure
@@ -2023,46 +1705,8 @@ diff -Naur --binary zlib/configure.ac zlib.next/configure.ac
  
  # This works around an automake problem.
  mkinstalldirs="`cd $ac_aux_dir && ${PWDCMD-pwd}`/mkinstalldirs"
-@@ -64,6 +64,7 @@
- AC_SUBST(CET_FLAGS)
- 
- AC_PROG_LIBTOOL
-+AM_CONDITIONAL([ENABLE_DARWIN_AT_RPATH], [test x$enable_darwin_at_rpath = xyes])
- 
- # Find CPP now so that any conditional tests below won't do it and
- # thereby make the resulting definitions conditional.
-@@ -122,11 +123,26 @@
-   multilib_arg=
- fi
- 
-+# Enable --enable-host-shared.
- AC_ARG_ENABLE(host-shared,
- [AS_HELP_STRING([--enable-host-shared],
--		[build host code as shared libraries])],
--[PICFLAG=-fPIC], [PICFLAG=])
--AC_SUBST(PICFLAG)
-+		[build host code as shared libraries])])
-+AC_SUBST(enable_host_shared)
- 
-+# Enable --enable-host-pie.
-+AC_ARG_ENABLE(host-pie,
-+[AS_HELP_STRING([--enable-host-pie],
-+		[build host code as PIE])])
-+AC_SUBST(enable_host_pie)
-+
-+if test x$enable_host_shared = xyes; then
-+  PICFLAG=-fPIC
-+elif test x$enable_host_pie = xyes; then
-+  PICFLAG=-fPIE
-+else
-+  PICFLAG=
-+fi
-+
-+AC_SUBST(PICFLAG)
- AC_CONFIG_FILES([Makefile])
- AC_OUTPUT
 diff -Naur --binary zlib/contrib/ada/readme.txt zlib.next/contrib/ada/readme.txt
---- a/zlib/contrib/ada/readme.txt	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/ada/readme.txt	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/contrib/ada/readme.txt	2025-11-30 23:32:17.000000000 +0100
 @@ -8,8 +8,8 @@
  
@@ -2076,7 +1720,7 @@ diff -Naur --binary zlib/contrib/ada/readme.txt zlib.next/contrib/ada/readme.txt
    Flush now.
  
 diff -Naur --binary zlib/contrib/ada/test.adb zlib.next/contrib/ada/test.adb
---- a/zlib/contrib/ada/test.adb	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/ada/test.adb	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/contrib/ada/test.adb	2025-11-30 23:32:17.000000000 +0100
 @@ -65,12 +65,12 @@
     Time_Stamp : Ada.Calendar.Time;
@@ -2094,7 +1738,7 @@ diff -Naur --binary zlib/contrib/ada/test.adb zlib.next/contrib/ada/test.adb
  
     procedure Compare_Files (Left, Right : String);
 diff -Naur --binary zlib/contrib/ada/zlib.adb zlib.next/contrib/ada/zlib.adb
---- a/zlib/contrib/ada/zlib.adb	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/ada/zlib.adb	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/contrib/ada/zlib.adb	2025-11-30 23:32:17.000000000 +0100
 @@ -204,7 +204,7 @@
        end if;
@@ -2106,7 +1750,7 @@ diff -Naur --binary zlib/contrib/ada/zlib.adb zlib.next/contrib/ada/zlib.adb
  
        if Header = None or else Header = GZip then
 diff -Naur --binary zlib/contrib/ada/zlib.ads zlib.next/contrib/ada/zlib.ads
---- a/zlib/contrib/ada/zlib.ads	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/ada/zlib.ads	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/contrib/ada/zlib.ads	2025-11-30 23:32:17.000000000 +0100
 @@ -114,7 +114,7 @@
     -- Compression strategy constants --
@@ -2118,7 +1762,7 @@ diff -Naur --binary zlib/contrib/ada/zlib.ads zlib.next/contrib/ada/zlib.ads
     Filtered         : constant Strategy_Type;
     Huffman_Only     : constant Strategy_Type;
 diff -Naur --binary zlib/contrib/ada/zlib-streams.ads zlib.next/contrib/ada/zlib-streams.ads
---- a/zlib/contrib/ada/zlib-streams.ads	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/ada/zlib-streams.ads	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/contrib/ada/zlib-streams.ads	2025-11-30 23:32:17.000000000 +0100
 @@ -62,7 +62,7 @@
                                      := Default_Buffer_Size;
@@ -2130,7 +1774,7 @@ diff -Naur --binary zlib/contrib/ada/zlib-streams.ads zlib.next/contrib/ada/zlib
     --  If mode is Out_Stream then Read operation is disabled.
  
 diff -Naur --binary zlib/contrib/blast/blast.h zlib.next/contrib/blast/blast.h
---- a/zlib/contrib/blast/blast.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/blast/blast.h	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/contrib/blast/blast.h	2025-11-30 23:32:17.000000000 +0100
 @@ -57,7 +57,7 @@
   * use by the application to pass an input descriptor to infun(), if desired.
@@ -2142,7 +1786,7 @@ diff -Naur --binary zlib/contrib/blast/blast.h zlib.next/contrib/blast/blast.h
   * The output function is invoked: err = outfun(how, buf, len), where the bytes
   * to be written are buf[0..len-1].  If err is not zero, then blast() returns
 diff -Naur --binary zlib/contrib/delphi/ZLib.pas zlib.next/contrib/delphi/ZLib.pas
---- a/zlib/contrib/delphi/ZLib.pas	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/delphi/ZLib.pas	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/contrib/delphi/ZLib.pas	2025-11-30 23:32:17.000000000 +0100
 @@ -152,7 +152,7 @@
    const OutBuf: Pointer; BufSize: Integer);
@@ -2154,7 +1798,7 @@ diff -Naur --binary zlib/contrib/delphi/ZLib.pas zlib.next/contrib/delphi/ZLib.p
  type
    EZlibError = class(Exception);
 diff -Naur --binary zlib/contrib/dotzlib/DotZLib/ChecksumImpl.cs zlib.next/contrib/dotzlib/DotZLib/ChecksumImpl.cs
---- a/zlib/contrib/dotzlib/DotZLib/ChecksumImpl.cs	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/dotzlib/DotZLib/ChecksumImpl.cs	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/dotzlib/DotZLib/ChecksumImpl.cs	2025-11-30 23:32:17.000000000 +0100
 @@ -34,7 +34,7 @@
          }
@@ -2175,7 +1819,7 @@ diff -Naur --binary zlib/contrib/dotzlib/DotZLib/ChecksumImpl.cs zlib.next/contr
          public abstract void Update(byte[] data, int offset, int count);
  
 diff -Naur --binary zlib/contrib/dotzlib/DotZLib/CodecBase.cs zlib.next/contrib/dotzlib/DotZLib/CodecBase.cs
---- a/zlib/contrib/dotzlib/DotZLib/CodecBase.cs	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/dotzlib/DotZLib/CodecBase.cs	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/dotzlib/DotZLib/CodecBase.cs	2025-11-30 23:32:17.000000000 +0100
 @@ -139,7 +139,7 @@
          /// <remarks>This must be implemented by a derived class</remarks>
@@ -2196,7 +1840,7 @@ diff -Naur --binary zlib/contrib/dotzlib/DotZLib/CodecBase.cs zlib.next/contrib/
          /// <param name="data">The byte array that contains the data to copy</param>
          /// <param name="startIndex">The index of the first byte to copy</param>
 diff -Naur --binary zlib/contrib/dotzlib/DotZLib/GZipStream.cs zlib.next/contrib/dotzlib/DotZLib/GZipStream.cs
---- a/zlib/contrib/dotzlib/DotZLib/GZipStream.cs	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/dotzlib/DotZLib/GZipStream.cs	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/dotzlib/DotZLib/GZipStream.cs	2025-11-30 23:32:17.000000000 +0100
 @@ -246,7 +246,7 @@
          }
@@ -2226,7 +1870,7 @@ diff -Naur --binary zlib/contrib/dotzlib/DotZLib/GZipStream.cs zlib.next/contrib
          /// <remarks>In this implementation this property is not supported</remarks>
          /// <exception cref="NotSupportedException">Always thrown</exception>
 diff -Naur --binary zlib/contrib/dotzlib/DotZLib/UnitTests.cs zlib.next/contrib/dotzlib/DotZLib/UnitTests.cs
---- a/zlib/contrib/dotzlib/DotZLib/UnitTests.cs	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/dotzlib/DotZLib/UnitTests.cs	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/dotzlib/DotZLib/UnitTests.cs	2025-11-30 23:32:17.000000000 +0100
 @@ -156,7 +156,7 @@
          public void Info_Version()
@@ -2238,7 +1882,7 @@ diff -Naur --binary zlib/contrib/dotzlib/DotZLib/UnitTests.cs zlib.next/contrib/
              Assert.AreEqual(32, info.SizeOfULong);
              Assert.AreEqual(32, info.SizeOfPointer);
 diff -Naur --binary zlib/contrib/dotzlib/DotZLib.chm zlib.next/contrib/dotzlib/DotZLib.chm
---- a/zlib/contrib/dotzlib/DotZLib.chm	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/dotzlib/DotZLib.chm	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/dotzlib/DotZLib.chm	2025-11-30 23:32:17.000000000 +0100
 @@ -48,7 +48,7 @@
  *ø#Ô=È,¬ÿ á<ä ‚–F>qJ´Ò∂ÒØzíSîpuµUEÆø–π¢ÀjêˇA
@@ -2259,7 +1903,7 @@ diff -Naur --binary zlib/contrib/dotzlib/DotZLib.chm zlib.next/contrib/dotzlib/D
  -òˆ›˚ì±RõB#P $ oﬂ·ÌﬁhÜ/!xÃõ_Xﬂ4Ú≤Q_∆“U√Èb uGé¸nãÂB”BÒü™â∑Ägˇb/MÔ˝<¬IƒtéZ9O
  ◊K√Kary∫GM:
 diff -Naur --binary zlib/contrib/dotzlib/readme.txt zlib.next/contrib/dotzlib/readme.txt
---- a/zlib/contrib/dotzlib/readme.txt	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/dotzlib/readme.txt	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/dotzlib/readme.txt	2025-11-30 23:32:17.000000000 +0100
 @@ -36,7 +36,7 @@
     in the same directory as the DotZLib.build file.
@@ -2271,7 +1915,7 @@ diff -Naur --binary zlib/contrib/dotzlib/readme.txt zlib.next/contrib/dotzlib/re
     Output file (DotZLib.dll) will be found in either ./DotZLib/bin/release
     or ./DotZLib/bin/debug, depending on whether you are building the release
 diff -Naur --binary zlib/contrib/infback9/infback9.c zlib.next/contrib/infback9/infback9.c
---- a/zlib/contrib/infback9/infback9.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/infback9/infback9.c	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/infback9/infback9.c	2025-11-30 23:32:17.000000000 +0100
 @@ -16,12 +16,8 @@
  
@@ -2326,7 +1970,7 @@ diff -Naur --binary zlib/contrib/infback9/infback9.c zlib.next/contrib/infback9/
          return Z_STREAM_ERROR;
      ZFREE(strm, strm->state);
 diff -Naur --binary zlib/contrib/infback9/infback9.h zlib.next/contrib/infback9/infback9.h
---- a/zlib/contrib/infback9/infback9.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/infback9/infback9.h	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/infback9/infback9.h	2025-11-30 23:32:17.000000000 +0100
 @@ -20,14 +20,14 @@
  extern "C" {
@@ -2352,7 +1996,7 @@ diff -Naur --binary zlib/contrib/infback9/infback9.h zlib.next/contrib/infback9/
          inflateBack9Init_((strm), (window), \
          ZLIB_VERSION, sizeof(z_stream))
 diff -Naur --binary zlib/contrib/infback9/inftree9.c zlib.next/contrib/infback9/inftree9.c
---- a/zlib/contrib/infback9/inftree9.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/infback9/inftree9.c	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/infback9/inftree9.c	2025-11-30 23:32:17.000000000 +0100
 @@ -1,5 +1,5 @@
  /* inftree9.c -- generate Huffman trees for efficient decoding
@@ -2398,7 +2042,7 @@ diff -Naur --binary zlib/contrib/infback9/inftree9.c zlib.next/contrib/infback9/
          1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49,
          65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073,
 diff -Naur --binary zlib/contrib/infback9/inftree9.h zlib.next/contrib/infback9/inftree9.h
---- a/zlib/contrib/infback9/inftree9.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/infback9/inftree9.h	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/infback9/inftree9.h	2025-11-30 23:32:17.000000000 +0100
 @@ -38,11 +38,11 @@
  /* Maximum size of the dynamic table.  The maximum number of code structures is
@@ -2426,7 +2070,7 @@ diff -Naur --binary zlib/contrib/infback9/inftree9.h zlib.next/contrib/infback9/
 +                          unsigned codes, code FAR * FAR *table,
 +                          unsigned FAR *bits, unsigned short FAR *work);
 diff -Naur --binary zlib/contrib/iostream2/zstream.h zlib.next/contrib/iostream2/zstream.h
---- a/zlib/contrib/iostream2/zstream.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/iostream2/zstream.h	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/iostream2/zstream.h	2025-11-30 23:32:17.000000000 +0100
 @@ -21,7 +21,7 @@
  
@@ -2438,7 +2082,7 @@ diff -Naur --binary zlib/contrib/iostream2/zstream.h zlib.next/contrib/iostream2
  
  #include <strstream.h>
 diff -Naur --binary zlib/contrib/iostream3/zfstream.h zlib.next/contrib/iostream3/zfstream.h
---- a/zlib/contrib/iostream3/zfstream.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/iostream3/zfstream.h	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/iostream3/zfstream.h	2025-11-30 23:32:17.000000000 +0100
 @@ -413,7 +413,7 @@
    class gzomanip2
@@ -2459,7 +2103,7 @@ diff -Naur --binary zlib/contrib/iostream3/zfstream.h zlib.next/contrib/iostream
    inline gzofstream&
    operator<<(gzofstream& s, const gzomanip2<T1,T2>& m)
 diff -Naur --binary zlib/contrib/minizip/configure.ac zlib.next/contrib/minizip/configure.ac
---- a/zlib/contrib/minizip/configure.ac	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/minizip/configure.ac	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/minizip/configure.ac	2025-11-30 23:32:17.000000000 +0100
 @@ -1,7 +1,7 @@
  #                                               -*- Autoconf -*-
@@ -2471,7 +2115,7 @@ diff -Naur --binary zlib/contrib/minizip/configure.ac zlib.next/contrib/minizip/
  AM_INIT_AUTOMAKE([foreign])
  LT_INIT
 diff -Naur --binary zlib/contrib/minizip/crypt.h zlib.next/contrib/minizip/crypt.h
---- a/zlib/contrib/minizip/crypt.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/minizip/crypt.h	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/minizip/crypt.h	2025-11-30 23:32:17.000000000 +0100
 @@ -32,12 +32,12 @@
  /***********************************************************************
@@ -2543,7 +2187,7 @@ diff -Naur --binary zlib/contrib/minizip/crypt.h zlib.next/contrib/minizip/crypt
      int c;                       /* random byte */
      unsigned char header[RAND_HEAD_LEN-2]; /* random header */
 diff -Naur --binary zlib/contrib/minizip/ioapi.c zlib.next/contrib/minizip/ioapi.c
---- a/zlib/contrib/minizip/ioapi.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/minizip/ioapi.c	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/minizip/ioapi.c	2025-11-30 23:32:17.000000000 +0100
 @@ -14,7 +14,7 @@
          #define _CRT_SECURE_NO_WARNINGS
@@ -2755,7 +2399,7 @@ diff -Naur --binary zlib/contrib/minizip/ioapi.c zlib.next/contrib/minizip/ioapi
      pzlib_filefunc_def->zread_file = fread_file_func;
      pzlib_filefunc_def->zwrite_file = fwrite_file_func;
 diff -Naur --binary zlib/contrib/minizip/ioapi.h zlib.next/contrib/minizip/ioapi.h
---- a/zlib/contrib/minizip/ioapi.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/minizip/ioapi.h	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/minizip/ioapi.h	2025-11-30 23:32:17.000000000 +0100
 @@ -50,7 +50,7 @@
  #define ftello64 ftell
@@ -2864,7 +2508,7 @@ diff -Naur --binary zlib/contrib/minizip/ioapi.h zlib.next/contrib/minizip/ioapi
  #define ZOPEN64(filefunc,filename,mode)         (call_zopen64((&(filefunc)),(filename),(mode)))
  #define ZTELL64(filefunc,filestream)            (call_ztell64((&(filefunc)),(filestream)))
 diff -Naur --binary zlib/contrib/minizip/iowin32.c zlib.next/contrib/minizip/iowin32.c
---- a/zlib/contrib/minizip/iowin32.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/minizip/iowin32.c	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/minizip/iowin32.c	2025-11-30 23:32:17.000000000 +0100
 @@ -28,19 +28,16 @@
  
@@ -3082,7 +2726,7 @@ diff -Naur --binary zlib/contrib/minizip/iowin32.c zlib.next/contrib/minizip/iow
      pzlib_filefunc_def->zread_file = win32_read_file_func;
      pzlib_filefunc_def->zwrite_file = win32_write_file_func;
 diff -Naur --binary zlib/contrib/minizip/iowin32.h zlib.next/contrib/minizip/iowin32.h
---- a/zlib/contrib/minizip/iowin32.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/minizip/iowin32.h	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/minizip/iowin32.h	2025-11-30 23:32:17.000000000 +0100
 @@ -18,10 +18,10 @@
  extern "C" {
@@ -3100,7 +2744,7 @@ diff -Naur --binary zlib/contrib/minizip/iowin32.h zlib.next/contrib/minizip/iow
  #ifdef __cplusplus
  }
 diff -Naur --binary zlib/contrib/minizip/Makefile zlib.next/contrib/minizip/Makefile
---- a/zlib/contrib/minizip/Makefile	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/minizip/Makefile	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/minizip/Makefile	2025-11-30 23:32:17.000000000 +0100
 @@ -1,5 +1,5 @@
 -CC=cc
@@ -3129,7 +2773,7 @@ diff -Naur --binary zlib/contrib/minizip/Makefile zlib.next/contrib/minizip/Make
 -	/bin/rm -f *.o *~ minizip miniunz
 +	/bin/rm -f *.o *~ minizip miniunz test.*
 diff -Naur --binary zlib/contrib/minizip/miniunz.c zlib.next/contrib/minizip/miniunz.c
---- a/zlib/contrib/minizip/miniunz.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/minizip/miniunz.c	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/minizip/miniunz.c	2025-11-30 23:32:17.000000000 +0100
 @@ -27,7 +27,7 @@
          #endif
@@ -3398,7 +3042,7 @@ diff -Naur --binary zlib/contrib/minizip/miniunz.c zlib.next/contrib/minizip/min
  
  #        ifdef USEWIN32IOAPI
 diff -Naur --binary zlib/contrib/minizip/MiniZip64_Changes.txt zlib.next/contrib/minizip/MiniZip64_Changes.txt
---- a/zlib/contrib/minizip/MiniZip64_Changes.txt	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/minizip/MiniZip64_Changes.txt	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/minizip/MiniZip64_Changes.txt	2025-11-30 23:32:17.000000000 +0100
 @@ -1,5 +1,5 @@
  
@@ -3408,7 +3052,7 @@ diff -Naur --binary zlib/contrib/minizip/MiniZip64_Changes.txt zlib.next/contrib
  Change in 1.0 (Okt 2009)
   - **TODO - Add history**
 diff -Naur --binary zlib/contrib/minizip/minizip.c zlib.next/contrib/minizip/minizip.c
---- a/zlib/contrib/minizip/minizip.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/minizip/minizip.c	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/minizip/minizip.c	2025-11-30 23:32:17.000000000 +0100
 @@ -28,7 +28,7 @@
          #endif
@@ -3646,7 +3290,7 @@ diff -Naur --binary zlib/contrib/minizip/minizip.c zlib.next/contrib/minizip/min
                              {
                                  printf("error in writing %s in the zipfile\n",
 diff -Naur --binary zlib/contrib/minizip/mztools.c zlib.next/contrib/minizip/mztools.c
---- a/zlib/contrib/minizip/mztools.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/minizip/mztools.c	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/minizip/mztools.c	2025-11-30 23:32:17.000000000 +0100
 @@ -27,13 +27,7 @@
    WRITE_16((unsigned char*)(buff) + 2, (n) >> 16); \
@@ -3664,7 +3308,7 @@ diff -Naur --binary zlib/contrib/minizip/mztools.c zlib.next/contrib/minizip/mzt
    FILE* fpZip = fopen(file, "rb");
    FILE* fpOut = fopen(fileOut, "wb");
 diff -Naur --binary zlib/contrib/minizip/unzip.c zlib.next/contrib/minizip/unzip.c
---- a/zlib/contrib/minizip/unzip.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/minizip/unzip.c	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/minizip/unzip.c	2025-11-30 23:32:17.000000000 +0100
 @@ -49,12 +49,12 @@
          Copyright (C) 2007-2008 Even Rouault
@@ -4767,7 +4411,7 @@ diff -Naur --binary zlib/contrib/minizip/unzip.c zlib.next/contrib/minizip/unzip
      return unzSetOffset64(file,pos);
  }
 diff -Naur --binary zlib/contrib/minizip/unzip.h zlib.next/contrib/minizip/unzip.h
---- a/zlib/contrib/minizip/unzip.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/minizip/unzip.h	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/minizip/unzip.h	2025-11-30 23:32:17.000000000 +0100
 @@ -83,12 +83,12 @@
  /* tm_unz contain date/time info */
@@ -5062,7 +4706,7 @@ diff -Naur --binary zlib/contrib/minizip/unzip.h zlib.next/contrib/minizip/unzip
    Read extra field from the current file (opened by unzOpenCurrentFile)
    This is the local-header version of the extra field (sometimes, there is
 diff -Naur --binary zlib/contrib/minizip/zip.c zlib.next/contrib/minizip/zip.c
---- a/zlib/contrib/minizip/zip.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/minizip/zip.c	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/minizip/zip.c	2025-11-30 23:32:17.000000000 +0100
 @@ -14,7 +14,7 @@
     Oct-2009 - Mathias Svensson - Added Zip64 Support when creating new file archives
@@ -5869,7 +5513,7 @@ diff -Naur --binary zlib/contrib/minizip/zip.c zlib.next/contrib/minizip/zip.c
    return retVal;
  }
 diff -Naur --binary zlib/contrib/minizip/zip.h zlib.next/contrib/minizip/zip.h
---- a/zlib/contrib/minizip/zip.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/minizip/zip.h	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/minizip/zip.h	2025-11-30 23:32:17.000000000 +0100
 @@ -88,12 +88,12 @@
  /* tm_zip contain date/time info */
@@ -6334,7 +5978,7 @@ diff -Naur --binary zlib/contrib/nuget/nuget.sln zlib.next/contrib/nuget/nuget.s
 +	EndGlobalSection
 +EndGlobal
 diff -Naur --binary zlib/contrib/pascal/zlibpas.pas zlib.next/contrib/pascal/zlibpas.pas
---- a/zlib/contrib/pascal/zlibpas.pas	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/pascal/zlibpas.pas	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/pascal/zlibpas.pas	2025-11-30 23:32:17.000000000 +0100
 @@ -10,7 +10,7 @@
  interface
@@ -6346,7 +5990,7 @@ diff -Naur --binary zlib/contrib/pascal/zlibpas.pas zlib.next/contrib/pascal/zli
  
  type
 diff -Naur --binary zlib/contrib/puff/puff.c zlib.next/contrib/puff/puff.c
---- a/zlib/contrib/puff/puff.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/puff/puff.c	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/puff/puff.c	2025-11-30 23:32:17.000000000 +0100
 @@ -43,7 +43,7 @@
   *                      - Use pointers instead of long to specify source and
@@ -6382,7 +6026,7 @@ diff -Naur --binary zlib/contrib/puff/puff.c zlib.next/contrib/puff/puff.c
   *   zero lengths, and 18 represents 11 to 138 zero lengths.  Unused symbols
   *   are common, hence the special coding for zero lengths.
 diff -Naur --binary zlib/contrib/puff/pufftest.c zlib.next/contrib/puff/pufftest.c
---- a/zlib/contrib/puff/pufftest.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/puff/pufftest.c	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/puff/pufftest.c	2025-11-30 23:32:17.000000000 +0100
 @@ -143,7 +143,7 @@
                                       len - sourcelen);
@@ -6394,7 +6038,7 @@ diff -Naur --binary zlib/contrib/puff/pufftest.c zlib.next/contrib/puff/pufftest
          if (fail)
              destlen >>= 1;
 diff -Naur --binary zlib/contrib/puff/README zlib.next/contrib/puff/README
---- a/zlib/contrib/puff/README	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/puff/README	2025-05-23 13:02:09.436278665 +0200
 +++ b/zlib/contrib/puff/README	2025-11-30 23:32:17.000000000 +0100
 @@ -38,7 +38,7 @@
  its entirety at source, to a sufficiently sized block of memory for the
@@ -6406,7 +6050,7 @@ diff -Naur --binary zlib/contrib/puff/README zlib.next/contrib/puff/README
  
  If destlen is not enough space for the uncompressed data, then inflate will
 diff -Naur --binary zlib/contrib/puff/zeros.raw zlib.next/contrib/puff/zeros.raw
---- a/zlib/contrib/puff/zeros.raw	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/puff/zeros.raw	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/puff/zeros.raw	2025-11-30 23:32:17.000000000 +0100
 @@ -1 +1,5 @@
 -Ì¡Å    √†˘S_· U                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           p
@@ -6418,7 +6062,7 @@ diff -Naur --binary zlib/contrib/puff/zeros.raw zlib.next/contrib/puff/zeros.raw
 +F¡(£`åÇQ0§ Ä 8     ‚ø                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ≤$    Ç˛ønG†        0 	 ˆˇ         Ì‹Å    Ä ÎF(êÏ_                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ¿
 \ Pas de fin de ligne √† la fin du fichier
 diff -Naur --binary zlib/contrib/README.contrib zlib.next/contrib/README.contrib
---- a/zlib/contrib/README.contrib	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/README.contrib	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/contrib/README.contrib	2025-11-30 23:32:17.000000000 +0100
 @@ -1,4 +1,4 @@
 -All files under this contrib directory are UNSUPPORTED. There were
@@ -6469,7 +6113,7 @@ diff -Naur --binary zlib/contrib/README.contrib zlib.next/contrib/README.contrib
          Mini zip and unzip based on zlib
          Includes Zip64 support by Mathias Svensson <mathias@result42.com>
 diff -Naur --binary zlib/contrib/testzlib/testzlib.c zlib.next/contrib/testzlib/testzlib.c
---- a/zlib/contrib/testzlib/testzlib.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/testzlib/testzlib.c	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/testzlib/testzlib.c	2025-11-30 23:32:17.000000000 +0100
 @@ -169,7 +169,7 @@
          printf("error reading %s\n",argv[1]);
@@ -6481,7 +6125,7 @@ diff -Naur --binary zlib/contrib/testzlib/testzlib.c zlib.next/contrib/testzlib/
      if (argc>=3)
          BlockSizeCompress=atol(argv[2]);
 diff -Naur --binary zlib/contrib/untgz/untgz.c zlib.next/contrib/untgz/untgz.c
---- a/zlib/contrib/untgz/untgz.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/untgz/untgz.c	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/untgz/untgz.c	2025-11-30 23:32:17.000000000 +0100
 @@ -4,6 +4,22 @@
   * written by Pedro A. Aranda Gutierrez <paag@tid.es>
@@ -6600,7 +6244,7 @@ diff -Naur --binary zlib/contrib/untgz/untgz.c zlib.next/contrib/untgz/untgz.c
      prog = strrchr(argv[0],'\\');
      if (prog == NULL)
 diff -Naur --binary zlib/contrib/vstudio/readme.txt zlib.next/contrib/vstudio/readme.txt
---- a/zlib/contrib/vstudio/readme.txt	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/readme.txt	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/readme.txt	2025-11-30 23:32:17.000000000 +0100
 @@ -1,78 +1,81 @@
 -Building instructions for the DLL versions of Zlib 1.2.11
@@ -6763,7 +6407,7 @@ diff -Naur --binary zlib/contrib/vstudio/readme.txt zlib.next/contrib/vstudio/re
 +Visual Studio 2013, 2015, and 2022 Projects from Sean Hunt
 +seandhunt_7@yahoo.com
 diff -Naur --binary zlib/contrib/vstudio/vc10/miniunz.vcxproj.filters zlib.next/contrib/vstudio/vc10/miniunz.vcxproj.filters
---- a/zlib/contrib/vstudio/vc10/miniunz.vcxproj.filters	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc10/miniunz.vcxproj.filters	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc10/miniunz.vcxproj.filters	2025-11-30 23:32:17.000000000 +0100
 @@ -3,7 +3,7 @@
    <ItemGroup>
@@ -6775,7 +6419,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc10/miniunz.vcxproj.filters zlib.next/
      <Filter Include="Header Files">
        <UniqueIdentifier>{c1d600d2-888f-4aea-b73e-8b0dd9befa0c}</UniqueIdentifier>
 diff -Naur --binary zlib/contrib/vstudio/vc10/minizip.vcxproj.filters zlib.next/contrib/vstudio/vc10/minizip.vcxproj.filters
---- a/zlib/contrib/vstudio/vc10/minizip.vcxproj.filters	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc10/minizip.vcxproj.filters	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc10/minizip.vcxproj.filters	2025-11-30 23:32:17.000000000 +0100
 @@ -3,7 +3,7 @@
    <ItemGroup>
@@ -6787,7 +6431,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc10/minizip.vcxproj.filters zlib.next/
      <Filter Include="Header Files">
        <UniqueIdentifier>{bb87b070-735b-478e-92ce-7383abb2f36c}</UniqueIdentifier>
 diff -Naur --binary zlib/contrib/vstudio/vc10/testzlibdll.vcxproj.filters zlib.next/contrib/vstudio/vc10/testzlibdll.vcxproj.filters
---- a/zlib/contrib/vstudio/vc10/testzlibdll.vcxproj.filters	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc10/testzlibdll.vcxproj.filters	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc10/testzlibdll.vcxproj.filters	2025-11-30 23:32:17.000000000 +0100
 @@ -3,7 +3,7 @@
    <ItemGroup>
@@ -6799,7 +6443,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc10/testzlibdll.vcxproj.filters zlib.n
      <Filter Include="Header Files">
        <UniqueIdentifier>{d4b85da0-2ba2-4934-b57f-e2584e3848ee}</UniqueIdentifier>
 diff -Naur --binary zlib/contrib/vstudio/vc10/testzlib.vcxproj zlib.next/contrib/vstudio/vc10/testzlib.vcxproj
---- a/zlib/contrib/vstudio/vc10/testzlib.vcxproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc10/testzlib.vcxproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc10/testzlib.vcxproj	2025-11-30 23:32:17.000000000 +0100
 @@ -181,7 +181,7 @@
      <ClCompile>
@@ -6887,7 +6531,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc10/testzlib.vcxproj zlib.next/contrib
      <ClCompile Include="..\..\..\inflate.c" />
      <ClCompile Include="..\..\..\inftrees.c" />
 diff -Naur --binary zlib/contrib/vstudio/vc10/testzlib.vcxproj.filters zlib.next/contrib/vstudio/vc10/testzlib.vcxproj.filters
---- a/zlib/contrib/vstudio/vc10/testzlib.vcxproj.filters	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc10/testzlib.vcxproj.filters	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc10/testzlib.vcxproj.filters	2025-11-30 23:32:17.000000000 +0100
 @@ -3,7 +3,7 @@
    <ItemGroup>
@@ -6909,7 +6553,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc10/testzlib.vcxproj.filters zlib.next
        <Filter>Source Files</Filter>
      </ClCompile>
 diff -Naur --binary zlib/contrib/vstudio/vc10/zlib.rc zlib.next/contrib/vstudio/vc10/zlib.rc
---- a/zlib/contrib/vstudio/vc10/zlib.rc	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc10/zlib.rc	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc10/zlib.rc	2025-11-30 23:32:17.000000000 +0100
 @@ -2,8 +2,8 @@
  
@@ -6938,7 +6582,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc10/zlib.rc zlib.next/contrib/vstudio/
    END
    BLOCK "VarFileInfo"
 diff -Naur --binary zlib/contrib/vstudio/vc10/zlibstat.vcxproj zlib.next/contrib/vstudio/vc10/zlibstat.vcxproj
---- a/zlib/contrib/vstudio/vc10/zlibstat.vcxproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc10/zlibstat.vcxproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc10/zlibstat.vcxproj	2025-11-30 23:32:17.000000000 +0100
 @@ -160,7 +160,7 @@
    <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -7089,7 +6733,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc10/zlibstat.vcxproj zlib.next/contrib
      <ClCompile Include="..\..\..\inflate.c" />
      <ClCompile Include="..\..\..\inftrees.c" />
 diff -Naur --binary zlib/contrib/vstudio/vc10/zlibstat.vcxproj.filters zlib.next/contrib/vstudio/vc10/zlibstat.vcxproj.filters
---- a/zlib/contrib/vstudio/vc10/zlibstat.vcxproj.filters	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc10/zlibstat.vcxproj.filters	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc10/zlibstat.vcxproj.filters	2025-11-30 23:32:17.000000000 +0100
 @@ -33,9 +33,6 @@
      <ClCompile Include="..\..\..\infback.c">
@@ -7102,7 +6746,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc10/zlibstat.vcxproj.filters zlib.next
        <Filter>Source Files</Filter>
      </ClCompile>
 diff -Naur --binary zlib/contrib/vstudio/vc10/zlibvc.def zlib.next/contrib/vstudio/vc10/zlibvc.def
---- a/zlib/contrib/vstudio/vc10/zlibvc.def	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc10/zlibvc.def	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc10/zlibvc.def	2025-11-30 23:32:17.000000000 +0100
 @@ -1,7 +1,7 @@
  LIBRARY
@@ -7123,7 +6767,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc10/zlibvc.def zlib.next/contrib/vstud
 +		crc32_combine_gen64						@177
 +		crc32_combine_op						@178
 diff -Naur --binary zlib/contrib/vstudio/vc10/zlibvc.vcxproj zlib.next/contrib/vstudio/vc10/zlibvc.vcxproj
---- a/zlib/contrib/vstudio/vc10/zlibvc.vcxproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc10/zlibvc.vcxproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc10/zlibvc.vcxproj	2025-11-30 23:32:17.000000000 +0100
 @@ -197,8 +197,8 @@
      </Midl>
@@ -7310,7 +6954,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc10/zlibvc.vcxproj zlib.next/contrib/v
      <ClCompile Include="..\..\..\inflate.c" />
      <ClCompile Include="..\..\..\inftrees.c" />
 diff -Naur --binary zlib/contrib/vstudio/vc10/zlibvc.vcxproj.filters zlib.next/contrib/vstudio/vc10/zlibvc.vcxproj.filters
---- a/zlib/contrib/vstudio/vc10/zlibvc.vcxproj.filters	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc10/zlibvc.vcxproj.filters	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc10/zlibvc.vcxproj.filters	2025-11-30 23:32:17.000000000 +0100
 @@ -42,9 +42,6 @@
      <ClCompile Include="..\..\..\infback.c">
@@ -7323,7 +6967,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc10/zlibvc.vcxproj.filters zlib.next/c
        <Filter>Source Files</Filter>
      </ClCompile>
 diff -Naur --binary zlib/contrib/vstudio/vc11/testzlib.vcxproj zlib.next/contrib/vstudio/vc11/testzlib.vcxproj
---- a/zlib/contrib/vstudio/vc11/testzlib.vcxproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc11/testzlib.vcxproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc11/testzlib.vcxproj	2025-11-30 23:32:17.000000000 +0100
 @@ -187,7 +187,7 @@
      <ClCompile>
@@ -7411,7 +7055,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc11/testzlib.vcxproj zlib.next/contrib
      <ClCompile Include="..\..\..\inflate.c" />
      <ClCompile Include="..\..\..\inftrees.c" />
 diff -Naur --binary zlib/contrib/vstudio/vc11/zlib.rc zlib.next/contrib/vstudio/vc11/zlib.rc
---- a/zlib/contrib/vstudio/vc11/zlib.rc	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc11/zlib.rc	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc11/zlib.rc	2025-11-30 23:32:17.000000000 +0100
 @@ -2,8 +2,8 @@
  
@@ -7440,7 +7084,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc11/zlib.rc zlib.next/contrib/vstudio/
    END
    BLOCK "VarFileInfo"
 diff -Naur --binary zlib/contrib/vstudio/vc11/zlibstat.vcxproj zlib.next/contrib/vstudio/vc11/zlibstat.vcxproj
---- a/zlib/contrib/vstudio/vc11/zlibstat.vcxproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc11/zlibstat.vcxproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc11/zlibstat.vcxproj	2025-11-30 23:32:17.000000000 +0100
 @@ -167,7 +167,7 @@
    <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -7561,7 +7205,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc11/zlibstat.vcxproj zlib.next/contrib
      <ClCompile Include="..\..\..\inflate.c" />
      <ClCompile Include="..\..\..\inftrees.c" />
 diff -Naur --binary zlib/contrib/vstudio/vc11/zlibvc.def zlib.next/contrib/vstudio/vc11/zlibvc.def
---- a/zlib/contrib/vstudio/vc11/zlibvc.def	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc11/zlibvc.def	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc11/zlibvc.def	2025-11-30 23:32:17.000000000 +0100
 @@ -1,7 +1,7 @@
  LIBRARY
@@ -7582,7 +7226,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc11/zlibvc.def zlib.next/contrib/vstud
 +		crc32_combine_gen64						@177
 +		crc32_combine_op						@178
 diff -Naur --binary zlib/contrib/vstudio/vc11/zlibvc.vcxproj zlib.next/contrib/vstudio/vc11/zlibvc.vcxproj
---- a/zlib/contrib/vstudio/vc11/zlibvc.vcxproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc11/zlibvc.vcxproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc11/zlibvc.vcxproj	2025-11-30 23:32:17.000000000 +0100
 @@ -204,8 +204,8 @@
      </Midl>
@@ -7769,7 +7413,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc11/zlibvc.vcxproj zlib.next/contrib/v
      <ClCompile Include="..\..\..\inflate.c" />
      <ClCompile Include="..\..\..\inftrees.c" />
 diff -Naur --binary zlib/contrib/vstudio/vc12/testzlib.vcxproj zlib.next/contrib/vstudio/vc12/testzlib.vcxproj
---- a/zlib/contrib/vstudio/vc12/testzlib.vcxproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc12/testzlib.vcxproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc12/testzlib.vcxproj	2025-11-30 23:32:17.000000000 +0100
 @@ -190,7 +190,7 @@
      <ClCompile>
@@ -7857,7 +7501,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc12/testzlib.vcxproj zlib.next/contrib
      <ClCompile Include="..\..\..\inflate.c" />
      <ClCompile Include="..\..\..\inftrees.c" />
 diff -Naur --binary zlib/contrib/vstudio/vc12/zlib.rc zlib.next/contrib/vstudio/vc12/zlib.rc
---- a/zlib/contrib/vstudio/vc12/zlib.rc	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc12/zlib.rc	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc12/zlib.rc	2025-11-30 23:32:17.000000000 +0100
 @@ -2,8 +2,8 @@
  
@@ -7886,7 +7530,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc12/zlib.rc zlib.next/contrib/vstudio/
    END
    BLOCK "VarFileInfo"
 diff -Naur --binary zlib/contrib/vstudio/vc12/zlibstat.vcxproj zlib.next/contrib/vstudio/vc12/zlibstat.vcxproj
---- a/zlib/contrib/vstudio/vc12/zlibstat.vcxproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc12/zlibstat.vcxproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc12/zlibstat.vcxproj	2025-11-30 23:32:17.000000000 +0100
 @@ -170,7 +170,7 @@
    <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -8007,7 +7651,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc12/zlibstat.vcxproj zlib.next/contrib
      <ClCompile Include="..\..\..\inflate.c" />
      <ClCompile Include="..\..\..\inftrees.c" />
 diff -Naur --binary zlib/contrib/vstudio/vc12/zlibvc.def zlib.next/contrib/vstudio/vc12/zlibvc.def
---- a/zlib/contrib/vstudio/vc12/zlibvc.def	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc12/zlibvc.def	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc12/zlibvc.def	2025-11-30 23:32:17.000000000 +0100
 @@ -1,7 +1,7 @@
  LIBRARY
@@ -8028,7 +7672,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc12/zlibvc.def zlib.next/contrib/vstud
 +		crc32_combine_gen64						@177
 +		crc32_combine_op						@178
 diff -Naur --binary zlib/contrib/vstudio/vc12/zlibvc.vcxproj zlib.next/contrib/vstudio/vc12/zlibvc.vcxproj
---- a/zlib/contrib/vstudio/vc12/zlibvc.vcxproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc12/zlibvc.vcxproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc12/zlibvc.vcxproj	2025-11-30 23:32:17.000000000 +0100
 @@ -207,8 +207,8 @@
      </Midl>
@@ -8215,7 +7859,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc12/zlibvc.vcxproj zlib.next/contrib/v
      <ClCompile Include="..\..\..\inflate.c" />
      <ClCompile Include="..\..\..\inftrees.c" />
 diff -Naur --binary zlib/contrib/vstudio/vc14/testzlib.vcxproj zlib.next/contrib/vstudio/vc14/testzlib.vcxproj
---- a/zlib/contrib/vstudio/vc14/testzlib.vcxproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc14/testzlib.vcxproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc14/testzlib.vcxproj	2025-11-30 23:32:17.000000000 +0100
 @@ -190,7 +190,7 @@
      <ClCompile>
@@ -8303,7 +7947,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc14/testzlib.vcxproj zlib.next/contrib
      <ClCompile Include="..\..\..\inflate.c" />
      <ClCompile Include="..\..\..\inftrees.c" />
 diff -Naur --binary zlib/contrib/vstudio/vc14/zlib.rc zlib.next/contrib/vstudio/vc14/zlib.rc
---- a/zlib/contrib/vstudio/vc14/zlib.rc	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc14/zlib.rc	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc14/zlib.rc	2025-11-30 23:32:17.000000000 +0100
 @@ -2,8 +2,8 @@
  
@@ -8332,7 +7976,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc14/zlib.rc zlib.next/contrib/vstudio/
    END
    BLOCK "VarFileInfo"
 diff -Naur --binary zlib/contrib/vstudio/vc14/zlibstat.vcxproj zlib.next/contrib/vstudio/vc14/zlibstat.vcxproj
---- a/zlib/contrib/vstudio/vc14/zlibstat.vcxproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc14/zlibstat.vcxproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc14/zlibstat.vcxproj	2025-11-30 23:32:17.000000000 +0100
 @@ -170,7 +170,7 @@
    <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -8453,7 +8097,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc14/zlibstat.vcxproj zlib.next/contrib
      <ClCompile Include="..\..\..\inflate.c" />
      <ClCompile Include="..\..\..\inftrees.c" />
 diff -Naur --binary zlib/contrib/vstudio/vc14/zlibvc.def zlib.next/contrib/vstudio/vc14/zlibvc.def
---- a/zlib/contrib/vstudio/vc14/zlibvc.def	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc14/zlibvc.def	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc14/zlibvc.def	2025-11-30 23:32:17.000000000 +0100
 @@ -1,7 +1,7 @@
  LIBRARY
@@ -8474,7 +8118,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc14/zlibvc.def zlib.next/contrib/vstud
 +		crc32_combine_gen64						@177
 +		crc32_combine_op						@178
 diff -Naur --binary zlib/contrib/vstudio/vc14/zlibvc.vcxproj zlib.next/contrib/vstudio/vc14/zlibvc.vcxproj
---- a/zlib/contrib/vstudio/vc14/zlibvc.vcxproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc14/zlibvc.vcxproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc14/zlibvc.vcxproj	2025-11-30 23:32:17.000000000 +0100
 @@ -207,8 +207,8 @@
      </Midl>
@@ -12245,7 +11889,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc17/zlibvc.vcxproj zlib.next/contrib/v
 +</Project>
 \ Pas de fin de ligne √† la fin du fichier
 diff -Naur --binary zlib/contrib/vstudio/vc9/miniunz.vcproj zlib.next/contrib/vstudio/vc9/miniunz.vcproj
---- a/zlib/contrib/vstudio/vc9/miniunz.vcproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc9/miniunz.vcproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc9/miniunz.vcproj	2025-11-30 23:32:17.000000000 +0100
 @@ -542,7 +542,7 @@
  	<Files>
@@ -12257,7 +11901,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc9/miniunz.vcproj zlib.next/contrib/vs
  			<File
  				RelativePath="..\..\minizip\miniunz.c"
 diff -Naur --binary zlib/contrib/vstudio/vc9/minizip.vcproj zlib.next/contrib/vstudio/vc9/minizip.vcproj
---- a/zlib/contrib/vstudio/vc9/minizip.vcproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc9/minizip.vcproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc9/minizip.vcproj	2025-11-30 23:32:17.000000000 +0100
 @@ -539,7 +539,7 @@
  	<Files>
@@ -12269,7 +11913,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc9/minizip.vcproj zlib.next/contrib/vs
  			<File
  				RelativePath="..\..\minizip\minizip.c"
 diff -Naur --binary zlib/contrib/vstudio/vc9/testzlibdll.vcproj zlib.next/contrib/vstudio/vc9/testzlibdll.vcproj
---- a/zlib/contrib/vstudio/vc9/testzlibdll.vcproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc9/testzlibdll.vcproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc9/testzlibdll.vcproj	2025-11-30 23:32:17.000000000 +0100
 @@ -542,7 +542,7 @@
  	<Files>
@@ -12281,7 +11925,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc9/testzlibdll.vcproj zlib.next/contri
  			<File
  				RelativePath="..\..\testzlib\testzlib.c"
 diff -Naur --binary zlib/contrib/vstudio/vc9/testzlib.vcproj zlib.next/contrib/vstudio/vc9/testzlib.vcproj
---- a/zlib/contrib/vstudio/vc9/testzlib.vcproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc9/testzlib.vcproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc9/testzlib.vcproj	2025-11-30 23:32:17.000000000 +0100
 @@ -48,7 +48,7 @@
  				Name="VCCLCompilerTool"
@@ -12420,7 +12064,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc9/testzlib.vcproj zlib.next/contrib/v
  				>
  			</File>
 diff -Naur --binary zlib/contrib/vstudio/vc9/zlib.rc zlib.next/contrib/vstudio/vc9/zlib.rc
---- a/zlib/contrib/vstudio/vc9/zlib.rc	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc9/zlib.rc	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc9/zlib.rc	2025-11-30 23:32:17.000000000 +0100
 @@ -2,8 +2,8 @@
  
@@ -12449,7 +12093,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc9/zlib.rc zlib.next/contrib/vstudio/v
    END
    BLOCK "VarFileInfo"
 diff -Naur --binary zlib/contrib/vstudio/vc9/zlibstat.vcproj zlib.next/contrib/vstudio/vc9/zlibstat.vcproj
---- a/zlib/contrib/vstudio/vc9/zlibstat.vcproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc9/zlibstat.vcproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc9/zlibstat.vcproj	2025-11-30 23:32:17.000000000 +0100
 @@ -47,7 +47,7 @@
  			<Tool
@@ -12612,7 +12256,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc9/zlibstat.vcproj zlib.next/contrib/v
  				>
  			</File>
 diff -Naur --binary zlib/contrib/vstudio/vc9/zlibvc.def zlib.next/contrib/vstudio/vc9/zlibvc.def
---- a/zlib/contrib/vstudio/vc9/zlibvc.def	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc9/zlibvc.def	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc9/zlibvc.def	2025-11-30 23:32:17.000000000 +0100
 @@ -1,7 +1,7 @@
  LIBRARY
@@ -12633,7 +12277,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc9/zlibvc.def zlib.next/contrib/vstudi
 +		crc32_combine_gen64						@177
 +		crc32_combine_op						@178
 diff -Naur --binary zlib/contrib/vstudio/vc9/zlibvc.vcproj zlib.next/contrib/vstudio/vc9/zlibvc.vcproj
---- a/zlib/contrib/vstudio/vc9/zlibvc.vcproj	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/contrib/vstudio/vc9/zlibvc.vcproj	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/contrib/vstudio/vc9/zlibvc.vcproj	2025-11-30 23:32:17.000000000 +0100
 @@ -53,8 +53,8 @@
  			<Tool
@@ -12816,7 +12460,7 @@ diff -Naur --binary zlib/contrib/vstudio/vc9/zlibvc.vcproj zlib.next/contrib/vst
  				>
  			</File>
 diff -Naur --binary zlib/crc32.c zlib.next/crc32.c
---- a/zlib/crc32.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/crc32.c	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/crc32.c	2025-11-30 23:32:17.000000000 +0100
 @@ -1,24 +1,23 @@
  /* crc32.c -- compute the CRC-32 of a data stream
@@ -14194,7 +13838,7 @@ diff -Naur --binary zlib/crc32.c zlib.next/crc32.c
 +    return multmodp(op, crc1) ^ (crc2 & 0xffffffff);
  }
 diff -Naur --binary zlib/crc32.h zlib.next/crc32.h
---- a/zlib/crc32.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/crc32.h	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/crc32.h	2025-11-30 23:32:17.000000000 +0100
 @@ -2,440 +2,9445 @@
   * Generated automatically by crc32.c
@@ -24079,7 +23723,7 @@ diff -Naur --binary zlib/crc32.h zlib.next/crc32.h
 +    0x2e4e5eef, 0x4eaba214, 0xa8a472c0, 0x429a969e, 0x148d302a,
 +    0xc40ba6d0, 0xc4e22c3c};
 diff -Naur --binary zlib/deflate.c zlib.next/deflate.c
---- a/zlib/deflate.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/deflate.c	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/deflate.c	2025-11-30 23:32:17.000000000 +0100
 @@ -1,5 +1,5 @@
  /* deflate.c -- compress data using the deflation algorithm
@@ -25573,7 +25217,7 @@ diff -Naur --binary zlib/deflate.c zlib.next/deflate.c
      return block_done;
  }
 diff -Naur --binary zlib/deflate.h zlib.next/deflate.h
---- a/zlib/deflate.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/deflate.h	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/deflate.h	2025-11-30 23:32:17.000000000 +0100
 @@ -1,5 +1,5 @@
  /* deflate.h -- internal compression state
@@ -25710,7 +25354,7 @@ diff -Naur --binary zlib/deflate.h zlib.next/deflate.h
  # define _tr_tally_lit(s, c, flush) flush = _tr_tally(s, 0, c)
  # define _tr_tally_dist(s, distance, length, flush) \
 diff -Naur --binary zlib/doc/algorithm.txt zlib.next/doc/algorithm.txt
---- a/zlib/doc/algorithm.txt	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/doc/algorithm.txt	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/doc/algorithm.txt	2025-11-30 23:32:17.000000000 +0100
 @@ -77,7 +77,7 @@
  be a first level table to cover all the way to the longest code.  However,
@@ -30851,7 +30495,7 @@ diff -Naur --binary zlib/doc/crc-doc.1.0.pdf zlib.next/doc/crc-doc.1.0.pdf
 +771420
 +%%EOF
 diff -Naur --binary zlib/doc/txtvsbin.txt zlib.next/doc/txtvsbin.txt
---- a/zlib/doc/txtvsbin.txt	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/doc/txtvsbin.txt	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/doc/txtvsbin.txt	2025-11-30 23:32:17.000000000 +0100
 @@ -38,15 +38,15 @@
  
@@ -30886,7 +30530,7 @@ diff -Naur --binary zlib/doc/txtvsbin.txt zlib.next/doc/txtvsbin.txt
  false positives are more likely to appear in binary files that contain
  large chunks of textual data.  Furthermore, "polluted" plain text should
 diff -Naur --binary zlib/examples/enough.c zlib.next/examples/enough.c
---- a/zlib/examples/enough.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/examples/enough.c	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/examples/enough.c	2025-11-30 23:32:17.000000000 +0100
 @@ -1,7 +1,7 @@
  /* enough.c -- determine the maximum size of inflate's Huffman code tables over
@@ -31837,7 +31481,7 @@ diff -Naur --binary zlib/examples/enough.c zlib.next/examples/enough.c
      return 0;
  }
 diff -Naur --binary zlib/examples/fitblk.c zlib.next/examples/fitblk.c
---- a/zlib/examples/fitblk.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/examples/fitblk.c	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/examples/fitblk.c	2025-11-30 23:32:17.000000000 +0100
 @@ -17,7 +17,7 @@
     data in order to determine how much of that input will compress to
@@ -31867,7 +31511,7 @@ diff -Naur --binary zlib/examples/fitblk.c zlib.next/examples/fitblk.c
      assert(ret != Z_STREAM_ERROR);
      ret = deflateReset(&def);
 diff -Naur --binary zlib/examples/gun.c zlib.next/examples/gun.c
---- a/zlib/examples/gun.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/examples/gun.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/examples/gun.c	2025-11-30 23:32:17.000000000 +0100
 @@ -43,7 +43,7 @@
     gun will also decompress files made by Unix compress, which uses LZW
@@ -31879,7 +31523,7 @@ diff -Naur --binary zlib/examples/gun.c zlib.next/examples/gun.c
  
     Like gunzip and uncompress, the file attributes of the original compressed
 diff -Naur --binary zlib/examples/gzappend.c zlib.next/examples/gzappend.c
---- a/zlib/examples/gzappend.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/examples/gzappend.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/examples/gzappend.c	2025-11-30 23:32:17.000000000 +0100
 @@ -33,7 +33,7 @@
   *                      - Add L to constants in lseek() calls
@@ -31909,7 +31553,7 @@ diff -Naur --binary zlib/examples/gzappend.c zlib.next/examples/gzappend.c
          return;
      }
 diff -Naur --binary zlib/examples/gzlog.c zlib.next/examples/gzlog.c
---- a/zlib/examples/gzlog.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/examples/gzlog.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/examples/gzlog.c	2025-11-30 23:32:17.000000000 +0100
 @@ -1,8 +1,8 @@
  /*
@@ -31949,7 +31593,7 @@ diff -Naur --binary zlib/examples/gzlog.c zlib.next/examples/gzlog.c
                  return -1;
              }
 diff -Naur --binary zlib/examples/gzlog.h zlib.next/examples/gzlog.h
---- a/zlib/examples/gzlog.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/examples/gzlog.h	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/examples/gzlog.h	2025-11-30 23:32:17.000000000 +0100
 @@ -40,7 +40,7 @@
     its new size at that time.  After each write operation, the log file is a
@@ -32435,7 +32079,7 @@ diff -Naur --binary zlib/examples/gznorm.c zlib.next/examples/gznorm.c
 +    return ret;
 +}
 diff -Naur --binary zlib/examples/README.examples zlib.next/examples/README.examples
---- a/zlib/examples/README.examples	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/examples/README.examples	2025-05-23 13:02:09.440278729 +0200
 +++ b/zlib/examples/README.examples	2025-11-30 23:32:17.000000000 +0100
 @@ -34,6 +34,10 @@
        and deflateSetDictionary()
@@ -32457,7 +32101,7 @@ diff -Naur --binary zlib/examples/README.examples zlib.next/examples/README.exam
      - illustrates the use of Z_BLOCK, inflatePrime(), and
        inflateSetDictionary() to provide random access
 diff -Naur --binary zlib/examples/zlib_how.html zlib.next/examples/zlib_how.html
---- a/zlib/examples/zlib_how.html	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/examples/zlib_how.html	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/examples/zlib_how.html	2025-11-30 23:32:17.000000000 +0100
 @@ -1,10 +1,10 @@
 -<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
@@ -32515,7 +32159,7 @@ diff -Naur --binary zlib/examples/zlib_how.html zlib.next/examples/zlib_how.html
  </body>
  </html>
 diff -Naur --binary zlib/examples/zran.c zlib.next/examples/zran.c
---- a/zlib/examples/zran.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/examples/zran.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/examples/zran.c	2025-11-30 23:32:17.000000000 +0100
 @@ -1,383 +1,503 @@
 -/* zran.c -- example of zlib/gzip stream indexing and random access
@@ -33407,7 +33051,7 @@ diff -Naur --binary zlib/examples/zran.h zlib.next/examples/zran.h
 +// Deallocate an index built by deflate_index_build().
 +void deflate_index_free(struct deflate_index *index);
 diff -Naur --binary zlib/FAQ zlib.next/FAQ
---- a/zlib/FAQ	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/FAQ	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/FAQ	2025-11-30 23:32:17.000000000 +0100
 @@ -4,7 +4,7 @@
  
@@ -33429,7 +33073,7 @@ diff -Naur --binary zlib/FAQ zlib.next/FAQ
   3. Where can I get a Visual Basic interface to zlib?
  
 diff -Naur --binary zlib/gzclose.c zlib.next/gzclose.c
---- a/zlib/gzclose.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/gzclose.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/gzclose.c	2025-11-30 23:32:17.000000000 +0100
 @@ -8,9 +8,7 @@
  /* gzclose() is in a separate file so that it is linked in only if it is used.
@@ -33443,7 +33087,7 @@ diff -Naur --binary zlib/gzclose.c zlib.next/gzclose.c
      gz_statep state;
  
 diff -Naur --binary zlib/gzguts.h zlib.next/gzguts.h
---- a/zlib/gzguts.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/gzguts.h	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/gzguts.h	2025-11-30 23:32:17.000000000 +0100
 @@ -1,5 +1,5 @@
  /* gzguts.h -- zlib internal header definitions for gz* operations
@@ -33521,7 +33165,7 @@ diff -Naur --binary zlib/gzguts.h zlib.next/gzguts.h
 +unsigned ZLIB_INTERNAL gz_intmax(void);
 +#define GT_OFF(x) (sizeof(int) == sizeof(z_off64_t) && (x) > gz_intmax())
 diff -Naur --binary zlib/gzlib.c zlib.next/gzlib.c
---- a/zlib/gzlib.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/gzlib.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/gzlib.c	2025-11-30 23:32:17.000000000 +0100
 @@ -1,11 +1,11 @@
  /* gzlib.c -- zlib functions common to reading and writing gzip files
@@ -33818,7 +33462,7 @@ diff -Naur --binary zlib/gzlib.c zlib.next/gzlib.c
  #endif
 +}
 diff -Naur --binary zlib/gzread.c zlib.next/gzread.c
---- a/zlib/gzread.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/gzread.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/gzread.c	2025-11-30 23:32:17.000000000 +0100
 @@ -1,29 +1,16 @@
  /* gzread.c -- zlib functions for reading gzip files
@@ -34069,7 +33713,7 @@ diff -Naur --binary zlib/gzread.c zlib.next/gzread.c
      gz_statep state;
  
 diff -Naur --binary zlib/gzwrite.c zlib.next/gzwrite.c
---- a/zlib/gzwrite.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/gzwrite.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/gzwrite.c	2025-11-30 23:32:17.000000000 +0100
 @@ -1,22 +1,14 @@
  /* gzwrite.c -- zlib functions for writing gzip files
@@ -34348,7 +33992,7 @@ diff -Naur --binary zlib/gzwrite.c zlib.next/gzwrite.c
      gz_statep state;
  
 diff -Naur --binary zlib/infback.c zlib.next/infback.c
---- a/zlib/infback.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/infback.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/infback.c	2025-11-30 23:32:17.000000000 +0100
 @@ -1,5 +1,5 @@
  /* infback.c -- inflate using a call-back interface
@@ -34472,7 +34116,7 @@ diff -Naur --binary zlib/infback.c zlib.next/infback.c
          return Z_STREAM_ERROR;
      ZFREE(strm, strm->state);
 diff -Naur --binary zlib/inffast.c zlib.next/inffast.c
---- a/zlib/inffast.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/inffast.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/inffast.c	2025-11-30 23:32:17.000000000 +0100
 @@ -47,10 +47,7 @@
        requires strm->avail_out >= 258 for each loop to avoid checking for
@@ -34561,7 +34205,7 @@ diff -Naur --binary zlib/inffast.c zlib.next/inffast.c
          }
          else if (op & 32) {                     /* end-of-block */
 diff -Naur --binary zlib/inffast.h zlib.next/inffast.h
---- a/zlib/inffast.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/inffast.h	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/inffast.h	2025-11-30 23:32:17.000000000 +0100
 @@ -8,4 +8,4 @@
     subject to change. Applications should only use zlib.h.
@@ -34570,7 +34214,7 @@ diff -Naur --binary zlib/inffast.h zlib.next/inffast.h
 -void ZLIB_INTERNAL inflate_fast OF((z_streamp strm, unsigned start));
 +void ZLIB_INTERNAL inflate_fast(z_streamp strm, unsigned start);
 diff -Naur --binary zlib/inflate.c zlib.next/inflate.c
---- a/zlib/inflate.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/inflate.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/inflate.c	2025-11-30 23:32:17.000000000 +0100
 @@ -1,5 +1,5 @@
  /* inflate.c -- zlib decompression
@@ -35150,7 +34794,7 @@ diff -Naur --binary zlib/inflate.c zlib.next/inflate.c
      if (inflateStateCheck(strm)) return (unsigned long)-1;
      state = (struct inflate_state FAR *)strm->state;
 diff -Naur --binary zlib/inflate.h zlib.next/inflate.h
---- a/zlib/inflate.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/inflate.h	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/inflate.h	2025-11-30 23:32:17.000000000 +0100
 @@ -1,5 +1,5 @@
  /* inflate.h -- internal inflate state definition
@@ -35170,7 +34814,7 @@ diff -Naur --binary zlib/inflate.h zlib.next/inflate.h
      unsigned long check;        /* protected copy of check value */
      unsigned long total;        /* protected copy of output count */
 diff -Naur --binary zlib/inftrees.c zlib.next/inftrees.c
---- a/zlib/inftrees.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/inftrees.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/inftrees.c	2025-11-30 23:32:17.000000000 +0100
 @@ -1,5 +1,5 @@
  /* inftrees.c -- generate Huffman trees for efficient decoding
@@ -35216,7 +34860,7 @@ diff -Naur --binary zlib/inftrees.c zlib.next/inftrees.c
          1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193,
          257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145,
 diff -Naur --binary zlib/inftrees.h zlib.next/inftrees.h
---- a/zlib/inftrees.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/inftrees.h	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/inftrees.h	2025-11-30 23:32:17.000000000 +0100
 @@ -38,11 +38,11 @@
  /* Maximum size of the dynamic table.  The maximum number of code structures is
@@ -35270,7 +34914,7 @@ diff -Naur --binary zlib/LICENSE zlib.next/LICENSE
 +  Jean-loup Gailly        Mark Adler
 +  jloup@gzip.org          madler@alumni.caltech.edu
 diff -Naur --binary zlib/Makefile.in zlib.next/Makefile.in
---- a/zlib/Makefile.in	2025-06-05 18:05:01.000000000 +0200
+--- a/zlib/Makefile.in	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/Makefile.in	2025-11-30 23:32:19.000000000 +0100
 @@ -93,8 +93,10 @@
  subdir = .
@@ -35291,17 +34935,8 @@ diff -Naur --binary zlib/Makefile.in zlib.next/Makefile.in
  LN_S = @LN_S@
  LTLIBOBJS = @LTLIBOBJS@
  MAINT = @MAINT@
-@@ -353,6 +356,8 @@
- datarootdir = @datarootdir@
- docdir = @docdir@
- dvidir = @dvidir@
-+enable_host_pie = @enable_host_pie@
-+enable_host_shared = @enable_host_shared@
- exec_prefix = @exec_prefix@
- host = @host@
- host_alias = @host_alias@
 diff -Naur --binary zlib/make_vms.com zlib.next/make_vms.com
---- a/zlib/make_vms.com	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/make_vms.com	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/make_vms.com	2025-11-30 23:32:17.000000000 +0100
 @@ -14,9 +14,9 @@
  $! 0.03 20091224 Add support for large file check
@@ -35316,7 +34951,7 @@ diff -Naur --binary zlib/make_vms.com zlib.next/make_vms.com
  $! 0.08 20120219 Make it work on VAX again, pre-load missing symbols to shared
  $!               image
 diff -Naur --binary zlib/old/visual-basic.txt zlib.next/old/visual-basic.txt
---- a/zlib/old/visual-basic.txt	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/old/visual-basic.txt	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/old/visual-basic.txt	2025-11-30 23:32:17.000000000 +0100
 @@ -115,7 +115,7 @@
          ReDim Preserve bytaryCpr(lngCprSiz - 1)
@@ -35328,7 +34963,7 @@ diff -Naur --binary zlib/old/visual-basic.txt zlib.next/old/visual-basic.txt
          Close #1
      Else
 diff -Naur --binary zlib/os400/bndsrc zlib.next/os400/bndsrc
---- a/zlib/os400/bndsrc	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/os400/bndsrc	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/os400/bndsrc	2025-11-30 23:32:17.000000000 +0100
 @@ -116,4 +116,12 @@
    EXPORT SYMBOL("inflateValidate")
@@ -35344,7 +34979,7 @@ diff -Naur --binary zlib/os400/bndsrc zlib.next/os400/bndsrc
 +
  ENDPGMEXP
 diff -Naur --binary zlib/os400/README400 zlib.next/os400/README400
---- a/zlib/os400/README400	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/os400/README400	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/os400/README400	2025-11-30 23:32:17.000000000 +0100
 @@ -1,9 +1,9 @@
 -        ZLIB version 1.2.11 for OS/400 installation instructions
@@ -35367,7 +35002,7 @@ diff -Naur --binary zlib/os400/README400 zlib.next/os400/README400
  
          Mainly for the reason above, always open zipped files in binary mode.
 diff -Naur --binary zlib/os400/zlib.inc zlib.next/os400/zlib.inc
---- a/zlib/os400/zlib.inc	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/os400/zlib.inc	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/os400/zlib.inc	2025-11-30 23:32:17.000000000 +0100
 @@ -1,7 +1,7 @@
        *  ZLIB.INC - Interface to the general purpose compression library
@@ -35395,7 +35030,7 @@ diff -Naur --binary zlib/os400/zlib.inc zlib.next/os400/zlib.inc
       D                 C                   0
        *
 diff -Naur --binary zlib/qnx/package.qpg zlib.next/qnx/package.qpg
---- a/zlib/qnx/package.qpg	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/qnx/package.qpg	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/qnx/package.qpg	2025-11-30 23:32:17.000000000 +0100
 @@ -25,10 +25,10 @@
        <QPG:Files>
@@ -35422,7 +35057,7 @@ diff -Naur --binary zlib/qnx/package.qpg zlib.next/qnx/package.qpg
                 <QPM:ReleaseStability>Stable</QPM:ReleaseStability>
                 <QPM:ReleaseNoteMinor></QPM:ReleaseNoteMinor>
 diff -Naur --binary zlib/README zlib.next/README
---- a/zlib/README	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/README	2025-05-23 13:02:09.432278601 +0200
 +++ b/zlib/README	2025-11-30 23:32:17.000000000 +0100
 @@ -3,7 +3,7 @@
  
@@ -35489,7 +35124,7 @@ diff -Naur --binary zlib/README zlib.next/README
  If you redistribute modified sources, we would appreciate that you include in
  the file ChangeLog history information documenting your changes.  Please read
 diff -Naur --binary zlib/test/example.c zlib.next/test/example.c
---- a/zlib/test/example.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/test/example.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/test/example.c	2025-11-30 23:32:17.000000000 +0100
 @@ -34,37 +34,14 @@
  static const char dictionary[] = "hello";
@@ -35733,7 +35368,7 @@ diff -Naur --binary zlib/test/example.c zlib.next/test/example.c
      test_dict_deflate(compr, comprLen);
      test_dict_inflate(compr, comprLen, uncompr, uncomprLen);
 diff -Naur --binary zlib/test/infcover.c zlib.next/test/infcover.c
---- a/zlib/test/infcover.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/test/infcover.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/test/infcover.c	2025-11-30 23:32:17.000000000 +0100
 @@ -373,7 +373,7 @@
      mem_setup(&strm);
@@ -35755,7 +35390,7 @@ diff -Naur --binary zlib/test/infcover.c zlib.next/test/infcover.c
  }
  
 diff -Naur --binary zlib/test/minigzip.c zlib.next/test/minigzip.c
---- a/zlib/test/minigzip.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/test/minigzip.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/test/minigzip.c	2025-11-30 23:32:17.000000000 +0100
 @@ -59,7 +59,7 @@
  
@@ -36040,7 +35675,7 @@ diff -Naur --binary zlib/test/minigzip.c zlib.next/test/minigzip.c
      int uncompr = 0;
      gzFile file;
 diff -Naur --binary zlib/treebuild.xml zlib.next/treebuild.xml
---- a/zlib/treebuild.xml	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/treebuild.xml	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/treebuild.xml	2025-11-30 23:32:17.000000000 +0100
 @@ -1,6 +1,6 @@
  <?xml version="1.0" ?>
@@ -36052,7 +35687,7 @@ diff -Naur --binary zlib/treebuild.xml zlib.next/treebuild.xml
  	<property name="include-target-dir" value="$(@PACKAGE/install-includedir)" />
  
 diff -Naur --binary zlib/trees.c zlib.next/trees.c
---- a/zlib/trees.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/trees.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/trees.c	2025-11-30 23:32:17.000000000 +0100
 @@ -1,5 +1,5 @@
  /* trees.c -- output deflated data using Huffman coding
@@ -37087,7 +36722,7 @@ diff -Naur --binary zlib/trees.c zlib.next/trees.c
 +    return (s->sym_next == s->sym_end);
  }
 diff -Naur --binary zlib/uncompr.c zlib.next/uncompr.c
---- a/zlib/uncompr.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/uncompr.c	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/uncompr.c	2025-11-30 23:32:17.000000000 +0100
 @@ -3,7 +3,7 @@
   * For conditions of distribution and use, see copyright notice in zlib.h
@@ -37128,7 +36763,7 @@ diff -Naur --binary zlib/uncompr.c zlib.next/uncompr.c
      return uncompress2(dest, destLen, source, &sourceLen);
  }
 diff -Naur --binary zlib/win32/DLL_FAQ.txt zlib.next/win32/DLL_FAQ.txt
---- a/zlib/win32/DLL_FAQ.txt	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/win32/DLL_FAQ.txt	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/win32/DLL_FAQ.txt	2025-11-30 23:32:17.000000000 +0100
 @@ -3,7 +3,7 @@
  
@@ -37174,7 +36809,7 @@ diff -Naur --binary zlib/win32/DLL_FAQ.txt zlib.next/win32/DLL_FAQ.txt
  
  This document is written and maintained by
 diff -Naur --binary zlib/win32/Makefile.bor zlib.next/win32/Makefile.bor
---- a/zlib/win32/Makefile.bor	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/win32/Makefile.bor	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/win32/Makefile.bor	2025-11-30 23:32:17.000000000 +0100
 @@ -3,7 +3,6 @@
  #
@@ -37185,7 +36820,7 @@ diff -Naur --binary zlib/win32/Makefile.bor zlib.next/win32/Makefile.bor
  # ------------ Borland C++ ------------
  
 diff -Naur --binary zlib/win32/Makefile.gcc zlib.next/win32/Makefile.gcc
---- a/zlib/win32/Makefile.gcc	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/win32/Makefile.gcc	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/win32/Makefile.gcc	2025-11-30 23:32:17.000000000 +0100
 @@ -11,10 +11,6 @@
  #
@@ -37207,7 +36842,7 @@ diff -Naur --binary zlib/win32/Makefile.gcc zlib.next/win32/Makefile.gcc
  
  PREFIX =
 diff -Naur --binary zlib/win32/Makefile.msc zlib.next/win32/Makefile.msc
---- a/zlib/win32/Makefile.msc	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/win32/Makefile.msc	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/win32/Makefile.msc	2025-11-30 23:32:17.000000000 +0100
 @@ -4,10 +4,6 @@
  # Usage:
@@ -37221,7 +36856,7 @@ diff -Naur --binary zlib/win32/Makefile.msc zlib.next/win32/Makefile.msc
  # The toplevel directory of the source tree.
  #
 diff -Naur --binary zlib/win32/README-WIN32.txt zlib.next/win32/README-WIN32.txt
---- a/zlib/win32/README-WIN32.txt	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/win32/README-WIN32.txt	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/win32/README-WIN32.txt	2025-11-30 23:32:17.000000000 +0100
 @@ -1,6 +1,6 @@
  ZLIB DATA COMPRESSION LIBRARY
@@ -37249,7 +36884,7 @@ diff -Naur --binary zlib/win32/README-WIN32.txt zlib.next/win32/README-WIN32.txt
    README-WIN32.txt This document
    ChangeLog        Changes since previous zlib packages
 diff -Naur --binary zlib/win32/zlib1.rc zlib.next/win32/zlib1.rc
---- a/zlib/win32/zlib1.rc	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/win32/zlib1.rc	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/win32/zlib1.rc	2025-11-30 23:32:17.000000000 +0100
 @@ -26,7 +26,7 @@
        VALUE "FileDescription",	"zlib data compression library\0"
@@ -37261,7 +36896,7 @@ diff -Naur --binary zlib/win32/zlib1.rc zlib.next/win32/zlib1.rc
        VALUE "ProductName",	"zlib\0"
        VALUE "ProductVersion",	ZLIB_VERSION "\0"
 diff -Naur --binary zlib/win32/zlib.def zlib.next/win32/zlib.def
---- a/zlib/win32/zlib.def	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/win32/zlib.def	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/win32/zlib.def	2025-11-30 23:32:17.000000000 +0100
 @@ -69,6 +69,7 @@
      gzoffset64
@@ -37286,7 +36921,7 @@ diff -Naur --binary zlib/win32/zlib.def zlib.next/win32/zlib.def
      deflateResetKeep
 +    gzopen_w
 diff -Naur --binary zlib/zconf.h zlib.next/zconf.h
---- a/zlib/zconf.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/zconf.h	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/zconf.h	2025-11-30 23:32:17.000000000 +0100
 @@ -1,9 +1,9 @@
  /* zconf.h -- configuration of the zlib compression library
@@ -37401,7 +37036,7 @@ diff -Naur --binary zlib/zconf.h zlib.next/zconf.h
 -
  #endif /* ZCONF_H */
 diff -Naur --binary zlib/zconf.h.cmakein zlib.next/zconf.h.cmakein
---- a/zlib/zconf.h.cmakein	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/zconf.h.cmakein	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/zconf.h.cmakein	2025-11-30 23:32:17.000000000 +0100
 @@ -1,5 +1,5 @@
  /* zconf.h -- configuration of the zlib compression library
@@ -37490,7 +37125,7 @@ diff -Naur --binary zlib/zconf.h.cmakein zlib.next/zconf.h.cmakein
  #  else
  #    define z_off64_t z_off_t
 diff -Naur --binary zlib/zconf.h.in zlib.next/zconf.h.in
---- a/zlib/zconf.h.in	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/zconf.h.in	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/zconf.h.in	2025-11-30 23:32:17.000000000 +0100
 @@ -1,5 +1,5 @@
  /* zconf.h -- configuration of the zlib compression library
@@ -37579,7 +37214,7 @@ diff -Naur --binary zlib/zconf.h.in zlib.next/zconf.h.in
  #  else
  #    define z_off64_t z_off_t
 diff -Naur --binary zlib/zlib.3 zlib.next/zlib.3
---- a/zlib/zlib.3	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/zlib.3	2025-05-23 13:02:09.444278789 +0200
 +++ b/zlib/zlib.3	2025-11-30 23:32:17.000000000 +0100
 @@ -1,4 +1,4 @@
 -.TH ZLIB 3 "15 Jan 2017"
@@ -37947,7 +37582,7 @@ diff -Naur --binary zlib/zlib.3.pdf zlib.next/zlib.3.pdf
 +24789
 +%%EOF
 diff -Naur --binary zlib/zlib.h zlib.next/zlib.h
---- a/zlib/zlib.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/zlib.h	2025-05-23 13:02:09.448278852 +0200
 +++ b/zlib/zlib.h	2025-11-30 23:32:17.000000000 +0100
 @@ -1,7 +1,7 @@
  /* zlib.h -- interface of the 'zlib' general purpose compression library
@@ -39176,7 +38811,7 @@ diff -Naur --binary zlib/zlib.h zlib.next/zlib.h
  #endif
  
 diff -Naur --binary zlib/zlib.map zlib.next/zlib.map
---- a/zlib/zlib.map	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/zlib.map	2025-05-23 13:02:09.448278852 +0200
 +++ b/zlib/zlib.map	2025-11-30 23:32:17.000000000 +0100
 @@ -1,94 +1,100 @@
 -ZLIB_1.2.0 {
@@ -39374,7 +39009,7 @@ diff -Naur --binary zlib/zlib.map zlib.next/zlib.map
 +	crc32_combine_op;
 +} ZLIB_1.2.9;
 diff -Naur --binary zlib/zutil.c zlib.next/zutil.c
---- a/zlib/zutil.c	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/zutil.c	2025-05-23 13:02:09.448278852 +0200
 +++ b/zlib/zutil.c	2025-11-30 23:32:17.000000000 +0100
 @@ -3,7 +3,7 @@
   * For conditions of distribution and use, see copyright notice in zlib.h
@@ -39548,7 +39183,7 @@ diff -Naur --binary zlib/zutil.c zlib.next/zutil.c
      free(ptr);
  }
 diff -Naur --binary zlib/zutil.h zlib.next/zutil.h
---- a/zlib/zutil.h	2025-06-05 18:03:03.000000000 +0200
+--- a/zlib/zutil.h	2025-05-23 13:02:09.448278852 +0200
 +++ b/zlib/zutil.h	2025-11-30 23:32:17.000000000 +0100
 @@ -1,5 +1,5 @@
  /* zutil.h -- internal interface and configuration of the compression library
