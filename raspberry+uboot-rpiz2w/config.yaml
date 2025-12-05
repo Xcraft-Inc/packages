@@ -43,6 +43,7 @@ data:
     !make -C <THIS.DATA.RULES.LOCATION> CROSS_COMPILE=aarch64-xcraft-linux-gnu- rpi_arm64_defconfig
        && sed -i 's,^# CONFIG_CMD_BOOTMENU.*,CONFIG_CMD_BOOTMENU=y,' <THIS.DATA.RULES.LOCATION>/.config
        && sed -i 's,^CONFIG_TOOLS_MKEFICAPSULE=y.*,# CONFIG_TOOLS_MKEFICAPSULE is not set,' <THIS.DATA.RULES.LOCATION>/.config
+       && sed -i 's,^CONFIG_BOOTDELAY=.*,CONFIG_BOOTDELAY=0,' <THIS.DATA.RULES.LOCATION>/.config
        && make -C <THIS.DATA.RULES.LOCATION> CROSS_COMPILE=aarch64-xcraft-linux-gnu- olddefconfig
   rules:
     type: script
