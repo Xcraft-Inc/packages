@@ -23,6 +23,11 @@ if ! ip link show "$network_wire" >/dev/null 2>&1; then
   exit 1
 fi
 
+int_sleep() {
+  sleep "$1" &
+  wait $!
+}
+
 dispose() {
   echo "Dispose..."
 
@@ -101,7 +106,7 @@ if [ "$network_wire_dhcp" = "off" ]; then
     fi
 
     echo "Interface $network_wire UP - $(date)"
-    sleep 300
+    int_sleep 300
   done
 fi
 
