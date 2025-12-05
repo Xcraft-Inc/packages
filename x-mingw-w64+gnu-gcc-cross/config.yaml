@@ -149,6 +149,7 @@ data:
         <PEON.OS=darwin?
                         --with-sysroot={PEON.ENV.SDKROOT}
         :>
+          && : /// keep all steps like with a cross-compiler, necessary with darwin ///
           && make -j<PEON.CPUS.COUNT> all-gcc
           && make install-gcc
           && make -j<PEON.CPUS.COUNT> all-target-libgcc
