@@ -36,6 +36,7 @@ dispose() {
     rm -f "/var/run/udhcpc.$network_wire.pid"
   fi
 
+  ip -4 addr flush dev "$network_wire" 2>/dev/null
   ip link set dev "$network_wire" down 2>/dev/null
   exit 0
 }
