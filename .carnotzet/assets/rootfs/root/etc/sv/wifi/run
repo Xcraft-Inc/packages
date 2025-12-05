@@ -16,6 +16,11 @@ if [ -z "$network_wifi" ]; then
   exit 0
 fi
 
+int_sleep() {
+  sleep "$1" &
+  wait $!
+}
+
 configure_static() {
   echo "Configuring static IP: $network_wifi_ip/$network_wifi_mask"
 
@@ -84,7 +89,8 @@ if [ "$network_wifi_mode" != "wpa" ]; then
 
     # Supervision
     while true; do
-      sleep 300
+      echo "Interface $network_wifi UP - $(date)"
+      int_sleep 300
     done
   else
     exit 0
@@ -161,7 +167,7 @@ if [ "$network_wifi_dhcp" = "off" ]; then
     fi
 
     echo "Interface $network_wifi UP - $(date)"
-    sleep 300
+    int_sleep 300
   done
 fi
 
