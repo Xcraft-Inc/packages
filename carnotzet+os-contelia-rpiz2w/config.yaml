@@ -10,7 +10,7 @@ maintainer:
 architecture:
   - source
 description:
-  brief: Carnotzet Operating System
+  brief: Carnotzet Contelia Operating System
   long: ''
 dependency:
   install:
@@ -66,6 +66,9 @@ dependency:
       - version: ''
         architecture: []
     alsa+utils-rpi64:
+      - version: ''
+        architecture: []
+    carnotzet+contelia:
       - version: ''
         architecture: []
   build:
@@ -132,7 +135,10 @@ data:
           'vlasenko+busybox-rpi64-x+httpd',
 
           /* Audio */
-          'alsa+utils-rpi64-x+bin'
+          'alsa+utils-rpi64-x+bin',
+
+          /* Contelia */
+          'carnotzet+contelia-x+bin'
         ]);
 
         yield genImage('carnotzet', 'carnotzet',
