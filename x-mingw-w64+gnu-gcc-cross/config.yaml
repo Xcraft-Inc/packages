@@ -96,6 +96,8 @@ data:
       prerm: ''
       makeall: |-
         !_CC="$CC" _CXX="$CXX" _CFLAGS="$CFLAGS" _CXXFLAGS="$CXXFLAGS" _LDFLAGS="$LDFLAGS" _CPPFLAGS="$CPPFLAGS"
+        && export BOOTSTRAP_PREFIX="$(pwd)/gcc-bootstrap-install"
+        && unset LIBRARY_PATH
 
         && : /// binutils ///
           && cd binutils
@@ -131,8 +133,6 @@ data:
         && : /// gcc - bootstrap stage, native compiler ///
           && cd gcc-bootstrap
           && CONFIGURE="<PEON.ROOTDIR>/var/x-mingw-w64/gcc/configure"
-          && export CC="$_CC" CXX="$_CXX"
-          && export BOOTSTRAP_PREFIX="$(pwd)/../gcc-bootstrap-install"
           && $CONFIGURE --prefix="$BOOTSTRAP_PREFIX"
                         --enable-languages=c,c++
                         --disable-bootstrap
@@ -146,6 +146,13 @@ data:
                         --with-mpfr=<PEON.ROOTDIR>/usr
                         --with-mpc=<PEON.ROOTDIR>/usr
                         --with-isl=<PEON.ROOTDIR>/usr
+        <PEON.OS=darwin?
+                        --with-sysroot={PEON.ENV.SDKROOT}
+        :>
+          && make -j<PEON.CPUS.COUNT> all-gcc
+          && make install-gcc
+          && make -j<PEON.CPUS.COUNT> all-target-libgcc
+          && make install-target-libgcc
           && make -j<PEON.CPUS.COUNT>
           && make install
           && cd ..
@@ -207,6 +214,11 @@ data:
     test: none
     env:
       PATH: '<PEON.PREFIXDIR>/bin:<PEON.ENV.PATH>'
+      CFLAGS: '-O2 -g0 -fPIC -I<PEON.ROOTDIR>/usr/include -Wl,-rpath,<PEON.ROOTDIR>/usr/lib'
+      CXXFLAGS: '-O2 -g0 -fPIC -I<PEON.ROOTDIR>/usr/include -Wl,-rpath,<PEON.ROOTDIR>/usr/lib'
+      LDFLAGS: '-L<PEON.ROOTDIR>/usr/lib'
+      CPPFLAGS: '-I<PEON.ROOTDIR>/usr/include'
+      darwin/CPP: clang-cpp
   deploy: |-
     rm('<PEON.PREFIXDIR>/share/info');
     rm('<PEON.PREFIXDIR>/share/man/man7');
