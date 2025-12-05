@@ -70,6 +70,7 @@ dispose() {
     rm -f "/var/run/udhcpc.$network_wifi.pid"
   fi
 
+  ip -4 addr flush dev "$network_wifi" 2>/dev/null
   ip link set dev "$network_wifi" down 2>/dev/null
   rm -f "$wpa_conf"
   exit 0
