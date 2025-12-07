@@ -1,7 +1,7 @@
 subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
-name: carnotzet+contelia
+name: carnotzet+contelia-rpi64
 version: 0.1.0-1
 $version: 0.1.0
 distribution: raspberry/
@@ -15,6 +15,11 @@ description:
   long: ''
 dependency:
   install:
+    stedolan+jq-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
     alsa+lib-rpi64-x+bin:
       - version: ''
         architecture: []

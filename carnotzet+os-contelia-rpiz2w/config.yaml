@@ -68,7 +68,7 @@ dependency:
     alsa+utils-rpi64:
       - version: ''
         architecture: []
-    carnotzet+contelia:
+    carnotzet+contelia-rpi64:
       - version: ''
         architecture: []
   build:
@@ -138,7 +138,7 @@ data:
           'alsa+utils-rpi64-x+bin',
 
           /* Contelia */
-          'carnotzet+contelia-x+bin'
+          'carnotzet+contelia-rpi64-x+bin'
         ]);
 
         yield genImage('carnotzet', 'carnotzet',
