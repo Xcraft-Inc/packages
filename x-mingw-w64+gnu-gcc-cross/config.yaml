@@ -178,11 +178,6 @@ data:
     test: none
     env:
       PATH: '<PEON.PREFIXDIR>/bin:<PEON.ENV.PATH>'
-      CFLAGS: '-O2 -g0 -fPIC -I<PEON.ROOTDIR>/usr/include -Wl,-rpath,<PEON.ROOTDIR>/usr/lib'
-      CXXFLAGS: '-O2 -g0 -fPIC -I<PEON.ROOTDIR>/usr/include -Wl,-rpath,<PEON.ROOTDIR>/usr/lib'
-      LDFLAGS: '-L<PEON.ROOTDIR>/usr/lib'
-      CPPFLAGS: '-I<PEON.ROOTDIR>/usr/include'
-      darwin/CPP: clang-cpp
   deploy: |-
     rm('<PEON.PREFIXDIR>/share/info');
     rm('<PEON.PREFIXDIR>/share/man/man7');
