@@ -1,6 +1,6 @@
 name: x-mingw-w64+mingw-w64
-version: 13.0.0
-$version: 13.0.0
+version: 11.0.0
+$version: 11.0.0
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
