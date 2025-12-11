@@ -32,9 +32,12 @@ dependency:
     llvm+llvm:
       - version: ''
         architecture:
+          - darwin-aarch64
+    llvm+llvm16:
+      - version: ''
+        architecture:
           - darwin-i386
           - darwin-amd64
-          - darwin-aarch64
 bump: []
 data:
   get:
