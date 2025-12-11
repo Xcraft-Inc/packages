@@ -86,7 +86,7 @@ notarize()
     --password "$password" \
     --progress \
     --wait \
-    --timeout 15m
+    --timeout 30m
   then
     return 1
   fi
