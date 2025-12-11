@@ -71,6 +71,9 @@ dependency:
     carnotzet+contelia-rpi64:
       - version: ''
         architecture: []
+    angelacos+haserl-rpi64:
+      - version: ''
+        architecture: []
   build:
     tytso+e2fsprogs:
       - version: ''
@@ -133,6 +136,7 @@ data:
           'kelley+dnsmasq-rpi64-x+bin',
           'malinen+hostapd-rpi64-x+bin',
           'vlasenko+busybox-rpi64-x+httpd',
+          'angelacos+haserl-rpi64-x+bin',
 
           /* Audio */
           'alsa+utils-rpi64-x+bin',
