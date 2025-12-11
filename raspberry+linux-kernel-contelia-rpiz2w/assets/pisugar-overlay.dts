@@ -1,0 +1,22 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835";
+
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            pisugar_button: pisugar-button {
+                compatible = "gpio-keys";
+
+                button@0 {
+                    label = "PiSugar Button";
+                    linux,code = <116>; /* KEY_POWER */
+                    gpios = <&gpio 3 1>; /* GPIO 3, active low */
+                    debounce-interval = <20>;
+                };
+            };
+        };
+    };
+};
