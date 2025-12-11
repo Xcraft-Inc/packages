@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: llvm+llvm16
-version: 16.0.8
-$version: 16.0.8
+version: 16.0.6
+$version: 16.0.6
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
