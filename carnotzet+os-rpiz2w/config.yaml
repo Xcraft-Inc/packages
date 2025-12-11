@@ -118,7 +118,7 @@ data:
           'unigw+wpkg-rpi64-x+bin'
         ]);
 
-        yield genImage('carnotzet', 'carnotzet',
+        yield genImage('carnotzet',
           '<PEON.INSTALLDIR>/opt/img/carnotzet-os-<THIS.$VERSION>-rpiz2w.img'
         );
       maketest: ''

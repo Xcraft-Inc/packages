@@ -30,7 +30,7 @@ class Scripts {
     );
   };
 
-  genImage = async (rootDir, name, output) => {
+  genImage = async (rootDir, output) => {
     const {rm, mkdir, mv, exec} = this.#ctx;
     const sh = (...args) => exec('sh', '-c', ...args);
 
@@ -42,23 +42,26 @@ class Scripts {
     const ext4Blocs = 196608;
     const ext4Offset = 268435456;
 
-    await sh(`fallocate -l 1G ${name}.img`);
+    const items = output.split('\\/');
+    const name = '__' + items[items.length - 1];
+
+    await sh(`fallocate -l 1G ${name}`);
     await sh(
-      `printf "label: dos\n${fatFirstSec},${fatNbSec},0x0C,*\n${ext4FirstSec},,,-\n" | sfdisk ${name}.img`
+      `printf "label: dos\n${fatFirstSec},${fatNbSec},0x0C,*\n${ext4FirstSec},,,-\n" | sfdisk ${name}`
     );
     await sh(
-      `mformat -i ${name}.img@@${fatOffset} -F -v BOOT :: -N 0 -T ${fatNbSec}`
+      `mformat -i ${name}@@${fatOffset} -F -v BOOT :: -N 0 -T ${fatNbSec}`
     );
-    await sh(`mcopy -i ${name}.img@@${fatOffset} -s ${name}/boot/* ::`);
+    await sh(`mcopy -i ${name}@@${fatOffset} -s ${name}/boot/* ::`);
 
     rm(`${rootDir}/boot`);
     mkdir(`${rootDir}/boot`);
 
     await sh(
-      `fakeroot mke2fs -t ext4 -b 4096 -d ${rootDir} -E offset=${ext4Offset} ${name}.img ${ext4Blocs}`
+      `fakeroot mke2fs -t ext4 -b 4096 -d ${rootDir} -E offset=${ext4Offset} ${name} ${ext4Blocs}`
     );
 
-    mv(`${name}.img`, output);
+    mv(`${name}`, output);
   };
 
   genInitramfs = async (rootDir, bootDir, mkimage) => {

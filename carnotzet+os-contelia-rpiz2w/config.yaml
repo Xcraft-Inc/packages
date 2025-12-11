@@ -141,7 +141,7 @@ data:
           'carnotzet+contelia-rpi64-x+bin'
         ]);
 
-        yield genImage('carnotzet', 'carnotzet',
+        yield genImage('carnotzet',
           '<PEON.INSTALLDIR>/opt/img/carnotzet-os-contelia-<THIS.$VERSION>-rpiz2w.img'
         );
       maketest: ''
