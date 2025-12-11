@@ -11,9 +11,9 @@
                 compatible = "gpio-keys";
 
                 button@0 {
-                    label = "PiSugar Button";
-                    linux,code = <116>; /* KEY_POWER */
-                    gpios = <&gpio 3 1>; /* GPIO 3, active low */
+                    label = "POWER";    /* PiSugar power */
+                    linux,code = <116>; /* KEY_POWER     */
+                    gpios = <&gpio 3 1>;
                     debounce-interval = <20>;
                 };
             };
