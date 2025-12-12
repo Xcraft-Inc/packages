@@ -58,7 +58,7 @@ class Scripts {
     mkdir(`${rootDir}/boot`);
 
     await sh(
-      `fakeroot mke2fs -t ext4 -b 4096 -d ${rootDir} -E offset=${ext4Offset} ${name} ${ext4Blocs}`
+      `fakeroot mke2fs -t ext4 -b 4096 -O metadata_csum,extent,has_journal -m 0 -d ${rootDir} -E offset=${ext4Offset},lazy_itable_init=0,lazy_journal_init=0 ${name} ${ext4Blocs}`
     );
 
     mv(`${name}`, output);
