@@ -7,10 +7,10 @@
     fragment@0 {
         target-path = "/";
         __overlay__ {
-            pisugar_button: pisugar-button {
+            pisugar_button: pisugar_button {
                 compatible = "gpio-keys";
 
-                button@0 {
+                button@3 {
                     label = "POWER";    /* PiSugar power */
                     linux,code = <116>; /* KEY_POWER     */
                     gpios = <&gpio 3 1>;

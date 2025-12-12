@@ -62,7 +62,7 @@
         fragment@3 {
                 target-path = "/";
                 __overlay__ {
-                        keypad: tft_bonnet_keys {
+                        keypad: tftbonnet13_keys {
                                 compatible = "gpio-keys";
 
                                 button@17 {
