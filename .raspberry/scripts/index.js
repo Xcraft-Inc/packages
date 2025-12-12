@@ -42,7 +42,7 @@ class Scripts {
     const ext4Blocs = 196608;
     const ext4Offset = 268435456;
 
-    const items = output.split('\\/');
+    const items = output.split(/[/\\]/g);
     const name = '__' + items[items.length - 1];
 
     await sh(`fallocate -l 1G ${name}`);
