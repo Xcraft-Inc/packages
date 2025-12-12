@@ -52,7 +52,7 @@ class Scripts {
     await sh(
       `mformat -i ${name}@@${fatOffset} -F -v BOOT :: -N 0 -T ${fatNbSec}`
     );
-    await sh(`mcopy -i ${name}@@${fatOffset} -s ${name}/boot/* ::`);
+    await sh(`mcopy -i ${name}@@${fatOffset} -s ${rootDir}/boot/* ::`);
 
     rm(`${rootDir}/boot`);
     mkdir(`${rootDir}/boot`);
