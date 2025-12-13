@@ -49,6 +49,8 @@ data:
     !cd <THIS.DATA.RULES.LOCATION>
       && cp <PEON.ASSETS.GLOBAL>/logo_linux_clut224.ppm drivers/video/logo
       && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- bcm2711_defconfig
+      && sed -i 's,^# CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE.*,CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE=y,' .config
+      && sed -i 's,^CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND=y.*,# CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND is not set,' .config
       && sed -i 's,^CONFIG_SPI_BCM2835=m.*,CONFIG_SPI_BCM2835=y,' .config
       && sed -i 's,^CONFIG_FB_TFT=m.*,CONFIG_FB_TFT=y,' .config
       && sed -i 's,^CONFIG_FB_TFT_ST7789V=m.*,CONFIG_FB_TFT_ST7789V=y,' .config
