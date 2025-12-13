@@ -6,4 +6,6 @@ gpu_mem=16
 # For Adafruit TFT Bonnet 13
 dtparam=spi=on
 dtoverlay=tftbonnet13
+
+# For PiSugar S
 dtoverlay=pisugar
