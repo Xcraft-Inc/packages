@@ -71,7 +71,6 @@ data:
         !install -D -m 755 target/aarch64-unknown-linux-gnu/release/contelia <PEON.PREFIXDIR.X+BIN>/bin/contelia
          && mkdir -p <PEON.PREFIXDIR.X+BIN>/share/contelia/assets
          && mkdir -p <PEON.INSTALLDIR.X+BIN>/var/httpd/www/cgi-bin
-         && mkdir -p <PEON.INSTALLDIR.X+BIN>/var/lib/contelia
          && cp assets/*.png         <PEON.PREFIXDIR.X+BIN>/share/contelia/assets/
          && cp cgi-bin/contelia.hsl <PEON.INSTALLDIR.X+BIN>/var/httpd/www/cgi-bin/contelia
     test: none
@@ -82,6 +81,9 @@ data:
       PKG_CONFIG_SYSROOT_DIR: <PEON.PROD.ROOTDIR>
   deploy: |-
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/contelia');
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/lib/contelia');
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/httpd/www');
+    ln('../../../var/lib/contelia', '<PEON.INSTALLDIR.X+BIN>/var/httpd/www/contelia');
     cp('<PEON.ASSETS>/sv',       '<PEON.INSTALLDIR.X+BIN>/etc/sv/contelia');
     cp('<PEON.ASSETS>/postinst', '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
     cp('<PEON.ASSETS>/prerm',    '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
