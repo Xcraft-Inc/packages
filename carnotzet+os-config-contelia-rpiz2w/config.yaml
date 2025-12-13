@@ -47,6 +47,13 @@ data:
       makeinstall: |-
         cp('<PEON.ASSETS>/carnotzet.d', '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.d');
         cp('<PEON.ASSETS>/config.txt',  '<PEON.INSTALLDIR.X+BIN>/boot/config.txt');
+        /* By default, disable all services */
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/dnsmasq/down');
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/hostapd/down');
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/httpd/down');
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/network/down');
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/ntpd/down');
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/wifi/down');
     test: none
     env: {}
   deploy: ''
