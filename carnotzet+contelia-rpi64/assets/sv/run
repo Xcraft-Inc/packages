@@ -1,6 +1,9 @@
 #!/bin/sh
 exec 2>&1
 
+# Ensure that we can write books for Contelia with the captive portal
+chown -R httpd /var/lib/contelia
+
 echo "Start Contelia daemon..."
 
 # HACK: once a proper way is found to store the default volume

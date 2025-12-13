@@ -15,6 +15,11 @@ description:
   long: ''
 dependency:
   install:
+    vlasenko+busybox-rpi64-x+httpd:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
     stedolan+jq-rpi64-x+bin:
       - version: ''
         architecture: []
@@ -66,7 +71,8 @@ data:
         !install -D -m 755 target/aarch64-unknown-linux-gnu/release/contelia <PEON.PREFIXDIR.X+BIN>/bin/contelia
          && mkdir -p <PEON.PREFIXDIR.X+BIN>/share/contelia/assets
          && mkdir -p <PEON.INSTALLDIR.X+BIN>/var/httpd/www/cgi-bin
-         && cp assets/*.png <PEON.PREFIXDIR.X+BIN>/share/contelia/assets/
+         && mkdir -p <PEON.INSTALLDIR.X+BIN>/var/lib/contelia
+         && cp assets/*.png         <PEON.PREFIXDIR.X+BIN>/share/contelia/assets/
          && cp cgi-bin/contelia.hsl <PEON.INSTALLDIR.X+BIN>/var/httpd/www/cgi-bin/contelia
     test: none
     env:
