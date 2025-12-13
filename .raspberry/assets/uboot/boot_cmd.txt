@@ -16,7 +16,7 @@ fi
 setenv boot_normal_cmd '\
 echo "=== NORMAL BOOT ==="; \
 fatload mmc 0:1 ${kernel_addr_r} Image; \
-setenv bootargs "console=serial0,115200 console=tty1 root=/dev/mmcblk0p2 rootwait rw"; \
+setenv bootargs "console=serial0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 rw rootwait"; \
 booti ${kernel_addr_r} - ${fdt_addr}'
 
 setenv boot_rescue_cmd '\
