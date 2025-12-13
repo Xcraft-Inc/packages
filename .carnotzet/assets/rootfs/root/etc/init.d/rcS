@@ -30,7 +30,6 @@ boot_expand()
   # Disable expand mode
   mount /boot
   sed -i "s,^carnotzet_expand=.*,carnotzet_expand=0," /boot/carnotzet.env || return 1
-  sed -i "s,^carnotzet_delay=.*,carnotzet_delay=0,"   /boot/carnotzet.env || return 1
   return 0
 }
 
