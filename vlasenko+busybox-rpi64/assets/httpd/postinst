@@ -3,8 +3,8 @@
 adduser httpd -SH 2>/dev/null || true
 
 if [ ! -f /var/httpd/www/redirect.html ]; then
-  mkdir -p /var/httpd
-  cp -r /usr/share/httpd/www /var/httpd/www
+  mkdir -p /var/httpd/www
+  cp -r /usr/share/httpd/www /var/httpd/
   chown -R httpd /var/httpd/www
 fi
 
