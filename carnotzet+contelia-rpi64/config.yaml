@@ -84,9 +84,10 @@ data:
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/lib/contelia');
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/httpd/www');
     ln('../../../var/lib/contelia', '<PEON.INSTALLDIR.X+BIN>/var/httpd/www/contelia');
-    cp('<PEON.ASSETS>/sv',       '<PEON.INSTALLDIR.X+BIN>/etc/sv/contelia');
-    cp('<PEON.ASSETS>/postinst', '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
-    cp('<PEON.ASSETS>/prerm',    '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+    cp('<PEON.ASSETS>/index.html',  '<PEON.INSTALLDIR.X+BIN>/var/httpd/www/index.html');
+    cp('<PEON.ASSETS>/sv',          '<PEON.INSTALLDIR.X+BIN>/etc/sv/contelia');
+    cp('<PEON.ASSETS>/postinst',    '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',       '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
   env:
     path: []
     other: {}
