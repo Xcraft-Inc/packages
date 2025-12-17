@@ -1,0 +1,17 @@
+data:
+  configure: |-
+    !{bash}
+    cd <THIS.DATA.RULES.LOCATION> &&
+    CC="${CC:-cc} $CFLAGS"
+    <PEON.OS=darwin?
+      ./Configure darwin64-{PEON.OS.ARCH2}-cc
+    :>
+    <PEON.OS=win?
+      ./Configure --openssldir=/usr/ssl mingw64
+    :>
+    <PEON.OS=linux?
+      ./config    --openssldir=/etc/ssl
+    :>
+                  --prefix=<PEON.PREFIXDIR>
+                  shared
+  deploy: mv('<PEON.PREFIXDIR>/lib64', '<PEON.PREFIXDIR>/lib');
