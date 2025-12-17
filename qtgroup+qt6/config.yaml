@@ -14,7 +14,7 @@ description:
   long: ''
 dependency:
   install:
-    openssl+openssl:
+    openssl+openssl3:
       - version: ''
         architecture: []
         subpackage:
