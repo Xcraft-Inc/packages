@@ -41,7 +41,6 @@ data:
           --noUpdateInstaller
           --locale En-us
           --path cache=<PEON.ROOTDRIVE>\xcraft\tmp\buildtools
-          --installPath <PEON.ROOTDRIVE>\xcraft\microsoft\buildtools
           --add Microsoft.VisualStudio.Component.Roslyn.Compiler
           --add Microsoft.Component.MSBuild
           --add Microsoft.VisualStudio.Component.CoreBuildTools
@@ -75,8 +74,8 @@ data:
     env: {}
   env:
     path:
-      - '<OS.ROOTDRIVE>/xcraft/microsoft/buildtools/MSBuild/Current/Bin<OS.ARCH=x64?/amd64:>'
+      - 'C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin<OS.ARCH=x64?/amd64:>'
     other:
-      CL_TOOL_EXE: '<OS.ROOTDRIVE>/xcraft/microsoft/buildtools/VC/Tools/MSVC/14.42.34433/bin/Host<OS.ARCH=x32?x86:x64>/<OS.ARCH=x32?x86:x64>/cl.exe'
+      CL_TOOL_EXE: 'C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.42.34433/bin/Host<OS.ARCH=x32?x86:x64>/<OS.ARCH=x32?x86:x64>/cl.exe'
       MSBUILDDISABLENODEREUSE: '1'
   embedded: true
