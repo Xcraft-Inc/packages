@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: carnotzet+contelia-rpi64
-version: 0.5.2
-$version: 0.5.2
+version: 0.5.3
+$version: 0.5.3
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -52,7 +52,7 @@ data:
   get:
     uri: 'https://github.com/Skywalker13/contelia.git'
     mirrors: []
-    ref: master
+    ref: v<THIS.$VERSION>
     $ref: ''
     out: ''
     externals: false
