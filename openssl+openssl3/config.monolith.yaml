@@ -14,4 +14,7 @@ data:
     :>
                   --prefix=<PEON.PREFIXDIR>
                   shared
-  deploy: mv('<PEON.PREFIXDIR>/lib64', '<PEON.PREFIXDIR>/lib');
+  deploy: |-
+    try {
+      mv('<PEON.PREFIXDIR>/lib64', '<PEON.PREFIXDIR>/lib');
+    } catch {}

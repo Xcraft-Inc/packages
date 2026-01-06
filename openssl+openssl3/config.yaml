@@ -84,7 +84,10 @@ data:
       makeinstall: '!make CFLAGS= LDFLAGS= install_sw'
     test: none
     env: {}
-  deploy: mv('<PEON.PREFIXDIR>/openssl3/lib64', '<PEON.PREFIXDIR>/openssl3/lib');
+  deploy: |-
+    try {
+      mv('<PEON.PREFIXDIR>/openssl3/lib64', '<PEON.PREFIXDIR>/openssl3/lib');
+    } catch {}
   env:
     path: []
     other:
