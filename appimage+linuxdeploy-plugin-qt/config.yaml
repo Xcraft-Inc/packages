@@ -1,6 +1,6 @@
 name: appimage+linuxdeploy-plugin-qt
-version: 2.0.0-alpha-1-20241106-0
-$version: 2.0.0-alpha-1-20241106
+version: '3:1-alpha-20250213-1-1'
+$version: 1-alpha-20250213-1
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -18,16 +18,15 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/<THIS.$VERSION>/linuxdeploy-plugin-qt-static-x86_64.AppImage'
+    uri: 'https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/<THIS.$VERSION>/linuxdeploy-plugin-qt-x86_64.AppImage'
     mirrors: []
     ref: ''
     $ref: ''
     out: ''
     externals: true
-    $hash: 00801aa01b34e3ff3d85cf752f504ddea37c90ec589dddfea2b357e58e2ca421.AppImage
   type: bin
   configure: |-
-    mv('linuxdeploy-plugin-qt-static-x86_64.AppImage', 'root/usr/bin/linuxdeploy-plugin-qt-x86_64.AppImage');
+    mv('linuxdeploy-plugin-qt-x86_64.AppImage', 'root/usr/bin/linuxdeploy-plugin-qt-x86_64.AppImage');
     yield exec('chmod', 'a+x', 'root/usr/bin/linuxdeploy-plugin-qt-x86_64.AppImage');
   rules:
     type: move
