@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: gnu+autoconf
-version: '2.69'
-$version: '2.69'
+version: '2.72'
+$version: '2.72'
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -21,18 +21,21 @@ dependency:
     xcraft+base-build:
       - version: ''
         architecture: []
+bump: []
 data:
   get:
     uri: 'http://ftp.gnu.org/gnu/autoconf/autoconf-<THIS.$VERSION>.tar.gz'
+    mirrors: []
     ref: ''
+    $ref: ''
     out: ''
     externals: true
-    $hash: 2.69@954bd69b391edc12d6a4a51a2dd1476543da5c6bbf05a95b59dc0dd6fd4c2969.tar.gz
+    prepare: ''
   type: src
   configure: '!cd <THIS.DATA.RULES.LOCATION> && ./configure --prefix=<PEON.PREFIXDIR>'
   rules:
     type: make
-    location: data/autoconf-<THIS.$VERSION>/
+    location: data/autoconf-<THIS.$VERSION>
     args:
       postinst: ''
       prerm: ''
@@ -40,6 +43,7 @@ data:
       maketest: ''
       makeinstall: install
     test: none
+    env: {}
   deploy: rm ('<PEON.PREFIXDIR>/share/info/dir');
   env:
     path: []
