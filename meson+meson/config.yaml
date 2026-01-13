@@ -58,6 +58,7 @@ data:
       makeinstall: |-
         !mkdir -p <PEON.PREFIXDIR>/bin
           && install meson.pyz <PEON.PREFIXDIR>/bin/
+          && install meson.pyz <PEON.PREFIXDIR>/bin/meson
     test: none
     env: {}
   deploy: ''
