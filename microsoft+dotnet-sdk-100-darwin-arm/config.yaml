@@ -1,6 +1,6 @@
 name: microsoft+dotnet-sdk-100-darwin-arm
-version: 10.0.100
-$version: 10.0.100
+version: 10.0.101
+$version: 10.0.101
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
