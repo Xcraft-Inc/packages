@@ -1,6 +1,6 @@
 name: microsoft+buildtools
-version: 17.14.23+36811.4
-$version: 17.14.23+36811.4
+version: 17.14.24+36908.2
+$version: 17.14.24+36908.2
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -19,7 +19,7 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'https://owncloud.epsitec.ch/owncloud/index.php/s/SY7CwrpoTo7GrWG/download/microsoft+buildtools-2022-<THIS.$VERSION>.zip'
+    uri: 'https://owncloud.epsitec.ch/owncloud/index.php/s/yjsQwAHbMDeRrAx/download/microsoft+buildtools-2022-<THIS.$VERSION>.zip'
     mirrors: []
     ref: ''
     $ref: ''
@@ -62,10 +62,10 @@ data:
           --add Microsoft.NetCore.Component.Runtime.8.0
           --add Microsoft.NetCore.Component.SDK
           --add Microsoft.Net.Component.4.6.1.TargetingPack
-          --add Microsoft.VisualStudio.Component.VC.14.42.17.12.x86.x64
-          --add Microsoft.VisualStudio.Component.VC.14.42.17.12.ATL
-          --add Microsoft.VisualStudio.Component.VC.14.42.17.12.CLI.Support
-          --add Microsoft.VisualStudio.Component.VC.14.42.17.12.MFC
+          --add Microsoft.VisualStudio.Component.VC.14.44.17.14.x86.x64
+          --add Microsoft.VisualStudio.Component.VC.14.44.17.14.ATL
+          --add Microsoft.VisualStudio.Component.VC.14.44.17.14.CLI.Support
+          --add Microsoft.VisualStudio.Component.VC.14.44.17.14.MFC
       prerm: |-
         !"C:\Program Files (x86)\Microsoft Visual Studio\Installer\setup.exe"
           /uninstall
@@ -76,6 +76,6 @@ data:
     path:
       - 'C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin<OS.ARCH=x64?/amd64:>'
     other:
-      CL_TOOL_EXE: 'C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.42.34433/bin/Host<OS.ARCH=x32?x86:x64>/<OS.ARCH=x32?x86:x64>/cl.exe'
+      CL_TOOL_EXE: 'C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Host<OS.ARCH=x32?x86:x64>/<OS.ARCH=x32?x86:x64>/cl.exe'
       MSBUILDDISABLENODEREUSE: '1'
   embedded: true
