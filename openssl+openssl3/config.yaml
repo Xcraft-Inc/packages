@@ -86,7 +86,7 @@ data:
     env: {}
   deploy: |-
     try {
-      ln('../lib64', '<PEON.PREFIXDIR>/openssl3/lib');
+      ln('./lib64', '<PEON.PREFIXDIR>/openssl3/lib');
     } catch {}
   env:
     path: []
