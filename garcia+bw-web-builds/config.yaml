@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: garcia+bw-web-builds
-version: 2025.7.0
-$version: 2025.7.0
+version: 2026.1.0
+$version: 2026.1.0
 distribution: epsitec/
 maintainer:
   name: Mathieu Schroeter
@@ -24,10 +24,10 @@ data:
     mirrors: []
     ref: ''
     $ref: ''
-    $hash: 2025.7.0@8b69868ae26b02b82c96c57c6f27d1bd1dce88db9c14ec40b2c100cd13013aa8.tar.gz
     out: ''
     externals: true
     prepare: ''
+    $hash: 2026.1.0@1217b6ccb503658075ee4629474fc1a0e85b91418bd7c7add758c3baf9bb1e48.tar.gz
   type: src
   configure: ''
   rules:
@@ -46,7 +46,7 @@ data:
       maketest: ''
       makeinstall: |-
         mv(
-          '/tmp/xcraft-415a7b5f/builds/bw_web_v<THIS.$VERSION>.1',
+          '/tmp/xcraft-415a7b5f/builds/bw_web_v<THIS.$VERSION>+0',
           '<PEON.PREFIXDIR>/share/vaultwarden/web-vault'
         );
         rm('/tmp/xcraft-415a7b5f');
