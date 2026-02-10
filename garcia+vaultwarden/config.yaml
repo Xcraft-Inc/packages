@@ -92,7 +92,6 @@ data:
     test: none
     env:
       PKG_CONFIG_PATH: <PEON.PROD.ROOTDIR>/usr/openssl3/lib/pkgconfig:<PEON.ENV.PKG_CONFIG_PATH>
-      PKG_CONFIG_SYSROOT_DIR: <PEON.PROD.ROOTDIR>
   deploy: |-
     const dataFolderPath = '/opt/vaultwarden/var/data';
 
