@@ -1,0 +1,11 @@
+[binaries]
+c = 'aarch64-xcraft-linux-gnu-gcc'
+cpp = 'aarch64-xcraft-linux-gnu-g++'
+ar = 'aarch64-xcraft-linux-gnu-ar'
+strip = 'aarch64-xcraft-linux-gnu-strip'
+
+[host_machine]
+system = 'linux'
+cpu_family = 'aarch64'
+cpu = 'aarch64'
+endian = 'little'

@@ -1,0 +1,74 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: gnome+glib-rpi64
+version: 2.87.2
+$version: 2.87.2
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Low-level core library that forms the basis for projects
+  long: 'GLib is the low-level core library that forms the basis for projects such as GTK and GNOME. It provides data structure handling for C, portability wrappers, and interfaces for such runtime functionality as an event loop, threads, dynamic loading, and an object system.'
+dependency:
+  install:
+    adler+zlib-rpi64:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+    meson+meson:
+      - version: ''
+        architecture: []
+bump:
+  - carnotzet+os-contelia-rpiz2w
+  - carnotzet+os-rpi4b
+  - carnotzet+os-rpiz2w
+  - carnotzet+rescuefs-contelia-rpiz2w
+  - carnotzet+rescuefs-rpi4b
+  - carnotzet+rescuefs-rpiz2w
+data:
+  get:
+    uri: 'https://download.gnome.org/sources/glib/2.87/glib-<THIS.$VERSION>.tar.xz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && meson.pyz setup _build
+                   --prefix=<PEON.PREFIXDIR>
+                   --cross-file=<PEON.ASSETS>/cross.txt
+  rules:
+    type: script
+    location: data/glib-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!meson.pyz compile -C _build'
+      maketest: ''
+      makeinstall: '!meson.pyz install -C _build'
+    test: none
+    env:
+      LDFLAGS: '<PEON.ENV.LDFLAGS> -Wl,-rpath-link,<PEON.PROD.ROOTDIR>/usr/lib'
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
