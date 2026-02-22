@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: carnotzet+contelia-rpi64
-version: 0.5.3
-$version: 0.5.3
+version: 0.5.5
+$version: 0.5.5
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
