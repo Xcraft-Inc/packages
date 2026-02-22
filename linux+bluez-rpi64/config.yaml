@@ -1,0 +1,79 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: linux+bluez-rpi64
+version: '5.66'
+$version: '5.66'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Bluetooth protocol stack for Linux
+  long: BlueZ is official Linux Bluetooth protocol stack. It is an Open Source project distributed under GNU General Public License (GPL). BlueZ kernel is part of the official Linux kernel since version 2.4.6.
+dependency:
+  install:
+    gnome+glib-rpi64:
+      - version: ''
+        architecture: []
+    freedesktop+libdbus-rpi64:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump:
+  - carnotzet+os-contelia-rpiz2w
+  - carnotzet+os-rpi4b
+  - carnotzet+os-rpiz2w
+  - carnotzet+rescuefs-contelia-rpiz2w
+  - carnotzet+rescuefs-rpi4b
+  - carnotzet+rescuefs-rpiz2w
+data:
+  get:
+    uri: 'https://www.kernel.org/pub/linux/bluetooth/bluez-<THIS.$VERSION>.tar.xz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/usr
+                     --build=$MACHTYPE
+                     --host=aarch64-xcraft-linux-gnu
+                     --enable-static
+                     --disable-shared
+                     --disable-systemd
+                     --disable-udev
+                     --disable-cups
+  rules:
+    type: script
+    location: data/bluez-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!make -j<PEON.CPUS.COUNT> BINDIR=/usr/sbin'
+      maketest: ''
+      makeinstall: '!make install BINDIR=/usr/sbin DESTDIR=<PEON.INSTALLDIR.X+BIN>'
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
