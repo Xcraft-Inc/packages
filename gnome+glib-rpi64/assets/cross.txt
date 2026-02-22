@@ -3,6 +3,8 @@ c = 'aarch64-xcraft-linux-gnu-gcc'
 cpp = 'aarch64-xcraft-linux-gnu-g++'
 ar = 'aarch64-xcraft-linux-gnu-ar'
 strip = 'aarch64-xcraft-linux-gnu-strip'
+pkg-config = 'pkg-config'
+cmake = 'cmake'
 
 [host_machine]
 system = 'linux'
