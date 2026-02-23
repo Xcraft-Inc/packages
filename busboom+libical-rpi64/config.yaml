@@ -1,0 +1,67 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: busboom+libical-rpi64
+version: 3.0.20
+$version: 3.0.20
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Tan implementation of iCalendar protocols and data formats
+  long: Libical is an Open Source implementation of the iCalendar protocols and protocol data units. The iCalendar specification describes how calendar clients can communicate with calendar servers so users can store their calendar data and arrange meetings with other users.
+dependency:
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://github.com/libical/libical/releases/download/v<THIS.$VERSION>/libical-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && mkdir -p ./BUILD
+      && cd ./BUILD
+      && cmake -G Ninja
+               -DCMAKE_INSTALL_PREFIX=<PEON.PREFIXDIR>
+               -DSTATIC_ONLY=True
+               -DCMAKE_DISABLE_FIND_PACKAGE_ICU=True
+               -DICAL_GLIB=False
+               -DCMAKE_BUILD_TYPE=Release ..
+  rules:
+    type: script
+    location: data/libical-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!ninja -C BUILD -j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: '!ninja -C BUILD install'
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+      CXX: aarch64-xcraft-linux-gnu-g++
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

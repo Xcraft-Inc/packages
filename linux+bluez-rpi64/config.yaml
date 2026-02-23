@@ -21,6 +21,9 @@ dependency:
     freedesktop+libdbus-rpi64:
       - version: ''
         architecture: []
+    busboom+libical-rpi64:
+      - version: ''
+        architecture: []
   build:
     xcraft+peon:
       - version: ''
