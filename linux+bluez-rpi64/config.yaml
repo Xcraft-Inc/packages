@@ -24,6 +24,9 @@ dependency:
     busboom+libical-rpi64:
       - version: ''
         architecture: []
+    gnu+readline-rpi64:
+      - version: ''
+        architecture: []
   build:
     xcraft+peon:
       - version: ''
@@ -53,6 +56,7 @@ data:
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
+      && export LIBS="$(pkg-config readline --libs --static)"
       && ./configure --prefix=/usr
                      --build=$MACHTYPE
                      --host=aarch64-xcraft-linux-gnu
@@ -61,6 +65,7 @@ data:
                      --disable-systemd
                      --disable-udev
                      --disable-cups
+                     --disable-manpages
   rules:
     type: script
     location: data/bluez-<THIS.$VERSION>
