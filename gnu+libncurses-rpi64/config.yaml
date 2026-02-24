@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: gnu+libncurses-rpi64
-version: 6.3-7
-$version: '6.3'
+version: 6.6
+$version: 6.6
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
