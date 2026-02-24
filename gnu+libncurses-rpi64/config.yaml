@@ -73,6 +73,8 @@ data:
     test: none
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
+      PKG_CONFIG_PATH: ''
+      PKG_CONFIG_LIBDIR: '/usr/lib/pkgconfig'
   deploy: ''
   env:
     path: []
