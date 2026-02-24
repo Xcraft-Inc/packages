@@ -1,0 +1,62 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: gnu+readline-rpi64
+version: 8.3
+$version: 8.3
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: The GNU Readline Library.
+  long: ''
+dependency:
+  install:
+    gnu+libncurses-rpi64:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+data:
+  get:
+    uri: 'ftp://ftp.cwru.edu/pub/bash/readline-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !{bash}
+    cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/usr
+                     --build=$MACHTYPE
+                     --host=aarch64-xcraft-linux-gnu
+                     --enable-static
+                     --disable-shared
+                     --with-curses
+  rules:
+    type: make
+    location: data/readline-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '-j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: install DESTDIR=<PEON.INSTALLDIR>
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+      CXX: aarch64-xcraft-linux-gnu-g++
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
