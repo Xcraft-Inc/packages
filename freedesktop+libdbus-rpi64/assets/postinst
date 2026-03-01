@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ln -sf /etc/sv/dnsmasq /var/service/dnsmasq
+sv up dbus || :

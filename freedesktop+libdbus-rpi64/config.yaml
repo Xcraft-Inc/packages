@@ -74,7 +74,13 @@ data:
       PKG_CONFIG_ALLOW_CROSS: '1'
       PKG_CONFIG_PATH: <PEON.PROD.ROOTDIR>/usr/lib/pkgconfig
       PKG_CONFIG_LIBDIR: <PEON.PROD.ROOTDIR>/usr/lib/pkgconfig
-  deploy: ''
+  deploy: |-
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/run/dbus');
+    cp('<PEON.ASSETS>/sv',          '<PEON.INSTALLDIR.X+BIN>/etc/sv/dbus');
+    cp('<PEON.ASSETS>/postinst',    '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',       '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+    cp('<PEON.ASSETS>/conffiles',   '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+    cp('<PEON.ASSETS>/system.conf', '<PEON.INSTALLDIR.X+BIN>/etc/dbus-1/system.conf');
   env:
     path: []
     other: {}

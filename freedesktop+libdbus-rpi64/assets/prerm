@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sv stop dbus || :
+rm -f /var/service/dnsmasq
