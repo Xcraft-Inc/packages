@@ -51,7 +51,7 @@ data:
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
       && meson.pyz setup _build
-                   --prefix=<PEON.PREFIXDIR>
+                   --prefix=/usr
                    --cross-file=<PEON.ASSETS>/cross.txt
                    -Dforce_fallback_for=pcre2
   rules:
@@ -62,7 +62,10 @@ data:
       prerm: ''
       makeall: '!meson.pyz compile -C _build'
       maketest: ''
-      makeinstall: '!meson.pyz install -C _build'
+      makeinstall: |-
+        !   meson.pyz install -C _build --destdir=<PEON.INSTALLDIR>
+         && find <PEON.INSTALLDIR> -name "*.pc" -exec sed -i 's|prefix=/usr|prefix=<PEON.INSTALLDIR>/usr|g' {} +
+         && meson.pyz install -C _build --destdir=<PEON.INSTALLDIR.X+BIN> --tags runtime
     test: none
     env:
       LDFLAGS: '<PEON.ENV.LDFLAGS> -Wl,-rpath-link,<PEON.PROD.ROOTDIR>/usr/lib'

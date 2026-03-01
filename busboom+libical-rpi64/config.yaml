@@ -1,6 +1,5 @@
 subpackage:
   - runtime*
-  - 'x+bin:linux-aarch64'
 name: busboom+libical-rpi64
 version: 3.0.20
 $version: 3.0.20

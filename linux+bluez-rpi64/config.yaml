@@ -15,6 +15,16 @@ description:
   long: BlueZ is official Linux Bluetooth protocol stack. It is an Open Source project distributed under GNU General Public License (GPL). BlueZ kernel is part of the official Linux kernel since version 2.4.6.
 dependency:
   install:
+    gnome+glib-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    freedesktop+libdbus-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
     gnome+glib-rpi64:
       - version: ''
         architecture: []

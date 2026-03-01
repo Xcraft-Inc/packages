@@ -1,6 +1,5 @@
 subpackage:
   - runtime*
-  - 'x+bin:linux-aarch64'
 name: clark+expat-rpi64
 version: 2.2.5-4
 $version: 2.2.5

@@ -1,6 +1,5 @@
 subpackage:
   - runtime*
-  - 'x+bin:linux-aarch64'
 name: gnu+readline-rpi64
 version: 8.3
 $version: 8.3
