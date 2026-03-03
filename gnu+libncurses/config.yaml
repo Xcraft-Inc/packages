@@ -40,11 +40,11 @@ data:
                      --enable-shared
                      --disable-db-install
                      --enable-pc-files
+                     --with-progs
                      --without-shared
                      --without-ada
                      --without-cxx-shared
                      --without-manpages
-                     --without-progs
                      --without-tack
                      --without-tests
                      --without-debug
