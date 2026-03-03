@@ -1,5 +1,6 @@
 subpackage:
   - runtime*
+  - 'x+bin:linux-aarch64'
 name: gnu+libncurses-rpi64
 version: 6.6
 $version: 6.6
@@ -72,7 +73,9 @@ data:
       prerm: ''
       makeall: '!make -j<PEON.CPUS.COUNT>'
       maketest: ''
-      makeinstall: '!make install DESTDIR=<PEON.INSTALLDIR>'
+      makeinstall: |-
+        !   make install      DESTDIR=<PEON.INSTALLDIR>
+         && make install.data DESTDIR=<PEON.INSTALLDIR.X+BIN>
     test: none
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
