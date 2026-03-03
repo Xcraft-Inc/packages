@@ -25,6 +25,11 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
+    gnu+libncurses-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
     gnome+glib-rpi64:
       - version: ''
         architecture: []
