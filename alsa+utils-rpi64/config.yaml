@@ -20,7 +20,7 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
-    gnu+libncurses-rpi64-x+bin:
+    gnu+libncurses-rpi64-x+tinfo:
       - version: ''
         architecture: []
         subpackage:

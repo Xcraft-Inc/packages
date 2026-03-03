@@ -1,6 +1,6 @@
 subpackage:
   - runtime*
-  - 'x+bin:linux-aarch64'
+  - 'x+tinfo:linux-aarch64'
 name: gnu+libncurses-rpi64
 version: 6.6
 $version: 6.6
@@ -75,7 +75,7 @@ data:
       maketest: ''
       makeinstall: |-
         !   make install      DESTDIR=<PEON.INSTALLDIR>
-         && make install.data DESTDIR=<PEON.INSTALLDIR.X+BIN>
+         && make install.data DESTDIR=<PEON.INSTALLDIR.X+TINFO>
     test: none
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
