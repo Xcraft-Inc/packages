@@ -3,4 +3,4 @@ exec 2>&1
 
 echo "Start DBUS daemon..."
 
-exec /usr/bin/dbus-daemon --system --fork
+exec /usr/bin/dbus-daemon --fork --config-file=/etc/dbus-1/system.conf
