@@ -25,6 +25,9 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
+    gnu+libncurses:
+      - version: ''
+        architecture: []
 data:
   get:
     uri: 'http://ftpmirror.gnu.org/ncurses/ncurses-<THIS.$VERSION>.tar.gz'
@@ -43,7 +46,7 @@ data:
                      --host=aarch64-xcraft-linux-gnu
                      --enable-static
                      --enable-shared
-                     --disable-db-install
+                     --enable-db-install
                      --enable-pc-files
                      --without-shared
                      --without-ada
