@@ -4,4 +4,4 @@ exec 2>&1
 echo "Start DBUS daemon..."
 
 rm -rf /var/run/dbus/pid
-exec /usr/bin/dbus-daemon --fork --config-file=/etc/dbus-1/system.conf
+exec /usr/bin/dbus-daemon --nofork --config-file=/etc/dbus-1/system.conf
