@@ -65,6 +65,9 @@ dependency:
     malinen+hostapd-rpi64:
       - version: ''
         architecture: []
+    linux+bluez-rpi64:
+      - version: ''
+        architecture: []
     alsa+utils-rpi64:
       - version: ''
         architecture: []
@@ -140,6 +143,7 @@ data:
 
           /* Audio */
           'alsa+utils-rpi64-x+bin',
+          'linux+bluez-rpi64-x+bin',
 
           /* Contelia */
           'carnotzet+contelia-rpi64-x+bin'
