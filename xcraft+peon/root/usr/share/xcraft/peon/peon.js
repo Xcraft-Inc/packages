@@ -485,14 +485,18 @@ class Action {
           const target = fs.readFileSync(file).toString();
           newFile = newFile.replace(/__peon_symlink__/, '');
 
+          let isErrDir = false;
           try {
             fs.unlinkSync(newFile);
           } catch (ex) {
-            if (ex.code !== 'ENOENT') {
+            isErrDir = ex.code === 'EISDIR';
+            if (ex.code !== 'ENOENT' && ex.code !== 'EISDIR') {
               throw ex;
             }
           }
-          fs.symlinkSync(target, newFile);
+          if (!isErrDir) {
+            fs.symlinkSync(target, newFile);
+          }
         } else if (newFile !== file) {
           this._wrapForWriting(file, (file, mode) => {
             xFs.cp(file, newFile);
