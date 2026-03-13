@@ -76,6 +76,7 @@ data:
                      --build=$MACHTYPE
                      --host=aarch64-xcraft-linux-gnu
                      --enable-static
+                     --enable-readline
                      --disable-shared
                      --disable-systemd
                      --disable-udev
