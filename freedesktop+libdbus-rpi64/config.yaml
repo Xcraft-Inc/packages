@@ -76,6 +76,7 @@ data:
       PKG_CONFIG_LIBDIR: <PEON.PROD.ROOTDIR>/usr/lib/pkgconfig
   deploy: |-
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/run/dbus');
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/dbus');
     cp('<PEON.ASSETS>/sv',          '<PEON.INSTALLDIR.X+BIN>/etc/sv/dbus');
     cp('<PEON.ASSETS>/postinst',    '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
     cp('<PEON.ASSETS>/prerm',       '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
