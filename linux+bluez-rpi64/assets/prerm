@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sv stop bluez || :
+rm -f /var/service/bluez

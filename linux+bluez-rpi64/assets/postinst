@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ln -sf /etc/sv/bluez /var/service/bluez
+sv up bluez || :

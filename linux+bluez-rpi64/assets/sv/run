@@ -1,0 +1,10 @@
+#!/bin/sh
+# shellcheck disable=SC3043
+exec 2>&1
+
+echo "Start BLUEZ daemon..."
+
+modprobe hci_uart
+modprobe btbcm
+
+exec /usr/libexec/bluetooth/bluetoothd -n
