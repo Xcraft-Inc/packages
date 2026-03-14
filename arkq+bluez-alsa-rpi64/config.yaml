@@ -1,0 +1,105 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: arkq+bluez-alsa-rpi64
+version: '5.0.0-2fa7fb0'
+$version: '5.0.0-2fa7fb0'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Bluetooth Audio ALSA Backend
+  long: This project is a rebirth of a direct integration between BlueZ and ALSA. Since BlueZ >= 5, the built-in integration has been removed in favor of 3rd party audio applications. From now on, BlueZ acts as a middleware between an audio application, which implements Bluetooth audio profile, and a Bluetooth audio device.
+dependency:
+  install:
+    gnome+glib-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    freedesktop+libdbus-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    linux+bluez-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    alsa+lib-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    gnome+glib-rpi64:
+      - version: ''
+        architecture: []
+    freedesktop+libdbus-rpi64:
+      - version: ''
+        architecture: []
+    linux+bluez-rpi64:
+      - version: ''
+        architecture: []
+    alsa+lib-rpi64:
+      - version: ''
+        architecture: []
+    linux+sbc-rpi64:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+    gnu+autoconf:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://github.com/arkq/bluez-alsa/archive/2fa7fb00e791df26d0666e8e2178fd6649ccb518.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !mkdir <THIS.DATA.RULES.LOCATION>
+      && cd <THIS.DATA.RULES.LOCATION>
+      && autoreconf --install --force ..
+      && ../configure --prefix=/usr
+                      --build=$MACHTYPE
+                      --host=aarch64-xcraft-linux-gnu
+                      --enable-static
+                      --disable-shared
+  rules:
+    type: script
+    location: data/bluez-alsa-2fa7fb00e791df26d0666e8e2178fd6649ccb518/build
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!make -j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: '!make install DESTDIR=<PEON.INSTALLDIR.X+BIN>'
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+      PATH: <PEON.PROD.ROOTDIR>/usr/bin:<PEON.ENV.PATH>
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
