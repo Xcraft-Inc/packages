@@ -29,6 +29,13 @@ dependency:
     gnu+libncurses:
       - version: ''
         architecture: []
+bump:
+  - carnotzet+os-contelia-rpiz2w
+  - carnotzet+os-rpi4b
+  - carnotzet+os-rpiz2w
+  - carnotzet+rescuefs-contelia-rpiz2w
+  - carnotzet+rescuefs-rpi4b
+  - carnotzet+rescuefs-rpiz2w
 data:
   get:
     uri: 'http://ftpmirror.gnu.org/ncurses/ncurses-<THIS.$VERSION>.tar.gz'

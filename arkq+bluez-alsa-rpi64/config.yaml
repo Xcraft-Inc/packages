@@ -63,7 +63,13 @@ dependency:
     gnu+autoconf:
       - version: ''
         architecture: []
-bump: []
+bump:
+  - carnotzet+os-contelia-rpiz2w
+  - carnotzet+os-rpi4b
+  - carnotzet+os-rpiz2w
+  - carnotzet+rescuefs-contelia-rpiz2w
+  - carnotzet+rescuefs-rpi4b
+  - carnotzet+rescuefs-rpiz2w
 data:
   get:
     uri: 'https://github.com/arkq/bluez-alsa/archive/2fa7fb00e791df26d0666e8e2178fd6649ccb518.tar.gz'
