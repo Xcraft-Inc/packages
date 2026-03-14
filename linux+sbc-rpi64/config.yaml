@@ -1,0 +1,64 @@
+subpackage:
+  - runtime*
+name: linux+sbc-rpi64
+version: '2.2'
+$version: '2.2'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Bluetooth low-complexity, subband codec (SBC) library
+  long: ''
+dependency:
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://www.kernel.org/pub/linux/bluetooth/sbc-<THIS.$VERSION>.tar.xz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=<PEON.PREFIXDIR>
+                     --build=$MACHTYPE
+                     --host=aarch64-xcraft-linux-gnu
+                     --enable-static
+                     --disable-shared
+                     --disable-tools
+                     --disable-tester
+  rules:
+    type: script
+    location: data/sbc-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!make -j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: '!make install'
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
