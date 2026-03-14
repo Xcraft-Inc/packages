@@ -77,6 +77,7 @@ data:
                      --host=aarch64-xcraft-linux-gnu
                      --enable-static
                      --enable-readline
+                     --enable-library
                      --disable-shared
                      --disable-systemd
                      --disable-udev
@@ -90,7 +91,9 @@ data:
       prerm: ''
       makeall: '!make -j<PEON.CPUS.COUNT> BINDIR=/usr/sbin'
       maketest: ''
-      makeinstall: '!make install BINDIR=/usr/sbin DESTDIR=<PEON.INSTALLDIR.X+BIN>'
+      makeinstall: |-
+        !    make install BINDIR=/usr/sbin DESTDIR=<PEON.INSTALLDIR>
+          && make install BINDIR=/usr/sbin DESTDIR=<PEON.INSTALLDIR.X+BIN>
     test: none
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
