@@ -89,6 +89,8 @@ data:
                       --host=aarch64-xcraft-linux-gnu
                       --enable-static
                       --disable-shared
+                      --with-dbusconfdir=/usr/share/dbus-1
+                      --with-dbus-iface-xml=/usr/share/dbus-1/interfaces
   rules:
     type: script
     location: data/bluez-alsa-2fa7fb00e791df26d0666e8e2178fd6649ccb518/build
