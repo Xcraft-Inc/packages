@@ -146,7 +146,7 @@ data:
 
           /* Audio */
           'alsa+utils-rpi64-x+bin',
-          'arkq+bluez-alsa-rpi64',
+          'arkq+bluez-alsa-rpi64-x+bin',
 
           /* Contelia */
           'carnotzet+contelia-rpi64-x+bin'
