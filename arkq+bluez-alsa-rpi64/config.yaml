@@ -87,8 +87,8 @@ data:
       && ../configure --prefix=/usr
                       --build=$MACHTYPE
                       --host=aarch64-xcraft-linux-gnu
-                      --enable-static
-                      --disable-shared
+                      --disable-static
+                      --enable-shared
                       --with-dbusconfdir=/usr/share/dbus-1
                       --with-dbus-iface-xml=/usr/share/dbus-1/interfaces
   rules:
