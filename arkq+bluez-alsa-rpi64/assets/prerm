@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sv stop bluealsa || :
+rm -rf /var/service/bluealsa
