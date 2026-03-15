@@ -68,6 +68,9 @@ dependency:
     linux+bluez-rpi64:
       - version: ''
         architecture: []
+    arkq+bluez-alsa-rpi64:
+      - version: ''
+        architecture: []
     alsa+utils-rpi64:
       - version: ''
         architecture: []
@@ -143,7 +146,7 @@ data:
 
           /* Audio */
           'alsa+utils-rpi64-x+bin',
-          'linux+bluez-rpi64-x+bin',
+          'arkq+bluez-alsa-rpi64',
 
           /* Contelia */
           'carnotzet+contelia-rpi64-x+bin'
