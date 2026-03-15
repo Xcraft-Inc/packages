@@ -1,5 +1,5 @@
 #!/bin/sh
 
-rm -f /var/service/network
-rm -f /var/service/wifi
-rm -f /var/service/ntpd
+rm -rf /var/service/network
+rm -rf /var/service/wifi
+rm -rf /var/service/ntpd

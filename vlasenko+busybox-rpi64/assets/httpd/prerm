@@ -1,5 +1,5 @@
 #!/bin/sh
 
 sv stop httpd || :
-rm -f /var/service/httpd
+rm -rf /var/service/httpd
 deluser httpd

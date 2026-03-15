@@ -1,4 +1,4 @@
 #!/bin/sh
 
 sv stop hostapd || :
-rm -f /var/service/hostapd
+rm -rf /var/service/hostapd

@@ -1,5 +1,5 @@
 #!/bin/sh
 
 sv stop sshd || :
-rm -f /var/service/sshd
+rm -rf /var/service/sshd
 deluser sshd

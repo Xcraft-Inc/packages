@@ -1,4 +1,4 @@
 #!/bin/sh
 
 sv stop dbus || :
-rm -f /var/service/dbus
+rm -rf /var/service/dbus
