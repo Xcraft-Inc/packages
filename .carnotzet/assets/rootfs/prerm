@@ -3,3 +3,8 @@
 rm -rf /var/service/network
 rm -rf /var/service/wifi
 rm -rf /var/service/ntpd
+
+rm -rf /var/lib/wpkg/core/hooks/core_preinst
+rm -rf /var/lib/wpkg/core/hooks/core_postinst
+
+rm -rf /run
