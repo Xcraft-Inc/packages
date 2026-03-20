@@ -1,2 +1,5 @@
 #!/bin/sh
+
+modprobe -r brcmfmac
+
 sleep 5
