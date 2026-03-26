@@ -1,0 +1,65 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: pisugar+pisugar-tools-rpi64
+version: 2.3.2
+$version: 2.3.2
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: PiSugar Power Manger in rust language
+  long: ''
+dependency:
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    rustlang+rust:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+  make:
+    xcraft+base-make:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://github.com/PiSugar/pisugar-power-manager-rs/archive/refs/tags/v<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: false
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: data/pisugar-power-manager-rs-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!cargo build -r --target aarch64-unknown-linux-gnu'
+      maketest: ''
+      makeinstall: |-
+        !   install -D -m 755 target/aarch64-unknown-linux-gnu/release/pisugar-poweroff   <PEON.PREFIXDIR.X+BIN>/bin/pisugar-poweroff
+         && install -D -m 755 target/aarch64-unknown-linux-gnu/release/pisugar-programmer <PEON.PREFIXDIR.X+BIN>/bin/pisugar-programmer
+         && install -D -m 755 target/aarch64-unknown-linux-gnu/release/pisugar-server     <PEON.PREFIXDIR.X+BIN>/bin/pisugar-server
+    test: none
+    env:
+      RUSTFLAGS: <PEON.ENV.RUSTFLAGS> -C linker=aarch64-xcraft-linux-gnu-gcc
+      CC: aarch64-xcraft-linux-gnu-gcc
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
