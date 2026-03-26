@@ -80,6 +80,9 @@ dependency:
     angelacos+haserl-rpi64:
       - version: ''
         architecture: []
+    pisugar+pisugar-tools-rpi64:
+      - version: ''
+        architecture: []
   build:
     tytso+e2fsprogs:
       - version: ''
@@ -137,6 +140,7 @@ data:
           'dosfstools+dosfstools-rpi64-x+bin',
           'malinen+wpa-supplicant-rpi64-x+bin',
           'unigw+wpkg-rpi64-x+bin',
+          'pisugar+pisugar-tools-rpi64-x+bin',
 
           /* Extra for Captive Portal */
           'kelley+dnsmasq-rpi64-x+bin',
