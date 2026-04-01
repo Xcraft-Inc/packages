@@ -1,6 +1,6 @@
 name: microsoft+dotnet-sdk-darwin
-version: 23.1.0
-$version: 23.1.0
+version: 24.0.0
+$version: 24.0.0
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -8,7 +8,7 @@ maintainer:
 architecture:
   - darwin-amd64
 description:
-  brief: .NET Core SDK 6.0, 8.0 and 9.0
+  brief: .NET Core SDK 6.0, 8.0 and 10.0
   long: ''
 dependency:
   install:
@@ -30,6 +30,10 @@ dependency:
       - version: ''
         architecture:
           - darwin-amd64
+    microsoft+dotnet-sdk-100-darwin:
+      - version: ''
+        architecture:
+          - darwin-amd64
 bump: []
 data:
   get:
@@ -48,8 +52,9 @@ data:
       'root/opt/dotnet-sdk/bin/dotnet'
     );
     yield exec('chmod', 'a+x', 'root/opt/dotnet-sdk/bin/dotnet');
-    cp('<PEON.ROOTDIR>/usr/share/microsoft/dotnet-sdk-60-darwin/cache/data', 'root/opt/dotnet-sdk');
-    cp('<PEON.ROOTDIR>/usr/share/microsoft/dotnet-sdk-80-darwin/cache/data', 'root/opt/dotnet-sdk');
+    cp('<PEON.ROOTDIR>/usr/share/microsoft/dotnet-sdk-60-darwin/cache/data',  'root/opt/dotnet-sdk');
+    cp('<PEON.ROOTDIR>/usr/share/microsoft/dotnet-sdk-80-darwin/cache/data',  'root/opt/dotnet-sdk');
+    cp('<PEON.ROOTDIR>/usr/share/microsoft/dotnet-sdk-100-darwin/cache/data', 'root/opt/dotnet-sdk');
   rules:
     type: move
     location: root

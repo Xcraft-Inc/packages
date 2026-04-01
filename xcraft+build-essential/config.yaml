@@ -114,9 +114,6 @@ dependency:
       - version: ''
         architecture:
           - darwin-aarch64
-    llvm+llvm16:
-      - version: ''
-        architecture:
           - darwin-i386
           - darwin-amd64
     gnu+tar:
