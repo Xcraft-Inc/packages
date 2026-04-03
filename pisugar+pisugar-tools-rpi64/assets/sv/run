@@ -7,4 +7,4 @@ modprobe -qr bcm_2835
 modprobe -qr i2c_dev
 mdev -s
 
-exec pisugar-server -m "PiSugar 3" -t 127.0.0.1:8423 -c /etc/pisugar-server/config.json
+exec pisugar-server -t 127.0.0.1:8423 -c /etc/pisugar-server/config.json --model "PiSugar 3"
