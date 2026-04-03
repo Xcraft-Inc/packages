@@ -1,2 +1,2 @@
 #!/bin/sh
-exec svlogd -tt /var/log/contelia
+exec svlogd -tt /var/log/pisugar
