@@ -56,7 +56,12 @@ data:
     env:
       RUSTFLAGS: <PEON.ENV.RUSTFLAGS> -C linker=aarch64-xcraft-linux-gnu-gcc
       CC: aarch64-xcraft-linux-gnu-gcc
-  deploy: ''
+  deploy: |-
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/pisugar');
+    cp('<PEON.ASSETS>/config.json', '<PEON.INSTALLDIR.X+BIN>/etc/pisugar-server/config.json');
+    cp('<PEON.ASSETS>/sv',          '<PEON.INSTALLDIR.X+BIN>/etc/sv/pisugar');
+    cp('<PEON.ASSETS>/postinst',    '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',       '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
   env:
     path: []
     other: {}

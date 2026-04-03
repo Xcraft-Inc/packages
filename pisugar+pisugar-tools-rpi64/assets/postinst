@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ln -sf /etc/sv/pisugar /var/service/pisugar
+sv up pisugar || :

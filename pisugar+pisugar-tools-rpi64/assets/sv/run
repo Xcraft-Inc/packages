@@ -1,0 +1,10 @@
+#!/bin/sh
+exec 2>&1
+
+echo "Start PiSugar daemon..."
+
+modprobe -r bcm_2835
+modprobe -r i2c_dev
+mdev -s
+
+exec pisugar-server -m "PiSugar 3" -t 127.0.0.1:8423 -c /etc/pisugar-server/config.json

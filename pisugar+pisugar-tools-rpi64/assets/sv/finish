@@ -1,0 +1,6 @@
+#!/bin/sh
+
+modprobe -r i2c_dev
+modprobe -r bcm_2835
+
+sleep 5
