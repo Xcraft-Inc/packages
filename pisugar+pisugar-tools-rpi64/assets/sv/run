@@ -3,7 +3,7 @@ exec 2>&1
 
 echo "Start PiSugar daemon..."
 
-modprobe bcm_2835
+modprobe i2c_bcm2835
 modprobe i2c_dev
 mdev -s
 
