@@ -1,8 +1,6 @@
 #!/bin/sh
 exec 2>&1
 
-modprobe pisugar_3_battery
-
 echo "Start PiSugar daemon..."
 
 modprobe i2c_bcm2835
