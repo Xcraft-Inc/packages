@@ -89,6 +89,7 @@ data:
                   INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+MODULES>"
                   M="<PEON.PROD.ROOTDIR>/usr/src/pisugar3-module-2.3.2-src"
                   modules modules_install
+          && rm -f "<PEON.INSTALLDIR.X+MODULES>/lib/modules/*/build"
     test: none
     env:
       KBUILD_BUILD_TIMESTAMP: ''
