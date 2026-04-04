@@ -15,6 +15,10 @@ description:
   brief: The Linux Kernel for RASPBERRY Pi Zero 2 W
   long: ''
 dependency:
+  install:
+    pisugar+pisugar-tools-rpi64-srcmod:
+      - version: ''
+        architecture: []
   build:
     xcraft+peon:
       - version: ''
@@ -79,6 +83,12 @@ data:
           && scripts/dtc/dtc -@ -I dts -O dtb -o "<PEON.INSTALLDIR.X+BIN>/boot/overlays/tftbonnet13.dtbo" "<PEON.ASSETS>/tftbonnet13-overlay.dts"
           && cp -a arch/arm64/boot/Image "<PEON.INSTALLDIR.X+BIN>/boot/"
           && cp -a arch/arm64/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
+
+          && make ARCH=arm64
+                  CROSS_COMPILE=aarch64-xcraft-linux-gnu-
+                  M="<PEON.PROD.ROOTDIR>/usr/src/pisugar3-module-2.3.2-src"
+                  modules
+          && cp -f "<PEON.PROD.ROOTDIR>/usr/src/pisugar3-module-2.3.2-src/pisugar_3_battery.ko" "<PEON.INSTALLDIR.X+MODULES>/lib/modules/6.12.34-v8/kernel/drivers/power/supply/"
     test: none
     env:
       KBUILD_BUILD_TIMESTAMP: ''
