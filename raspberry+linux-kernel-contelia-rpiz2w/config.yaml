@@ -86,10 +86,9 @@ data:
 
           && make ARCH=arm64
                   CROSS_COMPILE=aarch64-xcraft-linux-gnu-
+                  INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+MODULES>"
                   M="<PEON.PROD.ROOTDIR>/usr/src/pisugar3-module-2.3.2-src"
-                  modules
-          && cp -f "<PEON.PROD.ROOTDIR>/usr/src/pisugar3-module-2.3.2-src/pisugar_3_battery.ko" "<PEON.INSTALLDIR.X+MODULES>/lib/modules/6.12.34-v8/kernel/drivers/power/supply/"
-          && cp -f "<PEON.ASSETS>/postinst" "<PEON.INSTALLDIR.X+MODULES>/WPKG/postinst"
+                  modules modules_install
     test: none
     env:
       KBUILD_BUILD_TIMESTAMP: ''
