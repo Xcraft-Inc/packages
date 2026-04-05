@@ -41,9 +41,17 @@ data:
   type: src
   configure: |-
     !make -C <THIS.DATA.RULES.LOCATION> CROSS_COMPILE=aarch64-xcraft-linux-gnu- rpi_arm64_defconfig
-       && sed -i 's,^# CONFIG_CMD_BOOTMENU.*,CONFIG_CMD_BOOTMENU=y,' <THIS.DATA.RULES.LOCATION>/.config
+       && sed -i 's,^# CONFIG_CMD_BOOTMENU.*,CONFIG_CMD_BOOTMENU=y,'                        <THIS.DATA.RULES.LOCATION>/.config
        && sed -i 's,^CONFIG_TOOLS_MKEFICAPSULE=y.*,# CONFIG_TOOLS_MKEFICAPSULE is not set,' <THIS.DATA.RULES.LOCATION>/.config
-       && sed -i 's,^CONFIG_BOOTDELAY=.*,CONFIG_BOOTDELAY=0,' <THIS.DATA.RULES.LOCATION>/.config
+       && sed -i 's,^CONFIG_BOOTDELAY=.*,CONFIG_BOOTDELAY=0,'                               <THIS.DATA.RULES.LOCATION>/.config
+       && sed -i 's,^CONFIG_ISO_PARTITION=y.*,# CONFIG_ISO_PARTITION is not set,'           <THIS.DATA.RULES.LOCATION>/.config
+       && sed -i 's,^CONFIG_POWER=y.*,# CONFIG_POWER is not set,'                           <THIS.DATA.RULES.LOCATION>/.config
+       && sed -i 's,^CONFIG_USB_XHCI_PCI=y.*,# CONFIG_USB_XHCI_PCI is not set,'             <THIS.DATA.RULES.LOCATION>/.config
+       && sed -i 's,^CONFIG_USB_STORAGE=y.*,# CONFIG_USB_STORAGE is not set,'               <THIS.DATA.RULES.LOCATION>/.config
+       && sed -i 's,^CONFIG_USB_HOST_ETHER=y.*,# CONFIG_USB_HOST_ETHER is not set,'         <THIS.DATA.RULES.LOCATION>/.config
+       && sed -i 's,^CONFIG_USB_XHCI_HCD=y.*,# CONFIG_USB_XHCI_HCD is not set,'             <THIS.DATA.RULES.LOCATION>/.config
+       && sed -i 's,^CONFIG_CMD_NET=y.*,# CONFIG_CMD_NET is not set,'                       <THIS.DATA.RULES.LOCATION>/.config
+       && sed -i 's,^CONFIG_CMD_BOOTP=y.*,# CONFIG_CMD_BOOTP is not set,'                   <THIS.DATA.RULES.LOCATION>/.config
        && make -C <THIS.DATA.RULES.LOCATION> CROSS_COMPILE=aarch64-xcraft-linux-gnu- olddefconfig
   rules:
     type: script
