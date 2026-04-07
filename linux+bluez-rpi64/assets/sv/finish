@@ -1,6 +1,3 @@
 #!/bin/sh
 
-modprobe -qr btbcm
-modprobe -qr hci_uart
-
 sleep 5

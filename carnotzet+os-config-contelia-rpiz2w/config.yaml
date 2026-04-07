@@ -47,6 +47,7 @@ data:
       makeinstall: |-
         cp('<PEON.ASSETS>/carnotzet.d', '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.d');
         cp('<PEON.ASSETS>/config.txt',  '<PEON.INSTALLDIR.X+BIN>/boot/config.txt');
+        cp('<PEON.ASSETS>/modules',     '<PEON.INSTALLDIR.X+BIN>/etc/modules');
 
         /* By default, disable most services */
         cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/bluealsa/down');

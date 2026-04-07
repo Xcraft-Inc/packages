@@ -3,8 +3,4 @@ exec 2>&1
 
 echo "Start PiSugar daemon..."
 
-modprobe i2c_bcm2835
-modprobe i2c_dev
-mdev -s
-
 exec nice -n 10 pisugar-server -t 127.0.0.1:8423 -c /etc/pisugar-server/config.json --model "PiSugar 3"

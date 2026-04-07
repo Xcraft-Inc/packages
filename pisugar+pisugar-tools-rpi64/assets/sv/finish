@@ -1,6 +1,3 @@
 #!/bin/sh
 
-modprobe -qr i2c_dev
-modprobe -qr i2c_bcm2835
-
 sleep 5
