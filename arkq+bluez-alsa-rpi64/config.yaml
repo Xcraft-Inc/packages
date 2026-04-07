@@ -84,7 +84,7 @@ data:
     !mkdir <THIS.DATA.RULES.LOCATION>
       && cd <THIS.DATA.RULES.LOCATION>
       && autoreconf --install --force ..
-      && ../configure --prefix=/usr
+      && ../configure --prefix=/
                       --build=$MACHTYPE
                       --host=aarch64-xcraft-linux-gnu
                       --disable-static
