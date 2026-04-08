@@ -106,9 +106,11 @@ data:
       PATH: <PEON.PROD.ROOTDIR>/usr/bin:<PEON.ENV.PATH>
   deploy: |-
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/bluealsa');
-    cp('<PEON.ASSETS>/sv',       '<PEON.INSTALLDIR.X+BIN>/etc/sv/bluealsa');
-    cp('<PEON.ASSETS>/postinst', '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
-    cp('<PEON.ASSETS>/prerm',    '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+    cp('<PEON.ASSETS>/asound.conf', '<PEON.INSTALLDIR.X+BIN>/etc/asound.conf');
+    cp('<PEON.ASSETS>/sv',          '<PEON.INSTALLDIR.X+BIN>/etc/sv/bluealsa');
+    cp('<PEON.ASSETS>/postinst',    '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',       '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+    cp('<PEON.ASSETS>/conffiles',   '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
   env:
     path: []
     other: {}
