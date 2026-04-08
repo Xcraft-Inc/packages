@@ -3,4 +3,4 @@ exec 2>&1
 
 echo "Start BLUEALSA daemon..."
 
-exec /bin/bluealsad -p a2dp-sink -p a2dp-source
+exec /usr/bin/bluealsad -p a2dp-sink -p a2dp-source
