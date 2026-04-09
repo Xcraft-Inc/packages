@@ -1,0 +1,7 @@
+{
+  "auto_shutdown_level": 3.0,
+  "auto_shutdown_delay": 20.0,
+  "auto_power_on": false,
+  "anti_mistouch": false,
+  "bat_protect": true
+}

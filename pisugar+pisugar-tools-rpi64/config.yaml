@@ -1,5 +1,6 @@
 subpackage:
   - runtime*
+  - srcmod
   - 'x+bin:linux-aarch64'
 name: pisugar+pisugar-tools-rpi64
 version: 2.3.2
@@ -56,7 +57,13 @@ data:
     env:
       RUSTFLAGS: <PEON.ENV.RUSTFLAGS> -C linker=aarch64-xcraft-linux-gnu-gcc
       CC: aarch64-xcraft-linux-gnu-gcc
-  deploy: ''
+  deploy: |-
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/pisugar');
+    cp('<PEON.ASSETS>/config.json', '<PEON.INSTALLDIR.X+BIN>/etc/pisugar-server/config.json');
+    cp('<PEON.ASSETS>/sv',          '<PEON.INSTALLDIR.X+BIN>/etc/sv/pisugar');
+    cp('<PEON.ASSETS>/postinst',    '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',       '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+    cp('<THIS.DATA.RULES.LOCATION>/pisugar-module/pisugar-3', '<PEON.INSTALLDIR.SRCMOD>/usr/src/pisugar3-module-<THIS.$VERSION>-src');
   env:
     path: []
     other: {}

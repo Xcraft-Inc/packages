@@ -80,8 +80,6 @@ trap dispose SIGTERM SIGINT
 
 echo "Configure WiFi interface $network_wifi..."
 
-modprobe brcmfmac
-
 if [ "$network_wifi_mode" != "wpa" ]; then
   echo "WPA is disabled"
 

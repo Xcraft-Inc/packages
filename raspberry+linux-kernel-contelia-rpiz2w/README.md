@@ -80,3 +80,22 @@ show "VIOLET"    128 0   255
 show "BLANC"     255 255 255
 show "GRIS"      128 128 128
 ```
+
+# PiSugar 3 - kernel module
+
+This kernel module is not used because it uses too much CPU.
+
+```
+  install:
+    pisugar+pisugar-tools-rpi64-srcmod:
+      - version: ''
+        architecture: []
+```
+
+```
+          && make ARCH=arm64
+                  CROSS_COMPILE=aarch64-xcraft-linux-gnu-
+                  INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+MODULES>"
+                  M="<PEON.PROD.ROOTDIR>/usr/src/pisugar3-module-2.3.2-src"
+                  modules modules_install
+```

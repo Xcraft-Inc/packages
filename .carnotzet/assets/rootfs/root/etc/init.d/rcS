@@ -54,6 +54,12 @@ boot_normal()
   #  task:vchiq-keep/0    state:D stack:0     pid:84    tgid:84    ppid:2      flags:0x00000008
   modprobe vc_sm_cma
 
+  if [ -f /etc/modules ]; then
+    while read -r mod; do
+      modprobe "$mod"
+    done < /etc/modules
+  fi
+
   # Import fr-CH keyboard map
   busybox loadkmap < /usr/share/kmap/fr_CH.kmap
 
