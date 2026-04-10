@@ -1,4 +1,4 @@
-name: apple+macos-xcode-1601
+name: apple+macos-xcode-1601-0
 version: '16.1'
 $version: '16.1'
 distribution: toolchain/
@@ -9,7 +9,7 @@ architecture:
   - darwin-amd64
   - darwin-aarch64
 description:
-  brief: macOS Xcode 16.1
+  brief: macOS Xcode 16.1 (part 0)
   long: ''
 dependency:
   install:
@@ -19,11 +19,11 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'https://owncloud.epsitec.ch/owncloud/index.php/s/Je2qo5qc5kqBTwD/download'
+    uri: 'https://owncloud.epsitec.ch/owncloud/index.php/s/dzFnbeM5fiW5w32/download'
     mirrors: []
     ref: ''
     $ref: ''
-    out: Xcode1601.app.tar.gz
+    out: Xcode1601.app.part0
     externals: true
   type: bin
   configure: ''
@@ -31,12 +31,12 @@ data:
     type: configure
     location: data
     args:
-      postinst: ''
+      postinst: |-
+        !   mkdir -p "<OS.ROOTDIR>/opt/xcode"
+         && ditto -x -k "<OS.ROOTDIR>/usr/share/apple/macos-xcode-1601-0/cache/data/Xcode1601.app.part0" "<OS.ROOTDIR>/opt/xcode"
       prerm: ''
     env: {}
   env:
     path: []
-    other:
-      MACOSXCODE_1601: <OS.ROOTDIR>/usr/share/apple/macos-xcode-1601/cache/data/Xcode16.1.app
-      MACOSSDK_1501: <OS.ROOTDIR>/usr/share/apple/macos-xcode-1601/cache/data/Xcode16.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk
+    other: {}
   embedded: true
