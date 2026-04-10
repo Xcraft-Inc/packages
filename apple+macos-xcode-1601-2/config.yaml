@@ -23,7 +23,7 @@ data:
     mirrors: []
     ref: ''
     $ref: ''
-    out: Xcode1601.app.part2.zip
+    out: Xcode1601.app.part2
     externals: true
   type: bin
   configure: ''
