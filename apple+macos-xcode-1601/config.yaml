@@ -1,0 +1,51 @@
+name: apple+macos-xcode-1601
+version: '16.1'
+$version: '16.1'
+distribution: toolchain/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - darwin-amd64
+  - darwin-aarch64
+description:
+  brief: macOS Xcode 16.1
+  long: ''
+dependency:
+  install:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    apple+macos-xcode-1601-0:
+      - version: ''
+        architecture: []
+    apple+macos-xcode-1601-1:
+      - version: ''
+        architecture: []
+    apple+macos-xcode-1601-2:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: ''
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+  type: bin
+  configure: ''
+  rules:
+    type: configure
+    location: ''
+    args:
+      postinst: ''
+      prerm: "rm('<PEON.ROOTDIR>/opt/xcode/Xcode16.1.app');"
+    env: {}
+  env:
+    path: []
+    other:
+      MACOSXCODE_1601: <OS.ROOTDIR>/opt/xcode/Xcode16.1.app
+      MACOSSDK_1501: <OS.ROOTDIR>/opt/xcode/Xcode16.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk
+  embedded: true

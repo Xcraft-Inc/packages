@@ -38,7 +38,5 @@ data:
     env: {}
   env:
     path: []
-    other:
-      MACOSXCODE_1601: <OS.ROOTDIR>/opt/xcode/Xcode16.1.app
-      MACOSSDK_1501: <OS.ROOTDIR>/opt/xcode/Xcode16.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk
+    other: {}
   embedded: true
