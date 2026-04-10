@@ -4,4 +4,4 @@ exec 2>&1
 
 echo "Start BLUEZ daemon..."
 
-exec /usr/libexec/bluetooth/bluetoothd -n
+exec /usr/libexec/bluetooth/bluetoothd --plugin=a2dp -n

@@ -16,27 +16,36 @@ dependency:
     xcraft+peon:
       - version: ''
         architecture: []
+    apple+macos-xcode-1601-0:
+      - version: ''
+        architecture: []
+    apple+macos-xcode-1601-1:
+      - version: ''
+        architecture: []
+    apple+macos-xcode-1601-2:
+      - version: ''
+        architecture: []
 bump: []
 data:
   get:
-    uri: 'https://owncloud.epsitec.ch/owncloud/index.php/s/Je2qo5qc5kqBTwD/download'
+    uri: ''
     mirrors: []
     ref: ''
     $ref: ''
-    out: Xcode1601.app.tar.gz
+    out: ''
     externals: true
   type: bin
   configure: ''
   rules:
     type: configure
-    location: data
+    location: ''
     args:
       postinst: ''
-      prerm: ''
+      prerm: "rm('<PEON.ROOTDIR>/opt/xcode/Xcode16.1.app');"
     env: {}
   env:
     path: []
     other:
-      MACOSXCODE_1601: <OS.ROOTDIR>/usr/share/apple/macos-xcode-1601/cache/data/Xcode16.1.app
-      MACOSSDK_1501: <OS.ROOTDIR>/usr/share/apple/macos-xcode-1601/cache/data/Xcode16.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk
+      MACOSXCODE_1601: <OS.ROOTDIR>/opt/xcode/Xcode16.1.app
+      MACOSSDK_1501: <OS.ROOTDIR>/opt/xcode/Xcode16.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk
   embedded: true

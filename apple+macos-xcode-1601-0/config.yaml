@@ -1,0 +1,42 @@
+name: apple+macos-xcode-1601-0
+version: '16.1'
+$version: '16.1'
+distribution: toolchain/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - darwin-amd64
+  - darwin-aarch64
+description:
+  brief: macOS Xcode 16.1 (part 0)
+  long: ''
+dependency:
+  install:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://owncloud.epsitec.ch/owncloud/index.php/s/dzFnbeM5fiW5w32/download'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: Xcode1601.app.part0
+    externals: true
+  type: bin
+  configure: ''
+  rules:
+    type: configure
+    location: ''
+    args:
+      postinst: |-
+        !   mkdir -p "<PEON.ROOTDIR>/opt/xcode"
+         && ditto -x -k "<PEON.ROOTDIR>/usr/share/apple/macos-xcode-1601-0/cache/Xcode1601.app.part0" "<PEON.ROOTDIR>/opt/xcode"
+      prerm: ''
+    env: {}
+  env:
+    path: []
+    other: {}
+  embedded: true
