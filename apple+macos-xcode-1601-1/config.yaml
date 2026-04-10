@@ -29,11 +29,11 @@ data:
   configure: ''
   rules:
     type: configure
-    location: data
+    location: ''
     args:
       postinst: |-
-        !   mkdir -p "<OS.ROOTDIR>/opt/xcode"
-         && ditto -x -k "<OS.ROOTDIR>/usr/share/apple/macos-xcode-1601-1/cache/data/Xcode1601.app.part1" "<OS.ROOTDIR>/opt/xcode"
+        !   mkdir -p "<PEON.ROOTDIR>/opt/xcode"
+         && ditto -x -k "<PEON.ROOTDIR>/usr/share/apple/macos-xcode-1601-1/cache/Xcode1601.app.part1" "<PEON.ROOTDIR>/opt/xcode"
       prerm: ''
     env: {}
   env:
