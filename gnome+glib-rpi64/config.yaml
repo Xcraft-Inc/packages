@@ -64,6 +64,7 @@ data:
       maketest: ''
       makeinstall: |-
         !   meson.pyz install -C _build --destdir=<PEON.INSTALLDIR>
+         && rm -rf <PEON.INSTALLDIR>/usr/bin
          && find <PEON.INSTALLDIR> -name "*.pc" -exec sed -i 's|prefix=/usr|prefix=<PEON.INSTALLDIR>/usr|g' {} +
          && meson.pyz install -C _build --destdir=<PEON.INSTALLDIR.X+BIN> --tags runtime
     test: none
