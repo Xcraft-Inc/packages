@@ -15,6 +15,9 @@ description:
   long: ''
 dependency:
   install:
+    adler+zlib-rpi64-dev:
+      - version: ''
+        architecture: []
     gnome+glib-rpi64:
       - version: ''
         architecture: []
