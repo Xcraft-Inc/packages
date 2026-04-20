@@ -18,6 +18,9 @@ dependency:
     adler+zlib-rpi64-dev:
       - version: ''
         architecture: []
+    libffi+libffi-rpi64:
+      - version: ''
+        architecture: []
   build:
     xcraft+peon:
       - version: ''
@@ -64,12 +67,16 @@ data:
       maketest: ''
       makeinstall: |-
         !   meson.pyz install -C _build --destdir=<PEON.INSTALLDIR>
-         && rm -rf <PEON.INSTALLDIR>/usr/bin
+         && rm -rf <PEON.INSTALLDIR>/usr/bin/glib-compile-*
+         && echo '#!/bin/sh\nexec glib-compile-resources "$@"' > <PEON.INSTALLDIR>/usr/bin/glib-compile-resources
+         && echo '#!/bin/sh\nexec glib-compile-schemas "$@"'   > <PEON.INSTALLDIR>/usr/bin/glib-compile-schemas
+         && chmod a+x <PEON.INSTALLDIR>/usr/bin/glib-compile-resources
+         && chmod a+x <PEON.INSTALLDIR>/usr/bin/glib-compile-schemas
          && find <PEON.INSTALLDIR> -name "*.pc" -exec sed -i 's|prefix=/usr|prefix=<PEON.INSTALLDIR>/usr|g' {} +
          && meson.pyz install -C _build --destdir=<PEON.INSTALLDIR.X+BIN> --tags runtime
     test: none
     env:
-      LDFLAGS: '<PEON.ENV.LDFLAGS> -Wl,-rpath-link,<PEON.PROD.ROOTDIR>/usr/lib'
+      LDFLAGS: '<PEON.ENV.LDFLAGS> -Wl,-rpath-link,<PEON.PROD.ROOTDIR>/usr/lib -Wl,-rpath-link,<PEON.PROD.ROOTDIR>/usr/lib64'
       PKG_CONFIG_ALLOW_CROSS: '1'
       PKG_CONFIG_PATH: <PEON.PROD.ROOTDIR>/usr/lib/pkgconfig
       PKG_CONFIG_LIBDIR: <PEON.PROD.ROOTDIR>/usr/lib/pkgconfig
