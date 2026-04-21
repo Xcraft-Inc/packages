@@ -58,6 +58,8 @@ data:
     && rm  -f <PEON.INSTALLDIR>/usr/lib/*.la
     && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.la
     && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/pkgconfig
+    && rm -rf <PEON.PREFIXDIR>/share/info/dir
+    && rm -rf <PEON.PREFIXDIR.X+BIN>/share/info/dir
   env:
     path: []
     other: {}
