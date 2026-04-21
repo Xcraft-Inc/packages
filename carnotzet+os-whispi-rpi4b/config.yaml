@@ -129,7 +129,8 @@ data:
           'malinen+wpa-supplicant-rpi64-x+bin',
           'unigw+wpkg-rpi64-x+bin',
 
-          /* Sound */
+          /* Audio */
+          'alsa+utils-rpi64-x+bin',
           'freedesktop+pipewire-rpi64-x+bin',
 
           /* Network */
