@@ -23,8 +23,8 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpiz2w
-  - carnotzet+rescue-rpiz2w
+  - carnotzet+os-contelia-rpiz2w
+  - carnotzet+rescuefs-contelia-rpiz2w
 data:
   get:
     uri: ''
