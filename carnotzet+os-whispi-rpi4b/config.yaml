@@ -65,6 +65,12 @@ dependency:
     pisugar+pisugar-tools-rpi64:
       - version: ''
         architecture: []
+    freedesktop+pipewire-rpi64:
+      - version: ''
+        architecture: []
+    litech+radvd-rpi64:
+      - version: ''
+        architecture: []
   build:
     tytso+e2fsprogs:
       - version: ''
@@ -122,7 +128,13 @@ data:
           'dosfstools+dosfstools-rpi64-x+bin',
           'malinen+wpa-supplicant-rpi64-x+bin',
           'unigw+wpkg-rpi64-x+bin',
-          'pisugar+pisugar-tools-rpi64-x+bin'
+          'pisugar+pisugar-tools-rpi64-x+bin',
+
+          /* Sound server */
+          'freedesktop+pipewire-rpi64-x+bin',
+
+          /* IPv6 router */
+          'litech+radvd-rpi64-x+bin'
         ]);
 
         yield genImage('carnotzet',
