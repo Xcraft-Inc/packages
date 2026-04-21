@@ -23,7 +23,7 @@ dependency:
     carnotzet+rescuefs-whispi-rpi4b:
       - version: ''
         architecture: []
-    raspberry+linux-kernel-rpi4b:
+    raspberry+linux-kernel-whispi-rpi4b:
       - version: ''
         architecture: []
     raspberry+linux-firmware-rpi4b:
@@ -62,10 +62,10 @@ dependency:
     alsa+utils-rpi64:
       - version: ''
         architecture: []
-    pisugar+pisugar-tools-rpi64:
+    freedesktop+pipewire-rpi64:
       - version: ''
         architecture: []
-    freedesktop+pipewire-rpi64:
+    openbsd+openssh-rpi64:
       - version: ''
         architecture: []
     litech+radvd-rpi64:
@@ -115,8 +115,8 @@ data:
           'carnotzet+os-config-whispi-rpi4b-x+bin',
           'carnotzet+rootfs-whispi-rpi4b-x+bin',
           'carnotzet+rescuefs-whispi-rpi4b-x+bin',
-          'raspberry+linux-kernel-rpi4b-x+bin',
-          'raspberry+linux-kernel-rpi4b-x+modules',
+          'raspberry+linux-kernel-whispi-rpi4b-x+bin',
+          'raspberry+linux-kernel-whispi-rpi4b-x+modules',
           'raspberry+linux-firmware-rpi4b-x+bin',
           'raspberry+uboot-rpi4b-x+bin',
           'raspberry+firmware-rpi4b-x+bin',
@@ -128,12 +128,12 @@ data:
           'dosfstools+dosfstools-rpi64-x+bin',
           'malinen+wpa-supplicant-rpi64-x+bin',
           'unigw+wpkg-rpi64-x+bin',
-          'pisugar+pisugar-tools-rpi64-x+bin',
 
-          /* Sound server */
+          /* Sound */
           'freedesktop+pipewire-rpi64-x+bin',
 
-          /* IPv6 router */
+          /* Network */
+          'openbsd+openssh-rpi64-x+bin',
           'litech+radvd-rpi64-x+bin'
         ]);
 
