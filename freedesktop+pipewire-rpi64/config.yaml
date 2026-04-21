@@ -32,6 +32,18 @@ dependency:
     freedesktop+libdbus-rpi64:
       - version: ''
         architecture: []
+    alsa+lib-rpi64:
+      - version: ''
+        architecture: []
+    gnu+libncurses-rpi64:
+      - version: ''
+        architecture: []
+    gnu+readline-rpi64:
+      - version: ''
+        architecture: []
+    openssl+openssl3-rpi64:
+      - version: ''
+        architecture: []
   build:
     xcraft+peon:
       - version: ''
