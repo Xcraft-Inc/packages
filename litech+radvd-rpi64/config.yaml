@@ -58,7 +58,13 @@ data:
     test: none
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
-  deploy: ''
+  deploy: |-
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/radvd');
+    cp('<PEON.ASSETS>/sv',         '<PEON.INSTALLDIR.X+BIN>/etc/sv/radvd');
+    cp('<PEON.ASSETS>/postinst',   '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',      '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+    cp('<PEON.ASSETS>/conffiles',  '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+    cp('<PEON.ASSETS>/radvd.conf', '<PEON.INSTALLDIR.X+BIN>/etc/radvd/radvd.conf');
   env:
     path: []
     other: {}

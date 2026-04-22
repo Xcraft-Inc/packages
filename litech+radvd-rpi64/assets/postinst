@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ln -sf /etc/sv/radvd /var/service/radvd
+sv up radvd || :
