@@ -28,7 +28,8 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
-bump: []
+bump:
+  - carnotzet+os-whispi-rpiz2w
 data:
   get:
     uri: 'https://radvd.litech.org/dist/radvd-<THIS.$VERSION>.tar.gz'
