@@ -18,9 +18,19 @@ dependency:
     adler+zlib-rpi64-dev:
       - version: ''
         architecture: []
+    libffi+libffi-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
     libffi+libffi-rpi64:
       - version: ''
         architecture: []
+    gnome+glib-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
     gnome+glib-rpi64:
       - version: ''
         architecture: []
