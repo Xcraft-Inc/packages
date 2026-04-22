@@ -39,7 +39,6 @@ data:
       maketest: ''
       makeinstall: |-
         cp('<PEON.WPKG.STAG>/usr/share/carnotzet/rootfs-rpi4b/data', '<PEON.INSTALLDIR.X+BIN>');
-        cp('<PEON.ASSETS>/mdev.conf',        '<PEON.INSTALLDIR.X+BIN>/etc/mdev.conf');
         cp('<PEON.ASSETS.GLOBAL>/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
         cp('<PEON.ASSETS.GLOBAL>/postinst',  '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
         cp('<PEON.ASSETS.GLOBAL>/prerm',     '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
