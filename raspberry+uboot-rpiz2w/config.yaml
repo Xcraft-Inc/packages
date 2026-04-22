@@ -29,6 +29,7 @@ dependency:
         architecture: []
 bump:
   - carnotzet+os-rpiz2w
+  - carnotzet+os-contelia-rpiz2w
 data:
   get:
     uri: 'https://source.denx.de/u-boot/u-boot.git'

@@ -29,6 +29,7 @@ dependency:
         architecture: []
 bump:
   - carnotzet+os-rpi4b
+  - carnotzet+os-whispi-rpi4b
 data:
   get:
     uri: 'https://source.denx.de/u-boot/u-boot.git'
