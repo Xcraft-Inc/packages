@@ -3,4 +3,4 @@ exec 2>&1
 
 echo "Start Radvd daemon..."
 
-exec /usr/bin/radvd -C /etc/radvd/radvd.conf -n
+exec /usr/sbin/radvd -C /etc/radvd/radvd.conf -n
