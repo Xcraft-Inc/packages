@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sv stop whispi-gadget || :
+rm -rf /var/service/whispi-gadget

@@ -23,6 +23,9 @@ dependency:
     carnotzet+rescuefs-whispi-rpi4b:
       - version: ''
         architecture: []
+    carnotzet+whispi-gadget-rpi64:
+      - version: ''
+        architecture: []
     raspberry+linux-kernel-whispi-rpi4b:
       - version: ''
         architecture: []
@@ -115,6 +118,7 @@ data:
           'carnotzet+os-config-whispi-rpi4b-x+bin',
           'carnotzet+rootfs-whispi-rpi4b-x+bin',
           'carnotzet+rescuefs-whispi-rpi4b-x+bin',
+          'carnotzet+whispi-gadget-rpi64-x+bin',
           'raspberry+linux-kernel-whispi-rpi4b-x+bin',
           'raspberry+linux-kernel-whispi-rpi4b-x+modules',
           'raspberry+linux-firmware-rpi4b-x+bin',
