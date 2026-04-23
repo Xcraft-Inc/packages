@@ -64,4 +64,6 @@ data:
       DOTNET_ROOT: <OS.ROOTDIR>/opt/dotnet-sdk
       DOTNET_CLI_TELEMETRY_OPTOUT: '1'
       MSBUILDDISABLENODEREUSE: '1'
+      NUGET_EXE_NO_PROMPT: '1'
+      NUGET_PACKAGES: <OS.ROOTTEMP>/nuget
   embedded: true
