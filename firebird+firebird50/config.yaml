@@ -106,7 +106,8 @@ data:
       'tar',
       '-czvf', '<PEON.INSTALLDIR>/opt/packages/tar/firebird50.tar.gz',
       '-C', '<PEON.INSTALLDIR>/opt/firebird50',
-      '.');
+      '.'
+    );
 
     /*****************************/
     /* Generate a Debian package */
