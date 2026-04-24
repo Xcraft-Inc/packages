@@ -1,0 +1,13 @@
+#!/bin/sh
+exec 2>&1
+
+echo "Start PipeWire daemon..."
+
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
+export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
+
+export PIPEWIRE_RUNTIME_DIR=/run/pipewire
+export PIPEWIRE_CORE=pipewire-0
+export PIPEWIRE_DAEMON=true
+
+exec /usr/bin/pipewire

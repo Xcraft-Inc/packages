@@ -18,6 +18,14 @@ dependency:
     adler+zlib-rpi64-dev:
       - version: ''
         architecture: []
+    illiliti+libudev-zero-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    illiliti+libudev-zero-rpi64:
+      - version: ''
+        architecture: []
     libffi+libffi-rpi64-x+bin:
       - version: ''
         architecture: []
@@ -99,14 +107,21 @@ data:
       makeall: '!meson.pyz compile -C _build'
       maketest: ''
       makeinstall: |-
-        !meson.pyz install -C _build --destdir=<PEON.INSTALLDIR.X+BIN> --tags runtime
+        !meson.pyz install -C _build --destdir=<PEON.INSTALLDIR.X+BIN>
     test: none
     env:
       LDFLAGS: '<PEON.ENV.LDFLAGS> -Wl,-rpath-link,<PEON.PROD.ROOTDIR>/usr/lib -lncursesw'
       PKG_CONFIG_ALLOW_CROSS: '1'
       PKG_CONFIG_PATH: <PEON.PROD.ROOTDIR>/usr/lib/pkgconfig
       PKG_CONFIG_LIBDIR: <PEON.PROD.ROOTDIR>/usr/lib/pkgconfig
-  deploy: ''
+  deploy: |-
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/pipewire');
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/wireplumber');
+    mkdir('<PEON.INSTALLDIR.X+BIN>/run/pipewire');
+    cp('<PEON.ASSETS>/sv_pipewire',      '<PEON.INSTALLDIR.X+BIN>/etc/sv/pipewire');
+    cp('<PEON.ASSETS>/sv_wireplumber',   '<PEON.INSTALLDIR.X+BIN>/etc/sv/wireplumber');
+    cp('<PEON.ASSETS>/postinst',         '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',            '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
   env:
     path: []
     other: {}
