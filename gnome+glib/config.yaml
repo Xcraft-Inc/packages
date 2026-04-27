@@ -42,6 +42,7 @@ data:
     !cd <THIS.DATA.RULES.LOCATION>
       && meson.pyz setup _build
                    --prefix=<PEON.PREFIXDIR>
+                   --default-library=static
                    -Dforce_fallback_for=pcre2
   rules:
     type: script
