@@ -15,6 +15,12 @@ description:
   long: ''
 dependency:
   install:
+    adler+zlib-rpi64-dev:
+      - version: ''
+        architecture: []
+    libffi+libffi-rpi64:
+      - version: ''
+        architecture: []
     gnome+glib-rpi64:
       - version: ''
         architecture: []
@@ -36,9 +42,11 @@ dependency:
         architecture: []
 bump:
   - carnotzet+os-contelia-rpiz2w
+  - carnotzet+os-whispi-rpiz2w
   - carnotzet+os-rpi4b
   - carnotzet+os-rpiz2w
   - carnotzet+rescuefs-contelia-rpiz2w
+  - carnotzet+rescuefs-whispi-rpiz2w
   - carnotzet+rescuefs-rpi4b
   - carnotzet+rescuefs-rpiz2w
 data:

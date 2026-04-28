@@ -1,0 +1,73 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: litech+radvd-rpi64
+version: '2.20'
+$version: '2.20'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Linux IPv6 Router Advertisement Daemon (radvd)
+  long: ''
+dependency:
+  install:
+    bsd+libbsd-rpi64:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump:
+  - carnotzet+os-whispi-rpiz2w
+data:
+  get:
+    uri: 'https://radvd.litech.org/dist/radvd-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !{bash}
+    cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/usr
+                     --build=$MACHTYPE
+                     --host=aarch64-xcraft-linux-gnu
+  rules:
+    type: make
+    location: data/radvd-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '-j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: 'install DESTDIR=<PEON.INSTALLDIR.X+BIN>'
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+  deploy: |-
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/radvd');
+    cp('<PEON.ASSETS>/sv',         '<PEON.INSTALLDIR.X+BIN>/etc/sv/radvd');
+    cp('<PEON.ASSETS>/postinst',   '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',      '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+    cp('<PEON.ASSETS>/conffiles',  '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+    cp('<PEON.ASSETS>/radvd.conf', '<PEON.INSTALLDIR.X+BIN>/etc/radvd/radvd.conf');
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

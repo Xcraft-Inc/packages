@@ -69,6 +69,7 @@ data:
                   modules_install
           && cp -a arch/arm64/boot/Image "<PEON.INSTALLDIR.X+BIN>/boot/"
           && cp -a arch/arm64/boot/dts/broadcom/bcm2710-rpi-zero-2-w.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
+          && rm -f "<PEON.INSTALLDIR.X+MODULES>/lib/modules/*/build"
     test: none
     env:
       KBUILD_BUILD_TIMESTAMP: ''

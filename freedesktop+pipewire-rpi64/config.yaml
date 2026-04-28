@@ -1,0 +1,130 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: freedesktop+pipewire-rpi64
+version: 1.6.3
+$version: 1.6.3
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: PipeWire is low-level multimedia framework that provides
+  long: ''
+dependency:
+  install:
+    adler+zlib-rpi64-dev:
+      - version: ''
+        architecture: []
+    illiliti+libudev-zero-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    illiliti+libudev-zero-rpi64:
+      - version: ''
+        architecture: []
+    libffi+libffi-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    libffi+libffi-rpi64:
+      - version: ''
+        architecture: []
+    gnome+glib-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    gnome+glib-rpi64:
+      - version: ''
+        architecture: []
+    freedesktop+libdbus-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    freedesktop+libdbus-rpi64:
+      - version: ''
+        architecture: []
+    alsa+lib-rpi64:
+      - version: ''
+        architecture: []
+    gnu+libncurses-rpi64:
+      - version: ''
+        architecture: []
+    gnu+readline-rpi64:
+      - version: ''
+        architecture: []
+    openssl+openssl3-rpi64:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+    meson+meson:
+      - version: ''
+        architecture: []
+    gnome+glib:
+      - version: ''
+        architecture: []
+bump:
+  - carnotzet+os-whispi-rpi4b
+  - carnotzet+rescuefs-whispi-rpi4b
+data:
+  get:
+    uri: 'https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/<THIS.$VERSION>/pipewire-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && meson.pyz setup _build
+                   --prefix=/usr
+                   --cross-file=<PEON.ASSETS>/cross.txt
+                   -Dexamples=disabled
+                   -Dsdl2=disabled
+  rules:
+    type: script
+    location: data/pipewire-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!meson.pyz compile -C _build'
+      maketest: ''
+      makeinstall: |-
+        !meson.pyz install -C _build --destdir=<PEON.INSTALLDIR.X+BIN>
+    test: none
+    env:
+      LDFLAGS: '<PEON.ENV.LDFLAGS> -Wl,-rpath-link,<PEON.PROD.ROOTDIR>/usr/lib -lncursesw'
+      PKG_CONFIG_ALLOW_CROSS: '1'
+      PKG_CONFIG_PATH: <PEON.PROD.ROOTDIR>/usr/lib/pkgconfig
+      PKG_CONFIG_LIBDIR: <PEON.PROD.ROOTDIR>/usr/lib/pkgconfig
+  deploy: |-
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/pipewire');
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/wireplumber');
+    mkdir('<PEON.INSTALLDIR.X+BIN>/run/pipewire');
+    cp('<PEON.ASSETS>/sv_pipewire',      '<PEON.INSTALLDIR.X+BIN>/etc/sv/pipewire');
+    cp('<PEON.ASSETS>/sv_wireplumber',   '<PEON.INSTALLDIR.X+BIN>/etc/sv/wireplumber');
+    cp('<PEON.ASSETS>/postinst',         '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',            '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

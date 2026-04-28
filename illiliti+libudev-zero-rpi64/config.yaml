@@ -1,0 +1,58 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: illiliti+libudev-zero-rpi64
+version: '1.0.3-bbeb7ad'
+$version: '1.0.3-bbeb7ad'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Daemonless replacement for libudev
+  long: ''
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: {}
+data:
+  get:
+    uri: 'https://github.com/illiliti/libudev-zero/archive/bbeb7ad51c1edb7ab3cf63f30a21e9bb383b7994.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: data/libudev-zero-bbeb7ad51c1edb7ab3cf63f30a21e9bb383b7994
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!make -j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: |-
+        !  make install PREFIX=<PEON.PREFIXDIR>
+        && make install PREFIX=/usr DESTDIR=<PEON.INSTALLDIR.X+BIN>
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

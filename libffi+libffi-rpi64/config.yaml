@@ -1,0 +1,68 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: libffi+libffi-rpi64
+version: 3.5.2
+$version: 3.5.2
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: A portable foreign-function interface library
+  long: ''
+dependency:
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://github.com/libffi/libffi/releases/download/v<THIS.$VERSION>/libffi-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/usr
+                     --build=$MACHTYPE
+                     --host=aarch64-xcraft-linux-gnu
+  rules:
+    type: script
+    location: data/libffi-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!make -j{PEON.CPUS.COUNT}'
+      maketest: ''
+      makeinstall: |-
+        !   make install DESTDIR=<PEON.INSTALLDIR>
+         && find <PEON.INSTALLDIR> -name "*.pc" -exec sed -i 's|prefix=/usr|prefix=<PEON.INSTALLDIR>/usr|g' {} +
+         && make install DESTDIR=<PEON.INSTALLDIR.X+BIN>
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+  deploy: |-
+    !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.a
+    && rm  -f <PEON.INSTALLDIR>/usr/lib/*.la
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.la
+    && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/pkgconfig
+    && rm -rf <PEON.PREFIXDIR>/share/info/dir
+    && rm -rf <PEON.PREFIXDIR.X+BIN>/share/info/dir
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

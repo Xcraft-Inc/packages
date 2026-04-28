@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ln -sf /etc/sv/whispi-gadget /var/service/whispi-gadget
+sv up whispi-gadget || :

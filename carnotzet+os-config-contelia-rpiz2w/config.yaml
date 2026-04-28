@@ -23,8 +23,8 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpiz2w
-  - carnotzet+rescue-rpiz2w
+  - carnotzet+os-contelia-rpiz2w
+  - carnotzet+rescuefs-contelia-rpiz2w
 data:
   get:
     uri: ''
@@ -53,6 +53,7 @@ data:
         cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/bluealsa/down');
         cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/bluez/down');
         cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/dbus/down');
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/pisugar/down');
         cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/dnsmasq/down');
         cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/hostapd/down');
         cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/httpd/down');

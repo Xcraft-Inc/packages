@@ -1,0 +1,7 @@
+#!/bin/sh
+
+sv stop wireplumber || :
+rm -rf /var/service/wireplumber
+
+sv stop pipewire || :
+rm -rf /var/service/pipewire
