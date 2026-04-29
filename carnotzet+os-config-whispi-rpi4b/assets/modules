@@ -1,3 +1,4 @@
 brcmfmac
 libcomposite
 snd_usb_audio
+snd_aloop
