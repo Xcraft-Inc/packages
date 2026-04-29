@@ -48,7 +48,7 @@ data:
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
       && cp <PEON.ASSETS.GLOBAL>/logo_linux_clut224.ppm drivers/video/logo
-      && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- bcm2711_defconfig
+      && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- bcm2712_defconfig
   rules:
     type: script
     location: data/linux-stable_<THIS.$VERSION>
