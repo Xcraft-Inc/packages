@@ -28,11 +28,6 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
-    clark+expat-rpi64-x+bin:
-      - version: ''
-        architecture: []
-        subpackage:
-          - x+bin
     openssl+openssl3-rpi64-x+bin:
       - version: ''
         architecture: []
