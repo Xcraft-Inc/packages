@@ -33,7 +33,7 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-whispi-rpi4b
+  - carnotzet+os-whispi-rpi5b
 data:
   get:
     uri: 'https://github.com/raspberrypi/linux/archive/refs/tags/stable_<THIS.$VERSION>.tar.gz'
