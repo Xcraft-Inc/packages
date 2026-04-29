@@ -25,8 +25,10 @@ dependency:
 bump:
   - carnotzet+os-rpi4b
   - carnotzet+os-whispi-rpi4b
+  - carnotzet+os-whispi-rpi5b
   - carnotzet+rescuefs-rpi4b
   - carnotzet+rescuefs-whispi-rpi4b
+  - carnotzet+rescuefs-whispi-rpi5b
 data:
   get:
     uri: 'https://gitlab.com/kernel-firmware/linux-firmware/-/archive/<THIS.$VERSION>/linux-firmware-<THIS.$VERSION>.tar.gz'

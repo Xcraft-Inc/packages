@@ -25,6 +25,7 @@ dependency:
 bump:
   - carnotzet+os-whispi-rpiz4b
   - carnotzet+rescuefs-whispi-rpi4b
+  - carnotzet+rescuefs-whispi-rpi5b
 data:
   get:
     uri: ''

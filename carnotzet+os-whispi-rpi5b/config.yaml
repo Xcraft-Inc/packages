@@ -20,7 +20,7 @@ dependency:
     carnotzet+rootfs-whispi-rpi4b:
       - version: ''
         architecture: []
-    carnotzet+rescuefs-whispi-rpi4b:
+    carnotzet+rescuefs-whispi-rpi5b:
       - version: ''
         architecture: []
     carnotzet+whispi-gadget-rpi64:
@@ -32,7 +32,7 @@ dependency:
     raspberry+linux-firmware-rpi4b:
       - version: ''
         architecture: []
-    raspberry+uboot-rpi4b:
+    raspberry+uboot-rpi5b:
       - version: ''
         architecture: []
     raspberry+firmware-rpi4b:
@@ -117,7 +117,7 @@ data:
         yield genRoot('carnotzet', '<PEON.ASSETS.GLOBAL>', [
           'carnotzet+os-config-whispi-rpi4b-x+bin',
           'carnotzet+rootfs-whispi-rpi4b-x+bin',
-          'carnotzet+rescuefs-whispi-rpi4b-x+bin',
+          'carnotzet+rescuefs-whispi-rpi5b-x+bin',
           'carnotzet+whispi-gadget-rpi64-x+bin',
           'raspberry+linux-kernel-whispi-rpi5b-x+bin',
           'raspberry+linux-kernel-whispi-rpi5b-x+modules',

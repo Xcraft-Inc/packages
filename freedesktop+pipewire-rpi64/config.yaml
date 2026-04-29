@@ -80,7 +80,9 @@ dependency:
         architecture: []
 bump:
   - carnotzet+os-whispi-rpi4b
+  - carnotzet+os-whispi-rpi5b
   - carnotzet+rescuefs-whispi-rpi4b
+  - carnotzet+rescuefs-whispi-rpi5b
 data:
   get:
     uri: 'https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/<THIS.$VERSION>/pipewire-<THIS.$VERSION>.tar.gz'
