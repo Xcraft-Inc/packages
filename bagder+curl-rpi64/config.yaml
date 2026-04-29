@@ -57,7 +57,10 @@ data:
       prerm: ''
       makeall: '!make -j<PEON.CPUS.COUNT>'
       maketest: ''
-      makeinstall: '!make install DESTDIR=<PEON.INSTALLDIR.X+BIN>'
+      makeinstall: |-
+        !   make install DESTDIR=<PEON.INSTALLDIR>
+         && find <PEON.INSTALLDIR> -name "*.pc" -exec sed -i 's|prefix=/usr|prefix=<PEON.INSTALLDIR>/usr|g' {} +
+         && make install DESTDIR=<PEON.INSTALLDIR.X+BIN>
     test: none
     env: {}
   deploy: ''
