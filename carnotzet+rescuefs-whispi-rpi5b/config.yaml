@@ -42,7 +42,7 @@ dependency:
     malinen+wpa-supplicant-rpi64:
       - version: ''
         architecture: []
-    raspberry+uboot-rpi4b:
+    raspberry+uboot-rpi5b:
       - version: ''
         architecture: []
   build:
