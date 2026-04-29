@@ -1,0 +1,69 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: bagder+curl-rpi64
+version: 7.81.0
+$version: 7.81.0
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: curl
+  long: ''
+dependency:
+  install:
+    adler+zlib-rpi64-dev:
+      - version: ''
+        architecture: []
+    openssl+openssl3-rpi64:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'http://curl.haxx.se/download/curl-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+    $hash: 7.81.0@ac8e1087711084548d788ef18b9b732c8de887457b81f616fc681d1044b32f98.tar.gz
+  type: src
+  configure: |-
+    !{bash}
+    cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/usr
+                     --build=$MACHTYPE
+                     --host=aarch64-xcraft-linux-gnu
+                     --disable-ldap
+                     --disable-ldaps
+                     --with-openssl
+  rules:
+    type: script
+    location: data/curl-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!make -j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: '!make install DESTDIR=<PEON.INSTALLDIR.X+BIN>'
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
