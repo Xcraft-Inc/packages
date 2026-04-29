@@ -4,104 +4,104 @@ exec 2>&1
 echo "Mount Whispi gadget..."
 
 mount_gadget() {
-   GADGET_DIR=/sys/kernel/config/usb_gadget/piuac2
+  GADGET_DIR=/sys/kernel/config/usb_gadget/piuac2
 
-   mkdir -p $GADGET_DIR
+  mkdir -p $GADGET_DIR
 
-   # Linux / Darwin
-   echo 0x1d6b > $GADGET_DIR/idVendor
-   echo 0x0104 > $GADGET_DIR/idProduct
-   echo 0x0200 > $GADGET_DIR/bcdUSB
-   echo 0x0100 > $GADGET_DIR/bcdDevice
+  # Linux / Darwin
+  echo 0x1d6b > $GADGET_DIR/idVendor
+  echo 0x0104 > $GADGET_DIR/idProduct
+  echo 0x0200 > $GADGET_DIR/bcdUSB
+  echo 0x0100 > $GADGET_DIR/bcdDevice
 
-   mkdir -p $GADGET_DIR/strings/0x409
-   echo "0123456789ABCDEF" > $GADGET_DIR/strings/0x409/serialnumber
-   echo "Xcraft" > $GADGET_DIR/strings/0x409/manufacturer
-   echo "Whispi Audio" > $GADGET_DIR/strings/0x409/product
+  mkdir -p $GADGET_DIR/strings/0x409
+  echo "0123456789ABCDEF" > $GADGET_DIR/strings/0x409/serialnumber
+  echo "Xcraft" > $GADGET_DIR/strings/0x409/manufacturer
+  echo "Whispi Audio" > $GADGET_DIR/strings/0x409/product
 
-   mkdir -p $GADGET_DIR/configs/c.1/strings/0x409
-   echo "UAC2 Audio" > $GADGET_DIR/configs/c.1/strings/0x409/configuration
-   echo 250 > $GADGET_DIR/configs/c.1/MaxPower
+  mkdir -p $GADGET_DIR/configs/c.1/strings/0x409
+  echo "UAC2 Audio" > $GADGET_DIR/configs/c.1/strings/0x409/configuration
+  echo 250 > $GADGET_DIR/configs/c.1/MaxPower
 
-   mkdir -p $GADGET_DIR/functions/uac2.usb0
+  mkdir -p $GADGET_DIR/functions/uac2.usb0
 
-   #########
-   # Capture
-   #########
+  #########
+  # Capture
+  #########
 
-   echo 0x3    > $GADGET_DIR/functions/uac2.usb0/c_chmask
-   echo 48000  > $GADGET_DIR/functions/uac2.usb0/c_srate
-   echo 2      > $GADGET_DIR/functions/uac2.usb0/c_ssize
-   echo 1      > $GADGET_DIR/functions/uac2.usb0/c_mute_present
-   echo 1      > $GADGET_DIR/functions/uac2.usb0/c_volume_present
-   echo -10240 > $GADGET_DIR/functions/uac2.usb0/c_volume_min
-   echo 0      > $GADGET_DIR/functions/uac2.usb0/c_volume_max
-   echo 256    > $GADGET_DIR/functions/uac2.usb0/c_volume_res
+  echo 0x3    > $GADGET_DIR/functions/uac2.usb0/c_chmask
+  echo 48000  > $GADGET_DIR/functions/uac2.usb0/c_srate
+  echo 2      > $GADGET_DIR/functions/uac2.usb0/c_ssize
+  echo 1      > $GADGET_DIR/functions/uac2.usb0/c_mute_present
+  echo 1      > $GADGET_DIR/functions/uac2.usb0/c_volume_present
+  echo -10240 > $GADGET_DIR/functions/uac2.usb0/c_volume_min
+  echo 0      > $GADGET_DIR/functions/uac2.usb0/c_volume_max
+  echo 256    > $GADGET_DIR/functions/uac2.usb0/c_volume_res
 
-   echo "Pi Headphones In" > $GADGET_DIR/functions/uac2.usb0/c_it_name
-   echo "Pi Playback Out"  > $GADGET_DIR/functions/uac2.usb0/c_ot_name
+  echo "Pi Headphones In" > $GADGET_DIR/functions/uac2.usb0/c_it_name
+  echo "Pi Playback Out"  > $GADGET_DIR/functions/uac2.usb0/c_ot_name
 
-   ##########
-   # Playback
-   ##########
+  ##########
+  # Playback
+  ##########
 
-   echo 0x1    > $GADGET_DIR/functions/uac2.usb0/p_chmask
-   echo 48000  > $GADGET_DIR/functions/uac2.usb0/p_srate
-   echo 2      > $GADGET_DIR/functions/uac2.usb0/p_ssize
-   echo 1      > $GADGET_DIR/functions/uac2.usb0/p_mute_present
-   echo 1      > $GADGET_DIR/functions/uac2.usb0/p_volume_present
-   echo -10240 > $GADGET_DIR/functions/uac2.usb0/p_volume_min
-   echo 0      > $GADGET_DIR/functions/uac2.usb0/p_volume_max
-   echo 256    > $GADGET_DIR/functions/uac2.usb0/p_volume_res
+  echo 0x1    > $GADGET_DIR/functions/uac2.usb0/p_chmask
+  echo 48000  > $GADGET_DIR/functions/uac2.usb0/p_srate
+  echo 2      > $GADGET_DIR/functions/uac2.usb0/p_ssize
+  echo 1      > $GADGET_DIR/functions/uac2.usb0/p_mute_present
+  echo 1      > $GADGET_DIR/functions/uac2.usb0/p_volume_present
+  echo -10240 > $GADGET_DIR/functions/uac2.usb0/p_volume_min
+  echo 0      > $GADGET_DIR/functions/uac2.usb0/p_volume_max
+  echo 256    > $GADGET_DIR/functions/uac2.usb0/p_volume_res
 
-   echo "Pi Mic In"      > $GADGET_DIR/functions/uac2.usb0/p_it_name
-   echo "Pi Capture Out" > $GADGET_DIR/functions/uac2.usb0/p_ot_name
+  echo "Pi Mic In"      > $GADGET_DIR/functions/uac2.usb0/p_it_name
+  echo "Pi Capture Out" > $GADGET_DIR/functions/uac2.usb0/p_ot_name
 
-   # Friendly names
+  # Friendly names
 
-   echo "Pi Audio Bridge" > $GADGET_DIR/functions/uac2.usb0/function_name
-   echo "Pi Clock In"     > $GADGET_DIR/functions/uac2.usb0/clksrc_in_name
-   echo "Pi Clock Out"    > $GADGET_DIR/functions/uac2.usb0/clksrc_out_name
+  echo "Pi Audio Bridge" > $GADGET_DIR/functions/uac2.usb0/function_name
+  echo "Pi Clock In"     > $GADGET_DIR/functions/uac2.usb0/clksrc_in_name
+  echo "Pi Clock Out"    > $GADGET_DIR/functions/uac2.usb0/clksrc_out_name
 
-   #########
-   # Network
-   #########
+  #########
+  # Network
+  #########
 
-   mkdir -p $GADGET_DIR/functions/ecm.usb0
+  mkdir -p $GADGET_DIR/functions/ecm.usb0
 
-   echo "02:1A:11:00:00:01" > $GADGET_DIR/functions/ecm.usb0/dev_addr
+  echo "02:1A:11:00:00:01" > $GADGET_DIR/functions/ecm.usb0/dev_addr
 
-   ln -s $GADGET_DIR/functions/uac2.usb0 $GADGET_DIR/configs/c.1/
-   ln -s $GADGET_DIR/functions/ecm.usb0 $GADGET_DIR/configs/c.1/
+  ln -s $GADGET_DIR/functions/uac2.usb0 $GADGET_DIR/configs/c.1/
+  ln -s $GADGET_DIR/functions/ecm.usb0 $GADGET_DIR/configs/c.1/
 
-   ###########################################
-   # Enable gadget on the first USB controller
-   ###########################################
+  ###########################################
+  # Enable gadget on the first USB controller
+  ###########################################
 
-   UDC_NAME="$(ls /sys/class/udc | head -n 1)"
-   echo "$UDC_NAME" > /sys/kernel/config/usb_gadget/piuac2/UDC
+  UDC_NAME="$(ls /sys/class/udc | head -n 1)"
+  echo "$UDC_NAME" > /sys/kernel/config/usb_gadget/piuac2/UDC
 
-   #########
-   # Network
-   #########
+  #########
+  # Network
+  #########
 
-   # Wait for the new usb0 device and setup the IP address
-   TIMEOUT=30
-   while [ $TIMEOUT -gt 0 ]; do
-     if ip -6 addr flush dev usb0 && \
-        ip -6 addr add "fd66:66:66::1/64" dev usb0 && \
-        ip link set usb0 up; then
-         break
-     fi
+  # Wait for the new usb0 device and setup the IP address
+  TIMEOUT=30
+  while [ $TIMEOUT -gt 0 ]; do
+    if ip -6 addr flush dev usb0 && \
+       ip -6 addr add "fd66:66:66::1/64" dev usb0 && \
+       ip link set usb0 up; then
+      break
+    fi
 
-     sleep 0.5
-     TIMEOUT=$((TIMEOUT - 1))
-   done
+    sleep 0.5
+    TIMEOUT=$((TIMEOUT - 1))
+  done
 
-   if [ $TIMEOUT -le 0 ]; then
-     echo "Error: cannot configure usb0 after 30s"
-     exit 1
-   fi
+  if [ $TIMEOUT -le 0 ]; then
+    echo "Error: cannot configure usb0 after 30s"
+    exit 1
+  fi
 }
 
 dispose() {
