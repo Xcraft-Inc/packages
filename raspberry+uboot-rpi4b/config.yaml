@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - x+bin:linux-aarch64
 name: raspberry+uboot-rpi4b
-version: '2025.04'
-$version: '2025.04'
+version: '2026.04'
+$version: '2026.04'
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -34,7 +34,7 @@ data:
   get:
     uri: 'https://source.denx.de/u-boot/u-boot.git'
     mirrors: []
-    ref: v2025.04
+    ref: v2026.04
     $ref: ''
     out: ''
     externals: true
