@@ -68,9 +68,12 @@ data:
                   INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+MODULES>"
                   modules_install
           && cp -a arch/arm64/boot/Image "<PEON.INSTALLDIR.X+BIN>/boot/"
-          && cp -a arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
+          && cp -a arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dtb   "<PEON.INSTALLDIR.X+BIN>/boot/"
+          && cp -a arch/arm64/boot/dts/broadcom/bcm2712-d-rpi-5-b.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
+          && cp -a arch/arm64/boot/dts/broadcom/bcm2712d0-rpi-5-b.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
           && mkdir -p "<PEON.INSTALLDIR.X+BIN>/boot/overlays"
-          && cp -a arch/arm/boot/dts/overlays/dwc2.dtbo "<PEON.INSTALLDIR.X+BIN>/boot/overlays/"
+          && cp -a arch/arm/boot/dts/overlays/bcm2712d0.dtbo "<PEON.INSTALLDIR.X+BIN>/boot/overlays/"
+          && cp -a arch/arm/boot/dts/overlays/dwc2.dtbo      "<PEON.INSTALLDIR.X+BIN>/boot/overlays/"
           && rm -f "<PEON.INSTALLDIR.X+MODULES>/lib/modules/*/build"
     test: none
     env:

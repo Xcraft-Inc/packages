@@ -1,7 +1,7 @@
 subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
-name: carnotzet+os-config-whispi-rpi4b
+name: carnotzet+os-config-whispi-rpi5b
 version: '0.1.0'
 $version: '0.1.0'
 distribution: raspberry/
@@ -23,8 +23,8 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-whispi-rpiz4b
-  - carnotzet+rescuefs-whispi-rpi4b
+  - carnotzet+os-whispi-rpiz5b
+  - carnotzet+rescuefs-whispi-rpi5b
 data:
   get:
     uri: ''
