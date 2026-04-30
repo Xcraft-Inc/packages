@@ -1,7 +1,10 @@
 #!/bin/sh
 
 chmod 1777 /tmp
-ln -sf /var/run /run
+
+if [ ! -L /run ]; then
+  ln -sf /var/run /run
+fi
 
 if id rasp >/dev/null 2>&1 && [ ! -d /home/rasp ]; then
   mkdir -p /home/rasp
