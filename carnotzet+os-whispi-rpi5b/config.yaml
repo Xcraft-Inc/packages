@@ -135,7 +135,11 @@ data:
 
           /* Network */
           'openbsd+openssh-rpi64-x+bin',
-          'litech+radvd-rpi64-x+bin'
+          'litech+radvd-rpi64-x+bin',
+
+          /* Miscellaneous */
+          'openjs+nodejs24-rpi64-x+bin',
+          'torvalds+git-rpi64-x+bin'
         ]);
 
         yield genImage('carnotzet',
