@@ -35,9 +35,6 @@ dependency:
     raspberry+uboot-rpi5b:
       - version: ''
         architecture: []
-    raspberry+firmware-rpi4b:
-      - version: ''
-        architecture: []
     gnu+glibc-rpi64:
       - version: ''
         architecture: []
@@ -123,7 +120,6 @@ data:
           'raspberry+linux-kernel-whispi-rpi5b-x+modules',
           'raspberry+linux-firmware-rpi4b-x+bin',
           'raspberry+uboot-rpi5b-x+bin',
-          'raspberry+firmware-rpi4b-x+bin',
           'gnu+glibc-rpi64-x+bin',
           'gnu+libstdcxx-rpi64-x+bin',
           'vlasenko+busybox-rpi64-x+bin',
