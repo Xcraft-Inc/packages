@@ -120,10 +120,15 @@ data:
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/pipewire');
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/wireplumber');
     mkdir('<PEON.INSTALLDIR.X+BIN>/run/pipewire');
-    cp('<PEON.ASSETS>/sv_pipewire',      '<PEON.INSTALLDIR.X+BIN>/etc/sv/pipewire');
-    cp('<PEON.ASSETS>/sv_wireplumber',   '<PEON.INSTALLDIR.X+BIN>/etc/sv/wireplumber');
-    cp('<PEON.ASSETS>/postinst',         '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
-    cp('<PEON.ASSETS>/prerm',            '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+    cp('<PEON.ASSETS>/sv_pipewire',    '<PEON.INSTALLDIR.X+BIN>/etc/sv/pipewire');
+    cp('<PEON.ASSETS>/sv_wireplumber', '<PEON.INSTALLDIR.X+BIN>/etc/sv/wireplumber');
+    cp('<PEON.ASSETS>/postinst',       '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',          '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+    cp('<PEON.ASSETS>/conffiles',      '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+
+    /* Audio bridge */
+    cp('<PEON.ASSETS>/pipewire_bridge.conf',  '<PEON.INSTALLDIR.X+BIN>/etc/pipewire/pipewire.conf.d/bridge.conf');
+    cp('<PEON.ASSETS>/wireplumber_uac2.conf', '<PEON.INSTALLDIR.X+BIN>/etc/wireplumber/wireplumber.conf.d/uac2.conf');
   env:
     path: []
     other: {}
