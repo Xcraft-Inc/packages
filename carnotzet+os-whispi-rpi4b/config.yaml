@@ -74,12 +74,6 @@ dependency:
     litech+radvd-rpi64:
       - version: ''
         architecture: []
-    openjs+nodejs24-rpi64:
-      - version: ''
-        architecture: []
-    torvalds+git-rpi64:
-      - version: ''
-        architecture: []
   build:
     tytso+e2fsprogs:
       - version: ''
@@ -145,11 +139,7 @@ data:
 
           /* Network */
           'openbsd+openssh-rpi64-x+bin',
-          'litech+radvd-rpi64-x+bin',
-
-          /* Miscellaneous */
-          'openjs+nodejs24-rpi64-x+bin',
-          'torvalds+git-rpi64-x+bin'
+          'litech+radvd-rpi64-x+bin'
         ]);
 
         yield genImage('carnotzet',
