@@ -21,7 +21,7 @@ dependency:
     raspberry+linux-kernel-whispi-rpi5b:
       - version: ''
         architecture: []
-    raspberry+linux-firmware-rpi4b:
+    raspberry+linux-firmware-rpi5b:
       - version: ''
         architecture: []
     gnu+glibc-rpi64:
@@ -81,7 +81,7 @@ data:
           yield genRoot('<PEON.PROD.ROOTDIR>/var/rescue', '<PEON.ASSETS.GLOBAL>', [
             'carnotzet+rootfs-whispi-rpi4b-x+bin',
             'raspberry+linux-kernel-whispi-rpi5b-x+modules',
-            'raspberry+linux-firmware-rpi4b-x+bin',
+            'raspberry+linux-firmware-rpi5b-x+bin',
             'gnu+glibc-rpi64-x+bin',
             'vlasenko+busybox-rpi64-x+bin',
             'linux+util-linux-rpi64-x+bin',

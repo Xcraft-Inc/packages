@@ -29,7 +29,7 @@ dependency:
     raspberry+linux-kernel-whispi-rpi5b:
       - version: ''
         architecture: []
-    raspberry+linux-firmware-rpi4b:
+    raspberry+linux-firmware-rpi5b:
       - version: ''
         architecture: []
     raspberry+uboot-rpi5b:
@@ -118,7 +118,7 @@ data:
           'carnotzet+whispi-gadget-rpi64-x+bin',
           'raspberry+linux-kernel-whispi-rpi5b-x+bin',
           'raspberry+linux-kernel-whispi-rpi5b-x+modules',
-          'raspberry+linux-firmware-rpi4b-x+bin',
+          'raspberry+linux-firmware-rpi5b-x+bin',
           'raspberry+uboot-rpi5b-x+bin',
           'gnu+glibc-rpi64-x+bin',
           'gnu+libstdcxx-rpi64-x+bin',
