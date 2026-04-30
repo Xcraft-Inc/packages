@@ -1,0 +1,63 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: gnu+binutils-rpi64
+version: '2.44'
+$version: '2.44'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: GNU Bin Utils.
+  long: ''
+dependency:
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'http://ftpmirror.gnu.org/binutils/binutils-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/usr
+                     --build=$MACHTYPE
+                     --host=aarch64-xcraft-linux-gnu
+                     --disable-gprofng
+  rules:
+    type: make
+    location: data/binutils-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '-j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: install DESTDIR=<PEON.INSTALLDIR.X+BIN>
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+      CXX: aarch64-xcraft-linux-gnu-g++
+  deploy: rm('<PEON.PREFIXDIR>/share/info/dir');
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
