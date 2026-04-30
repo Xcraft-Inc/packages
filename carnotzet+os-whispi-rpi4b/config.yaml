@@ -74,6 +74,12 @@ dependency:
     litech+radvd-rpi64:
       - version: ''
         architecture: []
+    openjs+nodejs24-rpi64:
+      - version: ''
+        architecture: []
+    torvalds+git-rpi64:
+      - version: ''
+        architecture: []
   build:
     tytso+e2fsprogs:
       - version: ''
