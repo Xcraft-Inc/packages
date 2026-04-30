@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: carnotzet+os-whispi-rpi4b
-version: 0.1.0
-$version: 0.1.0
+version: 0.9.0
+$version: 0.9.0
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
