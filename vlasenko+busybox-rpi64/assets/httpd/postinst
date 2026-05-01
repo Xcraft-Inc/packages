@@ -8,5 +8,6 @@ if [ ! -f /var/httpd/www/redirect.html ]; then
   chown -R httpd /var/httpd/www
 fi
 
+rm -rf /var/service/httpd
 ln -sf /etc/sv/httpd /var/service/httpd
 sv up httpd || :

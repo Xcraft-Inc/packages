@@ -2,5 +2,6 @@
 
 adduser dnsmasq -SH 2>/dev/null || true
 
+rm -rf /var/service/dnsmasq
 ln -sf /etc/sv/dnsmasq /var/service/dnsmasq
 sv up dnsmasq || :

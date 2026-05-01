@@ -1,4 +1,5 @@
 #!/bin/sh
 
+rm -rf /var/service/contelia
 ln -sf /etc/sv/contelia /var/service/contelia
 sv up contelia || :
