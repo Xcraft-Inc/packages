@@ -25,6 +25,9 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
+    stedolan+jq-rpi64:
+      - version: ''
+        architecture: []
     alsa+lib-rpi64-x+bin:
       - version: ''
         architecture: []
