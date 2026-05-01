@@ -50,15 +50,15 @@ data:
         cp('<PEON.ASSETS>/modules',     '<PEON.INSTALLDIR.X+BIN>/etc/modules');
 
         /* By default, disable most services */
-        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/bluealsa/down');
-        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/bluez/down');
-        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/dbus/down');
-        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/dnsmasq/down');
-        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/hostapd/down');
-        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/httpd/down');
-        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/network/down');
-        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/ntpd/down');
-        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/var/service/wifi/down');
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/bluealsa/down');
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/bluez/down');
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/dbus/down');
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/dnsmasq/down');
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/hostapd/down');
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/httpd/down');
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/network/down');
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/ntpd/down');
+        cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/wifi/down');
     test: none
     env: {}
   deploy: ''
