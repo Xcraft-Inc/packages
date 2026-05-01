@@ -2,4 +2,7 @@
 
 rm -rf /var/service/radvd
 ln -sf /etc/sv/radvd /var/service/radvd
-sv up radvd || :
+
+if [ ! -f /var/service/radvd/down ]; then
+  sv up radvd || :
+fi

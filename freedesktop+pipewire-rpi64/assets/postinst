@@ -2,8 +2,14 @@
 
 rm -rf /var/service/pipewire
 ln -sf /etc/sv/pipewire /var/service/pipewire
-sv start pipewire || :
+
+if [ ! -f /var/service/pipewire/down ]; then
+  sv start pipewire || :
+fi
 
 rm -rf /var/service/wireplumber
 ln -sf /etc/sv/wireplumber /var/service/wireplumber
-sv up wireplumber || :
+
+if [ ! -f /var/service/wireplumber/down ]; then
+  sv up wireplumber || :
+fi

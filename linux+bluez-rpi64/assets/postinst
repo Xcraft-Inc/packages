@@ -2,4 +2,7 @@
 
 rm -rf /var/service/bluez
 ln -sf /etc/sv/bluez /var/service/bluez
-sv up bluez || :
+
+if [ ! -f /var/service/bluez/down ]; then
+  sv up bluez || :
+fi

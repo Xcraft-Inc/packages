@@ -2,4 +2,7 @@
 
 rm -rf /var/service/whispi-gadget
 ln -sf /etc/sv/whispi-gadget /var/service/whispi-gadget
-sv up whispi-gadget || :
+
+if [ ! -f /var/service/whispi-gadget/down ]; then
+  sv up whispi-gadget || :
+fi

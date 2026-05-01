@@ -10,4 +10,7 @@ fi
 
 rm -rf /var/service/httpd
 ln -sf /etc/sv/httpd /var/service/httpd
-sv up httpd || :
+
+if [ ! -f /var/service/httpd/down ]; then
+  sv up httpd || :
+fi

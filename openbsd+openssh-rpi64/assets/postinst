@@ -9,4 +9,7 @@ chmod 755 /var/empty/sshd
 
 rm -rf /var/service/sshd
 ln -sf /etc/sv/sshd /var/service/sshd
-sv up sshd || :
+
+if [ ! -f /var/service/sshd/down ]; then
+  sv up sshd || :
+fi

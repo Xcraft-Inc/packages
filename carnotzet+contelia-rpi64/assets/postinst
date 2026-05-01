@@ -2,4 +2,7 @@
 
 rm -rf /var/service/contelia
 ln -sf /etc/sv/contelia /var/service/contelia
-sv up contelia || :
+
+if [ ! -f /var/service/contelia/down ]; then
+  sv up contelia || :
+fi

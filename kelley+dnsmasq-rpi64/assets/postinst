@@ -4,4 +4,7 @@ adduser dnsmasq -SH 2>/dev/null || true
 
 rm -rf /var/service/dnsmasq
 ln -sf /etc/sv/dnsmasq /var/service/dnsmasq
-sv up dnsmasq || :
+
+if [ ! -f /var/service/dnsmasq/down ]; then
+  sv up dnsmasq || :
+fi

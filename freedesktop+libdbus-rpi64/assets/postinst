@@ -2,4 +2,7 @@
 
 rm -rf /var/service/dbus
 ln -sf /etc/sv/dbus /var/service/dbus
-sv up dbus || :
+
+if [ ! -f /var/service/dbus/down ]; then
+  sv up dbus || :
+fi
