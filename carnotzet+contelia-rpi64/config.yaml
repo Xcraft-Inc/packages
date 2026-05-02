@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: carnotzet+contelia-rpi64
-version: 0.5.5
-$version: 0.5.5
+version: 0.7.0
+$version: 0.7.0
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -75,6 +75,7 @@ data:
          && mkdir -p <PEON.PREFIXDIR.X+BIN>/share/contelia/assets
          && mkdir -p <PEON.INSTALLDIR.X+BIN>/var/httpd/www/cgi-bin
          && cp assets/*.png         <PEON.PREFIXDIR.X+BIN>/share/contelia/assets/
+         && cp -r books             <PEON.PREFIXDIR.X+BIN>/share/contelia/
          && cp cgi-bin/contelia.hsl <PEON.INSTALLDIR.X+BIN>/var/httpd/www/cgi-bin/contelia
     test: none
     env:
