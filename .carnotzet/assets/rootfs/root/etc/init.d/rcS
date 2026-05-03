@@ -71,10 +71,12 @@ boot_normal()
   # Execute all postinst scripts in case of the first boot
   if [ ! -f /var/.bootstrapped ]; then
     for postinst in /var/lib/wpkg/*/postinst; do
+      printf "Run postinst for %s\\n" "$postinst"
       sh "$postinst"
     done
     ldconfig
     touch /var/.bootstrapped
+    echo "Boostrapped"
   fi
 
   printf "Carnotzet OS booted in %s seconds\\n" "$(cut -d' ' -f1 /proc/uptime)"
