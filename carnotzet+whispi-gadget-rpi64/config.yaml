@@ -28,7 +28,9 @@ dependency:
     xcraft+base-make:
       - version: ''
         architecture: []
-bump: []
+bump:
+  - carnotzet+os-whispi-rpi4b
+  - carnotzet+os-whispi-rpi5b
 data:
   get:
     uri: ''
