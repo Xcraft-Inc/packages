@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: carnotzet+os-whispi-rpi5b
-version: 0.9.4
-$version: 0.9.4
+version: 0.9.5
+$version: 0.9.5
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
