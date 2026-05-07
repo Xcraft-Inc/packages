@@ -35,6 +35,11 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
+    libffi+libffi-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
     gnome+glib-rpi64:
       - version: ''
         architecture: []
@@ -45,6 +50,9 @@ dependency:
       - version: ''
         architecture: []
     alsa+lib-rpi64:
+      - version: ''
+        architecture: []
+    libffi+libffi-rpi64:
       - version: ''
         architecture: []
     linux+sbc-rpi64:
