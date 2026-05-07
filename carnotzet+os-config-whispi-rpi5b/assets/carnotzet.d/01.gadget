@@ -1,0 +1,3 @@
+# Disable this variable to enable the macOS support
+# Note that it doesn't matter for Linux
+gadget_network_target_os="win"
