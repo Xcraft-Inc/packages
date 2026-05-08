@@ -7,6 +7,8 @@ if [ ! -L /run ]; then
   ln -sf /var/run /run
 fi
 
+addgroup pipewire -s 2>/dev/null || true
+
 if [ ! -f /var/service/pipewire/down ]; then
   sv start pipewire || :
 fi
