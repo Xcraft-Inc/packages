@@ -75,7 +75,7 @@ data:
     test: none
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
-  deploy: rm('<PEON.PREFIXDIR>/share/info/dir');
+  deploy: rm('<PEON.PREFIXDIR.X+BIN>/share/info/dir');
   env:
     path: []
     other: {}
