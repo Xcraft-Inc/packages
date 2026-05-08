@@ -3,6 +3,10 @@
 rm -rf /var/service/pipewire
 ln -sf /etc/sv/pipewire /var/service/pipewire
 
+if [ ! -L /run ]; then
+  ln -sf /var/run /run
+fi
+
 if [ ! -f /var/service/pipewire/down ]; then
   sv start pipewire || :
 fi

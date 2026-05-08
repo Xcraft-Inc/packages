@@ -119,7 +119,6 @@ data:
   deploy: |-
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/pipewire');
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/wireplumber');
-    mkdir('<PEON.INSTALLDIR.X+BIN>/run/pipewire');
     cp('<PEON.ASSETS>/sv_pipewire',    '<PEON.INSTALLDIR.X+BIN>/etc/sv/pipewire');
     cp('<PEON.ASSETS>/sv_wireplumber', '<PEON.INSTALLDIR.X+BIN>/etc/sv/wireplumber');
     cp('<PEON.ASSETS>/postinst',       '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
