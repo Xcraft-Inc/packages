@@ -4,7 +4,7 @@ mount -t sysfs none /sys
 mount -t debugfs none /sys/kernel/debug
 mount -t configfs none /sys/kernel/config # USB gadgets
 
-echo /bin/mdev > /proc/sys/kernel/hotplug
+echo /sbin/mdev > /proc/sys/kernel/hotplug
 
 # Ensure that /sys/block/mmcblk0 exists
 until [ -e /sys/block/mmcblk0 ]; do
