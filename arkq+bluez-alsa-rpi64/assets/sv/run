@@ -3,4 +3,9 @@ exec 2>&1
 
 echo "Start BLUEALSA daemon..."
 
+echo "Waiting for DBUS..."
+while [ ! -S /var/run/dbus/system_bus_socket ]; do
+  sleep 0.1
+done
+
 exec /usr/bin/bluealsad -p a2dp-sink -p a2dp-source

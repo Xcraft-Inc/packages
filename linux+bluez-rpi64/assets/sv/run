@@ -4,4 +4,9 @@ exec 2>&1
 
 echo "Start BLUEZ daemon..."
 
+echo "Waiting for DBUS..."
+while [ ! -S /var/run/dbus/system_bus_socket ]; do
+  sleep 0.1
+done
+
 exec /usr/libexec/bluetooth/bluetoothd --plugin=a2dp -n
