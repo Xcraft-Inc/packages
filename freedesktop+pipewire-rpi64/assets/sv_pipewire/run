@@ -10,4 +10,4 @@ export PIPEWIRE_RUNTIME_DIR=/run/pipewire
 export PIPEWIRE_CORE=pipewire-0
 export PIPEWIRE_DAEMON=true
 
-exec chpst -u root:pipewire /usr/bin/pipewire
+exec chpst -u root:pipewire /usr/bin/pipewire -v
