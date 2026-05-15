@@ -6,6 +6,8 @@ if [ ! -L /run ]; then
   ln -sf /var/run /run
 fi
 
+addgroup audio -S 2>/dev/null || true
+
 if id rasp >/dev/null 2>&1 && [ ! -d /home/rasp ]; then
   mkdir -p /home/rasp
   chown -R rasp:rasp /home/rasp
