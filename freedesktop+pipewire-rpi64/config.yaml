@@ -121,6 +121,7 @@ data:
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/wireplumber');
     cp('<PEON.ASSETS>/sv_pipewire',    '<PEON.INSTALLDIR.X+BIN>/etc/sv/pipewire');
     cp('<PEON.ASSETS>/sv_wireplumber', '<PEON.INSTALLDIR.X+BIN>/etc/sv/wireplumber');
+    cp('<PEON.ASSETS>/asound.conf',    '<PEON.INSTALLDIR.X+BIN>/etc/asound.conf');
     cp('<PEON.ASSETS>/postinst',       '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
     cp('<PEON.ASSETS>/prerm',          '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
     cp('<PEON.ASSETS>/conffiles',      '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
