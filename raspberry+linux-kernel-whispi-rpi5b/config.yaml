@@ -48,6 +48,9 @@ data:
     !cd <THIS.DATA.RULES.LOCATION>
       && cp <PEON.ASSETS.GLOBAL>/logo_linux_clut224.ppm drivers/video/logo
       && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- bcm2712_defconfig
+      && sed -i 's,^CONFIG_SND=m.*,CONFIG_SND=y,' .config
+      && sed -i 's,^CONFIG_SND_USB_AUDIO=m.*,CONFIG_SND_USB_AUDIO=y,' .config
+      && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- olddefconfig
   rules:
     type: script
     location: data/linux-060fea8f35a11d05a42e26229acd3e0c11d9caf1
