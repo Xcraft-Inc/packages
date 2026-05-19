@@ -36,6 +36,14 @@ dependency:
     alsa+lib-rpi64:
       - version: ''
         architecture: []
+    alsa+ucm-conf-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    alsa+ucm-conf-rpi64:
+      - version: ''
+        architecture: []
   build:
     xcraft+base-build:
       - version: ''

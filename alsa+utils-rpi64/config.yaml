@@ -20,14 +20,22 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
+    alsa+lib-rpi64:
+      - version: ''
+        architecture: []
+    alsa+ucm-conf-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+    alsa+ucm-conf-rpi64:
+      - version: ''
+        architecture: []
     gnu+libncurses-rpi64-x+tinfo:
       - version: ''
         architecture: []
         subpackage:
           - x+bin
-    alsa+lib-rpi64:
-      - version: ''
-        architecture: []
     gnu+libncurses-rpi64:
       - version: ''
         architecture: []
