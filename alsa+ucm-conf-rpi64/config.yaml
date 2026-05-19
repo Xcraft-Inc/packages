@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: alsa+ucm-conf-rpi64
-version: 1.2.15
-$version: 1.2.15
+version: 1.2.14
+$version: 1.2.14
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
