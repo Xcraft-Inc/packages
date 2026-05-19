@@ -72,7 +72,10 @@ data:
       prerm: ''
       makeall: '!meson.pyz compile -C _build'
       maketest: ''
-      makeinstall: '!meson.pyz install -C _build --destdir=<PEON.INSTALLDIR.X+BIN>'
+      makeinstall: |-
+        !  meson.pyz install -C _build --destdir=<PEON.INSTALLDIR>
+        && find <PEON.INSTALLDIR> -name "*.pc" -exec sed -i 's|prefix=/usr|prefix=<PEON.INSTALLDIR>/usr|g' {} +
+        && meson.pyz install -C _build --destdir=<PEON.INSTALLDIR.X+BIN>
     test: none
     env:
       LDFLAGS: '<PEON.ENV.LDFLAGS> -Wl,-rpath-link,<PEON.PROD.ROOTDIR>/usr/lib'
