@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: alsa+utils-rpi64
-version: 1.2.14
-$version: 1.2.14
+version: 1.2.15
+$version: 1.2.15
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -49,7 +49,6 @@ data:
     out: ''
     externals: true
     prepare: ''
-    $hash: 1.2.14@0794c74d33fed943e7c50609c13089e409312b6c403d6ae8984fc429c0960741.tar.bz2
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
