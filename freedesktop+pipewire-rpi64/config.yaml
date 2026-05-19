@@ -50,6 +50,9 @@ dependency:
     freedesktop+libdbus-rpi64:
       - version: ''
         architecture: []
+    freedesktop+pulseaudio-rpi64-x+bin:
+      - version: ''
+        architecture: []
     freedesktop+pulseaudio-rpi64:
       - version: ''
         architecture: []
