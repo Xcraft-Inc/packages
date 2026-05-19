@@ -1,0 +1,55 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: alsa+ucm-conf-rpi64
+version: 1.2.15
+$version: 1.2.15
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: ALSA Use Case Manager configuration
+  long: ''
+dependency:
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://www.alsa-project.org/files/pub/lib/alsa-ucm-conf-<THIS.$VERSION>.tar.bz2'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: data/alsa-ucm-conf-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: ''
+      maketest: ''
+      makeinstall: |-
+        cp('ucm',  '<PEON.INSTALLDIR.X+BIN>/usr/shale/alsa/ucm');
+        cp('ucm2', '<PEON.INSTALLDIR.X+BIN>/usr/shale/alsa/ucm');
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
