@@ -52,7 +52,10 @@ data:
     test: none
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
-  deploy: ''
+  deploy: |-
+    !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
+    && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/pkgconfig
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.a
   env:
     path: []
     other: {}

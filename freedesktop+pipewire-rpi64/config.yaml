@@ -131,6 +131,11 @@ data:
     /* Audio bridge */
     cp('<PEON.ASSETS>/pipewire_bridge.conf',  '<PEON.INSTALLDIR.X+BIN>/etc/pipewire/pipewire.conf.d/bridge.conf');
     cp('<PEON.ASSETS>/wireplumber_uac2.conf', '<PEON.INSTALLDIR.X+BIN>/etc/wireplumber/wireplumber.conf.d/uac2.conf');
+
+    /* Cleanup */
+    rm('<PEON.INSTALLDIR.X+BIN>/usr/include');
+    rm('<PEON.INSTALLDIR.X+BIN>/usr/lib/pkgconfig');
+    rm('<PEON.INSTALLDIR.X+BIN>/usr/lib/liblua.s');
   env:
     path: []
     other: {}
