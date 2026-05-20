@@ -4,6 +4,10 @@ mount -t sysfs none /sys
 mount -t debugfs none /sys/kernel/debug
 mount -t configfs none /sys/kernel/config # USB gadgets
 
+rm -rf /var/run
+mkdir -p /var/run
+mount -t tmpfs none /var/run -o nodev,nosuid,size=1M,mode=0755
+
 echo /sbin/mdev > /proc/sys/kernel/hotplug
 
 # Ensure that /sys/block/mmcblk0 exists

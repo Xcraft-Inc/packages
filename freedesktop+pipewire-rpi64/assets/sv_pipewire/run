@@ -10,4 +10,6 @@ export PIPEWIRE_RUNTIME_DIR=/run/pipewire
 export PIPEWIRE_CORE=pipewire-0
 export PIPEWIRE_DAEMON=true
 
+mkdir -p "$PIPEWIRE_RUNTIME_DIR"
+
 exec chpst -u root:pipewire /usr/bin/pipewire -v
