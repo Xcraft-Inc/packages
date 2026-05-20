@@ -121,6 +121,7 @@ data:
   deploy: |-
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/pipewire');
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/wireplumber');
+
     cp('<PEON.ASSETS>/sv_pipewire',    '<PEON.INSTALLDIR.X+BIN>/etc/sv/pipewire');
     cp('<PEON.ASSETS>/sv_wireplumber', '<PEON.INSTALLDIR.X+BIN>/etc/sv/wireplumber');
     cp('<PEON.ASSETS>/asound.conf',    '<PEON.INSTALLDIR.X+BIN>/etc/asound.conf');
