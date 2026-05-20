@@ -141,7 +141,7 @@ data:
           'litech+radvd-rpi64-x+bin',
 
           /* Epsitec */
-          'epsitec+whispi-thrall-rpi64'
+          'epsitec+whispi-thrall-rpi64-x+bin'
         ]);
 
         yield genImage('carnotzet',
