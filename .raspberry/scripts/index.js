@@ -30,23 +30,25 @@ class Scripts {
     );
   };
 
-  genImage = async (rootDir, output) => {
+  genImage = async (rootDir, output, imageSize = 1024) => {
     const {rm, mkdir, mv, exec} = this.#ctx;
     const sh = (...args) => exec('sh', '-c', ...args);
 
     /* See README.md */
+    const bootMB = 256;
+    const sectorSize = 512;
     const fatFirstSec = 63;
-    const fatOffset = 32256;
-    const fatNbSec = 524225;
-    const ext4FirstSec = 524288;
-    const ext4Blocs = 196608;
-    const ext4Offset = 268435456;
+    const fatOffset = fatFirstSec * sectorSize;
+    const fatNbSec = (bootMB * 1024 * 1024) / sectorSize - fatFirstSec;
+    const ext4FirstSec = (bootMB * 1024 * 1024) / sectorSize;
+    const ext4Blocs = ((imageSize - bootMB) * 1024 * 1024) / (sectorSize * 8);
+    const ext4Offset = ext4FirstSec * sectorSize;
 
     const items = output.split(/[/\\]/g);
     const name = '__' + items[items.length - 1];
 
     /* prettier-ignore */ {
-    await sh(`fallocate -l 1G ${name}`);
+    await sh(`fallocate -l ${imageSize}M ${name}`);
     await sh(`printf "label: dos\n${fatFirstSec},${fatNbSec},0x0C,*\n${ext4FirstSec},,,-\n" | sfdisk ${name}`);
     await sh(`mformat -i ${name}@@${fatOffset} -F -v BOOT :: -N 0 -T ${fatNbSec}`);
     await sh(`mcopy -i ${name}@@${fatOffset} -s ${rootDir}/boot/* ::`);
