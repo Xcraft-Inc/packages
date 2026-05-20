@@ -136,7 +136,7 @@ data:
     /* Cleanup */
     rm('<PEON.INSTALLDIR.X+BIN>/usr/include');
     rm('<PEON.INSTALLDIR.X+BIN>/usr/lib/pkgconfig');
-    rm('<PEON.INSTALLDIR.X+BIN>/usr/lib/liblua.s');
+    rm('<PEON.INSTALLDIR.X+BIN>/usr/lib/liblua.a');
   env:
     path: []
     other: {}
