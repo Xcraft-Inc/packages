@@ -45,21 +45,18 @@ class Scripts {
     const items = output.split(/[/\\]/g);
     const name = '__' + items[items.length - 1];
 
+    /* prettier-ignore */ {
     await sh(`fallocate -l 1G ${name}`);
-    await sh(
-      `printf "label: dos\n${fatFirstSec},${fatNbSec},0x0C,*\n${ext4FirstSec},,,-\n" | sfdisk ${name}`
-    );
-    await sh(
-      `mformat -i ${name}@@${fatOffset} -F -v BOOT :: -N 0 -T ${fatNbSec}`
-    );
+    await sh(`printf "label: dos\n${fatFirstSec},${fatNbSec},0x0C,*\n${ext4FirstSec},,,-\n" | sfdisk ${name}`);
+    await sh(`mformat -i ${name}@@${fatOffset} -F -v BOOT :: -N 0 -T ${fatNbSec}`);
     await sh(`mcopy -i ${name}@@${fatOffset} -s ${rootDir}/boot/* ::`);
+    }
 
     rm(`${rootDir}/boot`);
     mkdir(`${rootDir}/boot`);
 
-    await sh(
-      `fakeroot mke2fs -t ext4 -b 4096 -O metadata_csum,extent,has_journal -m 0 -d ${rootDir} -E offset=${ext4Offset},lazy_itable_init=0,lazy_journal_init=0 ${name} ${ext4Blocs}`
-    );
+    /* prettier-ignore */
+    await sh(`fakeroot mke2fs -t ext4 -b 4096 -O metadata_csum,extent,has_journal -m 0 -d ${rootDir} -E offset=${ext4Offset},lazy_itable_init=0,lazy_journal_init=0 ${name} ${ext4Blocs}`);
 
     mv(`${name}`, output);
   };
@@ -69,23 +66,11 @@ class Scripts {
 
     cd(rootDir);
     mkdir(bootDir);
-    await exec(
-      'sh',
-      '-c',
-      `find . | cpio -o -H newc -R +0:+0 | gzip > ${rootDir}/initramfs.cpio.gz`
-    );
-    await exec(
-      mkimage,
-      '-A',
-      'arm64',
-      '-O',
-      'linux',
-      '-T',
-      'ramdisk',
-      '-d',
-      `${rootDir}/initramfs.cpio.gz`,
-      `${bootDir}/uRamdisk`
-    );
+
+    /* prettier-ignore */ {
+    await exec('sh', '-c', `find . | cpio -o -H newc -R +0:+0 | gzip > ${rootDir}/initramfs.cpio.gz`);
+    await exec(mkimage, '-A', 'arm64', '-O', 'linux', '-T', 'ramdisk', '-d', `${rootDir}/initramfs.cpio.gz`, `${bootDir}/uRamdisk`);
+    }
   };
 }
 
