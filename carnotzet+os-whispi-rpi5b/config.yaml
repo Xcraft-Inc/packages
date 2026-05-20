@@ -71,6 +71,9 @@ dependency:
     litech+radvd-rpi64:
       - version: ''
         architecture: []
+    epsitec+whispi-thrall-rpi64:
+      - version: ''
+        architecture: []
   build:
     tytso+e2fsprogs:
       - version: ''
@@ -135,7 +138,10 @@ data:
 
           /* Network */
           'openbsd+openssh-rpi64-x+bin',
-          'litech+radvd-rpi64-x+bin'
+          'litech+radvd-rpi64-x+bin',
+
+          /* Epsitec */
+          'epsitec+whispi-thrall-rpi64'
         ]);
 
         yield genImage('carnotzet',
