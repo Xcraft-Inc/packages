@@ -45,7 +45,9 @@ data:
       makeall: ''
       maketest: ''
       makeinstall: |-
-        cp('<PEON.ASSETS.GLOBAL>/config.txt', '<PEON.INSTALLDIR.X+BIN>/boot/config.txt');
+        cp('<PEON.ASSETS.GLOBAL>/sources.list', '<PEON.INSTALLDIR.X+BIN>/boot/sources.list');
+        cp('<PEON.ASSETS.GLOBAL>/config.txt',   '<PEON.INSTALLDIR.X+BIN>/boot/config.txt');
+        cp('<PEON.ASSETS.GLOBAL>/conffiles',    '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
     test: none
     env: {}
   deploy: ''
