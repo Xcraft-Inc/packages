@@ -76,7 +76,7 @@ data:
           && mkdir -p "<PEON.INSTALLDIR.X+BIN>/boot/overlays"
           && cp -a arch/arm/boot/dts/overlays/bcm2712d0.dtbo "<PEON.INSTALLDIR.X+BIN>/boot/overlays/"
           && cp -a arch/arm/boot/dts/overlays/dwc2.dtbo      "<PEON.INSTALLDIR.X+BIN>/boot/overlays/"
-          && rm -f "<PEON.INSTALLDIR.X+MODULES>/lib/modules/*/build"
+          && rm -f <PEON.INSTALLDIR.X+MODULES>/lib/modules/*/build
     test: none
     env:
       KBUILD_BUILD_TIMESTAMP: ''
