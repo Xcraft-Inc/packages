@@ -15,7 +15,7 @@ description:
   long: ''
 dependency:
   install:
-    carnotzet+rootfs-whispi-rpi4b:
+    carnotzet+rootfs-whispi-rpi5b:
       - version: ''
         architecture: []
     raspberry+linux-kernel-whispi-rpi5b:
@@ -79,7 +79,7 @@ data:
         try {
           /* Generate the root for the recovery initramfs */
           yield genRoot('<PEON.PROD.ROOTDIR>/var/rescue', '<PEON.ASSETS.GLOBAL>', [
-            'carnotzet+rootfs-whispi-rpi4b-x+bin',
+            'carnotzet+rootfs-whispi-rpi5b-x+bin',
             'raspberry+linux-kernel-whispi-rpi5b-x+modules',
             'raspberry+linux-firmware-rpi5b-x+bin',
             'gnu+glibc-rpi64-x+bin',

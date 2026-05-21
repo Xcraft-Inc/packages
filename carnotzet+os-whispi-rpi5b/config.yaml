@@ -17,7 +17,7 @@ dependency:
     carnotzet+os-config-whispi-rpi5b:
       - version: ''
         architecture: []
-    carnotzet+rootfs-whispi-rpi4b:
+    carnotzet+rootfs-whispi-rpi5b:
       - version: ''
         architecture: []
     carnotzet+rescuefs-whispi-rpi5b:
@@ -116,7 +116,7 @@ data:
         /* Generate the root for the MMC */
         yield genRoot('carnotzet', '<PEON.ASSETS.GLOBAL>', [
           'carnotzet+os-config-whispi-rpi5b-x+bin',
-          'carnotzet+rootfs-whispi-rpi4b-x+bin',
+          'carnotzet+rootfs-whispi-rpi5b-x+bin',
           'carnotzet+rescuefs-whispi-rpi5b-x+bin',
           'carnotzet+whispi-gadget-rpi64-x+bin',
           'raspberry+linux-kernel-whispi-rpi5b-x+bin',

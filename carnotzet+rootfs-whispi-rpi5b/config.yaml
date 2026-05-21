@@ -1,7 +1,7 @@
 subpackage:
   - runtime*
   - x+bin:linux-aarch64
-name: carnotzet+rootfs-whispi-rpi4b
+name: carnotzet+rootfs-whispi-rpi5b
 version: 0.1.0-5
 $version: 0.1.0
 distribution: raspberry/
@@ -15,9 +15,7 @@ description:
   long: ''
 dependency: {}
 bump:
-  - carnotzet+os-whispi-rpi4b
   - carnotzet+os-whispi-rpi5b
-  - carnotzet+rescuefs-whispi-rpi4b
   - carnotzet+rescuefs-whispi-rpi5b
 data:
   get:
