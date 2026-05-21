@@ -43,7 +43,7 @@ data:
       maketest: ''
       makeinstall: |-
         cp('ucm',  '<PEON.INSTALLDIR.X+BIN>/usr/share/alsa/ucm');
-        cp('ucm2', '<PEON.INSTALLDIR.X+BIN>/usr/share/alsa/ucm');
+        cp('ucm2', '<PEON.INSTALLDIR.X+BIN>/usr/share/alsa/ucm2');
     test: none
     env: {}
   deploy: ''
