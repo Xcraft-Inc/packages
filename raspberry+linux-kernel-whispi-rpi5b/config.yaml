@@ -2,9 +2,9 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
   - 'x+modules:linux-aarch64'
-name: raspberry+linux-kernel-whispi-rpi4b
-version: '20250702'
-$version: '20250702'
+name: raspberry+linux-kernel-whispi-rpi5b
+version: '6.18.26-060fea8f'
+$version: 6.18.26-060fea8f
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -12,7 +12,7 @@ maintainer:
 architecture:
   - source
 description:
-  brief: The Linux Kernel for RASPBERRY Pi4 model B
+  brief: The Linux Kernel for RASPBERRY Pi5 model B
   long: ''
 dependency:
   build:
@@ -33,25 +33,27 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-whispi-rpi4b
+  - carnotzet+os-whispi-rpi5b
 data:
   get:
-    uri: 'https://github.com/raspberrypi/linux/archive/refs/tags/stable_<THIS.$VERSION>.tar.gz'
+    uri: 'https://github.com/raspberrypi/linux/archive/060fea8f35a11d05a42e26229acd3e0c11d9caf1.tar.gz'
     mirrors: []
     ref: ''
     $ref: ''
     out: ''
     externals: true
     prepare: ''
-    $hash: 20250702@fbb94f7db8304821126d1aa24fceb2e97c0b7dc03e5cecd94e53ebf427d64b37.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
       && cp <PEON.ASSETS.GLOBAL>/logo_linux_clut224.ppm drivers/video/logo
-      && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- bcm2711_defconfig
+      && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- bcm2712_defconfig
+      && sed -i 's,^CONFIG_SND=m.*,CONFIG_SND=y,' .config
+      && sed -i 's,^CONFIG_SND_USB_AUDIO=m.*,CONFIG_SND_USB_AUDIO=y,' .config
+      && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- olddefconfig
   rules:
     type: script
-    location: data/linux-stable_<THIS.$VERSION>
+    location: data/linux-060fea8f35a11d05a42e26229acd3e0c11d9caf1
     args:
       postinst: ''
       prerm: ''
@@ -68,10 +70,13 @@ data:
                   INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+MODULES>"
                   modules_install
           && cp -a arch/arm64/boot/Image "<PEON.INSTALLDIR.X+BIN>/boot/"
-          && cp -a arch/arm64/boot/dts/broadcom/bcm2711-rpi-4-b.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
+          && cp -a arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dtb   "<PEON.INSTALLDIR.X+BIN>/boot/"
+          && cp -a arch/arm64/boot/dts/broadcom/bcm2712-d-rpi-5-b.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
+          && cp -a arch/arm64/boot/dts/broadcom/bcm2712d0-rpi-5-b.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
           && mkdir -p "<PEON.INSTALLDIR.X+BIN>/boot/overlays"
-          && cp -a arch/arm/boot/dts/overlays/dwc2.dtbo "<PEON.INSTALLDIR.X+BIN>/boot/overlays/"
-          && rm -f "<PEON.INSTALLDIR.X+MODULES>/lib/modules/*/build"
+          && cp -a arch/arm/boot/dts/overlays/bcm2712d0.dtbo "<PEON.INSTALLDIR.X+BIN>/boot/overlays/"
+          && cp -a arch/arm/boot/dts/overlays/dwc2.dtbo      "<PEON.INSTALLDIR.X+BIN>/boot/overlays/"
+          && rm -f <PEON.INSTALLDIR.X+MODULES>/lib/modules/*/build
     test: none
     env:
       KBUILD_BUILD_TIMESTAMP: ''

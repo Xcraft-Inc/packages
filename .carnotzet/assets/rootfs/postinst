@@ -1,7 +1,12 @@
 #!/bin/sh
 
 chmod 1777 /tmp
-ln -sf /var/run /run
+
+if [ ! -L /run ]; then
+  ln -sf /var/run /run
+fi
+
+addgroup audio -S 2>/dev/null || true
 
 if id rasp >/dev/null 2>&1 && [ ! -d /home/rasp ]; then
   mkdir -p /home/rasp
@@ -12,6 +17,9 @@ mkdir -p /var/lib/wpkg/core/hooks
 cp -f /usr/share/wpkg/hooks/core_preinst /var/lib/wpkg/core/hooks/core_preinst
 cp -f /usr/share/wpkg/hooks/core_postinst /var/lib/wpkg/core/hooks/core_postinst
 
+rm -rf /var/service/network
+rm -rf /var/service/wifi
+rm -rf /var/service/ntpd
 ln -sf /etc/sv/network /var/service/network
 ln -sf /etc/sv/wifi    /var/service/wifi
 ln -sf /etc/sv/ntpd    /var/service/ntpd

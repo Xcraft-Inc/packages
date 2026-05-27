@@ -1,4 +1,8 @@
 #!/bin/sh
 
+rm -rf /var/service/pisugar
 ln -sf /etc/sv/pisugar /var/service/pisugar
-sv up pisugar || :
+
+if [ ! -f /var/service/pisugar/down ]; then
+  sv up pisugar || :
+fi

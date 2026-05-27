@@ -1,7 +1,7 @@
 subpackage:
   - runtime*
   - x+bin:linux-aarch64
-name: carnotzet+rootfs-whispi-rpi4b
+name: carnotzet+rootfs-whispi-rpi5b
 version: 0.1.0-5
 $version: 0.1.0
 distribution: raspberry/
@@ -15,8 +15,8 @@ description:
   long: ''
 dependency: {}
 bump:
-  - carnotzet+os-whispi-rpi4b
-  - carnotzet+rescuefs-whispi-rpi4b
+  - carnotzet+os-whispi-rpi5b
+  - carnotzet+rescuefs-whispi-rpi5b
 data:
   get:
     uri: ''
@@ -39,6 +39,7 @@ data:
       maketest: ''
       makeinstall: |-
         cp('<PEON.WPKG.STAG>/usr/share/carnotzet/rootfs-rpi4b/data', '<PEON.INSTALLDIR.X+BIN>');
+        cp('<PEON.ASSETS>/mdev.conf',        '<PEON.INSTALLDIR.X+BIN>/etc/mdev.conf');
         cp('<PEON.ASSETS.GLOBAL>/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
         cp('<PEON.ASSETS.GLOBAL>/postinst',  '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
         cp('<PEON.ASSETS.GLOBAL>/prerm',     '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');

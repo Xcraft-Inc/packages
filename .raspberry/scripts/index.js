@@ -30,36 +30,35 @@ class Scripts {
     );
   };
 
-  genImage = async (rootDir, output) => {
+  genImage = async (rootDir, output, imageSize = 1024) => {
     const {rm, mkdir, mv, exec} = this.#ctx;
     const sh = (...args) => exec('sh', '-c', ...args);
 
     /* See README.md */
+    const bootMB = 256;
+    const sectorSize = 512;
     const fatFirstSec = 63;
-    const fatOffset = 32256;
-    const fatNbSec = 524225;
-    const ext4FirstSec = 524288;
-    const ext4Blocs = 196608;
-    const ext4Offset = 268435456;
+    const fatOffset = fatFirstSec * sectorSize;
+    const fatNbSec = (bootMB * 1024 * 1024) / sectorSize - fatFirstSec;
+    const ext4FirstSec = (bootMB * 1024 * 1024) / sectorSize;
+    const ext4Blocs = ((imageSize - bootMB) * 1024 * 1024) / (sectorSize * 8);
+    const ext4Offset = ext4FirstSec * sectorSize;
 
     const items = output.split(/[/\\]/g);
     const name = '__' + items[items.length - 1];
 
-    await sh(`fallocate -l 1G ${name}`);
-    await sh(
-      `printf "label: dos\n${fatFirstSec},${fatNbSec},0x0C,*\n${ext4FirstSec},,,-\n" | sfdisk ${name}`
-    );
-    await sh(
-      `mformat -i ${name}@@${fatOffset} -F -v BOOT :: -N 0 -T ${fatNbSec}`
-    );
+    /* prettier-ignore */ {
+    await sh(`fallocate -l ${imageSize}M ${name}`);
+    await sh(`printf "label: dos\n${fatFirstSec},${fatNbSec},0x0C,*\n${ext4FirstSec},,,-\n" | sfdisk ${name}`);
+    await sh(`mformat -i ${name}@@${fatOffset} -F -v BOOT :: -N 0 -T ${fatNbSec}`);
     await sh(`mcopy -i ${name}@@${fatOffset} -s ${rootDir}/boot/* ::`);
+    }
 
     rm(`${rootDir}/boot`);
     mkdir(`${rootDir}/boot`);
 
-    await sh(
-      `fakeroot mke2fs -t ext4 -b 4096 -O metadata_csum,extent,has_journal -m 0 -d ${rootDir} -E offset=${ext4Offset},lazy_itable_init=0,lazy_journal_init=0 ${name} ${ext4Blocs}`
-    );
+    /* prettier-ignore */
+    await sh(`fakeroot mke2fs -t ext4 -b 4096 -O metadata_csum,extent,has_journal -m 0 -d ${rootDir} -E offset=${ext4Offset},lazy_itable_init=0,lazy_journal_init=0 ${name} ${ext4Blocs}`);
 
     mv(`${name}`, output);
   };
@@ -69,23 +68,11 @@ class Scripts {
 
     cd(rootDir);
     mkdir(bootDir);
-    await exec(
-      'sh',
-      '-c',
-      `find . | cpio -o -H newc -R +0:+0 | gzip > ${rootDir}/initramfs.cpio.gz`
-    );
-    await exec(
-      mkimage,
-      '-A',
-      'arm64',
-      '-O',
-      'linux',
-      '-T',
-      'ramdisk',
-      '-d',
-      `${rootDir}/initramfs.cpio.gz`,
-      `${bootDir}/uRamdisk`
-    );
+
+    /* prettier-ignore */ {
+    await exec('sh', '-c', `find . | cpio -o -H newc -R +0:+0 | gzip > ${rootDir}/initramfs.cpio.gz`);
+    await exec(mkimage, '-A', 'arm64', '-O', 'linux', '-T', 'ramdisk', '-d', `${rootDir}/initramfs.cpio.gz`, `${bootDir}/uRamdisk`);
+    }
   };
 }
 

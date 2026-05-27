@@ -4,7 +4,11 @@ mount -t sysfs none /sys
 mount -t debugfs none /sys/kernel/debug
 mount -t configfs none /sys/kernel/config # USB gadgets
 
-echo /bin/mdev > /proc/sys/kernel/hotplug
+rm -rf /var/run
+mkdir -p /var/run
+mount -t tmpfs none /var/run -o nodev,nosuid,size=1M,mode=0755
+
+echo /sbin/mdev > /proc/sys/kernel/hotplug
 
 # Ensure that /sys/block/mmcblk0 exists
 until [ -e /sys/block/mmcblk0 ]; do
@@ -71,10 +75,12 @@ boot_normal()
   # Execute all postinst scripts in case of the first boot
   if [ ! -f /var/.bootstrapped ]; then
     for postinst in /var/lib/wpkg/*/postinst; do
+      printf "Run postinst for %s\\n" "$postinst"
       sh "$postinst"
     done
     ldconfig
     touch /var/.bootstrapped
+    echo "Boostrapped"
   fi
 
   printf "Carnotzet OS booted in %s seconds\\n" "$(cut -d' ' -f1 /proc/uptime)"

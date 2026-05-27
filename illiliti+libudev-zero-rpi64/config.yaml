@@ -41,15 +41,21 @@ data:
     args:
       postinst: ''
       prerm: ''
-      makeall: '!make -j<PEON.CPUS.COUNT>'
+      makeall: |-
+        !  make -j<PEON.CPUS.COUNT>
+        && $CC $CFLAGS $LDFLAGS contrib/helper.c -o contrib/helper
       maketest: ''
       makeinstall: |-
         !  make install PREFIX=<PEON.PREFIXDIR>
         && make install PREFIX=/usr DESTDIR=<PEON.INSTALLDIR.X+BIN>
+        && install -D contrib/helper <PEON.INSTALLDIR.X+BIN>/usr/bin/udev0-helper
     test: none
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
-  deploy: ''
+  deploy: |-
+    !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
+    && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/pkgconfig
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.a
   env:
     path: []
     other: {}

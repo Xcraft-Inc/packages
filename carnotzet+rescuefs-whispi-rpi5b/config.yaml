@@ -1,7 +1,7 @@
 subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
-name: carnotzet+rescuefs-whispi-rpi4b
+name: carnotzet+rescuefs-whispi-rpi5b
 version: 0.1.0
 $version: 0.1.0
 distribution: raspberry/
@@ -15,13 +15,13 @@ description:
   long: ''
 dependency:
   install:
-    carnotzet+rootfs-whispi-rpi4b:
+    carnotzet+rootfs-whispi-rpi5b:
       - version: ''
         architecture: []
-    raspberry+linux-kernel-whispi-rpi4b:
+    raspberry+linux-kernel-whispi-rpi5b:
       - version: ''
         architecture: []
-    raspberry+linux-firmware-rpi4b:
+    raspberry+linux-firmware-rpi5b:
       - version: ''
         architecture: []
     gnu+glibc-rpi64:
@@ -42,7 +42,7 @@ dependency:
     malinen+wpa-supplicant-rpi64:
       - version: ''
         architecture: []
-    raspberry+uboot-rpi4b:
+    raspberry+uboot-rpi5b:
       - version: ''
         architecture: []
   build:
@@ -53,7 +53,7 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-whispi-rpi4b
+  - carnotzet+os-whispi-rpi5b
 data:
   get:
     uri: ''
@@ -79,9 +79,9 @@ data:
         try {
           /* Generate the root for the recovery initramfs */
           yield genRoot('<PEON.PROD.ROOTDIR>/var/rescue', '<PEON.ASSETS.GLOBAL>', [
-            'carnotzet+rootfs-whispi-rpi4b-x+bin',
-            'raspberry+linux-kernel-whispi-rpi4b-x+modules',
-            'raspberry+linux-firmware-rpi4b-x+bin',
+            'carnotzet+rootfs-whispi-rpi5b-x+bin',
+            'raspberry+linux-kernel-whispi-rpi5b-x+modules',
+            'raspberry+linux-firmware-rpi5b-x+bin',
             'gnu+glibc-rpi64-x+bin',
             'vlasenko+busybox-rpi64-x+bin',
             'linux+util-linux-rpi64-x+bin',
@@ -91,7 +91,7 @@ data:
           ]);
 
           /* Keep only essential modules */
-          const modVer = '6.12.34-v8';
+          const modVer = '6.18.26-v8-16k';
           const kernelDir = `<PEON.PROD.ROOTDIR>/var/rescue/lib/modules/${modVer}/kernel`;
           [
             'drivers/net/wireless/broadcom/brcm80211',
@@ -107,7 +107,7 @@ data:
           cp('<PEON.ASSETS.GLOBAL>/postinst', '<PEON.PROD.ROOTDIR>/var/rescue/var/lib/wpkg/core/postinst');
 
           /* Generate the initramfs */
-          yield genInitramfs('<PEON.PROD.ROOTDIR>/var/rescue', '<PEON.INSTALLDIR.X+BIN>/boot', 'mkimage-rpi4b');
+          yield genInitramfs('<PEON.PROD.ROOTDIR>/var/rescue', '<PEON.INSTALLDIR.X+BIN>/boot', 'mkimage-rpi5b');
         } finally {
           rm('<PEON.PROD.ROOTDIR>/var/rescue');
         }

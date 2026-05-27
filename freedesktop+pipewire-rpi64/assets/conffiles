@@ -1,0 +1,3 @@
+/etc/asound.conf
+/etc/pipewire/pipewire.conf.d/bridge.conf
+/etc/wireplumber/wireplumber.conf.d/uac2.conf

@@ -1,89 +1,105 @@
 #!/bin/sh
 exec 2>&1
 
-echo "Mount Whispi gadget..."
+echo "Mount Whispi Gadget..."
+
+if [ -f /boot/carnotzet.cfg ]; then
+  . /boot/carnotzet.cfg
+else
+  echo "Error: /boot/carnotzet.cfg not found"
+  exit 1
+fi
 
 mount_gadget() {
-  GADGET_DIR=/sys/kernel/config/usb_gadget/piuac2
+  GADGET_DIR=/sys/kernel/config/usb_gadget/piwin
 
-  mkdir -p $GADGET_DIR
+  mkdir -p "$GADGET_DIR"
+  cd "$GADGET_DIR"
 
-  # Linux / Darwin
-  echo 0x1d6b > $GADGET_DIR/idVendor
-  echo 0x0104 > $GADGET_DIR/idProduct
-  echo 0x0200 > $GADGET_DIR/bcdUSB
-  echo 0x0100 > $GADGET_DIR/bcdDevice
+  if [ "$gadget_network_target_os" = "win" ]; then
+    echo 0x2e8a > idVendor
+    echo 0x0013 > idProduct
+  else
+    echo 0x1d6b > idVendor
+    echo 0x0104 > idProduct
+  fi
 
-  mkdir -p $GADGET_DIR/strings/0x409
-  echo "0123456789ABCDEF" > $GADGET_DIR/strings/0x409/serialnumber
-  echo "Xcraft" > $GADGET_DIR/strings/0x409/manufacturer
-  echo "Whispi Audio" > $GADGET_DIR/strings/0x409/product
+  echo 0x0200 > bcdUSB
+  echo 0x0100 > bcdDevice
 
-  mkdir -p $GADGET_DIR/configs/c.1/strings/0x409
-  echo "UAC2 Audio" > $GADGET_DIR/configs/c.1/strings/0x409/configuration
-  echo 250 > $GADGET_DIR/configs/c.1/MaxPower
+  mkdir -p strings/0x409
+  echo "0123456789ABCDEF" > strings/0x409/serialnumber
+  echo "Xcraft"           > strings/0x409/manufacturer
+  echo "Whispi Audio"     > strings/0x409/product
 
-  mkdir -p $GADGET_DIR/functions/uac2.usb0
+  echo 0xEF > bDeviceClass
+  echo 0x02 > bDeviceSubClass
+  echo 0x01 > bDeviceProtocol
 
-  #########
-  # Capture
-  #########
+  mkdir -p configs/c.1/strings/0x409
+  echo 250 > configs/c.1/MaxPower
 
-  echo 0x3    > $GADGET_DIR/functions/uac2.usb0/c_chmask
-  echo 48000  > $GADGET_DIR/functions/uac2.usb0/c_srate
-  echo 2      > $GADGET_DIR/functions/uac2.usb0/c_ssize
-  echo 1      > $GADGET_DIR/functions/uac2.usb0/c_mute_present
-  echo 1      > $GADGET_DIR/functions/uac2.usb0/c_volume_present
-  echo -10240 > $GADGET_DIR/functions/uac2.usb0/c_volume_min
-  echo 0      > $GADGET_DIR/functions/uac2.usb0/c_volume_max
-  echo 256    > $GADGET_DIR/functions/uac2.usb0/c_volume_res
+  if [ "$gadget_network_target_os" = "win" ]; then
+    echo "RNDIS + UAC2" > configs/c.1/strings/0x409/configuration
 
-  echo "Pi Headphones In" > $GADGET_DIR/functions/uac2.usb0/c_it_name
-  echo "Pi Playback Out"  > $GADGET_DIR/functions/uac2.usb0/c_ot_name
+    mkdir -p os_desc
+    echo 1       > os_desc/use
+    echo 0xcd    > os_desc/b_vendor_code
+    echo MSFT100 > os_desc/qw_sign
 
-  ##########
-  # Playback
-  ##########
+    mkdir -p functions/rndis.usb0
+    echo "02:1A:11:00:00:11" > functions/rndis.usb0/dev_addr
+    echo "02:1A:11:00:00:12" > functions/rndis.usb0/host_addr
+    mkdir -p functions/rndis.usb0/os_desc/interface.rndis
+    echo "RNDIS"   > functions/rndis.usb0/os_desc/interface.rndis/compatible_id
+    echo "5162001" > functions/rndis.usb0/os_desc/interface.rndis/sub_compatible_id
 
-  echo 0x1    > $GADGET_DIR/functions/uac2.usb0/p_chmask
-  echo 48000  > $GADGET_DIR/functions/uac2.usb0/p_srate
-  echo 2      > $GADGET_DIR/functions/uac2.usb0/p_ssize
-  echo 1      > $GADGET_DIR/functions/uac2.usb0/p_mute_present
-  echo 1      > $GADGET_DIR/functions/uac2.usb0/p_volume_present
-  echo -10240 > $GADGET_DIR/functions/uac2.usb0/p_volume_min
-  echo 0      > $GADGET_DIR/functions/uac2.usb0/p_volume_max
-  echo 256    > $GADGET_DIR/functions/uac2.usb0/p_volume_res
+    ln -s functions/rndis.usb0 configs/c.1/
+  else
+    echo "ECM + UAC2" > configs/c.1/strings/0x409/configuration
 
-  echo "Pi Mic In"      > $GADGET_DIR/functions/uac2.usb0/p_it_name
-  echo "Pi Capture Out" > $GADGET_DIR/functions/uac2.usb0/p_ot_name
+    mkdir -p functions/ecm.usb0
+    echo "02:1A:11:00:00:01" > functions/ecm.usb0/dev_addr
 
-  # Friendly names
+    ln -s functions/ecm.usb0 configs/c.1/
+  fi
 
-  echo "Pi Audio Bridge" > $GADGET_DIR/functions/uac2.usb0/function_name
-  echo "Pi Clock In"     > $GADGET_DIR/functions/uac2.usb0/clksrc_in_name
-  echo "Pi Clock Out"    > $GADGET_DIR/functions/uac2.usb0/clksrc_out_name
+  mkdir -p functions/uac2.usb0
 
-  #########
-  # Network
-  #########
+  echo 0x3    > functions/uac2.usb0/c_chmask
+  echo 48000  > functions/uac2.usb0/c_srate
+  echo 2      > functions/uac2.usb0/c_ssize
+  echo 1      > functions/uac2.usb0/c_mute_present
+  echo 1      > functions/uac2.usb0/c_volume_present
+  echo -10240 > functions/uac2.usb0/c_volume_min
+  echo 0      > functions/uac2.usb0/c_volume_max
+  echo 256    > functions/uac2.usb0/c_volume_res
+  echo "Pi Headphones In" > functions/uac2.usb0/c_it_name
+  echo "Pi Playback Out"  > functions/uac2.usb0/c_ot_name
 
-  mkdir -p $GADGET_DIR/functions/ecm.usb0
+  echo 0x1    > functions/uac2.usb0/p_chmask
+  echo 48000  > functions/uac2.usb0/p_srate
+  echo 2      > functions/uac2.usb0/p_ssize
+  echo 1      > functions/uac2.usb0/p_mute_present
+  echo 1      > functions/uac2.usb0/p_volume_present
+  echo -10240 > functions/uac2.usb0/p_volume_min
+  echo 0      > functions/uac2.usb0/p_volume_max
+  echo 256    > functions/uac2.usb0/p_volume_res
+  echo "Pi Mic In"      > functions/uac2.usb0/p_it_name
+  echo "Pi Capture Out" > functions/uac2.usb0/p_ot_name
 
-  echo "02:1A:11:00:00:01" > $GADGET_DIR/functions/ecm.usb0/dev_addr
+  echo "Pi Audio Bridge" > functions/uac2.usb0/function_name
+  echo "Pi Clock In"     > functions/uac2.usb0/clksrc_in_name
+  echo "Pi Clock Out"    > functions/uac2.usb0/clksrc_out_name
 
-  ln -s $GADGET_DIR/functions/uac2.usb0 $GADGET_DIR/configs/c.1/
-  ln -s $GADGET_DIR/functions/ecm.usb0 $GADGET_DIR/configs/c.1/
+  ln -s functions/uac2.usb0 configs/c.1/
 
-  ###########################################
-  # Enable gadget on the first USB controller
-  ###########################################
+  if [ "$gadget_network_target_os" = "win" ]; then
+    ln -s configs/c.1 os_desc
+  fi
 
   UDC_NAME="$(ls /sys/class/udc | head -n 1)"
-  echo "$UDC_NAME" > /sys/kernel/config/usb_gadget/piuac2/UDC
-
-  #########
-  # Network
-  #########
+  echo "$UDC_NAME" > UDC
 
   # Wait for the new usb0 device and setup the IP address
   TIMEOUT=30
@@ -110,7 +126,7 @@ dispose() {
   exit 0
 }
 
-trap dispose SIGTERM SIGINT
+trap dispose SIGTERM SIGINT EXIT
 
 mount_gadget
 

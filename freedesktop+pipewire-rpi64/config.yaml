@@ -79,8 +79,8 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-whispi-rpi4b
-  - carnotzet+rescuefs-whispi-rpi4b
+  - carnotzet+os-whispi-rpi5b
+  - carnotzet+rescuefs-whispi-rpi5b
 data:
   get:
     uri: 'https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/<THIS.$VERSION>/pipewire-<THIS.$VERSION>.tar.gz'
@@ -107,7 +107,9 @@ data:
       makeall: '!meson.pyz compile -C _build'
       maketest: ''
       makeinstall: |-
-        !meson.pyz install -C _build --destdir=<PEON.INSTALLDIR.X+BIN>
+        !  meson.pyz install -C _build --destdir=<PEON.INSTALLDIR>
+        && find <PEON.INSTALLDIR> -name "*.pc" -exec sed -i 's|prefix=/usr|prefix=<PEON.INSTALLDIR>/usr|g' {} +
+        && meson.pyz install -C _build --destdir=<PEON.INSTALLDIR.X+BIN>
     test: none
     env:
       LDFLAGS: '<PEON.ENV.LDFLAGS> -Wl,-rpath-link,<PEON.PROD.ROOTDIR>/usr/lib -lncursesw'
@@ -117,11 +119,22 @@ data:
   deploy: |-
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/pipewire');
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/wireplumber');
-    mkdir('<PEON.INSTALLDIR.X+BIN>/run/pipewire');
-    cp('<PEON.ASSETS>/sv_pipewire',      '<PEON.INSTALLDIR.X+BIN>/etc/sv/pipewire');
-    cp('<PEON.ASSETS>/sv_wireplumber',   '<PEON.INSTALLDIR.X+BIN>/etc/sv/wireplumber');
-    cp('<PEON.ASSETS>/postinst',         '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
-    cp('<PEON.ASSETS>/prerm',            '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+
+    cp('<PEON.ASSETS>/sv_pipewire',    '<PEON.INSTALLDIR.X+BIN>/etc/sv/pipewire');
+    cp('<PEON.ASSETS>/sv_wireplumber', '<PEON.INSTALLDIR.X+BIN>/etc/sv/wireplumber');
+    cp('<PEON.ASSETS>/asound.conf',    '<PEON.INSTALLDIR.X+BIN>/etc/asound.conf');
+    cp('<PEON.ASSETS>/postinst',       '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',          '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+    cp('<PEON.ASSETS>/conffiles',      '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+
+    /* Audio bridge */
+    cp('<PEON.ASSETS>/pipewire_bridge.conf',  '<PEON.INSTALLDIR.X+BIN>/etc/pipewire/pipewire.conf.d/bridge.conf');
+    cp('<PEON.ASSETS>/wireplumber_uac2.conf', '<PEON.INSTALLDIR.X+BIN>/etc/wireplumber/wireplumber.conf.d/uac2.conf');
+
+    /* Cleanup */
+    rm('<PEON.INSTALLDIR.X+BIN>/usr/include');
+    rm('<PEON.INSTALLDIR.X+BIN>/usr/lib/pkgconfig');
+    rm('<PEON.INSTALLDIR.X+BIN>/usr/lib/liblua.a');
   env:
     path: []
     other: {}

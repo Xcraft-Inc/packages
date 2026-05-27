@@ -1,0 +1,63 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: libsndfile+libsndfile-rpi64
+version: '1.2.2'
+$version: '1.2.2'
+distribution: toolchain/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: libsndfile
+  long: 'A C library for reading and writing sound files containing sampled audio data.'
+dependency:
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://github.com/libsndfile/libsndfile/releases/download/<THIS.$VERSION>/libsndfile-<THIS.$VERSION>.tar.xz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=<PEON.PREFIXDIR>
+                     --build=$MACHTYPE
+                     --host=aarch64-xcraft-linux-gnu
+                     --enable-static
+                     --disable-shared
+  rules:
+    type: make
+    location: data/libsndfile-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '-j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: install
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

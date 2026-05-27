@@ -1,0 +1,5 @@
+# DON'T EDIT THIS FILE
+# Overload this variable (by creating a new file in the carnotzet.d directory,
+# for example 99.user) to enable the macOS support.
+# Note that it doesn't matter for Linux
+gadget_network_target_os="win"

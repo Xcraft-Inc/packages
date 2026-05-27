@@ -1,4 +1,8 @@
 #!/bin/sh
 
+rm -rf /var/service/bluealsa
 ln -sf /etc/sv/bluealsa /var/service/bluealsa
-sv up bluealsa || :
+
+if [ ! -f /var/service/bluealsa/down ]; then
+  sv up bluealsa || :
+fi

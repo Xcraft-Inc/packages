@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - x+bin:linux-aarch64
 name: carnotzet+rootfs-contelia-rpiz2w
-version: 0.1.0-5
-$version: 0.1.0
+version: 0.2.0
+$version: 0.2.0
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter

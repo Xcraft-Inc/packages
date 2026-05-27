@@ -1,6 +1,8 @@
-enable_uart=1
-arm_64bit=1
+enable_uart=0
 kernel=u-boot.bin
+initial_turbo=30
+disable_splash=1
+framebuffer_depth=32
 
 # Enable gadget mode for USB
 dtoverlay=dwc2,dr_mode=peripheral

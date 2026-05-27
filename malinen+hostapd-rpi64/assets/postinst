@@ -1,4 +1,8 @@
 #!/bin/sh
 
+rm -rf /var/service/hostapd
 ln -sf /etc/sv/hostapd /var/service/hostapd
-sv up hostapd || :
+
+if [ ! -f /var/service/hostapd/down ]; then
+  sv up hostapd || :
+fi

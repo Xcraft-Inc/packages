@@ -1,35 +1,32 @@
 subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
-name: carnotzet+os-config-whispi-rpi4b
-version: '0.1.0'
-$version: '0.1.0'
+name: alsa+ucm-conf-rpi64
+version: 1.2.14
+$version: 1.2.14
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
-  email: mathieu@schroetersa.ch
+  email: schroeter@epsitec.ch
 architecture:
   - source
 description:
-  brief: Base configuration files
+  brief: ALSA Use Case Manager configuration
   long: ''
 dependency:
   build:
-    xcraft+peon:
+    xcraft+base-build:
       - version: ''
         architecture: []
-  make:
-    xcraft+base-make:
+    x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
-bump:
-  - carnotzet+os-whispi-rpiz4b
-  - carnotzet+rescuefs-whispi-rpi4b
+bump: []
 data:
   get:
-    uri: ''
+    uri: 'https://www.alsa-project.org/files/pub/lib/alsa-ucm-conf-<THIS.$VERSION>.tar.bz2'
     mirrors: []
-    ref: <THIS.$VERSION>
+    ref: ''
     $ref: ''
     out: ''
     externals: true
@@ -38,15 +35,15 @@ data:
   configure: ''
   rules:
     type: script
-    location: ''
+    location: data/alsa-ucm-conf-<THIS.$VERSION>
     args:
       postinst: ''
       prerm: ''
       makeall: ''
       maketest: ''
       makeinstall: |-
-        cp('<PEON.ASSETS>/config.txt',  '<PEON.INSTALLDIR.X+BIN>/boot/config.txt');
-        cp('<PEON.ASSETS>/modules',     '<PEON.INSTALLDIR.X+BIN>/etc/modules');
+        cp('ucm',  '<PEON.INSTALLDIR.X+BIN>/usr/share/alsa/ucm');
+        cp('ucm2', '<PEON.INSTALLDIR.X+BIN>/usr/share/alsa/ucm2');
     test: none
     env: {}
   deploy: ''

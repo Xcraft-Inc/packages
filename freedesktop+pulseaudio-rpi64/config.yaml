@@ -1,0 +1,91 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: freedesktop+pulseaudio-rpi64
+version: '17.0'
+$version: '17.0'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: A sound server system for POSIX OSes
+  long: ''
+dependency:
+  install:
+    alsa+lib-rpi64:
+      - version: ''
+        architecture: []
+    libsndfile+libsndfile-rpi64:
+      - version: ''
+        architecture: []
+    gnome+glib-rpi64:
+      - version: ''
+        architecture: []
+    freedesktop+libdbus-rpi64:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+    meson+meson:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://freedesktop.org/software/pulseaudio/releases/pulseaudio-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && meson.pyz setup _build
+                   --prefix=/usr
+                   --cross-file=<PEON.ASSETS>/cross.txt
+                   -Dclient=true
+                   -Ddaemon=false
+                   -Dalsa=enabled
+                   -Dgcov=false
+                   -Dsystemd=disabled
+                   -Dtests=false
+                   -Ddoxygen=false
+                   -Dman=false
+  rules:
+    type: script
+    location: data/pulseaudio-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!meson.pyz compile -C _build'
+      maketest: ''
+      makeinstall: |-
+        !  meson.pyz install -C _build --destdir=<PEON.INSTALLDIR>
+        && find <PEON.INSTALLDIR> -name "*.pc" -exec sed -i 's|prefix=/usr|prefix=<PEON.INSTALLDIR>/usr|g' {} +
+        && meson.pyz install -C _build --destdir=<PEON.INSTALLDIR.X+BIN>
+    test: none
+    env:
+      LDFLAGS: '<PEON.ENV.LDFLAGS> -Wl,-rpath-link,<PEON.PROD.ROOTDIR>/usr/lib'
+      PKG_CONFIG_ALLOW_CROSS: '1'
+      PKG_CONFIG_PATH: <PEON.PROD.ROOTDIR>/usr/lib/pkgconfig
+      PKG_CONFIG_LIBDIR: <PEON.PROD.ROOTDIR>/usr/lib/pkgconfig
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

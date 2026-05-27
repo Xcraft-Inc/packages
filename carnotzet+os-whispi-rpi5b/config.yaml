@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
-name: carnotzet+os-whispi-rpi4b
-version: 0.1.0
-$version: 0.1.0
+name: carnotzet+os-whispi-rpi5b
+version: 0.9.9
+$version: 0.9.9
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -14,28 +14,25 @@ description:
   long: ''
 dependency:
   install:
-    carnotzet+os-config-whispi-rpi4b:
+    carnotzet+os-config-whispi-rpi5b:
       - version: ''
         architecture: []
-    carnotzet+rootfs-whispi-rpi4b:
+    carnotzet+rootfs-whispi-rpi5b:
       - version: ''
         architecture: []
-    carnotzet+rescuefs-whispi-rpi4b:
+    carnotzet+rescuefs-whispi-rpi5b:
       - version: ''
         architecture: []
     carnotzet+whispi-gadget-rpi64:
       - version: ''
         architecture: []
-    raspberry+linux-kernel-whispi-rpi4b:
+    raspberry+linux-kernel-whispi-rpi5b:
       - version: ''
         architecture: []
-    raspberry+linux-firmware-rpi4b:
+    raspberry+linux-firmware-rpi5b:
       - version: ''
         architecture: []
-    raspberry+uboot-rpi4b:
-      - version: ''
-        architecture: []
-    raspberry+firmware-rpi4b:
+    raspberry+uboot-rpi5b:
       - version: ''
         architecture: []
     gnu+glibc-rpi64:
@@ -72,6 +69,9 @@ dependency:
       - version: ''
         architecture: []
     litech+radvd-rpi64:
+      - version: ''
+        architecture: []
+    epsitec+whispi-thrall-rpi64:
       - version: ''
         architecture: []
   build:
@@ -115,15 +115,14 @@ data:
 
         /* Generate the root for the MMC */
         yield genRoot('carnotzet', '<PEON.ASSETS.GLOBAL>', [
-          'carnotzet+os-config-whispi-rpi4b-x+bin',
-          'carnotzet+rootfs-whispi-rpi4b-x+bin',
-          'carnotzet+rescuefs-whispi-rpi4b-x+bin',
+          'carnotzet+os-config-whispi-rpi5b-x+bin',
+          'carnotzet+rootfs-whispi-rpi5b-x+bin',
+          'carnotzet+rescuefs-whispi-rpi5b-x+bin',
           'carnotzet+whispi-gadget-rpi64-x+bin',
-          'raspberry+linux-kernel-whispi-rpi4b-x+bin',
-          'raspberry+linux-kernel-whispi-rpi4b-x+modules',
-          'raspberry+linux-firmware-rpi4b-x+bin',
-          'raspberry+uboot-rpi4b-x+bin',
-          'raspberry+firmware-rpi4b-x+bin',
+          'raspberry+linux-kernel-whispi-rpi5b-x+bin',
+          'raspberry+linux-kernel-whispi-rpi5b-x+modules',
+          'raspberry+linux-firmware-rpi5b-x+bin',
+          'raspberry+uboot-rpi5b-x+bin',
           'gnu+glibc-rpi64-x+bin',
           'gnu+libstdcxx-rpi64-x+bin',
           'vlasenko+busybox-rpi64-x+bin',
@@ -139,11 +138,15 @@ data:
 
           /* Network */
           'openbsd+openssh-rpi64-x+bin',
-          'litech+radvd-rpi64-x+bin'
+          'litech+radvd-rpi64-x+bin',
+
+          /* Epsitec */
+          'epsitec+whispi-thrall-rpi64-x+bin'
         ]);
 
         yield genImage('carnotzet',
-          '<PEON.INSTALLDIR>/opt/img/carnotzet-os-whispi-<THIS.$VERSION>-rpi4b.img'
+          '<PEON.INSTALLDIR>/opt/img/carnotzet-os-whispi-<THIS.$VERSION>-rpi5b.img',
+          2048
         );
       maketest: ''
       makeinstall: ''
