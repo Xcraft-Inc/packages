@@ -13,6 +13,10 @@ description:
   brief: Package of utilities distributed by the Linux Kernel Organization
   long: ''
 dependency:
+  install:
+    gnu+libncurses:
+      - version: ''
+        architecture: []
   build:
     xcraft+base-build:
       - version: ''
