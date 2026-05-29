@@ -3,7 +3,7 @@ subpackage:
   - 'x+bin:linux-aarch64'
   - 'x+modules:linux-aarch64'
 name: raspberry+linux-kernel-whispi-rpi5b
-version: '6.18.26-060fea8f'
+version: 6.18.26-060fea8f-2
 $version: 6.18.26-060fea8f
 distribution: raspberry/
 maintainer:
@@ -23,6 +23,9 @@ dependency:
       - version: ''
         architecture: []
     x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+    openssl+openssl:
       - version: ''
         architecture: []
     gnu+bc:
@@ -79,6 +82,7 @@ data:
           && rm -f <PEON.INSTALLDIR.X+MODULES>/lib/modules/*/build
     test: none
     env:
+      LD_LIBRARY_PATH: <PEON.ROOTDIR>/usr/lib
       KBUILD_BUILD_TIMESTAMP: ''
   deploy: ''
   env:
