@@ -25,6 +25,9 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
+    openssl+openssl:
+      - version: ''
+        architecture: []
     gnu+bc:
       - version: ''
         architecture: []
@@ -84,6 +87,7 @@ data:
           && rm -f <PEON.INSTALLDIR.X+MODULES>/lib/modules/*/build
     test: none
     env:
+      LD_LIBRARY_PATH: <PEON.ROOTDIR>/usr/lib
       KBUILD_BUILD_TIMESTAMP: ''
   deploy: ''
   env:
