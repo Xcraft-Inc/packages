@@ -1,3 +1,4 @@
 brcmfmac
 libcomposite
 snd_aloop
+pwm_fan
