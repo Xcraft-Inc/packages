@@ -55,7 +55,9 @@ data:
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
       CXX: aarch64-xcraft-linux-gnu-g++
-  deploy: ''
+  deploy: |-
+    !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
+    && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/cmake
   env:
     path: []
     other: {}
