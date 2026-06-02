@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sv stop triggerhappy || :
+rm -rf /var/service/triggerhappy

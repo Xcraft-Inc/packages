@@ -1,0 +1,8 @@
+#!/bin/sh
+
+rm -rf /var/service/triggerhappy
+ln -sf /etc/sv/triggerhappy /var/service/triggerhappy
+
+if [ ! -f /var/service/triggerhappy/down ]; then
+  sv up triggerhappy || :
+fi
