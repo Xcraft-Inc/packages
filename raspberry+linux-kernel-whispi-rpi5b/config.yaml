@@ -35,6 +35,10 @@ dependency:
     xcraft+base-make:
       - version: ''
         architecture: []
+  install:
+    hailo-ai+hailort-drivers-rpi64-srcmod:
+      - version: ''
+        architecture: []
 bump:
   - carnotzet+os-whispi-rpi5b
 data:
@@ -72,6 +76,11 @@ data:
                   CROSS_COMPILE=aarch64-xcraft-linux-gnu-
                   INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+MODULES>"
                   modules_install
+          && make ARCH=arm64
+                  CROSS_COMPILE=aarch64-xcraft-linux-gnu-
+                  INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+MODULES>"
+                  M="<PEON.PROD.ROOTDIR>/usr/src/hailort-drivers-module-5.3.0-src/linux/pcie"
+                  modules modules_install
           && cp -a arch/arm64/boot/Image "<PEON.INSTALLDIR.X+BIN>/boot/"
           && cp -a arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dtb   "<PEON.INSTALLDIR.X+BIN>/boot/"
           && cp -a arch/arm64/boot/dts/broadcom/bcm2712-d-rpi-5-b.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
