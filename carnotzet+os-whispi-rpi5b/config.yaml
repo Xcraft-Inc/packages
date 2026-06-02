@@ -32,6 +32,9 @@ dependency:
     raspberry+linux-firmware-rpi5b:
       - version: ''
         architecture: []
+    hailo-ai+hailort-drivers-rpi64:
+      - version: ''
+        architecture: []
     raspberry+uboot-rpi5b:
       - version: ''
         architecture: []
@@ -122,6 +125,7 @@ data:
           'raspberry+linux-kernel-whispi-rpi5b-x+bin',
           'raspberry+linux-kernel-whispi-rpi5b-x+modules',
           'raspberry+linux-firmware-rpi5b-x+bin',
+          'hailo-ai+hailort-drivers-rpi64-x+bin',
           'raspberry+uboot-rpi5b-x+bin',
           'gnu+glibc-rpi64-x+bin',
           'gnu+libstdcxx-rpi64-x+bin',
