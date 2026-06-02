@@ -51,6 +51,7 @@ data:
       postinst: ''
       prerm: ''
       makeall: |-
+        yield exec('bash', '-c', 'patch -p1 < <PEON.ASSETS>/001_fix-newer-kernel.patch');
         cp('.', '<PEON.INSTALLDIR.SRCMOD>/usr/src/hailort-drivers-module-<THIS.$VERSION>-src');
       maketest: ''
       makeinstall: |-
