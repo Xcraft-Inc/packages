@@ -74,6 +74,9 @@ dependency:
     litech+radvd-rpi64:
       - version: ''
         architecture: []
+    hailo-ai+hailort-rpi64:
+      - version: ''
+        architecture: []
     epsitec+whispi-thrall-rpi64:
       - version: ''
         architecture: []
@@ -143,6 +146,9 @@ data:
           /* Network */
           'openbsd+openssh-rpi64-x+bin',
           'litech+radvd-rpi64-x+bin',
+
+          /* HailoRT */
+          'hailo-ai+hailort-rpi64-x+bin',
 
           /* Epsitec */
           'epsitec+whispi-thrall-rpi64-x+bin'
