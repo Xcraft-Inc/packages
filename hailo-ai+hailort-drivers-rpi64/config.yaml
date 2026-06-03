@@ -55,10 +55,11 @@ data:
         cp('.', '<PEON.INSTALLDIR.SRCMOD>/usr/src/hailort-drivers-module-<THIS.$VERSION>-src');
       maketest: ''
       makeinstall: |-
-        !   ./download_firmware_hailo10h.sh
-         && mkdir -p <PEON.INSTALLDIR.X+BIN>/lib/firmware/hailo
-         && mv hailo10h_fw_<THIS.$VERSION> <PEON.INSTALLDIR.X+BIN>/lib/firmware/hailo/hailo10h.<THIS.$VERSION>
-         && ln -s /lib/firmware/hailo/hailo10h.<THIS.$VERSION> <PEON.INSTALLDIR.X+BIN>/lib/firmware/hailo/hailo10h
+        !  ./download_firmware_hailo10h.sh
+        && mkdir -p <PEON.INSTALLDIR.X+BIN>/lib/firmware/hailo
+        && mv hailo10h_fw_<THIS.$VERSION> <PEON.INSTALLDIR.X+BIN>/lib/firmware/hailo/hailo10h.<THIS.$VERSION>
+        && ln -s /lib/firmware/hailo/hailo10h.<THIS.$VERSION> <PEON.INSTALLDIR.X+BIN>/lib/firmware/hailo/hailo10h
+        && cp <PEON.ASSETS>/postinst <PEON.INSTALLDIR.X+BIN>/WPKG/postinst
     test: none
     env: {}
   deploy: ''

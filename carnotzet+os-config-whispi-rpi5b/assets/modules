@@ -2,3 +2,4 @@ brcmfmac
 libcomposite
 snd_aloop
 pwm_fan
+hailo1x_pci
