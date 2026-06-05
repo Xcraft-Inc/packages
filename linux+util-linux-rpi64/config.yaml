@@ -58,6 +58,7 @@ data:
                      --enable-libsmartcols
                      --enable-libfdisk
                      --enable-fdisks
+                     --enable-rfkill
   rules:
     type: make
     location: data/util-linux-<THIS.$VERSION>
