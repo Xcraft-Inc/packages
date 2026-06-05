@@ -37,9 +37,11 @@ data:
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
+      && sed -i 's,"en","fr",g' hailort/libhailort/examples/genai/speech2text_example/speech2text_example.cpp
       && mkdir -p ./BUILD
       && cd ./BUILD
       && cmake -G Ninja
+               -DHAILO_BUILD_EXAMPLES=YES
                -DCMAKE_INSTALL_PREFIX=<PEON.PREFIXDIR.X+BIN>
                -DCMAKE_BUILD_TYPE=Release ..
   rules:
@@ -50,7 +52,10 @@ data:
       prerm: ''
       makeall: '!ninja -C BUILD -j<PEON.CPUS.COUNT>'
       maketest: ''
-      makeinstall: '!ninja -C BUILD install'
+      makeinstall: |-
+        !  ninja -C BUILD install
+        && mkdir -p <PEON.INSTALLDIR.X+BIN>/usr/bin/examples
+        && cp BUILD/hailort/libhailort/examples/genai/speech2text_example/speech2text_example <PEON.INSTALLDIR.X+BIN>/usr/bin/examples
     test: none
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
@@ -58,6 +63,7 @@ data:
   deploy: |-
     !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
     && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/cmake
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/bin/examples/hailopp_mot17_demo
   env:
     path: []
     other: {}
