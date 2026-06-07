@@ -80,6 +80,8 @@ trap dispose SIGTERM SIGINT
 
 echo "Configure WiFi interface $network_wifi..."
 
+rfkill unblock wlan
+
 if [ "$network_wifi_mode" != "wpa" ]; then
   echo "WPA is disabled"
 

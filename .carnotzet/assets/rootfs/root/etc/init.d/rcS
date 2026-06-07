@@ -72,6 +72,8 @@ boot_normal()
   ip addr add 127.0.0.1/8 dev lo
   ip link set dev lo up
 
+  rfkill block all &
+
   # Execute all postinst scripts in case of the first boot
   if [ ! -f /var/.bootstrapped ]; then
     for postinst in /var/lib/wpkg/*/postinst; do
