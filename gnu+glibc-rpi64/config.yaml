@@ -84,6 +84,7 @@ data:
     !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
     && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib64/*.a
     && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib64/*.la
+    && sed -i s,#!/bin/bash,#!/bin/sh, <PEON.INSTALLDIR.X+BIN>/usr/bin/ldd
   env:
     path: []
     other: {}
