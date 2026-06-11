@@ -28,4 +28,7 @@ for lib in $LIBS; do
   cp -f "$lib" "$BIN_PATH" || exit 1
 done
 
+# keep going even if the session is gone (like broken ssh after glibc change)
+trap '' HUP
+
 exec "$LOADER" --library-path "$BIN_PATH" "$WPKG" "$@"
