@@ -15,9 +15,19 @@ description:
   long: ''
 dependency:
   install:
+    hailo-ai+hailort-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
     hailo-ai+hailort-rpi64:
       - version: ''
         architecture: []
+    openssl+openssl3-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
     openssl+openssl3-rpi64:
       - version: ''
         architecture: []
