@@ -42,6 +42,7 @@ data:
       && cd ./BUILD
       && cmake -G Ninja
                -DHAILO_BUILD_EXAMPLES=YES
+               -DHAILO_BUILD_OLLAMA=YES
                -DCMAKE_INSTALL_PREFIX=<PEON.PREFIXDIR.X+BIN>
                -DCMAKE_BUILD_TYPE=Release ..
   rules:
