@@ -1,0 +1,10 @@
+--- a/cmake/external/oatpp.cmake	2026-03-31 18:21:07.000000000 +0200
++++ b/cmake/external/oatpp.cmake	2026-06-11 17:20:15.014756402 +0200
+@@ -10,6 +10,7 @@
+     oatpp
+     GIT_REPOSITORY https://github.com/oatpp/oatpp
+     GIT_TAG        f83d648fd82dc222ef88aabbafb68efbd7d7bf50  # master as of 2024-12
++    PATCH_COMMAND  patch -p1 < ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../assets/oatpp.patch
+     SOURCE_DIR     ${HAILO_OLLAMA_EXTERNAL_DIR}/oatpp-src
+     SUBBUILD_DIR   ${HAILO_OLLAMA_EXTERNAL_DIR}/oatpp-subbuild
+ )
