@@ -55,6 +55,7 @@ data:
       maketest: ''
       makeinstall: |-
         !  ninja -C BUILD install
+        && cp -r <PEON.INSTALLDIR.X+BIN>/usr <PEON.INSTALLDIR>
         && mkdir -p <PEON.INSTALLDIR.X+BIN>/usr/bin/examples
         && cp BUILD/hailort/libhailort/examples/genai/speech2text_example/speech2text_example <PEON.INSTALLDIR.X+BIN>/usr/bin/examples
     test: none
