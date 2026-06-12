@@ -41,6 +41,7 @@ data:
       && ./configure --prefix=/usr
                      --build=$MACHTYPE
                      --host=aarch64-xcraft-linux-gnu
+                     --with-ssh=/usr/bin/ssh
   rules:
     type: make
     location: data/autossh-<THIS.$VERSION>
