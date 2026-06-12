@@ -1,0 +1,18 @@
+#!/bin/sh
+exec 2>&1
+
+echo "Start tunnel-autossh daemon..."
+
+if [ -f /etc/tunnel-autossh/autossh.conf ]; then
+  . /etc/tunnel-autossh/autossh.conf
+else
+  echo "Error: /etc/tunnel-autossh/autossh.conf not found"
+  exit 1
+fi
+
+if [ -z "${remote_login}" ] || [ -z "${remote_address}" ]; then
+  exit 0
+fi
+
+export AUTOSSH_PATH=/usr/bin/ssh
+exec autossh -N -M 20000 -R "${remote_port}:127.0.0.1:${local_port}" "${remote_login}@${remote_address}"

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sv stop tunnel-autossh || :
+rm -rf /var/service/tunnel-autossh
