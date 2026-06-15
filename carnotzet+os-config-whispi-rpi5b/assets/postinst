@@ -1,0 +1,4 @@
+#!/bin/sh
+
+touch /boot/carnotzet.d/99.user
+chmod a+rw /boot/carnotzet.d/99.user
