@@ -1,9 +1,10 @@
 subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
+  - 'x+www:all'
 name: carnotzet+contelia-rpi64
-version: 0.7.0
-$version: 0.7.0
+version: 0.9.0
+$version: 0.9.0
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -79,7 +80,7 @@ data:
       makeall: '!cargo build -r --target aarch64-unknown-linux-gnu'
       maketest: ''
       makeinstall: |-
-        !install -D -m 755 target/aarch64-unknown-linux-gnu/release/contelia <PEON.PREFIXDIR.X+BIN>/bin/contelia
+        !   install -D -m 755 target/aarch64-unknown-linux-gnu/release/contelia <PEON.PREFIXDIR.X+BIN>/bin/contelia
          && mkdir -p <PEON.PREFIXDIR.X+BIN>/share/contelia/assets
          && mkdir -p <PEON.INSTALLDIR.X+BIN>/var/httpd/www/cgi-bin
          && cp assets/*.png         <PEON.PREFIXDIR.X+BIN>/share/contelia/assets/
@@ -100,6 +101,9 @@ data:
     cp('<PEON.ASSETS>/sv',          '<PEON.INSTALLDIR.X+BIN>/etc/sv/contelia');
     cp('<PEON.ASSETS>/postinst',    '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
     cp('<PEON.ASSETS>/prerm',       '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+
+    /* website */
+    cp('<THIS.DATA.RULES.LOCATION>/doc/_site', '<PEON.INSTALLDIR.X+WWW>/var/httpd/www');
   env:
     path: []
     other: {}
