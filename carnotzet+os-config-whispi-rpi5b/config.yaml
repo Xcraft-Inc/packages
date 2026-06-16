@@ -50,7 +50,6 @@ data:
         cp('<PEON.ASSETS>/carnotzet.d',  '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.d');
         cp('<PEON.ASSETS>/config.txt',   '<PEON.INSTALLDIR.X+BIN>/boot/config.txt');
         cp('<PEON.ASSETS>/modules',      '<PEON.INSTALLDIR.X+BIN>/etc/modules');
-        cp('<PEON.ASSETS>/postinst',     '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
     test: none
     env: {}
   deploy: ''
