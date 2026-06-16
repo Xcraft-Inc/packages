@@ -1,1 +1,1 @@
-/dev/mmcblk0p1 /boot vfat defaults,noatime 0 1
+/dev/mmcblk0p1 /boot vfat defaults,noatime,fmask=0002 0 1
