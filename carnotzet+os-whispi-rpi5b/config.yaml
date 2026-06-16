@@ -154,7 +154,7 @@ data:
           /* Hailo Ollama */
           'hailo-ai+ollama-rpi64-x+bin',
 
-          /* Epsitec */
+          /* Whispi */
           'epsitec+whispi-thrall-rpi64-x+bin'
         ]);
 
