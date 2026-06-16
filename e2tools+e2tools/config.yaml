@@ -48,6 +48,7 @@ data:
     test: none
     env:
       CFLAGS: <PEON.ENV.CFLAGS> -I<PEON.ROOTDIR>/usr/include/ext2fs
+      LDFLAGS: <PEON.ENV.LDFLAGS> -lpthread
   deploy: {}
   env:
     path: []
