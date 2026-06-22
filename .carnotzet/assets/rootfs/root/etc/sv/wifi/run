@@ -110,21 +110,26 @@ fi
 
 mkdir -p /var/run/wpa_supplicant
 
-wpa_conf="/tmp/wpa_supplicant.conf"
-touch "$wpa_conf"
-chmod 600 "$wpa_conf"
-cat > "$wpa_conf" << EOF
+if [ ! -f "/etc/wpa_supplicant/wpa_supplicant.conf" ]; then
+  wpa_conf="/tmp/wpa_supplicant.conf"
+  touch "$wpa_conf"
+  cat > "$wpa_conf" << EOF
 ctrl_interface=/var/run/wpa_supplicant
 update_config=1
 country=${wifi_country:-CH}
 
 network={
-    ssid="$wifi_ssid"
-    psk="$wifi_password"
-    key_mgmt=WPA-PSK
-    scan_ssid=1
+  ssid="$wifi_ssid"
+  psk="$wifi_password"
+  key_mgmt=WPA-PSK
+  scan_ssid=1
 }
 EOF
+else
+  mkdir -p /etc/wpa_supplicant
+  wpa_conf="/etc/wpa_supplicant/wpa_supplicant.conf"
+fi
+chmod 600 "$wpa_conf"
 
 wpa_supplicant -B -i "$network_wifi" -c "$wpa_conf" -P "/var/run/wpa_supplicant.$network_wifi.pid"
 wpa_exit_code=$?
