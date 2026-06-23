@@ -143,9 +143,9 @@ dispose() {
   rmdir configs/c.1
 
   if [ "$gadget_network_target_os" = "win" ]; then
-    rmdir functions/ecm.usb0
-  else
     rmdir functions/rndis.usb0
+  else
+    rmdir functions/ecm.usb0
   fi
   rmdir functions/uac2.usb0
 
