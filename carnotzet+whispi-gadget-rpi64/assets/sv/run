@@ -10,11 +10,11 @@ else
   exit 1
 fi
 
-mount_gadget() {
-  GADGET_DIR=/sys/kernel/config/usb_gadget/piwin
+GADGET_DIR=/sys/kernel/config/usb_gadget/pig
 
+mount_gadget() {
   mkdir -p "$GADGET_DIR"
-  cd "$GADGET_DIR"
+  cd "$GADGET_DIR" || exit 1
 
   if [ "$gadget_network_target_os" = "win" ]; then
     echo 0x2e8a > idVendor
@@ -120,9 +120,36 @@ mount_gadget() {
   fi
 }
 
+int_sleep() {
+  sleep "$1" &
+  wait $!
+}
+
 dispose() {
   echo "Dispose..."
-  # TODO: remove gadget
+
+  cd "$GADGET_DIR" || exit 0
+
+  if [ "$gadget_network_target_os" = "win" ]; then
+    rm configs/c.1/rndis.usb0
+  else
+    rm configs/c.1/ecm.usb0
+  fi
+  rm configs/c.1/uac2.usb0
+
+  rmdir configs/c.1/strings/0x409
+  rmdir configs/c.1
+
+  if [ "$gadget_network_target_os" = "win" ]; then
+    rmdir functions/ncm.usb0
+  else
+    rmdir functions/rndis.usb0
+  fi
+  rmdir functions/uac2.usb0
+
+  rmdir strings/0x409
+  rmdir "$GADGET_DIR"
+
   exit 0
 }
 
@@ -130,5 +157,9 @@ trap dispose SIGTERM SIGINT EXIT
 
 mount_gadget
 
-sleep infinity
+# Supervision
+while true; do
+  int_sleep 300
+done
+
 dispose
