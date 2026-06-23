@@ -130,6 +130,8 @@ dispose() {
 
   cd "$GADGET_DIR" || exit 0
 
+  echo "" > UDC
+
   if [ "$gadget_network_target_os" = "win" ]; then
     rm configs/c.1/rndis.usb0
   else
