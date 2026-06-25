@@ -13,8 +13,16 @@ is_usb_connected() {
   [ $suspsts -eq 0 ]
 }
 
+BAT_ON=0
+
 # Supervision
 while true; do
+  if [ "$BAT_ON" = "0" ]; then
+    if echo "set_battery_output true" | nc 127.0.0.1 8423 | grep "done"; then
+      BAT_ON=1
+    fi
+  fi
+
   if ! is_usb_connected; then
     pisugar-poweroff --model "PiSugar 3" || poweroff
   fi
