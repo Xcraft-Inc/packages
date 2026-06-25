@@ -1,0 +1,8 @@
+#!/bin/sh
+
+rm -rf /var/service/auto-shutdown
+ln -sf /etc/sv/auto-shutdown /var/service/auto-shutdown
+
+if [ ! -f /var/service/auto-shutdown/down ]; then
+  sv up auto-shutdown || :
+fi

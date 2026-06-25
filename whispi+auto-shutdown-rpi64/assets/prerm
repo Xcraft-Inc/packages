@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sv stop auto-shutdown || :
+rm -rf /var/service/auto-shutdown

@@ -1,0 +1,22 @@
+#!/bin/sh
+exec 2>&1
+
+echo "Start USB-C auto-shutdown daemon..."
+
+UDC_NAME="$(ls /sys/class/udc | head -n 1)"
+STATE_FILE="/sys/kernel/debug/usb/$UDC_NAME/state"
+
+is_usb_connected() {
+  dsts=$(grep "DSTS=" "$STATE_FILE" 2>/dev/null | sed 's/.*DSTS=0x\([0-9a-f]*\).*/\1/')
+  [ -z "$dsts" ] && return 1
+  suspsts=$(( 0x$dsts & 0x1 ))
+  [ $suspsts -eq 0 ]
+}
+
+# Supervision
+while true; do
+  if ! is_usb_connected; then
+    pisugar-poweroff --model "PiSugar 3" || poweroff
+  fi
+  sleep 3
+done
