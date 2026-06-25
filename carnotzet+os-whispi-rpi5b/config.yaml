@@ -80,6 +80,9 @@ dependency:
     epsitec+whispi-thrall-rpi64:
       - version: ''
         architecture: []
+    pisugar+pisugar-tools-rpi64:
+      - version: ''
+        architecture: []
   build:
     tytso+e2fsprogs:
       - version: ''
@@ -138,6 +141,7 @@ data:
           'dosfstools+dosfstools-rpi64-x+bin',
           'malinen+wpa-supplicant-rpi64-x+bin',
           'unigw+wpkg-rpi64-x+bin',
+          'pisugar+pisugar-tools-rpi64-x+bin',
 
           /* Audio */
           'alsa+utils-rpi64-x+bin',
