@@ -56,12 +56,13 @@ mount_gadget() {
 
     ln -s functions/rndis.usb0 configs/c.1/
   else
-    echo "ECM + UAC2" > configs/c.1/strings/0x409/configuration
+    echo "NCM + UAC2" > configs/c.1/strings/0x409/configuration
 
-    mkdir -p functions/ecm.usb0
-    echo "02:1A:11:00:00:01" > functions/ecm.usb0/dev_addr
+    mkdir -p functions/ncm.usb0
+    echo "02:1A:11:00:00:01" > functions/ncm.usb0/dev_addr
+    echo "02:1A:11:00:00:02" > functions/ncm.usb0/host_addr
 
-    ln -s functions/ecm.usb0 configs/c.1/
+    ln -s functions/ncm.usb0 configs/c.1/
   fi
 
   mkdir -p functions/uac2.usb0
@@ -135,7 +136,7 @@ dispose() {
   if [ "$gadget_network_target_os" = "win" ]; then
     rm configs/c.1/rndis.usb0
   else
-    rm configs/c.1/ecm.usb0
+    rm configs/c.1/ncm.usb0
   fi
   rm configs/c.1/uac2.usb0
 
@@ -145,7 +146,7 @@ dispose() {
   if [ "$gadget_network_target_os" = "win" ]; then
     rmdir functions/rndis.usb0
   else
-    rmdir functions/ecm.usb0
+    rmdir functions/ncm.usb0
   fi
   rmdir functions/uac2.usb0
 
