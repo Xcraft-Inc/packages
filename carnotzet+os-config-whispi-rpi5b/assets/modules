@@ -3,3 +3,4 @@ libcomposite
 snd_aloop
 pwm_fan
 hailo1x_pci
+i2c_bcm2835

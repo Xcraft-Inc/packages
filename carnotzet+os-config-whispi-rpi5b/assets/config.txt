@@ -6,3 +6,6 @@ framebuffer_depth=32
 
 # Enable gadget mode for USB
 dtoverlay=dwc2,dr_mode=peripheral
+
+# For PiSugar 3
+dtparam=i2c_arm=on
