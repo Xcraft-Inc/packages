@@ -24,7 +24,7 @@ while true; do
   fi
 
   if ! is_usb_connected; then
-    pisugar-poweroff --model "PiSugar 3" || poweroff
+    pisugar-poweroff -c0 --model "PiSugar 3" || poweroff
   fi
   sleep 3
 done
