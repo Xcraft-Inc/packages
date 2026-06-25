@@ -1,4 +1,5 @@
 {
   "auto_power_on": false,
-  "bat_protect": true
+  "bat_protect": true,
+  "battery_output": true
 }
