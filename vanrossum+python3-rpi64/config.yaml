@@ -64,8 +64,6 @@ data:
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
       CXX: aarch64-xcraft-linux-gnu-g++
-      AR: aarch64-xcraft-linux-gnu-ar
-      LINK: aarch64-xcraft-linux-gnu-g++
       CONFIG_SITE: <PEON.ASSETS>/CONFIG_SITE
   deploy: ''
   env:
