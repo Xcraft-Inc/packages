@@ -72,7 +72,13 @@ dispose() {
 
   ip -4 addr flush dev "$network_wifi" 2>/dev/null
   ip link set dev "$network_wifi" down 2>/dev/null
-  rm -f "$wpa_conf"
+
+  case "$wpa_conf" in
+    /tmp/*)
+      rm -f "$wpa_conf"
+      ;;
+  esac
+
   exit 0
 }
 
@@ -131,7 +137,12 @@ else
 fi
 chmod 600 "$wpa_conf"
 
-wpa_supplicant -B -i "$network_wifi" -c "$wpa_conf" -P "/var/run/wpa_supplicant.$network_wifi.pid"
+DBUS_ENABLE=""
+if wpa_supplicant -h | grep DBus > /dev/null 2>&1; then
+  DBUS_ENABLE="-u"
+fi
+
+wpa_supplicant "$DBUS_ENABLE" -B -i "$network_wifi" -c "$wpa_conf" -P "/var/run/wpa_supplicant.$network_wifi.pid"
 wpa_exit_code=$?
 
 if [ $wpa_exit_code -ne 0 ]; then
