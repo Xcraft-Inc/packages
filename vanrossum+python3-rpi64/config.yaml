@@ -1,0 +1,76 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: vanrossum+python3-rpi64
+version: 3.11.5
+$version: 3.11.5
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Python programming language.
+  long: Python is a programming language that lets you work quickly and integrate systems more effectively.
+dependency:
+  install:
+    adler+zlib-rpi64-dev:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+    vanrossum+python3:
+      - version: ''
+        architecture: []
+  make:
+    xcraft+base-make:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://www.python.org/ftp/python/<THIS.$VERSION>/Python-<THIS.$VERSION>.tar.xz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+    $hash: 3.11.5@85cd12e9cf1d6d5a45f17f7afe1cebe7ee628d3282281c492e86adf636defa3f.tar.xz
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/usr
+                     --build=x86_64-pc-linux-gnu
+                     --host=aarch64-xcraft-linux-gnu
+                     --with-build-python=python3
+                     --disable-ipv6
+  rules:
+    type: make
+    location: data/Python-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '-j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: install DESTDIR=<PEON.INSTALLDIR.X+BIN>
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+      CXX: aarch64-xcraft-linux-gnu-g++
+      AR: aarch64-xcraft-linux-gnu-ar
+      LINK: aarch64-xcraft-linux-gnu-g++
+      CONFIG_SITE: <PEON.ASSETS>/CONFIG_SITE
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
