@@ -42,6 +42,7 @@ data:
     test: none
     env: {}
   deploy: |-
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/auto-shutdown');
     cp('<PEON.ASSETS>/sv',           '<PEON.INSTALLDIR.X+BIN>/etc/sv/auto-shutdown');
     cp('<PEON.ASSETS>/postinst',     '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
     cp('<PEON.ASSETS>/prerm',        '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
