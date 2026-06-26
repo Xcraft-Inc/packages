@@ -3,8 +3,8 @@ subpackage:
   - 'x+bin:linux-aarch64'
   - 'x+modules:linux-aarch64'
 name: raspberry+linux-kernel-whispi-rpi5b
-version: 6.18.26-060fea8f-2
-$version: 6.18.26-060fea8f
+version: '6.18.34-c8c74941'
+$version: '6.18.34-c8c74941'
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -43,7 +43,7 @@ bump:
   - carnotzet+os-whispi-rpi5b
 data:
   get:
-    uri: 'https://github.com/raspberrypi/linux/archive/060fea8f35a11d05a42e26229acd3e0c11d9caf1.tar.gz'
+    uri: 'https://github.com/raspberrypi/linux/archive/c8c7494100e99ee05b11aaa4f0588a223a63d1af.tar.gz'
     mirrors: []
     ref: ''
     $ref: ''
@@ -60,7 +60,7 @@ data:
       && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- olddefconfig
   rules:
     type: script
-    location: data/linux-060fea8f35a11d05a42e26229acd3e0c11d9caf1
+    location: data/linux-c8c7494100e99ee05b11aaa4f0588a223a63d1af
     args:
       postinst: ''
       prerm: ''
