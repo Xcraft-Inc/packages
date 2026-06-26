@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: carnotzet+os-whispi-rpi5b
-version: 0.10.0
-$version: 0.10.0
+version: 0.11.0
+$version: 0.11.0
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -59,7 +59,7 @@ dependency:
     linux+util-linux-rpi64:
       - version: ''
         architecture: []
-    malinen+wpa-supplicant-rpi64:
+    malinen+wpa-supplicant-dbus-rpi64:
       - version: ''
         architecture: []
     alsa+utils-rpi64:
@@ -139,7 +139,7 @@ data:
           'linux+util-linux-rpi64-x+bin',
           'tytso+e2fsprogs-rpi64-x+bin',
           'dosfstools+dosfstools-rpi64-x+bin',
-          'malinen+wpa-supplicant-rpi64-x+bin',
+          'malinen+wpa-supplicant-dbus-rpi64-x+bin',
           'unigw+wpkg-rpi64-x+bin',
           'whispi+auto-shutdown-rpi64-x+bin',
 
