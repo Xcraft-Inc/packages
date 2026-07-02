@@ -1,0 +1,67 @@
+subpackage:
+  - runtime*
+name: gibson+dtc-rpi64
+version: 1.8.1
+$version: 1.8.1
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Device Tree Compiler and libfdt
+  long: ''
+dependency:
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+    meson+meson:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://git.kernel.org/pub/scm/utils/dtc/dtc.git/snapshot/dtc-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && meson.pyz setup _build
+                   --prefix=/usr
+                   --cross-file=<PEON.ASSETS>/cross.txt
+                   -Dtests=false
+  rules:
+    type: script
+    location: data/dtc-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!meson.pyz compile -C _build'
+      maketest: ''
+      makeinstall: |-
+        !meson.pyz install -C _build --destdir=<PEON.INSTALLDIR>
+    test: none
+    env:
+      PKG_CONFIG_ALLOW_CROSS: '1'
+      PKG_CONFIG_PATH: <PEON.PROD.ROOTDIR>/usr/lib/pkgconfig
+      PKG_CONFIG_LIBDIR: <PEON.PROD.ROOTDIR>/usr/lib/pkgconfig
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
