@@ -51,6 +51,12 @@ data:
       maketest: ''
       makeinstall: |-
         cp('rpi-eeprom-config', '<PEON.INSTALLDIR.X+BIN>/usr/sbin/rpi-eeprom-config');
+        cp('rpi-eeprom-update', '<PEON.INSTALLDIR.X+BIN>/usr/sbin/rpi-eeprom-update');
+        cp('rpi-eeprom-digest', '<PEON.INSTALLDIR.X+BIN>/usr/sbin/rpi-eeprom-digest');
+
+        cp('rpi-eeprom-update-default', '<PEON.INSTALLDIR.X+BIN>/etc/default/rpi-eeprom-update');
+
+        cp('firmware-2712/default', '<PEON.INSTALLDIR.X+BIN>/usr/lib/firmware/raspberrypi/bootloader-2712/default');
     test: none
     env: {}
   deploy: ''
