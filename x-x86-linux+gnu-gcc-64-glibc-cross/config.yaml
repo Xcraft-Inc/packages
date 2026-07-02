@@ -194,6 +194,7 @@ data:
           && unset CC CXX
           && make -j<PEON.CPUS.COUNT>
           && make install DESTDIR="<PEON.PREFIXDIR>/x86_64-xcraft-linux-gnu"
+          && rm -f "<PEON.PREFIXDIR>/x86_64-xcraft-linux-gnu/usr/lib/libc.so"
           && cd ..
 
         && : /// gcc - stage 2 ///
