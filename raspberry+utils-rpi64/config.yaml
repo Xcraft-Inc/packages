@@ -1,0 +1,74 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: raspberry+utils-rpi64
+version: 1.0.0-a30e7c7b
+$version: 1.0.0-a30e7c7b
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: A collection of scripts and simple applications
+  long: ''
+dependency:
+  install:
+    gibson+dtc-rpi64:
+      - version: ''
+        architecture: []
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://github.com/raspberrypi/utils/archive/a30e7c7b227d9a5e6dbedc1d343077be7ad92959.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && sed -i 's,add_subdirectory(rpi-gpu-usage),,' CMakeLists.txt
+      && mkdir -p ./BUILD
+      && cd ./BUILD
+      && cmake -G Ninja
+               -DCMAKE_FIND_ROOT_PATH=<PEON.PROD.ROOTDIR>
+               -DCMAKE_INSTALL_PREFIX=<PEON.PREFIXDIR.X+BIN>
+               -DCMAKE_BUILD_TYPE=Release ..
+  rules:
+    type: script
+    location: data/utils-a30e7c7b227d9a5e6dbedc1d343077be7ad92959
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!ninja -C BUILD -j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: '!ninja -C BUILD install'
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+      CXX: aarch64-xcraft-linux-gnu-g++
+      LDFLAGS: '<PEON.ENV.LDFLAGS> -lncursesw'
+  deploy: |-
+    !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
+    && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/*.a
+    && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/cmake
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
