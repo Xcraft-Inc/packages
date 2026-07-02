@@ -20,6 +20,11 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
+    openssl+openssl3-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
   build:
     xcraft+peon:
       - version: ''
