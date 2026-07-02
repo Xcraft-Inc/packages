@@ -65,7 +65,10 @@ data:
       CC: aarch64-xcraft-linux-gnu-gcc
       CXX: aarch64-xcraft-linux-gnu-g++
       CONFIG_SITE: <PEON.ASSETS>/CONFIG_SITE
-  deploy: ''
+  deploy: |-
+    !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
+    && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/pkgconfig
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.a
   env:
     path: []
     other: {}
