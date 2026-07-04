@@ -1,0 +1,60 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: carnotzet+os-config-rpi5b
+version: '0.1.0'
+$version: '0.1.0'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: mathieu@schroetersa.ch
+architecture:
+  - source
+description:
+  brief: Base configuration files
+  long: ''
+dependency:
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+  make:
+    xcraft+base-make:
+      - version: ''
+        architecture: []
+bump:
+  - carnotzet+os-rpiz5b
+  - carnotzet+rescuefs-rpi5b
+data:
+  get:
+    uri: ''
+    mirrors: []
+    ref: <THIS.$VERSION>
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: ''
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: ''
+      maketest: ''
+      makeinstall: |-
+        cp('<PEON.ASSETS.GLOBAL>/sources.list', '<PEON.INSTALLDIR.X+BIN>/boot/sources.list');
+        cp('<PEON.ASSETS.GLOBAL>/config.txt',   '<PEON.INSTALLDIR.X+BIN>/boot/config.txt');
+        cp('<PEON.ASSETS.GLOBAL>/conffiles',    '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+        cp('<PEON.ASSETS.GLOBAL>/modules',      '<PEON.INSTALLDIR.X+BIN>/etc/modules');
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

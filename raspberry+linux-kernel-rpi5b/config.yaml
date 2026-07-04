@@ -1,0 +1,89 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+  - 'x+modules:linux-aarch64'
+name: raspberry+linux-kernel-rpi5b
+version: '6.18.34-c8c74941'
+$version: '6.18.34-c8c74941'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: mathieu@schroetersa.ch
+architecture:
+  - source
+description:
+  brief: The Linux Kernel for RASPBERRY Pi5 model B
+  long: ''
+dependency:
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+    openssl+openssl:
+      - version: ''
+        architecture: []
+    gnu+bc:
+      - version: ''
+        architecture: []
+  make:
+    xcraft+base-make:
+      - version: ''
+        architecture: []
+bump:
+  - carnotzet+os-rpi5b
+data:
+  get:
+    uri: 'https://github.com/raspberrypi/linux/archive/c8c7494100e99ee05b11aaa4f0588a223a63d1af.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && cp <PEON.ASSETS.GLOBAL>/logo_linux_clut224.ppm drivers/video/logo
+      && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- bcm2712_defconfig
+  rules:
+    type: script
+    location: data/linux-c8c7494100e99ee05b11aaa4f0588a223a63d1af
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: |-
+        !make ARCH=arm64
+              CROSS_COMPILE=aarch64-xcraft-linux-gnu-
+              -j<PEON.CPUS.COUNT>
+              Image modules dtbs
+      maketest: ''
+      makeinstall: |-
+        !    mkdir -p "<PEON.INSTALLDIR.X+BIN>/boot"
+          && make ARCH=arm64
+                  CROSS_COMPILE=aarch64-xcraft-linux-gnu-
+                  INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+MODULES>"
+                  modules_install
+          && cp -a arch/arm64/boot/Image "<PEON.INSTALLDIR.X+BIN>/boot/"
+          && cp -a arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dtb   "<PEON.INSTALLDIR.X+BIN>/boot/"
+          && cp -a arch/arm64/boot/dts/broadcom/bcm2712-d-rpi-5-b.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
+          && cp -a arch/arm64/boot/dts/broadcom/bcm2712d0-rpi-5-b.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
+          && mkdir -p "<PEON.INSTALLDIR.X+BIN>/boot/overlays"
+          && cp -a arch/arm/boot/dts/overlays/bcm2712d0.dtbo "<PEON.INSTALLDIR.X+BIN>/boot/overlays/"
+          && rm -f <PEON.INSTALLDIR.X+MODULES>/lib/modules/*/build
+    test: none
+    env:
+      LD_LIBRARY_PATH: <PEON.ROOTDIR>/usr/lib
+      KBUILD_BUILD_TIMESTAMP: ''
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
