@@ -15,21 +15,33 @@ description:
   long: ''
 dependency:
   install:
+    carnotzet+os-config-rpi5b:
+      - version: ''
+        architecture: []
     carnotzet+os-config-rpi5b-x+bin:
       - version: ''
         architecture: []
         subpackage:
           - x+bin
+    carnotzet+rootfs-rpi5b:
+      - version: ''
+        architecture: []
     carnotzet+rootfs-rpi5b-x+bin:
       - version: ''
         architecture: []
         subpackage:
           - x+bin
+    carnotzet+rescuefs-rpi5b:
+      - version: ''
+        architecture: []
     carnotzet+rescuefs-rpi5b-x+bin:
       - version: ''
         architecture: []
         subpackage:
           - x+bin
+    raspberry+linux-kernel-rpi5b:
+      - version: ''
+        architecture: []
     raspberry+linux-kernel-rpi5b-x+bin:
       - version: ''
         architecture: []
@@ -40,51 +52,81 @@ dependency:
         architecture: []
         subpackage:
           - x+modules
+    raspberry+linux-firmware-rpi5b:
+      - version: ''
+        architecture: []
     raspberry+linux-firmware-rpi5b-x+bin:
       - version: ''
         architecture: []
         subpackage:
           - x+bin
+    raspberry+uboot-rpi5b:
+      - version: ''
+        architecture: []
     raspberry+uboot-rpi5b-x+bin:
       - version: ''
         architecture: []
         subpackage:
           - x+bin
+    gnu+glibc-rpi64:
+      - version: ''
+        architecture: []
     gnu+glibc-rpi64-x+bin:
       - version: ''
         architecture: []
         subpackage:
           - x+bin
+    gnu+libstdcxx-rpi64:
+      - version: ''
+        architecture: []
     gnu+libstdcxx-rpi64-x+bin:
       - version: ''
         architecture: []
         subpackage:
           - x+bin
+    vlasenko+busybox-rpi64:
+      - version: ''
+        architecture: []
     vlasenko+busybox-rpi64-x+bin:
       - version: ''
         architecture: []
         subpackage:
           - x+bin
+    tytso+e2fsprogs-rpi64:
+      - version: ''
+        architecture: []
     tytso+e2fsprogs-rpi64-x+bin:
       - version: ''
         architecture: []
         subpackage:
           - x+bin
+    dosfstools+dosfstools-rpi64:
+      - version: ''
+        architecture: []
     dosfstools+dosfstools-rpi64-x+bin:
       - version: ''
         architecture: []
         subpackage:
           - x+bin
+    unigw+wpkg-rpi64:
+      - version: ''
+        architecture: []
     unigw+wpkg-rpi64-x+bin:
       - version: ''
         architecture: []
         subpackage:
           - x+bin
+    linux+util-linux-rpi64:
+      - version: ''
+        architecture: []
     linux+util-linux-rpi64-x+bin:
       - version: ''
         architecture: []
         subpackage:
           - x+bin
+    malinen+wpa-supplicant-rpi64:
+      - version: ''
+        architecture: []
     malinen+wpa-supplicant-rpi64-x+bin:
       - version: ''
         architecture: []
