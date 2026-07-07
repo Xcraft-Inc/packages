@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: carnotzet+os-rpi4b
-version: 0.9.0
-$version: 0.9.0
+version: 0.12.0
+$version: 0.12.0
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -14,49 +14,7 @@ description:
   long: ''
 dependency:
   install:
-    carnotzet+os-config-rpi4b:
-      - version: ''
-        architecture: []
-    carnotzet+rootfs-rpi4b:
-      - version: ''
-        architecture: []
-    carnotzet+rescuefs-rpi4b:
-      - version: ''
-        architecture: []
-    raspberry+linux-kernel-rpi4b:
-      - version: ''
-        architecture: []
-    raspberry+linux-firmware-rpi4b:
-      - version: ''
-        architecture: []
-    raspberry+uboot-rpi4b:
-      - version: ''
-        architecture: []
-    raspberry+firmware-rpi4b:
-      - version: ''
-        architecture: []
-    gnu+glibc-rpi64:
-      - version: ''
-        architecture: []
-    gnu+libstdcxx-rpi64:
-      - version: ''
-        architecture: []
-    vlasenko+busybox-rpi64:
-      - version: ''
-        architecture: []
-    tytso+e2fsprogs-rpi64:
-      - version: ''
-        architecture: []
-    dosfstools+dosfstools-rpi64:
-      - version: ''
-        architecture: []
-    unigw+wpkg-rpi64:
-      - version: ''
-        architecture: []
-    linux+util-linux-rpi64:
-      - version: ''
-        architecture: []
-    malinen+wpa-supplicant-rpi64:
+    carnotzet+os-base-rpi4b:
       - version: ''
         architecture: []
   build:
@@ -100,22 +58,7 @@ data:
 
         /* Generate the root for the MMC */
         yield genRoot('carnotzet', '<PEON.ASSETS.GLOBAL>', [
-          'carnotzet+os-config-rpi4b-x+bin',
-          'carnotzet+rootfs-rpi4b-x+bin',
-          'carnotzet+rescuefs-rpi4b-x+bin',
-          'raspberry+linux-kernel-rpi4b-x+bin',
-          'raspberry+linux-kernel-rpi4b-x+modules',
-          'raspberry+linux-firmware-rpi4b-x+bin',
-          'raspberry+uboot-rpi4b-x+bin',
-          'raspberry+firmware-rpi4b-x+bin',
-          'gnu+glibc-rpi64-x+bin',
-          'gnu+libstdcxx-rpi64-x+bin',
-          'vlasenko+busybox-rpi64-x+bin',
-          'linux+util-linux-rpi64-x+bin',
-          'tytso+e2fsprogs-rpi64-x+bin',
-          'dosfstools+dosfstools-rpi64-x+bin',
-          'malinen+wpa-supplicant-rpi64-x+bin',
-          'unigw+wpkg-rpi64-x+bin'
+          'carnotzet+os-base-rpi4b-x+bin'
         ]);
 
         yield genImage('carnotzet',
