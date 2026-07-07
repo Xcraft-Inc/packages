@@ -140,7 +140,8 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
-bump: []
+bump:
+  - carnotzet+os-rpiz4b
 data:
   get:
     uri: ''

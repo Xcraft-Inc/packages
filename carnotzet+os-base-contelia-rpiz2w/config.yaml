@@ -199,7 +199,8 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
-bump: []
+bump:
+  - carnotzet+os-contelia-rpiz2w
 data:
   get:
     uri: ''

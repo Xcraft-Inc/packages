@@ -15,7 +15,7 @@ description:
   long: ''
 dependency: {}
 bump:
-  - carnotzet+os-whispi-rpi5b
+  - carnotzet+os-base-whispi-rpi5b
   - carnotzet+rescuefs-whispi-rpi5b
 data:
   get:

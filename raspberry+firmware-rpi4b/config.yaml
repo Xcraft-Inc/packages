@@ -23,7 +23,7 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpi4b
+  - carnotzet+os-base-rpi4b
 data:
   get:
     uri: 'https://github.com/raspberrypi/firmware/releases/download/<THIS.$VERSION>/raspi-firmware_<THIS.$VERSION>.orig.tar.xz'

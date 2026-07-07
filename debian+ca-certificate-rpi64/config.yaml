@@ -24,9 +24,7 @@ dependency:
     openssl+openssl:
       - version: ''
         architecture: []
-bump:
-  - carnotzet+os-rpi4b
-  - carnotzet+os-rpiz2w
+bump: []
 data:
   get:
     uri: 'https://salsa.debian.org/debian/ca-certificates/-/archive/<THIS.DATA.GET.REF>/ca-certificates-<THIS.DATA.GET.REF>.tar.gz'

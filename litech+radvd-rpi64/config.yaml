@@ -29,7 +29,7 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-whispi-rpiz2w
+  - carnotzet+os-base-whispi-rpi5b
 data:
   get:
     uri: 'https://radvd.litech.org/dist/radvd-<THIS.$VERSION>.tar.gz'

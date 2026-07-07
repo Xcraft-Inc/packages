@@ -37,10 +37,12 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpi4b
-  - carnotzet+os-rpiz2w
-  - carnotzet+os-contelia-rpiz2w
+  - carnotzet+os-base-rpi4b
+  - carnotzet+os-base-rpi5b
+  - carnotzet+os-base-rpiz2w
+  - carnotzet+os-base-contelia-rpiz2w
   - carnotzet+rescuefs-rpi4b
+  - carnotzet+rescuefs-rpi5b
   - carnotzet+rescuefs-rpiz2w
   - carnotzet+rescuefs-contelia-rpiz2w
 data:

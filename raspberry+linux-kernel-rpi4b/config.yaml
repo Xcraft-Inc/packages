@@ -36,7 +36,7 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpi4b
+  - carnotzet+os-base-rpi4b
 data:
   get:
     uri: 'https://github.com/raspberrypi/linux/archive/c8c7494100e99ee05b11aaa4f0588a223a63d1af.tar.gz'

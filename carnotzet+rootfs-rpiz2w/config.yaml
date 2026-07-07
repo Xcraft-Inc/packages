@@ -15,7 +15,7 @@ description:
   long: ''
 dependency: {}
 bump:
-  - carnotzet+os-rpiz2w
+  - carnotzet+os-base-rpiz2w
   - carnotzet+rescuefs-rpiz2w
 data:
   get:

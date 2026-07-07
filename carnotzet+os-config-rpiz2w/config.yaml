@@ -23,7 +23,7 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpiz2w
+  - carnotzet+os-base-rpiz2w
   - carnotzet+rescue-rpiz2w
 data:
   get:

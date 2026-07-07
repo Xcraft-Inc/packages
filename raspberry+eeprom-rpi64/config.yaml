@@ -39,7 +39,7 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-whispi-rpi5b
+  - carnotzet+os-base-whispi-rpi5b
 data:
   get:
     uri: 'https://github.com/raspberrypi/rpi-eeprom/archive/refs/tags/v<THIS.$VERSION>.tar.gz'

@@ -53,7 +53,7 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpi5b
+  - carnotzet+os-base-rpi5b
 data:
   get:
     uri: ''

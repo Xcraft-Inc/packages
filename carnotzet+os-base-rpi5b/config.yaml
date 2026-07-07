@@ -132,7 +132,8 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
-bump: []
+bump:
+  - carnotzet+os-rpi5b
 data:
   get:
     uri: ''

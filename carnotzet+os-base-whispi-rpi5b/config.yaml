@@ -220,7 +220,8 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
-bump: []
+bump:
+  - carnotzet+os-whispi-rpi5b
 data:
   get:
     uri: ''

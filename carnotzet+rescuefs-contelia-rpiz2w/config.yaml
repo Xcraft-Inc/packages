@@ -53,7 +53,7 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-contelia-rpiz2w
+  - carnotzet+os-base-contelia-rpiz2w
 data:
   get:
     uri: ''

@@ -23,7 +23,7 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpiz2w
+  - carnotzet+os-base-rpiz2w
 data:
   get:
     uri: 'https://github.com/raspberrypi/firmware/releases/download/<THIS.$VERSION>/raspi-firmware_<THIS.$VERSION>.orig.tar.xz'

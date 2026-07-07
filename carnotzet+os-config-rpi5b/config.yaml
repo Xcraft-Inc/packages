@@ -23,7 +23,7 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpiz5b
+  - carnotzet+os-base-rpi5b
   - carnotzet+rescuefs-rpi5b
 data:
   get:
