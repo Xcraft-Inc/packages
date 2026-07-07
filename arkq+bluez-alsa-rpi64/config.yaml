@@ -58,6 +58,12 @@ dependency:
     linux+sbc-rpi64:
       - version: ''
         architecture: []
+    adler+zlib-rpi64-dev:
+      - version: ''
+        architecture: []
+    gnu+libncurses-rpi64:
+      - version: ''
+        architecture: []
   build:
     xcraft+peon:
       - version: ''

@@ -36,6 +36,9 @@ dependency:
     freedesktop+libdbus-rpi64:
       - version: ''
         architecture: []
+    gnu+libncurses-rpi64:
+      - version: ''
+        architecture: []
     busboom+libical-rpi64:
       - version: ''
         architecture: []
