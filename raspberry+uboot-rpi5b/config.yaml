@@ -32,7 +32,7 @@ bump:
   - carnotzet+os-base-whispi-rpi5b
 data:
   get:
-    uri: 'https://source.denx.de/u-boot/u-boot.git'
+    uri: 'https://github.com/u-boot/u-boot.git'
     mirrors: []
     ref: v2026.04
     $ref: ''
