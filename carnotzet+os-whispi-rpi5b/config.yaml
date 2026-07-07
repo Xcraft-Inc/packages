@@ -14,76 +14,7 @@ description:
   long: ''
 dependency:
   install:
-    carnotzet+os-config-whispi-rpi5b:
-      - version: ''
-        architecture: []
-    carnotzet+rootfs-whispi-rpi5b:
-      - version: ''
-        architecture: []
-    carnotzet+rescuefs-whispi-rpi5b:
-      - version: ''
-        architecture: []
-    carnotzet+whispi-gadget-rpi64:
-      - version: ''
-        architecture: []
-    raspberry+linux-kernel-whispi-rpi5b:
-      - version: ''
-        architecture: []
-    raspberry+linux-firmware-rpi5b:
-      - version: ''
-        architecture: []
-    hailo-ai+hailort-drivers-rpi64:
-      - version: ''
-        architecture: []
-    raspberry+uboot-rpi5b:
-      - version: ''
-        architecture: []
-    gnu+glibc-rpi64:
-      - version: ''
-        architecture: []
-    gnu+libstdcxx-rpi64:
-      - version: ''
-        architecture: []
-    vlasenko+busybox-rpi64:
-      - version: ''
-        architecture: []
-    tytso+e2fsprogs-rpi64:
-      - version: ''
-        architecture: []
-    dosfstools+dosfstools-rpi64:
-      - version: ''
-        architecture: []
-    unigw+wpkg-rpi64:
-      - version: ''
-        architecture: []
-    linux+util-linux-rpi64:
-      - version: ''
-        architecture: []
-    malinen+wpa-supplicant-dbus-rpi64:
-      - version: ''
-        architecture: []
-    alsa+utils-rpi64:
-      - version: ''
-        architecture: []
-    freedesktop+pipewire-rpi64:
-      - version: ''
-        architecture: []
-    openbsd+openssh-rpi64:
-      - version: ''
-        architecture: []
-    litech+radvd-rpi64:
-      - version: ''
-        architecture: []
-    hailo-ai+ollama-rpi64:
-      - version: ''
-        architecture: []
-    epsitec+whispi-thrall-rpi64:
-      - version: ''
-        architecture: []
-    whispi+auto-shutdown-rpi64:
-      - version: ''
-        architecture: []
-    raspberry+eeprom-rpi64:
+    carnotzet+os-base-whispi-rpi5b:
       - version: ''
         architecture: []
   build:
@@ -127,39 +58,7 @@ data:
 
         /* Generate the root for the MMC */
         yield genRoot('carnotzet', '<PEON.ASSETS.GLOBAL>', [
-          'carnotzet+os-config-whispi-rpi5b-x+bin',
-          'carnotzet+rootfs-whispi-rpi5b-x+bin',
-          'carnotzet+rescuefs-whispi-rpi5b-x+bin',
-          'carnotzet+whispi-gadget-rpi64-x+bin',
-          'raspberry+linux-kernel-whispi-rpi5b-x+bin',
-          'raspberry+linux-kernel-whispi-rpi5b-x+modules',
-          'raspberry+linux-firmware-rpi5b-x+bin',
-          'hailo-ai+hailort-drivers-rpi64-x+bin',
-          'raspberry+uboot-rpi5b-x+bin',
-          'gnu+glibc-rpi64-x+bin',
-          'gnu+libstdcxx-rpi64-x+bin',
-          'vlasenko+busybox-rpi64-x+bin',
-          'linux+util-linux-rpi64-x+bin',
-          'tytso+e2fsprogs-rpi64-x+bin',
-          'dosfstools+dosfstools-rpi64-x+bin',
-          'malinen+wpa-supplicant-dbus-rpi64-x+bin',
-          'unigw+wpkg-rpi64-x+bin',
-          'whispi+auto-shutdown-rpi64-x+bin',
-          'raspberry+eeprom-rpi64-x+bin',
-
-          /* Audio */
-          'alsa+utils-rpi64-x+bin',
-          'freedesktop+pipewire-rpi64-x+bin',
-
-          /* Network */
-          'openbsd+openssh-rpi64-x+bin',
-          'litech+radvd-rpi64-x+bin',
-
-          /* Hailo Ollama */
-          'hailo-ai+ollama-rpi64-x+bin',
-
-          /* Whispi */
-          'epsitec+whispi-thrall-rpi64-x+bin'
+          'carnotzet+os-base-whispi-rpi5b-x+bin'
         ]);
 
         yield genImage('carnotzet',
