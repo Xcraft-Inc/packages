@@ -1,2 +1,3 @@
 /boot/sources.list
 /boot/carnotzet.d/99.user
+/etc/wpa_supplicant/wpa_supplicant.conf
