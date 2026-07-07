@@ -83,6 +83,9 @@ dependency:
     whispi+auto-shutdown-rpi64:
       - version: ''
         architecture: []
+    raspberry+eeprom-rpi64:
+      - version: ''
+        architecture: []
   build:
     tytso+e2fsprogs:
       - version: ''
@@ -142,6 +145,7 @@ data:
           'malinen+wpa-supplicant-dbus-rpi64-x+bin',
           'unigw+wpkg-rpi64-x+bin',
           'whispi+auto-shutdown-rpi64-x+bin',
+          'raspberry+eeprom-rpi64-x+bin',
 
           /* Audio */
           'alsa+utils-rpi64-x+bin',
@@ -160,7 +164,7 @@ data:
 
         yield genImage('carnotzet',
           '<PEON.INSTALLDIR>/opt/img/carnotzet-os-whispi-<THIS.$VERSION>-rpi5b.img',
-          2048
+          3096
         );
       maketest: ''
       makeinstall: ''
