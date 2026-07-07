@@ -23,7 +23,7 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
-    carnotzet+rootfs-whispi-rpi5bin:
+    carnotzet+rootfs-whispi-rpi5b:
       - version: ''
         architecture: []
     carnotzet+rootfs-whispi-rpi5b-x+bin:
