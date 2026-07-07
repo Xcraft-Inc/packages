@@ -212,6 +212,14 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
+    epsitec+carnotzet-os-config-whispi-rpi5b:
+      - version: ''
+        architecture: []
+    epsitec+carnotzet-os-config-whispi-rpi5b-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
 bump: []
 data:
   get:
