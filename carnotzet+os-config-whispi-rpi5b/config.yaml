@@ -52,6 +52,7 @@ data:
         cp('<PEON.ASSETS>/modules',             '<PEON.INSTALLDIR.X+BIN>/etc/modules');
         cp('<PEON.ASSETS>/wpa_supplicant.conf', '<PEON.INSTALLDIR.X+BIN>/etc/wpa_supplicant/wpa_supplicant.conf');
         cp('<PEON.ASSETS>/pisugar-server.json', '<PEON.INSTALLDIR.X+BIN>/etc/pisugar-server/config.json');
+        cp('<PEON.ASSETS>/eeprom.conf',         '<PEON.INSTALLDIR.X+BIN>/etc/eeprom.conf');
     test: none
     env: {}
   deploy: ''

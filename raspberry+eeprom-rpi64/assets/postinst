@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ -f "/etc/eeprom.conf" ]; then
+  NEW_CONF="$(cat "/etc/eeprom.conf")"
+  OLD_CONF="$(rpi-eeprom-config)"
+  if [ "$OLD_CONF" != "$NEW_CONF" ]; then
+    echo "EEPROM config has changed, apply the new one"
+    rpi-eeprom-config --apply "/etc/eeprom.conf"
+  fi
+fi

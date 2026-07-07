@@ -60,6 +60,8 @@ data:
       makeall: ''
       maketest: ''
       makeinstall: |-
+        cp('<PEON.ASSETS>/postinst', '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+
         cp('rpi-eeprom-config', '<PEON.INSTALLDIR.X+BIN>/usr/sbin/rpi-eeprom-config');
         cp('rpi-eeprom-update', '<PEON.INSTALLDIR.X+BIN>/usr/sbin/rpi-eeprom-update');
         cp('rpi-eeprom-digest', '<PEON.INSTALLDIR.X+BIN>/usr/sbin/rpi-eeprom-digest');
