@@ -1,0 +1,64 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: ggml-org+whisper-cpp-rpi64
+version: 1.8.6
+$version: 1.8.6
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Port of OpenAI's Whisper model in C/C++
+  long: ''
+dependency:
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && mkdir -p ./BUILD
+      && cd ./BUILD
+      && cmake -G Ninja
+               -DCMAKE_TOOLCHAIN_FILE=<PEON.ASSETS>/rasp.cmake
+               -DCMAKE_INSTALL_PREFIX=<PEON.PREFIXDIR.X+BIN>
+               -DCMAKE_BUILD_TYPE=Release ..
+               -DGGML_OPENMP=OFF
+  rules:
+    type: script
+    location: data/whisper.cpp-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!ninja -C BUILD -j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: '!ninja -C BUILD install'
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
