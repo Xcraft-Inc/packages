@@ -155,21 +155,25 @@ if [ $wpa_exit_code -ne 0 ]; then
   dispose
 fi
 
-echo "Waiting for WiFi connection..."
-timeout=30
-counter=0
-while [ $counter -lt $timeout ]; do
-  if wpa_cli -i "$network_wifi" status | grep -q "wpa_state=COMPLETED"; then
-    echo "WiFi connected successfully"
-    break
-  fi
-  sleep 1
-  counter=$((counter + 1))
-done
+# When using DBus, we consider that the wifi connection is handled by an other
+# process (dynamic) instead of just the current settings.
+if [ -z "$DBUS_ENABLE" ]; then
+  echo "Waiting for WiFi connection..."
+  timeout=30
+  counter=0
+  while [ $counter -lt $timeout ]; do
+    if wpa_cli -i "$network_wifi" status | grep -q "wpa_state=COMPLETED"; then
+      echo "WiFi connected successfully"
+      break
+    fi
+    sleep 1
+    counter=$((counter + 1))
+  done
 
-if [ $counter -eq $timeout ]; then
-  echo "Error: WiFi connection timeout after ${timeout}s"
-  dispose
+  if [ $counter -eq $timeout ]; then
+    echo "Error: WiFi connection timeout after ${timeout}s"
+    dispose
+  fi
 fi
 
 if [ "$network_wifi_dhcp" = "off" ]; then
