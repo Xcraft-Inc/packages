@@ -59,7 +59,7 @@ dependency:
       - version: ''
         architecture: []
         subpackage:
-          - x+modules
+          - x+bin
     raspberry+linux-firmware-rpi5b:
       - version: ''
         architecture: []
