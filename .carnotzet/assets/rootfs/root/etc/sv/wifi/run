@@ -140,6 +140,11 @@ chmod 600 "$wpa_conf"
 DBUS_ENABLE=""
 if wpa_supplicant -h | grep DBus > /dev/null 2>&1; then
   DBUS_ENABLE="-u"
+
+  echo "Waiting for DBUS..."
+  while [ ! -S /var/run/dbus/system_bus_socket ]; do
+    sleep 0.1
+  done
 fi
 
 wpa_supplicant "$DBUS_ENABLE" -B -i "$network_wifi" -c "$wpa_conf" -P "/var/run/wpa_supplicant.$network_wifi.pid"
