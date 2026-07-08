@@ -109,14 +109,14 @@ if ! command -v wpa_supplicant >/dev/null 2>&1; then
   exit 1
 fi
 
-if [ -z "$wifi_ssid" ] || [ -z "$wifi_password" ]; then
-  echo "Error: wifi_ssid or wifi_password not configured"
-  exit 1
-fi
-
 mkdir -p /var/run/wpa_supplicant
 
 if [ ! -f "/etc/wpa_supplicant/wpa_supplicant.conf" ]; then
+  if [ -z "$wifi_ssid" ] || [ -z "$wifi_password" ]; then
+    echo "Error: wifi_ssid or wifi_password not configured"
+    exit 1
+  fi
+
   wpa_conf="/tmp/wpa_supplicant.conf"
   touch "$wpa_conf"
   cat > "$wpa_conf" << EOF
