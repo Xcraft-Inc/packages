@@ -45,6 +45,8 @@ data:
       makeall: ''
       maketest: ''
       makeinstall: |-
+        const {genOSRelease} = imp('raspberry');
+
         cp('<PEON.ASSETS>/conffiles',           '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
         cp('<PEON.ASSETS>/carnotzet.d',         '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.d');
         cp('<PEON.ASSETS>/config.txt',          '<PEON.INSTALLDIR.X+BIN>/boot/config.txt');
@@ -52,6 +54,8 @@ data:
         cp('<PEON.ASSETS>/wpa_supplicant.conf', '<PEON.INSTALLDIR.X+BIN>/etc/wpa_supplicant/wpa_supplicant.conf');
         cp('<PEON.ASSETS>/pisugar-server.json', '<PEON.INSTALLDIR.X+BIN>/etc/pisugar-server/config.json');
         cp('<PEON.ASSETS>/eeprom.conf',         '<PEON.INSTALLDIR.X+BIN>/etc/eeprom.conf');
+
+        yield genOSRelease('<PEON.INSTALLDIR.X+BIN>/etc', 'Whispi', '<THIS.$VERSION>');
     test: none
     env: {}
   deploy: ''
