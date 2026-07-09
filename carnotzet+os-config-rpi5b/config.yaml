@@ -45,10 +45,14 @@ data:
       makeall: ''
       maketest: ''
       makeinstall: |-
+        const {genOSRelease} = imp('raspberry');
+
         cp('<PEON.ASSETS.GLOBAL>/sources.list', '<PEON.INSTALLDIR.X+BIN>/boot/sources.list');
         cp('<PEON.ASSETS.GLOBAL>/config.txt',   '<PEON.INSTALLDIR.X+BIN>/boot/config.txt');
         cp('<PEON.ASSETS.GLOBAL>/conffiles',    '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
         cp('<PEON.ASSETS.GLOBAL>/modules',      '<PEON.INSTALLDIR.X+BIN>/etc/modules');
+
+        yield genOSRelease('<PEON.INSTALLDIR.X+BIN>/etc', null, '<THIS.$VERSION>');
     test: none
     env: {}
   deploy: ''

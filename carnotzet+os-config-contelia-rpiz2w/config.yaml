@@ -45,6 +45,8 @@ data:
       makeall: ''
       maketest: ''
       makeinstall: |-
+        const {genOSRelease} = imp('raspberry');
+
         cp('<PEON.ASSETS.GLOBAL>/sources.list', '<PEON.INSTALLDIR.X+BIN>/boot/sources.list');
         cp('<PEON.ASSETS.GLOBAL>/conffiles',    '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
         cp('<PEON.ASSETS>/carnotzet.d',         '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.d');
@@ -62,6 +64,8 @@ data:
         cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/network/down');
         cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/ntpd/down');
         cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/wifi/down');
+
+        yield genOSRelease('<PEON.INSTALLDIR.X+BIN>/etc', 'Contelia', '<THIS.$VERSION>');
     test: none
     env: {}
   deploy: ''
