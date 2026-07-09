@@ -62,7 +62,7 @@ data:
         ]);
 
         yield genImage('carnotzet',
-          '<PEON.INSTALLDIR>/opt/img/carnotzet-os-<THIS.$VERSION>-rpiz2w.img'
+          '<PEON.INSTALLDIR>/opt/img/carnotzet-os-<THIS.VERSION>-rpiz2w.img'
         );
       maketest: ''
       makeinstall: ''

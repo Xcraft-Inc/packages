@@ -62,7 +62,7 @@ data:
         ]);
 
         yield genImage('carnotzet',
-          '<PEON.INSTALLDIR>/opt/img/carnotzet-os-whispi-<THIS.$VERSION>-rpi5b.img',
+          '<PEON.INSTALLDIR>/opt/img/carnotzet-os-whispi-<THIS.VERSION>-rpi5b.img',
           3096
         );
       maketest: ''
