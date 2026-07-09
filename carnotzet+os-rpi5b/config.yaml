@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: carnotzet+os-rpi5b
-version: 0.12.0
-$version: 0.12.0
+version: 0.13.0
+$version: 0.13.0
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
