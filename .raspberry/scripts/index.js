@@ -74,6 +74,30 @@ class Scripts {
     await exec(mkimage, '-A', 'arm64', '-O', 'linux', '-T', 'ramdisk', '-d', `${rootDir}/initramfs.cpio.gz`, `${bootDir}/uRamdisk`);
     }
   };
+
+  genOSRelease = async (outputDir, codeName, version) => {
+    const {require} = this.#ctx;
+    const fse = require('fs-extra');
+    const path = require('node:path');
+
+    const os = new Map(
+      Object.entries({
+        PRETTY_NAME: `"Carnotzet OS ${version} (${codeName})"`,
+        NAME: '"Carnotzet OS"',
+        VERSION_ID: version,
+        VERSION: `"${version} (${codeName})"`,
+        VERSION_CODENAME: codeName.toLowerCase(),
+        ID: 'carnotzet',
+        HOME_URL: '"https://xcraft.ch/carnotzet"',
+      })
+    );
+
+    const osRelease = Array.from(os.entries())
+      .map(([key, value]) => `${key}=${value}`)
+      .join('\n');
+
+    await fse.writeFile(path.join(outputDir, 'os-release'), osRelease);
+  };
 }
 
 module.exports = (ctx) => new Scripts(ctx);
