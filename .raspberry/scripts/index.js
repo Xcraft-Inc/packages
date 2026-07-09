@@ -80,18 +80,23 @@ class Scripts {
     const fse = require('fs-extra');
     const path = require('node:path');
 
-    const os = new Map(
-      Object.entries({
-        PRETTY_NAME: `"Carnotzet OS ${version} (${codeName})"`,
-        NAME: '"Carnotzet OS"',
-        VERSION_ID: version,
-        VERSION: `"${version} (${codeName})"`,
-        VERSION_CODENAME: codeName.toLowerCase(),
-        ID: 'carnotzet',
-        HOME_URL: '"https://xcraft.ch/carnotzet"',
-      })
-    );
+    const definition = {
+      NAME: '"Carnotzet OS"',
+      VERSION_ID: version,
+      ID: 'carnotzet',
+      HOME_URL: '"https://xcraft.ch/carnotzet"',
+    };
 
+    if (codeName) {
+      definition.PRETTY_NAME = `"Carnotzet OS ${version} (${codeName})"`;
+      definition.VERSION = `"${version} (${codeName})"`;
+      definition.VERSION_CODENAME = codeName.toLowerCase();
+    } else {
+      definition.PRETTY_NAME = `"Carnotzet OS ${version}"`;
+      definition.VERSION = `"${version}"`;
+    }
+
+    const os = new Map(Object.entries(definition));
     const osRelease = Array.from(os.entries())
       .map(([key, value]) => `${key}=${value}`)
       .join('\n');
