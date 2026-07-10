@@ -51,7 +51,7 @@ data:
       maketest: ''
       makeinstall: |-
         mkdir('<PEON.INSTALLDIR>/opt');
-        cp('../go', '<PEON.INSTALLDIR>/opt/go-24');
+        cp('../go', '<PEON.INSTALLDIR>/opt/go-<THIS.$VERSION[.,1]>');
     test: none
     env:
       GOROOT_BOOTSTRAP: <PEON.ENV.GOROOT_22>

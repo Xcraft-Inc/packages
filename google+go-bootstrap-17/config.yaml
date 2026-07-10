@@ -60,7 +60,7 @@ data:
       maketest: ''
       makeinstall: |-
         mkdir('<PEON.INSTALLDIR>/opt');
-        cp('../go', '<PEON.INSTALLDIR>/opt/go-bootstrap-17');
+        cp('../go', '<PEON.INSTALLDIR>/opt/go-bootstrap-<THIS.$VERSION[.,1]>');
     test: none
     env:
       darwin/SDKROOT: <PEON.ENV.MACOSSDK_1201>
