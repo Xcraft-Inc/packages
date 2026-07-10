@@ -1,0 +1,55 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: ffmpeg+ffmpeg-rpi64
+version: 8.1.2
+$version: 8.1.2
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: 'A complete, cross-platform solution to record, convert, ...'
+  long: ''
+dependency: {}
+bump: []
+data:
+  get:
+    uri: 'https://ffmpeg.org/releases/ffmpeg-<THIS.$VERSION>.tar.xz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: false
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/usr
+                     --cross-prefix=aarch64-xcraft-linux-gnu-
+                     --enable-cross-compile
+                     --target-os=linux
+                     --arch=arm64
+                     --pkg-config=pkg-config
+                     --disable-autodetect
+                     --enable-gpl
+  rules:
+    type: make
+    location: data/ffmpeg-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '-j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: install DESTDIR=<PEON.INSTALLDIR.X+BIN>
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
