@@ -1,0 +1,65 @@
+subpackage:
+  - runtime*
+name: google+go-26
+version: 1.26.5
+$version: 1.26.5
+distribution: toolchain/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: GO lang
+  long: ''
+dependency:
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    google+go-24:
+      - version: ''
+        architecture:
+          - mswindows-i386
+          - mswindows-amd64
+          - linux-i386
+          - linux-amd64
+          - linux-aarch64
+          - darwin-i386
+          - darwin-amd64
+bump: []
+data:
+  get:
+    uri: 'https://dl.google.com/go/go<THIS.$VERSION>.src.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: data/go
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: |-
+        !cd src &&
+        <PEON.OS=win? make.bat : ./make.bash >
+      maketest: ''
+      makeinstall: |-
+        mkdir('<PEON.INSTALLDIR>/opt');
+        cp('../go', '<PEON.INSTALLDIR>/opt/go-26');
+    test: none
+    env:
+      GOROOT_BOOTSTRAP: <PEON.ENV.GOROOT_24>
+  deploy: ''
+  env:
+    path: []
+    other:
+      GOROOT_26: <OS.ROOTDIR>/opt/go-26
+  embedded: true
+  runtime:
+    configure: ''
