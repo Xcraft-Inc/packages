@@ -1,0 +1,69 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: anacrolix+dms-rpi64
+version: 1.7.2
+$version: 1.7.2
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: A UPnP DLNA Digital Media Server
+  long: A UPnP DLNA Digital Media Server that includes basic video transcoding. Tested on a Panasonic Viera television, several Android UPnP apps, and Chromecast.
+dependency:
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    google+go-26:
+      - version: ''
+        architecture: []
+  make:
+    xcraft+base-make:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://github.com/anacrolix/dms/archive/refs/tags/v<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: data/dms-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: |-
+        !  GOPATH=$(pwd)/../go
+           GOARCH=arm64
+           go build
+        && chmod u+w -R $(pwd)/../go
+      maketest: ''
+      makeinstall: |-
+        !  mkdir -p <PEON.PREFIXDIR.X+BIN>/bin
+        && mv dms <PEON.PREFIXDIR.X+BIN>/bin
+    test: none
+    env:
+      GOROOT: <PEON.ENV.GOROOT_26>
+      PATH: <PEON.ENV.GOROOT_26>/bin:<PEON.ENV.PATH>
+  deploy: |-
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/dms');
+    cp('<PEON.ASSETS>/sv',       '<PEON.INSTALLDIR.X+BIN>/etc/sv/dms');
+    cp('<PEON.ASSETS>/postinst', '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',    '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

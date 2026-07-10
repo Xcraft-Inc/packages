@@ -1,0 +1,10 @@
+#!/bin/sh
+exec 2>&1
+
+echo "Start DMS daemon..."
+
+# Use the standard user for the media files
+mkdir -p /home/rasp/dms
+chown rasp:rasp /home/rasp/dms
+
+exec /usr/bin/dms -noProbe -noTranscode -ignoreHidden -ignoreUnreadable -friendlyName Carnotzet -path /home/rasp/dms/

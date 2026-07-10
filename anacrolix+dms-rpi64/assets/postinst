@@ -1,0 +1,8 @@
+#!/bin/sh
+
+rm -rf /var/service/dms
+ln -sf /etc/sv/dms /var/service/dms
+
+if [ ! -f /var/service/dms/down ]; then
+  sv up dms || :
+fi
