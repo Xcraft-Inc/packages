@@ -14,6 +14,15 @@ description:
   brief: A UPnP DLNA Digital Media Server
   long: A UPnP DLNA Digital Media Server that includes basic video transcoding. Tested on a Panasonic Viera television, several Android UPnP apps, and Chromecast.
 dependency:
+  install:
+    ffmpeg+ffmpeg-rpi64:
+      - version: ''
+        architecture: []
+    ffmpeg+ffmpeg-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
   build:
     xcraft+base-build:
       - version: ''

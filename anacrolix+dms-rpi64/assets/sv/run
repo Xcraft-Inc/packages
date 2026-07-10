@@ -7,4 +7,4 @@ echo "Start DMS daemon..."
 mkdir -p /home/rasp/dms
 chown rasp:rasp /home/rasp/dms
 
-exec /usr/bin/dms -noProbe -noTranscode -ignoreHidden -ignoreUnreadable -friendlyName Carnotzet -path /home/rasp/dms/
+exec /usr/bin/dms -ignoreHidden -ignoreUnreadable -friendlyName Carnotzet -path /home/rasp/dms/
