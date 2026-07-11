@@ -53,7 +53,7 @@ data:
       CXX: aarch64-xcraft-linux-gnu-g++
   deploy: |-
     !  rm -rf <PEON.PREFIXDIR.X+BIN>/share/info/dir
-    && echo ".if n .ftr CW R" >> <PEON.PREFIXDIR.X+BIN>/usr/share/groff/site-tmac/man.local
+    && echo ".if n .ftr CW R" >> <PEON.PREFIXDIR.X+BIN>/share/groff/site-tmac/man.local
   env:
     path: []
     other: {}
