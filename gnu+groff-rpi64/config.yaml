@@ -45,7 +45,7 @@ data:
     args:
       postinst: ''
       prerm: ''
-      makeall: '-j<PEON.CPUS.COUNT>'
+      makeall: '-j<PEON.CPUS.COUNT> GROFFBIN=true PDFMOMBIN=true'
       maketest: ''
       makeinstall: install DESTDIR=<PEON.INSTALLDIR.X+BIN>
     test: none
