@@ -33,17 +33,28 @@ data:
                      --target-os=linux
                      --arch=arm64
                      --pkg-config=pkg-config
-                     --disable-autodetect
                      --enable-gpl
+                     --disable-autodetect
+                     --disable-htmlpages
+                     --disable-podpages
+                     --disable-txtpages
   rules:
-    type: make
+    type: script
     location: data/ffmpeg-<THIS.$VERSION>
     args:
       postinst: ''
       prerm: ''
-      makeall: '-j<PEON.CPUS.COUNT>'
+      makeall: '!make -j<PEON.CPUS.COUNT>'
       maketest: ''
-      makeinstall: install DESTDIR=<PEON.INSTALLDIR.X+BIN>
+      makeinstall: |-
+        !  make install DESTDIR=<PEON.INSTALLDIR.X+BIN>
+        && make install DESTDIR=<PEON.INSTALLDIR>
+        && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
+        && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib
+        && rm -rf <PEON.INSTALLDIR>/usr/bin
+        && find <PEON.INSTALLDIR> -name "*.pc" -exec sed -i 's|prefix=/usr|prefix=<PEON.INSTALLDIR>/usr|g' {} +
+        && find <PEON.INSTALLDIR> -name "*.pc" -exec sed -i 's|libdir=/usr|libdir=<PEON.INSTALLDIR>/usr|g' {} +
+        && find <PEON.INSTALLDIR> -name "*.pc" -exec sed -i 's|includedir=/usr|includedir=<PEON.INSTALLDIR>/usr|g' {} +
     test: none
     env: {}
   deploy: ''
