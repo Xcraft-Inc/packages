@@ -199,14 +199,6 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
-    gnu+groff-rpi64:
-      - version: ''
-        architecture: []
-    gnu+groff-rpi64-x+bin:
-      - version: ''
-        architecture: []
-        subpackage:
-          - x+bin
 bump:
   - carnotzet+os-contelia-rpiz2w
 data:
