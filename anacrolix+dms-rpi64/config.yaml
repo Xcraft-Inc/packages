@@ -23,6 +23,14 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
+    dirkvdb+ffmpegthumbnailer-rpi64:
+      - version: ''
+        architecture: []
+    dirkvdb+ffmpegthumbnailer-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
   build:
     xcraft+base-build:
       - version: ''
