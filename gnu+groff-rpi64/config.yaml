@@ -38,6 +38,7 @@ data:
                      --build=$MACHTYPE
                      --host=aarch64-xcraft-linux-gnu
                      --enable-year2038
+                     --without-x
   rules:
     type: make
     location: data/groff-<THIS.$VERSION>
