@@ -1,0 +1,62 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: gnu+groff-rpi64
+version: 1.24.1
+$version: 1.24.1
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: GNU roff (groff)
+  long: 'groff (GNU roff) is a typesetting system that reads plain text input that includes formatting commands to produce output in PostScript, PDF, HTML, or DVI formats or for display to a terminal.'
+dependency:
+  build:
+    xcraft+base-build:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'http://ftpmirror.gnu.org/groff/groff-<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: false
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/usr
+                     --build=$MACHTYPE
+                     --host=aarch64-xcraft-linux-gnu
+                     --enable-year2038
+  rules:
+    type: make
+    location: data/groff-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '-j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: install DESTDIR=<PEON.INSTALLDIR.X+BIN>
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+      CXX: aarch64-xcraft-linux-gnu-g++
+  deploy: |-
+    !  rm -rf <PEON.PREFIXDIR.X+BIN>/share/info/dir
+    && echo ".if n .ftr CW R" >> <PEON.PREFIXDIR.X+BIN>/usr/share/groff/site-tmac/man.local
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''
