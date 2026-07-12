@@ -101,6 +101,7 @@ class Scripts {
       .map(([key, value]) => `${key}=${value}`)
       .join('\n');
 
+    await fse.ensureDir(outputDir);
     await fse.writeFile(path.join(outputDir, 'os-release'), osRelease);
   };
 }
