@@ -23,7 +23,7 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'https://github.com/thom311/libnl/releases/download/libnl3_11_0/libnl-<THIS.$VERSION>.tar.gz'
+    uri: 'https://github.com/thom311/libnl/releases/download/libnl<THIS.$VERSION[.,0]>_<THIS.$VERSION[.,1]>_<THIS.$VERSION[.,2]>/libnl-<THIS.$VERSION>.tar.gz'
     mirrors: []
     ref: ''
     $ref: ''

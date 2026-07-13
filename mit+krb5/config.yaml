@@ -30,7 +30,7 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'https://web.mit.edu/kerberos/dist/krb5/1.18/krb5-<THIS.$VERSION>.tar.gz'
+    uri: 'https://web.mit.edu/kerberos/dist/krb5/<THIS.$VERSION[.,0]>.<THIS.$VERSION[.,1]>/krb5-<THIS.$VERSION>.tar.gz'
     ref: ''
     out: ''
     externals: true

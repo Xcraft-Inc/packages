@@ -39,7 +39,7 @@ bump:
   - carnotzet+rescuefs-whispi-rpi5b
 data:
   get:
-    uri: 'https://www.kernel.org/pub/linux/utils/util-linux/v2.41/util-linux-<THIS.$VERSION>.tar.gz'
+    uri: 'https://www.kernel.org/pub/linux/utils/util-linux/v<THIS.$VERSION[.,0]>.<THIS.$VERSION[.,1]>/util-linux-<THIS.$VERSION>.tar.gz'
     mirrors: []
     ref: ''
     $ref: ''

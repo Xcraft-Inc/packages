@@ -19,7 +19,7 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'https://github.com/unicode-org/icu/releases/download/release-65-1/icu4c-65_1-src.tgz'
+    uri: 'https://github.com/unicode-org/icu/releases/download/release-<THIS.$VERSION[.,0]>-<THIS.$VERSION[.,1]>/icu4c-<THIS.$VERSION[.,0]>_<THIS.$VERSION[.,1]>-src.tgz'
     ref: ''
     out: ''
     externals: true
