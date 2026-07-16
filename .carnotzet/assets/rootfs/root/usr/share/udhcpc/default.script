@@ -69,6 +69,11 @@ case "$1" in
 			echo "nameserver $i" >> "$tmpfile"
 		done
 		mv "$tmpfile" "$realconf"
+
+		# Ensure to keep the clock up to date
+		if sv status "ntpd" | grep -q ^run:; then
+			sv restart ntpd
+		fi
 		;;
 esac
 
