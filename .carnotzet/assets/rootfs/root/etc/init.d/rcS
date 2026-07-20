@@ -103,3 +103,10 @@ if [ "$carnotzet_expand" = "1" ]; then
 fi
 
 boot_normal
+
+if [ -f /var/.reboot ]; then
+  rm -f /var/.reboot
+  echo "Reboot..."
+  reboot
+  exit 0
+fi
