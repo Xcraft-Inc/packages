@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: carnotzet+os-config-whispi-rpi5b
-version: '1.0.2'
-$version: '1.0.2'
+version: '1.0.3'
+$version: '1.0.3'
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
