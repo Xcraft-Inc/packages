@@ -15,16 +15,25 @@ description:
   long: 'Installation scripts and binaries for the Raspberry Pi 4 and Raspberry Pi 5 bootloader EEPROMs'
 dependency:
   install:
+    raspberry+utils-rpi64:
+      - version: ''
+        architecture: []
     raspberry+utils-rpi64-x+bin:
       - version: ''
         architecture: []
         subpackage:
           - x+bin
+    openssl+openssl3-rpi64:
+      - version: ''
+        architecture: []
     openssl+openssl3-rpi64-x+bin:
       - version: ''
         architecture: []
         subpackage:
           - x+bin
+    vanrossum+python3-rpi64:
+      - version: ''
+        architecture: []
     vanrossum+python3-rpi64-x+bin:
       - version: ''
         architecture: []

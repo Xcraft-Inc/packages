@@ -15,6 +15,9 @@ description:
   long: ''
 dependency:
   install:
+    pisugar+pisugar-tools-rpi64:
+      - version: ''
+        architecture: []
     pisugar+pisugar-tools-rpi64-x+bin:
       - version: ''
         architecture: []
