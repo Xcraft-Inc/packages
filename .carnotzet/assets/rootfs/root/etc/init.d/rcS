@@ -24,6 +24,11 @@ fsck -a
 mount /boot
 mount -o remount,noatime /
 
+# Clean the /tmp directory (files created since at least 7 days and
+# empty directories)
+find /tmp -type f -ctime +7 -delete
+find /tmp -type d -empty -delete
+
 boot_expand()
 {
   # Check filesystems
