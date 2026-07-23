@@ -74,11 +74,11 @@ data:
           '<PEON.INSTALLDIR>/opt/vaultwarden/bin/vaultwarden<PEON.OS=win?.exe:>'
         );
         cp(
-          '<PEON.PROD.ROOTDIR>/usr/openssl3/lib/libssl.so.3',
+          '<PEON.PROD.ROOTDIR>/usr/lib/libssl.so.3',
           '<PEON.INSTALLDIR>/opt/vaultwarden/lib/libssl.so.3'
         );
         cp(
-          '<PEON.PROD.ROOTDIR>/usr/openssl3/lib/libcrypto.so.3',
+          '<PEON.PROD.ROOTDIR>/usr/lib/libcrypto.so.3',
           '<PEON.INSTALLDIR>/opt/vaultwarden/lib/libcrypto.so.3'
         );
         cp('.env.template', '<PEON.INSTALLDIR>/extra/etc/vaultwarden/env');
@@ -89,8 +89,7 @@ data:
           '<PEON.INSTALLDIR>/opt/vaultwarden/var/web-vault'
         );
     test: none
-    env:
-      PKG_CONFIG_PATH: '<PEON.PROD.ROOTDIR>/usr/openssl3/lib/pkgconfig:<PEON.ENV.PKG_CONFIG_PATH>'
+    env: {}
   deploy: |-
     const dataFolderPath = '/opt/vaultwarden/var/data';
 
