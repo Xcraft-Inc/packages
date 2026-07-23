@@ -45,6 +45,9 @@ data:
                    -DCMAKE_C_FLAGS_RELEASE="$CFLAGS"
                    -DCMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS"
                    -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS"
+                   -DOPENSSL_CRYPTO_LIBRARY=<PEON.ROOTDIR>/usr/lib/libcrypto.a
+                   -DOPENSSL_INCLUDE_DIR=<PEON.ROOTDIR>/usr/include
+                   -DOPENSSL_SSL_LIBRARY=<PEON.ROOTDIR>/usr/lib/libssl.a
   rules:
     type: make
     location: data/cmake-<THIS.$VERSION>/
