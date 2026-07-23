@@ -45,7 +45,7 @@ data:
       maketest: ''
       makeinstall: |-
         mv(
-          '/tmp/xcraft-415a7b5f/builds/bw_web_v<THIS.$VERSION>',
+          '/tmp/xcraft-415a7b5f/builds/bw_web_v<THIS.$VERSION>+0',
           '<PEON.PREFIXDIR>/share/vaultwarden/web-vault'
         );
         rm('/tmp/xcraft-415a7b5f');
