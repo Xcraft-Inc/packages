@@ -21,7 +21,7 @@ dependency:
     vanrossum+python3:
       - version: ''
         architecture: []
-    openssl+openssl:
+    openssl+openssl3:
       - version: ''
         architecture: []
 bump: []
