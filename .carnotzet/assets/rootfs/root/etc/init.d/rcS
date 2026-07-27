@@ -26,8 +26,8 @@ mount -o remount,noatime /
 
 # Clean the /tmp directory (files created since at least 7 days and
 # empty directories)
-find /tmp -type f -ctime +7 -delete
-find /tmp -type d -empty -delete
+find /tmp -type f -ctime +7 -delete -mindepth 1
+find /tmp -type d -empty -delete -mindepth 1
 
 boot_expand()
 {
