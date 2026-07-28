@@ -6,7 +6,7 @@ maintainer:
   name: Mathieu Schroeter
   email: schroeter@epsitec.ch
 architecture:
-  - darwin-aarch64
+  - darwin-amd64
 description:
   brief: .NET Core SDK 6.0, 8.0 and 10.0
   long: ''
