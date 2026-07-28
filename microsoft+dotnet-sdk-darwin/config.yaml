@@ -8,7 +8,7 @@ maintainer:
 architecture:
   - darwin-amd64
 description:
-  brief: .NET Core SDK 6.0, 8.0 and 9.0
+  brief: .NET Core SDK 6.0 and 8.0
   long: ''
 dependency:
   install:
