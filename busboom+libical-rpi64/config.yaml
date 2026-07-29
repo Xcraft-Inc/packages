@@ -23,6 +23,9 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
+    ninja+ninja:
+      - version: ''
+        architecture: []
 bump: []
 data:
   get:

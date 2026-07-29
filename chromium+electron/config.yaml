@@ -27,6 +27,9 @@ dependency:
     gnu+gperf:
       - version: ''
         architecture: []
+    ninja+ninja:
+      - version: ''
+        architecture: []
 data:
   get:
     uri: ''
