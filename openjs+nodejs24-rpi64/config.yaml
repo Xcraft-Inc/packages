@@ -67,8 +67,10 @@ data:
       LINK_host: g++
       CFLAGS: ''
       CXXFLAGS: ''
+      CXXFLAGS_host: '-static-libstdc++'
       CPPFLAGS: ''
       LDFLAGS: ''
+      LDFLAGS_host: '-static-libgcc -static-libstdc++'
       C_INCLUDE_PATH: ''
       CPLUS_INCLUDE_PATH: ''
       LIBRARY_PATH: ''
