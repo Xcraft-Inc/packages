@@ -1,0 +1,11 @@
+--- a/hailort/cmake/external/protobuf.cmake	2026-03-31 17:58:52.000000000 +0200
++++ b/hailort/cmake/external/protobuf.cmake	2026-07-30 15:42:39.607007547 +0200
+@@ -27,6 +27,8 @@
+             CONFIGURE_ARGS
+                 -DCMAKE_BUILD_TYPE=${TOOL_BUILD_TYPE}
+                 -DCMAKE_INSTALL_PREFIX=${PROTOBUF_INSTALL_DIR}
++                -DCMAKE_C_COMPILER=$ENV{CC_FOR_BUILD}
++                -DCMAKE_CXX_COMPILER=$ENV{CXX_FOR_BUILD}
+ 
+                 -Dprotobuf_BUILD_TESTS:BOOL=OFF
+                 -Dprotobuf_WITH_ZLIB:BOOL=OFF
