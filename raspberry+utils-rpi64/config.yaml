@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: raspberry+utils-rpi64
-version: 1.0.0-a30e7c7b
+version: 1.0.0-a30e7c7b-4
 $version: 1.0.0-a30e7c7b
 distribution: raspberry/
 maintainer:
@@ -44,6 +44,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 1.0.0-a30e7c7b@0ccde5f9d0bc019b75b097769bd68f950d86950ff1d66280d4c163ee4a6f424a.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
@@ -67,7 +68,7 @@ data:
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
       CXX: aarch64-xcraft-linux-gnu-g++
-      LDFLAGS: '<PEON.ENV.LDFLAGS> -lncursesw'
+      LDFLAGS: <PEON.ENV.LDFLAGS> -lncursesw
   deploy: |-
     !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
     && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/*.a

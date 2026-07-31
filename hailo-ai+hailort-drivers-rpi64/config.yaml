@@ -3,7 +3,7 @@ subpackage:
   - srcmod
   - 'x+bin:linux-aarch64'
 name: hailo-ai+hailort-drivers-rpi64
-version: 5.3.0
+version: 5.3.0-3
 $version: 5.3.0
 distribution: raspberry/
 maintainer:
@@ -42,6 +42,7 @@ data:
     out: ''
     externals: false
     prepare: ''
+    $hash: 5.3.0@716043f905d8a525fc6378224241609281f04ba5bafc989bb4633129558bb5a3.tar.gz
   type: src
   configure: ''
   rules:

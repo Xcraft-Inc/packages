@@ -3,7 +3,7 @@ subpackage:
   - srcmod
   - 'x+bin:linux-aarch64'
 name: pisugar+pisugar-tools-rpi64
-version: 2.3.2
+version: 2.3.2-14
 $version: 2.3.2
 distribution: raspberry/
 maintainer:
@@ -39,6 +39,7 @@ data:
     out: ''
     externals: false
     prepare: ''
+    $hash: 2.3.2@20897b19a8acba2bfd37120b460643bbf797ec0efb0dc3b14ffe5b672acac22b.tar.gz
   type: src
   configure: ''
   rules:

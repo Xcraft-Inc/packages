@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
-  - x+bin:linux-aarch64
+  - 'x+bin:linux-aarch64'
 name: raspberry+uboot-rpi5b
-version: '2026.04'
+version: 2026.04-14
 $version: '2026.04'
 distribution: raspberry/
 maintainer:
@@ -89,9 +89,9 @@ data:
         cp('<PEON.ASSETS.GLOBAL>/conffiles',     '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
     test: none
     env:
-      CFLAGS: '<PEON.ENV.CFLAGS> -I<PEON.PROD.ROOTDIR>/usr/local/include'
-      CXXFLAGS: '<PEON.ENV.CXXFLAGS> -I<PEON.PROD.ROOTDIR>/usr/local/include'
-      LDFLAGS: '<PEON.ENV.LDFLAGS> -L<PEON.PROD.ROOTDIR>/usr/local/lib'
+      CFLAGS: <PEON.ENV.CFLAGS> -I<PEON.PROD.ROOTDIR>/usr/local/include
+      CXXFLAGS: <PEON.ENV.CXXFLAGS> -I<PEON.PROD.ROOTDIR>/usr/local/include
+      LDFLAGS: <PEON.ENV.LDFLAGS> -L<PEON.PROD.ROOTDIR>/usr/local/lib
       HOSTCFLAGS: '-O2 -g0 -fPIC -fdiagnostics-color -I<PEON.ROOTDIR>/usr/openssl3/include -Wl,-rpath,<PEON.ROOTDIR>/usr/openssl3/lib64'
       HOSTCXXFLAGS: '-O2 -g0 -fPIC -fdiagnostics-color -I<PEON.ROOTDIR>/usr/openssl3/include -Wl,-rpath,<PEON.ROOTDIR>/usr/openssl3/lib64 -static-libstdc++'
       HOSTLDFLAGS: '-L<PEON.ROOTDIR>/usr/openssl3/lib64 -static-libgcc -static-libstdc++'

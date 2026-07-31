@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: gnu+groff-rpi64
-version: 1.24.1
+version: 1.24.1-4
 $version: 1.24.1
 distribution: raspberry/
 maintainer:
@@ -31,6 +31,7 @@ data:
     out: ''
     externals: false
     prepare: ''
+    $hash: 1.24.1@74e2819795b6aff431aeac983d63a9c8968eeaba2a2eba7df8ba4c7b41e7cfd8.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>

@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: vanrossum+python3-rpi64
-version: 3.11.5
+version: 3.11.5-8
 $version: 3.11.5
 distribution: raspberry/
 maintainer:

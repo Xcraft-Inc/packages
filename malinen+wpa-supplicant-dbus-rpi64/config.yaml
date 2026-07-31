@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: malinen+wpa-supplicant-dbus-rpi64
-version: '2.10'
+version: 2.10-3
 $version: '2.10'
 distribution: raspberry/
 maintainer:

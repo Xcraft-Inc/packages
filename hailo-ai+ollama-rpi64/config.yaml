@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: hailo-ai+ollama-rpi64
-version: 5.3.0
+version: 5.3.0-3
 $version: 5.3.0
 distribution: raspberry/
 maintainer:
@@ -54,6 +54,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 5.3.0@6d7ec65701c4f223336bf76fbdb6ace840313cf1d515b756ae821ca432f92bb3.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>

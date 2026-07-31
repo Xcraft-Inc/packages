@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: carnotzet+rescuefs-whispi-rpi5b
-version: 0.1.0
-$version: 0.1.0
+version: 1.0.0
+$version: 1.0.0
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -115,7 +115,7 @@ data:
       makeinstall: ''
     test: none
     env:
-      PATH: <PEON.ENV.PATH>:<PEON.PROD.ROOTDIR>/usr/bin
+      PATH: '<PEON.ENV.PATH>:<PEON.PROD.ROOTDIR>/usr/bin'
   deploy: ''
   env:
     path: []

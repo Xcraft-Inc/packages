@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: freedesktop+pipewire-rpi64
-version: 1.6.3
+version: 1.6.3-36
 $version: 1.6.3
 distribution: raspberry/
 maintainer:
@@ -90,6 +90,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 1.6.3@93db72dc06768db548d48ae2b8e96e7c299c89a47f5c4426f152221aa90b0f2d.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>

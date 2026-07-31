@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: openjs+nodejs24-rpi64
-version: 24.15.0
+version: 24.15.0-2
 $version: 24.15.0
 distribution: raspberry/
 maintainer:
@@ -36,6 +36,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 24.15.0@729de494dd2872e5a3a6c32a1cd156a5413d4aca2772b2d873ee86bb5531bcd9.tar.gz
   type: src
   configure: |-
     !cd {THIS.DATA.RULES.LOCATION}

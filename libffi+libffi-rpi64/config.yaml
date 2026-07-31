@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: libffi+libffi-rpi64
-version: 3.5.2
+version: 3.5.2-4
 $version: 3.5.2
 distribution: raspberry/
 maintainer:
@@ -31,6 +31,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 3.5.2@f3a3082a23b37c293a4fcd1053147b371f2ff91fa7ea1b2a52e335676bac82dc.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
