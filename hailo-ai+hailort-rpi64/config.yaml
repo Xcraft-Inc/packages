@@ -72,6 +72,10 @@ data:
     !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
     && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/cmake
     && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/bin/examples/hailopp_mot17_demo
+    && rm  -f <PEON.INSTALLDIR>/usr/include/expected.hpp
+    && rm  -f <PEON.INSTALLDIR>/usr/include/platform.h
+    && rm  -f <PEON.INSTALLDIR>/usr/include/hailotracker.h
+    && rm  -f <PEON.INSTALLDIR>/usr/include/status.h
   env:
     path: []
     other: {}
