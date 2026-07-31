@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: hailo-ai+hailort-rpi64
-version: 5.3.0
+version: 5.3.0-11
 $version: 5.3.0
 distribution: raspberry/
 maintainer:
@@ -24,6 +24,9 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
+    ninja+ninja:
+      - version: ''
+        architecture: []
 bump: []
 data:
   get:
@@ -34,6 +37,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 5.3.0@5675291de522df6b55c1bd455b3524ceada538a205db854e4414a54600c2aa7a.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
@@ -62,10 +66,16 @@ data:
     env:
       CC: aarch64-xcraft-linux-gnu-gcc
       CXX: aarch64-xcraft-linux-gnu-g++
+      CC_FOR_BUILD: gcc
+      CXX_FOR_BUILD: g++
   deploy: |-
     !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
     && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/cmake
     && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/bin/examples/hailopp_mot17_demo
+    && rm  -f <PEON.INSTALLDIR>/usr/include/expected.hpp
+    && rm  -f <PEON.INSTALLDIR>/usr/include/platform.h
+    && rm  -f <PEON.INSTALLDIR>/usr/include/hailotracker.h
+    && rm  -f <PEON.INSTALLDIR>/usr/include/status.h
   env:
     path: []
     other: {}

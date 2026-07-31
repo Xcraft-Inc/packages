@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: wertarbyte+triggerhappy-rpi64
-version: 0.5.0
+version: 0.5.0-5
 $version: 0.5.0
 distribution: raspberry/
 maintainer:
@@ -31,6 +31,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 0.5.0@af0fc196202f2d35153be401769a9ad9107b5b6387146cfa8895ae9cafad631c.tar.gz
   type: src
   configure: ''
   rules:
@@ -41,7 +42,7 @@ data:
       prerm: ''
       makeall: '-j<PEON.CPUS.COUNT>'
       maketest: ''
-      makeinstall: 'install DESTDIR=<PEON.INSTALLDIR.X+BIN>'
+      makeinstall: install DESTDIR=<PEON.INSTALLDIR.X+BIN>
     test: none
     env:
       CC: aarch64-xcraft-linux-gnu-gcc

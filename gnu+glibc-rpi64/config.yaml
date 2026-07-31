@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
-  - x+bin:linux-aarch64
+  - 'x+bin:linux-aarch64'
 name: gnu+glibc-rpi64
-version: '2.41'
+version: 2.41-12
 $version: '2.41'
 distribution: raspberry/
 maintainer:
@@ -38,15 +38,15 @@ dependency:
       - version: ''
         architecture: []
 bump:
+  - carnotzet+os-base-contelia-rpiz2w
   - carnotzet+os-base-rpi4b
   - carnotzet+os-base-rpi5b
   - carnotzet+os-base-rpiz2w
-  - carnotzet+os-base-contelia-rpiz2w
   - carnotzet+os-base-whispi-rpi5b
+  - carnotzet+rescuefs-contelia-rpiz2w
   - carnotzet+rescuefs-rpi4b
   - carnotzet+rescuefs-rpi5b
   - carnotzet+rescuefs-rpiz2w
-  - carnotzet+rescuefs-contelia-rpiz2w
   - carnotzet+rescuefs-whispi-rpi5b
 data:
   get:
@@ -55,7 +55,7 @@ data:
     ref: ''
     $ref: ''
     out: ''
-    externals: true
+    externals: false
     prepare: ''
   type: src
   configure: |-

@@ -3,8 +3,8 @@ subpackage:
   - 'x+bin:linux-aarch64'
   - 'x+modules:linux-aarch64'
 name: raspberry+linux-kernel-whispi-rpi5b
-version: '6.18.34-c8c74941'
-$version: '6.18.34-c8c74941'
+version: 6.18.34-c8c74941-3
+$version: 6.18.34-c8c74941
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -15,6 +15,10 @@ description:
   brief: The Linux Kernel for RASPBERRY Pi5 model B
   long: ''
 dependency:
+  install:
+    hailo-ai+hailort-drivers-rpi64-srcmod:
+      - version: ''
+        architecture: []
   build:
     xcraft+peon:
       - version: ''
@@ -35,10 +39,6 @@ dependency:
     xcraft+base-make:
       - version: ''
         architecture: []
-  install:
-    hailo-ai+hailort-drivers-rpi64-srcmod:
-      - version: ''
-        architecture: []
 bump:
   - carnotzet+os-base-whispi-rpi5b
 data:
@@ -50,6 +50,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 6.18.34-c8c74941@e159f4262148242c004f9ed0e035dfb04cc966ad9c83d296839a17305c3acce6.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>

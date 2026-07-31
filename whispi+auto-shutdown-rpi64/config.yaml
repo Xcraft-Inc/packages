@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: whispi+auto-shutdown-rpi64
-version: '0.1.0'
-$version: '0.1.0'
+version: 1.0.0
+$version: 1.0.0
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -11,7 +11,7 @@ maintainer:
 architecture:
   - source
 description:
-  brief: 'Handle auto shutdown with the PiSugar on USB-C disconnection'
+  brief: Handle auto shutdown with the PiSugar on USB-C disconnection
   long: ''
 dependency:
   install:
@@ -23,13 +23,15 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
+bump: []
 data:
   get:
     uri: ''
     mirrors: []
     ref: ''
+    $ref: ''
     out: ''
-    externals: true
+    externals: false
     prepare: ''
   type: src
   configure: ''

@@ -3,7 +3,7 @@ subpackage:
   - 'x+bin:linux-aarch64'
   - 'x+httpd:linux-aarch64'
 name: vlasenko+busybox-rpi64
-version: 1.37.0
+version: 1.37.0-37
 $version: 1.37.0
 distribution: raspberry/
 maintainer:
@@ -32,15 +32,15 @@ dependency:
       - version: ''
         architecture: []
 bump:
+  - carnotzet+os-base-contelia-rpiz2w
   - carnotzet+os-base-rpi4b
   - carnotzet+os-base-rpi5b
   - carnotzet+os-base-rpiz2w
-  - carnotzet+os-base-contelia-rpiz2w
   - carnotzet+os-base-whispi-rpi5b
+  - carnotzet+rescuefs-contelia-rpiz2w
   - carnotzet+rescuefs-rpi4b
   - carnotzet+rescuefs-rpi5b
   - carnotzet+rescuefs-rpiz2w
-  - carnotzet+rescuefs-contelia-rpiz2w
   - carnotzet+rescuefs-whispi-rpi5b
 data:
   get:

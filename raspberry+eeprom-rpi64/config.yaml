@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: raspberry+eeprom-rpi64
-version: '2026.05.11-2712-1'
-$version: '2026.05.11-2712'
+version: 2026.05.11-2712-12
+$version: 2026.05.11-2712
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -12,7 +12,7 @@ architecture:
   - source
 description:
   brief: Raspberry Pi 4 and 5 bootloader EEPROMs
-  long: 'Installation scripts and binaries for the Raspberry Pi 4 and Raspberry Pi 5 bootloader EEPROMs'
+  long: Installation scripts and binaries for the Raspberry Pi 4 and Raspberry Pi 5 bootloader EEPROMs
 dependency:
   install:
     raspberry+utils-rpi64:
@@ -58,6 +58,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 2026.05.11-2712@b41b138e42b0806ee3b437c7a56cec675563f36355204f015bbfdd8e18070af0.tar.gz
   type: src
   configure: ''
   rules:
