@@ -3,8 +3,8 @@ subpackage:
   - 'x+bin:linux-aarch64'
   - 'x+www:all'
 name: carnotzet+contelia-rpi64
-version: 0.9.8
-$version: 0.9.8
+version: 0.9.11
+$version: 0.9.11
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -87,6 +87,7 @@ data:
          && cp -r books             <PEON.PREFIXDIR.X+BIN>/share/contelia/
          && cp www/cgi-bin/contelia.hsl <PEON.INSTALLDIR.X+BIN>/var/httpd/www/cgi-bin/contelia
          && cp www/style.css            <PEON.INSTALLDIR.X+BIN>/var/httpd/www/style.css
+         && cp www/contelia-256.png     <PEON.INSTALLDIR.X+BIN>/var/httpd/www/contelia-256.png
     test: none
     env:
       RUSTFLAGS: <PEON.ENV.RUSTFLAGS> -C linker=aarch64-xcraft-linux-gnu-gcc
