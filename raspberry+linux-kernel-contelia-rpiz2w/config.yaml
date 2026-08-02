@@ -3,8 +3,8 @@ subpackage:
   - 'x+bin:linux-aarch64'
   - 'x+modules:linux-aarch64'
 name: raspberry+linux-kernel-contelia-rpiz2w
-version: '6.18.34-c8c74941'
-$version: '6.18.34-c8c74941'
+version: 6.12.100-2946b3f
+$version: 6.12.100-2946b3f
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -39,7 +39,7 @@ bump:
   - carnotzet+os-base-contelia-rpiz2w
 data:
   get:
-    uri: 'https://github.com/raspberrypi/linux/archive/c8c7494100e99ee05b11aaa4f0588a223a63d1af.tar.gz'
+    uri: 'https://github.com/raspberrypi/linux/archive/2946b3f3b7ebd99ed502dc8da3c7a9b758bdaff2.tar.gz'
     mirrors: []
     ref: ''
     $ref: ''
@@ -64,7 +64,7 @@ data:
       && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- olddefconfig
   rules:
     type: script
-    location: data/linux-c8c7494100e99ee05b11aaa4f0588a223a63d1af
+    location: data/linux-2946b3f3b7ebd99ed502dc8da3c7a9b758bdaff2
     args:
       postinst: ''
       prerm: ''
