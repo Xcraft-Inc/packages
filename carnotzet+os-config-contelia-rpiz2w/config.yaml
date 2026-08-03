@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: carnotzet+os-config-contelia-rpiz2w
-version: '1.0.1'
-$version: '1.0.1'
+version: 1.0.2
+$version: 1.0.2
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -29,10 +29,10 @@ data:
   get:
     uri: ''
     mirrors: []
-    ref: <THIS.$VERSION>
+    ref: ''
     $ref: ''
     out: ''
-    externals: true
+    externals: false
     prepare: ''
   type: src
   configure: ''
