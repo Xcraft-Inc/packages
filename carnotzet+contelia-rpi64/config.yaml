@@ -3,8 +3,8 @@ subpackage:
   - 'x+bin:linux-aarch64'
   - 'x+www:all'
 name: carnotzet+contelia-rpi64
-version: 0.9.11
-$version: 0.9.11
+version: 0.9.12-1
+$version: 0.9.12
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
