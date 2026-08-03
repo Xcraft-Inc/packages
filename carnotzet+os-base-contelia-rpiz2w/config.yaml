@@ -167,6 +167,11 @@ dependency:
     arkq+bluez-alsa-rpi64:
       - version: ''
         architecture: []
+    arkq+bluez-alsa-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
     alsa+utils-rpi64:
       - version: ''
         architecture: []
