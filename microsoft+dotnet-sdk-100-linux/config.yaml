@@ -1,6 +1,6 @@
 name: microsoft+dotnet-sdk-100-linux
-version: 10.0.103
-$version: 10.0.103
+version: 10.0.400
+$version: 10.0.400
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
