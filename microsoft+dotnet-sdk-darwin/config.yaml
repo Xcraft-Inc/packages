@@ -46,6 +46,7 @@ data:
   type: bin
   configure: |-
     mkdir('root/opt/dotnet-sdk/bin');
+    /* DYLD_LIBRARY_PATH is disabled to prevent libunwind bugs */
     yield exec(
       'writefile',
       '#!/bin/sh\n#export DYLD_LIBRARY_PATH=/usr/lib:${LIBRARY_PATH}\n"$(dirname "$0")/../dotnet" "$@"\n',
