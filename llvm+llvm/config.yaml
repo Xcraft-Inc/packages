@@ -48,7 +48,8 @@ data:
     prepare: ''
   type: src
   configure: |-
-    !mkdir -p "<PEON.PREFIXDIR>/bin"
+    !if [ "$(uname -r | cut -d. -f1)" -lt 21 ]; then echo "Skip for this Darwin system" && exit 0; fi;
+     mkdir -p "<PEON.PREFIXDIR>/bin"
       && ln -s clang "<PEON.PREFIXDIR>/bin/gcc"
       && ln -s clang "<PEON.PREFIXDIR>/bin/cc"
       && ln -s clang++ "<PEON.PREFIXDIR>/bin/g++"
@@ -70,9 +71,9 @@ data:
     args:
       postinst: ''
       prerm: ''
-      makeall: '!ninja -C BUILD -j<PEON.CPUS.COUNT>'
+      makeall: '![ -d BUILD ] && ninja -C BUILD -j<PEON.CPUS.COUNT>'
       maketest: ''
-      makeinstall: '!ninja -C BUILD install'
+      makeinstall: '![ -d BUILD ] && ninja -C BUILD install'
     test: none
     env: {}
   deploy: ''
