@@ -3,8 +3,8 @@ subpackage:
   - 'x+bin:linux-aarch64'
   - 'x+modules:linux-aarch64'
 name: raspberry+linux-kernel-whispi-rpi5b
-version: '6.18.26-060fea8f'
-$version: 6.18.26-060fea8f
+version: 6.18.34-c8c74941-3
+$version: 6.18.34-c8c74941
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -15,6 +15,10 @@ description:
   brief: The Linux Kernel for RASPBERRY Pi5 model B
   long: ''
 dependency:
+  install:
+    hailo-ai+hailort-drivers-rpi64-srcmod:
+      - version: ''
+        architecture: []
   build:
     xcraft+peon:
       - version: ''
@@ -25,6 +29,9 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
+    openssl+openssl3:
+      - version: ''
+        architecture: []
     gnu+bc:
       - version: ''
         architecture: []
@@ -33,16 +40,17 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-whispi-rpi5b
+  - carnotzet+os-base-whispi-rpi5b
 data:
   get:
-    uri: 'https://github.com/raspberrypi/linux/archive/060fea8f35a11d05a42e26229acd3e0c11d9caf1.tar.gz'
+    uri: 'https://github.com/raspberrypi/linux/archive/c8c7494100e99ee05b11aaa4f0588a223a63d1af.tar.gz'
     mirrors: []
     ref: ''
     $ref: ''
     out: ''
     externals: true
     prepare: ''
+    $hash: 6.18.34-c8c74941@e159f4262148242c004f9ed0e035dfb04cc966ad9c83d296839a17305c3acce6.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
@@ -53,7 +61,7 @@ data:
       && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- olddefconfig
   rules:
     type: script
-    location: data/linux-060fea8f35a11d05a42e26229acd3e0c11d9caf1
+    location: data/linux-c8c7494100e99ee05b11aaa4f0588a223a63d1af
     args:
       postinst: ''
       prerm: ''
@@ -69,6 +77,11 @@ data:
                   CROSS_COMPILE=aarch64-xcraft-linux-gnu-
                   INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+MODULES>"
                   modules_install
+          && make ARCH=arm64
+                  CROSS_COMPILE=aarch64-xcraft-linux-gnu-
+                  INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+MODULES>"
+                  M="<PEON.PROD.ROOTDIR>/usr/src/hailort-drivers-module-5.3.0-src/linux/pcie"
+                  modules modules_install
           && cp -a arch/arm64/boot/Image "<PEON.INSTALLDIR.X+BIN>/boot/"
           && cp -a arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dtb   "<PEON.INSTALLDIR.X+BIN>/boot/"
           && cp -a arch/arm64/boot/dts/broadcom/bcm2712-d-rpi-5-b.dtb "<PEON.INSTALLDIR.X+BIN>/boot/"
@@ -79,6 +92,7 @@ data:
           && rm -f <PEON.INSTALLDIR.X+MODULES>/lib/modules/*/build
     test: none
     env:
+      LD_LIBRARY_PATH: <PEON.ROOTDIR>/usr/lib
       KBUILD_BUILD_TIMESTAMP: ''
   deploy: ''
   env:

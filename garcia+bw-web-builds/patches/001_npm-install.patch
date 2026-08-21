@@ -1,0 +1,12 @@
+diff --git a/scripts/build_web_vault.sh b/scripts/build_web_vault.sh
+index d3772d7..de42652 100755
+--- a/scripts/build_web_vault.sh
++++ b/scripts/build_web_vault.sh
+@@ -19,6 +19,7 @@ npm --version
+ 
+ # Build
+ pushd "${VAULT_FOLDER}"
++npm i
+ npm ci
+ 
+ pushd apps/web

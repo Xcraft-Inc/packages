@@ -1,9 +1,10 @@
 subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
+  - 'x+www:all'
 name: carnotzet+contelia-rpi64
-version: 0.7.0
-$version: 0.7.0
+version: 0.9.14
+$version: 0.9.14
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -11,7 +12,7 @@ maintainer:
 architecture:
   - source
 description:
-  brief: Contelia service
+  brief: Contelia service and website
   long: ''
 dependency:
   install:
@@ -76,15 +77,11 @@ data:
     args:
       postinst: ''
       prerm: ''
-      makeall: '!cargo build -r --target aarch64-unknown-linux-gnu'
+      makeall: '!make build TARGET=aarch64-unknown-linux-gnu'
       maketest: ''
       makeinstall: |-
-        !install -D -m 755 target/aarch64-unknown-linux-gnu/release/contelia <PEON.PREFIXDIR.X+BIN>/bin/contelia
-         && mkdir -p <PEON.PREFIXDIR.X+BIN>/share/contelia/assets
-         && mkdir -p <PEON.INSTALLDIR.X+BIN>/var/httpd/www/cgi-bin
-         && cp assets/*.png         <PEON.PREFIXDIR.X+BIN>/share/contelia/assets/
-         && cp -r books             <PEON.PREFIXDIR.X+BIN>/share/contelia/
-         && cp cgi-bin/contelia.hsl <PEON.INSTALLDIR.X+BIN>/var/httpd/www/cgi-bin/contelia
+        !  make install-bin DESTDIR=<PEON.INSTALLDIR.X+BIN> PREFIX=/usr TARGET=aarch64-unknown-linux-gnu
+        && make install-www DESTDIR=<PEON.INSTALLDIR.X+BIN>
     test: none
     env:
       RUSTFLAGS: <PEON.ENV.RUSTFLAGS> -C linker=aarch64-xcraft-linux-gnu-gcc
@@ -92,14 +89,22 @@ data:
       PKG_CONFIG_PATH: <PEON.PROD.ROOTDIR>/usr/lib/pkgconfig
       PKG_CONFIG_SYSROOT_DIR: <PEON.PROD.ROOTDIR>
   deploy: |-
-    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/contelia');
+    /* User's books */
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/lib/contelia');
+
+    /* Captive Portal */
     mkdir('<PEON.INSTALLDIR.X+BIN>/var/httpd/www');
     ln('../../../var/lib/contelia', '<PEON.INSTALLDIR.X+BIN>/var/httpd/www/contelia');
     cp('<PEON.ASSETS>/index.html',  '<PEON.INSTALLDIR.X+BIN>/var/httpd/www/index.html');
-    cp('<PEON.ASSETS>/sv',          '<PEON.INSTALLDIR.X+BIN>/etc/sv/contelia');
-    cp('<PEON.ASSETS>/postinst',    '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
-    cp('<PEON.ASSETS>/prerm',       '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+
+    /* Service */
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/contelia');
+    cp('<PEON.ASSETS>/sv',       '<PEON.INSTALLDIR.X+BIN>/etc/sv/contelia');
+    cp('<PEON.ASSETS>/postinst', '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',    '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+
+    /* Website contelia.schroetersa.ch */
+    cp('<THIS.DATA.RULES.LOCATION>/doc/_site', '<PEON.INSTALLDIR.X+WWW>/var/httpd/www');
   env:
     path: []
     other: {}

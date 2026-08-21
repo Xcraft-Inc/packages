@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: freedesktop+libdbus-rpi64
-version: 1.16.2
+version: 1.16.2-26
 $version: 1.16.2
 distribution: raspberry/
 maintainer:
@@ -41,14 +41,16 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-contelia-rpiz2w
-  - carnotzet+os-whispi-rpiz2w
-  - carnotzet+os-rpi4b
-  - carnotzet+os-rpiz2w
+  - carnotzet+os-base-contelia-rpiz2w
+  - carnotzet+os-base-rpi4b
+  - carnotzet+os-base-rpi5b
+  - carnotzet+os-base-rpiz2w
+  - carnotzet+os-base-whispi-rpi5b
   - carnotzet+rescuefs-contelia-rpiz2w
-  - carnotzet+rescuefs-whispi-rpiz2w
   - carnotzet+rescuefs-rpi4b
+  - carnotzet+rescuefs-rpi5b
   - carnotzet+rescuefs-rpiz2w
+  - carnotzet+rescuefs-whispi-rpi5b
 data:
   get:
     uri: 'https://dbus.freedesktop.org/releases/dbus/dbus-<THIS.$VERSION>.tar.xz'
@@ -58,6 +60,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 1.16.2@0ba2a1a4b16afe7bceb2c07e9ce99a8c2c3508e5dec290dbb643384bd6beb7e2.tar.xz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>

@@ -1,3 +1,0 @@
-# Auto-generated sources.list file
-wpkg https://carnotzet.xcraft.ch/ rpi64/
-wpkg https://USER:PASSWORD@carnotzet.xcraft.ch/ rpi64.epsitec/

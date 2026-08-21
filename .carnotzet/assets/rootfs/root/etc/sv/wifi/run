@@ -72,13 +72,21 @@ dispose() {
 
   ip -4 addr flush dev "$network_wifi" 2>/dev/null
   ip link set dev "$network_wifi" down 2>/dev/null
-  rm -f "$wpa_conf"
+
+  case "$wpa_conf" in
+    /tmp/*)
+      rm -f "$wpa_conf"
+      ;;
+  esac
+
   exit 0
 }
 
 trap dispose SIGTERM SIGINT
 
 echo "Configure WiFi interface $network_wifi..."
+
+rfkill unblock wlan
 
 if [ "$network_wifi_mode" != "wpa" ]; then
   echo "WPA is disabled"
@@ -101,30 +109,45 @@ if ! command -v wpa_supplicant >/dev/null 2>&1; then
   exit 1
 fi
 
-if [ -z "$wifi_ssid" ] || [ -z "$wifi_password" ]; then
-  echo "Error: wifi_ssid or wifi_password not configured"
-  exit 1
-fi
-
 mkdir -p /var/run/wpa_supplicant
 
-wpa_conf="/tmp/wpa_supplicant.conf"
-touch "$wpa_conf"
-chmod 600 "$wpa_conf"
-cat > "$wpa_conf" << EOF
+if [ ! -f "/etc/wpa_supplicant/wpa_supplicant.conf" ]; then
+  if [ -z "$wifi_ssid" ] || [ -z "$wifi_password" ]; then
+    echo "Error: wifi_ssid or wifi_password not configured"
+    exit 1
+  fi
+
+  wpa_conf="/tmp/wpa_supplicant.conf"
+  touch "$wpa_conf"
+  cat > "$wpa_conf" << EOF
 ctrl_interface=/var/run/wpa_supplicant
 update_config=1
 country=${wifi_country:-CH}
 
 network={
-    ssid="$wifi_ssid"
-    psk="$wifi_password"
-    key_mgmt=WPA-PSK
-    scan_ssid=1
+  ssid="$wifi_ssid"
+  psk="$wifi_password"
+  key_mgmt=WPA-PSK
+  scan_ssid=1
 }
 EOF
+else
+  mkdir -p /etc/wpa_supplicant
+  wpa_conf="/etc/wpa_supplicant/wpa_supplicant.conf"
+fi
+chmod 600 "$wpa_conf"
 
-wpa_supplicant -B -i "$network_wifi" -c "$wpa_conf" -P "/var/run/wpa_supplicant.$network_wifi.pid"
+DBUS_ENABLE=""
+if wpa_supplicant -h | grep DBus > /dev/null 2>&1; then
+  DBUS_ENABLE="-u"
+
+  echo "Waiting for DBUS..."
+  while [ ! -S /var/run/dbus/system_bus_socket ]; do
+    sleep 0.1
+  done
+fi
+
+wpa_supplicant "$DBUS_ENABLE" -B -i "$network_wifi" -c "$wpa_conf" -P "/var/run/wpa_supplicant.$network_wifi.pid"
 wpa_exit_code=$?
 
 if [ $wpa_exit_code -ne 0 ]; then
@@ -132,21 +155,25 @@ if [ $wpa_exit_code -ne 0 ]; then
   dispose
 fi
 
-echo "Waiting for WiFi connection..."
-timeout=30
-counter=0
-while [ $counter -lt $timeout ]; do
-  if wpa_cli -i "$network_wifi" status | grep -q "wpa_state=COMPLETED"; then
-    echo "WiFi connected successfully"
-    break
-  fi
-  sleep 1
-  counter=$((counter + 1))
-done
+# When using DBus, we consider that the wifi connection is handled by an other
+# process (dynamic) instead of just the current settings.
+if [ -z "$DBUS_ENABLE" ]; then
+  echo "Waiting for WiFi connection..."
+  timeout=30
+  counter=0
+  while [ $counter -lt $timeout ]; do
+    if wpa_cli -i "$network_wifi" status | grep -q "wpa_state=COMPLETED"; then
+      echo "WiFi connected successfully"
+      break
+    fi
+    sleep 1
+    counter=$((counter + 1))
+  done
 
-if [ $counter -eq $timeout ]; then
-  echo "Error: WiFi connection timeout after ${timeout}s"
-  dispose
+  if [ $counter -eq $timeout ]; then
+    echo "Error: WiFi connection timeout after ${timeout}s"
+    dispose
+  fi
 fi
 
 if [ "$network_wifi_dhcp" = "off" ]; then

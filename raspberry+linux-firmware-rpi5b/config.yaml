@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: raspberry+linux-firmware-rpi5b
-version: '20250917'
+version: 20250917-2
 $version: '20250917'
 distribution: raspberry/
 maintainer:
@@ -23,8 +23,8 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpi5b
-  - carnotzet+os-whispi-rpi5b
+  - carnotzet+os-base-rpi5b
+  - carnotzet+os-base-whispi-rpi5b
   - carnotzet+rescuefs-rpi5b
   - carnotzet+rescuefs-whispi-rpi5b
 data:

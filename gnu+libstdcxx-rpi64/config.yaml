@@ -1,9 +1,9 @@
 subpackage:
   - runtime*
-  - x+bin:linux-aarch64
+  - 'x+bin:linux-aarch64'
 name: gnu+libstdcxx-rpi64
-version: '13.3.0'
-$version: '13.3.0'
+version: 13.3.0-7
+$version: 13.3.0
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -32,8 +32,11 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpi4b
-  - carnotzet+os-rpiz2w
+  - carnotzet+os-base-contelia-rpiz2w
+  - carnotzet+os-base-rpi4b
+  - carnotzet+os-base-rpi5b
+  - carnotzet+os-base-rpiz2w
+  - carnotzet+os-base-whispi-rpi5b
 data:
   get:
     uri: ''
@@ -41,7 +44,7 @@ data:
     ref: ''
     $ref: ''
     out: ''
-    externals: true
+    externals: false
     prepare: ''
   type: src
   configure: |-

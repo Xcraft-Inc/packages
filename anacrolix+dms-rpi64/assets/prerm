@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sv stop dms || :
+rm -rf /var/service/dms

@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: illiliti+libudev-zero-rpi64
-version: '1.0.3-bbeb7ad'
-$version: '1.0.3-bbeb7ad'
+version: 1.0.3-bbeb7ad-7
+$version: 1.0.3-bbeb7ad
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -13,6 +13,7 @@ architecture:
 description:
   brief: Daemonless replacement for libudev
   long: ''
+dependency:
   build:
     xcraft+peon:
       - version: ''
@@ -23,7 +24,7 @@ description:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
-bump: {}
+bump: []
 data:
   get:
     uri: 'https://github.com/illiliti/libudev-zero/archive/bbeb7ad51c1edb7ab3cf63f30a21e9bb383b7994.tar.gz'
@@ -33,6 +34,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 1.0.3-bbeb7ad@8dce6e049148c1f8380a48899a59f43b0e21ff004c2550cff6432877fcfb1569.tar.gz
   type: src
   configure: ''
   rules:

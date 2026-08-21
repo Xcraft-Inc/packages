@@ -3,8 +3,8 @@ subpackage:
   - 'x+bin:linux-aarch64'
   - 'x+modules:linux-aarch64'
 name: raspberry+linux-kernel-contelia-rpiz2w
-version: '20250702'
-$version: '20250702'
+version: 6.12.100-2946b3f
+$version: 6.12.100-2946b3f
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -25,6 +25,9 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
+    openssl+openssl3:
+      - version: ''
+        architecture: []
     gnu+bc:
       - version: ''
         architecture: []
@@ -33,17 +36,16 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-contelia-rpiz2w
+  - carnotzet+os-base-contelia-rpiz2w
 data:
   get:
-    uri: 'https://github.com/raspberrypi/linux/archive/refs/tags/stable_<THIS.$VERSION>.tar.gz'
+    uri: 'https://github.com/raspberrypi/linux/archive/2946b3f3b7ebd99ed502dc8da3c7a9b758bdaff2.tar.gz'
     mirrors: []
     ref: ''
     $ref: ''
     out: ''
     externals: true
     prepare: ''
-    $hash: 20250702@fbb94f7db8304821126d1aa24fceb2e97c0b7dc03e5cecd94e53ebf427d64b37.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
@@ -62,7 +64,7 @@ data:
       && make ARCH=arm64 CROSS_COMPILE=aarch64-xcraft-linux-gnu- olddefconfig
   rules:
     type: script
-    location: data/linux-stable_<THIS.$VERSION>
+    location: data/linux-2946b3f3b7ebd99ed502dc8da3c7a9b758bdaff2
     args:
       postinst: ''
       prerm: ''
@@ -84,6 +86,7 @@ data:
           && rm -f <PEON.INSTALLDIR.X+MODULES>/lib/modules/*/build
     test: none
     env:
+      LD_LIBRARY_PATH: <PEON.ROOTDIR>/usr/lib
       KBUILD_BUILD_TIMESTAMP: ''
   deploy: ''
   env:

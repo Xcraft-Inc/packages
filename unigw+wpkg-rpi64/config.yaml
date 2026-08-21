@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: unigw+wpkg-rpi64
-version: 1.0.2-11
+version: 1.0.2-30
 $version: 1.0.2
 distribution: raspberry/
 maintainer:
@@ -37,8 +37,11 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpi4b
-  - carnotzet+os-rpiz2w
+  - carnotzet+os-base-contelia-rpiz2w
+  - carnotzet+os-base-rpi4b
+  - carnotzet+os-base-rpi5b
+  - carnotzet+os-base-rpiz2w
+  - carnotzet+os-base-whispi-rpi5b
 data:
   get:
     uri: 'https://github.com/Xcraft-Inc/wpkg/archive/1ed944aefdf353467e3fd524b3966a5e16dda8e2.tar.gz'
@@ -48,6 +51,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 1.0.2@f2a7e23c3b13c70478240533135aa9395a60df788e2248300dda490e63c8bbd6.tar.gz
   type: src
   configure: |-
     !mkdir -p <THIS.DATA.RULES.LOCATION>

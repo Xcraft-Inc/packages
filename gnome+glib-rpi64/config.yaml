@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: gnome+glib-rpi64
-version: 2.87.2
+version: 2.87.2-11
 $version: 2.87.2
 distribution: raspberry/
 maintainer:
@@ -35,12 +35,16 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-contelia-rpiz2w
-  - carnotzet+os-rpi4b
-  - carnotzet+os-rpiz2w
+  - carnotzet+os-base-contelia-rpiz2w
+  - carnotzet+os-base-rpi4b
+  - carnotzet+os-base-rpi5b
+  - carnotzet+os-base-rpiz2w
+  - carnotzet+os-base-whispi-rpi5b
   - carnotzet+rescuefs-contelia-rpiz2w
   - carnotzet+rescuefs-rpi4b
+  - carnotzet+rescuefs-rpi5b
   - carnotzet+rescuefs-rpiz2w
+  - carnotzet+rescuefs-whispi-rpi5b
 data:
   get:
     uri: 'https://download.gnome.org/sources/glib/2.87/glib-<THIS.$VERSION>.tar.xz'
@@ -50,6 +54,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 2.87.2@d6eb74a4f4ffc0b56df79ae3a939463b1d92c623f6c167d51aab24e303a851f3.tar.xz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>

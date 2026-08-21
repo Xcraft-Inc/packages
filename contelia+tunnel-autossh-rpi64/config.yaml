@@ -1,0 +1,55 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: contelia+tunnel-autossh-rpi64
+version: '0.1.0'
+$version: '0.1.0'
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: 'Special Contelia tunnel-autossh for WWW'
+  long: ''
+dependency:
+  install:
+    harding+autossh-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+data:
+  get:
+    uri: ''
+    mirrors: []
+    ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: ''
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: ''
+      maketest: ''
+      makeinstall: ''
+    test: none
+    env: {}
+  deploy: |-
+    cp('<PEON.ASSETS>/sv',           '<PEON.INSTALLDIR.X+BIN>/etc/sv/tunnel-autossh');
+    cp('<PEON.ASSETS>/autossh.conf', '<PEON.INSTALLDIR.X+BIN>/etc/tunnel-autossh/autossh.conf');
+    cp('<PEON.ASSETS>/postinst',     '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',        '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+    cp('<PEON.ASSETS>/conffiles',    '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

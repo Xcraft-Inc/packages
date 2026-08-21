@@ -24,6 +24,11 @@ fsck -a
 mount /boot
 mount -o remount,noatime /
 
+# Clean the /tmp directory (files created since at least 7 days and
+# empty directories)
+find /tmp -type f -ctime +7 -delete -mindepth 1
+find /tmp -type d -empty -delete -mindepth 1
+
 boot_expand()
 {
   # Check filesystems
@@ -72,6 +77,8 @@ boot_normal()
   ip addr add 127.0.0.1/8 dev lo
   ip link set dev lo up
 
+  rfkill block all &
+
   # Execute all postinst scripts in case of the first boot
   if [ ! -f /var/.bootstrapped ]; then
     for postinst in /var/lib/wpkg/*/postinst; do
@@ -101,3 +108,10 @@ if [ "$carnotzet_expand" = "1" ]; then
 fi
 
 boot_normal
+
+if [ -f /var/.reboot ]; then
+  rm -f /var/.reboot
+  echo "Reboot..."
+  reboot
+  exit 0
+fi

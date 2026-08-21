@@ -1,0 +1,77 @@
+subpackage:
+  - runtime*
+name: carnotzet+os-rpi5b
+version: 0.13.0
+$version: 0.13.0
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Carnotzet Operating System
+  long: ''
+dependency:
+  install:
+    carnotzet+os-base-rpi5b:
+      - version: ''
+        architecture: []
+  build:
+    tytso+e2fsprogs:
+      - version: ''
+        architecture: []
+    linux+util-linux:
+      - version: ''
+        architecture: []
+    gnu+mtools:
+      - version: ''
+        architecture: []
+    e2tools+e2tools:
+      - version: ''
+        architecture: []
+    debian+fakeroot:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: ''
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: false
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: ''
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: |-
+        const {genRoot, genImage} = imp('raspberry');
+
+        yield cmd('pacman.syncRepository', {distribution: 'raspberry'});
+
+        /* Generate the root for the MMC */
+        yield genRoot('carnotzet', '<PEON.ASSETS.GLOBAL>', [
+          'carnotzet+os-base-rpi5b-x+bin'
+        ]);
+
+        yield genImage('carnotzet',
+          '<PEON.INSTALLDIR>/opt/img/carnotzet-os-<THIS.VERSION>-rpi5b.img'
+        );
+      maketest: ''
+      makeinstall: ''
+    test: none
+    env: {}
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

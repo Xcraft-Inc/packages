@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: dosfstools+dosfstools-rpi64
-version: '4.2'
+version: 4.2-8
 $version: '4.2'
 distribution: raspberry/
 maintainer:
@@ -22,12 +22,16 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpi4b
-  - carnotzet+os-rpiz2w
-  - carnotzet+os-contelia-rpiz2w
-  - carnotzet+rescuefs-rpi4b
-  - carnotzet+rescuefs-rpiz2w
+  - carnotzet+os-base-contelia-rpiz2w
+  - carnotzet+os-base-rpi4b
+  - carnotzet+os-base-rpi5b
+  - carnotzet+os-base-rpiz2w
+  - carnotzet+os-base-whispi-rpi5b
   - carnotzet+rescuefs-contelia-rpiz2w
+  - carnotzet+rescuefs-rpi4b
+  - carnotzet+rescuefs-rpi5b
+  - carnotzet+rescuefs-rpiz2w
+  - carnotzet+rescuefs-whispi-rpi5b
 data:
   get:
     uri: 'https://github.com/dosfstools/dosfstools/releases/download/v<THIS.$VERSION>/dosfstools-<THIS.$VERSION>.tar.gz'

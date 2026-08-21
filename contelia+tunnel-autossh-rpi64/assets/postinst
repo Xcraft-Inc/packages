@@ -1,0 +1,8 @@
+#!/bin/sh
+
+rm -rf /var/service/tunnel-autossh
+ln -sf /etc/sv/tunnel-autossh /var/service/tunnel-autossh
+
+if [ ! -f /var/service/tunnel-autossh/down ]; then
+  sv up tunnel-autossh || :
+fi

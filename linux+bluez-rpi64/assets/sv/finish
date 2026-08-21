@@ -1,3 +1,5 @@
 #!/bin/sh
 
+rfkill block bluetooth
+
 sleep 5

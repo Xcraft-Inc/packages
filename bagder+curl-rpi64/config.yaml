@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: bagder+curl-rpi64
-version: 7.81.0
+version: 7.81.0-5
 $version: 7.81.0
 distribution: raspberry/
 maintainer:

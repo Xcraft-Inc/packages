@@ -28,11 +28,11 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-rpiz2w
-  - carnotzet+os-contelia-rpiz2w
+  - carnotzet+os-base-rpiz2w
+  - carnotzet+os-base-contelia-rpiz2w
 data:
   get:
-    uri: 'https://source.denx.de/u-boot/u-boot.git'
+    uri: 'https://github.com/u-boot/u-boot.git'
     mirrors: []
     ref: v2026.04
     $ref: ''

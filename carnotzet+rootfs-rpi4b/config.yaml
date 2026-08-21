@@ -15,7 +15,7 @@ description:
   long: ''
 dependency: {}
 bump:
-  - carnotzet+os-rpi4b
+  - carnotzet+os-base-rpi4b
   - carnotzet+rescuefs-rpi4b
 data:
   get:

@@ -40,6 +40,11 @@ dependency:
         architecture: []
         subpackage:
           - x+bin
+    adler+zlib-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
     gnome+glib-rpi64:
       - version: ''
         architecture: []
@@ -58,6 +63,12 @@ dependency:
     linux+sbc-rpi64:
       - version: ''
         architecture: []
+    adler+zlib-rpi64-dev:
+      - version: ''
+        architecture: []
+    gnu+libncurses-rpi64:
+      - version: ''
+        architecture: []
   build:
     xcraft+peon:
       - version: ''
@@ -72,9 +83,9 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-contelia-rpiz2w
-  - carnotzet+os-rpi4b
-  - carnotzet+os-rpiz2w
+  - carnotzet+os-base-contelia-rpiz2w
+  - carnotzet+os-base-rpi4b
+  - carnotzet+os-base-rpiz2w
   - carnotzet+rescuefs-contelia-rpiz2w
   - carnotzet+rescuefs-rpi4b
   - carnotzet+rescuefs-rpiz2w

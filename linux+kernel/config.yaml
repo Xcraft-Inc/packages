@@ -36,7 +36,7 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-<THIS.$VERSION>.tar.xz'
+    uri: 'https://cdn.kernel.org/pub/linux/kernel/v<THIS.$VERSION[.,0]>.x/linux-<THIS.$VERSION>.tar.xz'
     mirrors: []
     ref: ''
     $ref: ''

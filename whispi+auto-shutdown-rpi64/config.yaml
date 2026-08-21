@@ -1,0 +1,59 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: whispi+auto-shutdown-rpi64
+version: 1.0.0
+$version: 1.0.0
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Handle auto shutdown with the PiSugar on USB-C disconnection
+  long: ''
+dependency:
+  install:
+    pisugar+pisugar-tools-rpi64:
+      - version: ''
+        architecture: []
+    pisugar+pisugar-tools-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+bump: []
+data:
+  get:
+    uri: ''
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: false
+    prepare: ''
+  type: src
+  configure: ''
+  rules:
+    type: script
+    location: ''
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: ''
+      maketest: ''
+      makeinstall: ''
+    test: none
+    env: {}
+  deploy: |-
+    mkdir('<PEON.INSTALLDIR.X+BIN>/var/log/auto-shutdown');
+    cp('<PEON.ASSETS>/sv',           '<PEON.INSTALLDIR.X+BIN>/etc/sv/auto-shutdown');
+    cp('<PEON.ASSETS>/postinst',     '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
+    cp('<PEON.ASSETS>/prerm',        '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

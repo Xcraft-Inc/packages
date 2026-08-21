@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: garcia+vaultwarden
-version: 1.35.4
-$version: 1.35.4
+version: 1.37.1
+$version: 1.37.1
 distribution: epsitec/
 maintainer:
   name: Mathieu Schroeter
@@ -56,6 +56,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 1.37.1@32c43436517fe67bdf207cf9e803a3b71e87703f384604588d360f7e6724f045.tar.gz
   type: src
   configure: ''
   rules:
@@ -74,11 +75,11 @@ data:
           '<PEON.INSTALLDIR>/opt/vaultwarden/bin/vaultwarden<PEON.OS=win?.exe:>'
         );
         cp(
-          '<PEON.PROD.ROOTDIR>/usr/openssl3/lib/libssl.so.3',
+          '<PEON.PROD.ROOTDIR>/usr/lib/libssl.so.3',
           '<PEON.INSTALLDIR>/opt/vaultwarden/lib/libssl.so.3'
         );
         cp(
-          '<PEON.PROD.ROOTDIR>/usr/openssl3/lib/libcrypto.so.3',
+          '<PEON.PROD.ROOTDIR>/usr/lib/libcrypto.so.3',
           '<PEON.INSTALLDIR>/opt/vaultwarden/lib/libcrypto.so.3'
         );
         cp('.env.template', '<PEON.INSTALLDIR>/extra/etc/vaultwarden/env');
@@ -89,8 +90,7 @@ data:
           '<PEON.INSTALLDIR>/opt/vaultwarden/var/web-vault'
         );
     test: none
-    env:
-      PKG_CONFIG_PATH: '<PEON.PROD.ROOTDIR>/usr/openssl3/lib/pkgconfig:<PEON.ENV.PKG_CONFIG_PATH>'
+    env: {}
   deploy: |-
     const dataFolderPath = '/opt/vaultwarden/var/data';
 

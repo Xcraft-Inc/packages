@@ -1,0 +1,8 @@
+{
+  "path": "/home/rasp/dms",
+  "friendlyName": "Carnotzet",
+  "ignoreUnreadable": true,
+  "ignoreHidden": true,
+  "deviceIcon": "/usr/share/anacrolix/dms-rpi64-x+bin/device.png",
+  "deviceIconSizes": ["48:256", "128:256"]
+}

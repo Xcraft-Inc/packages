@@ -1,0 +1,5 @@
+network_wifi="wlan0"
+wifi_ssid=""
+wifi_password=""
+
+# gadget_network_target_os="unix"

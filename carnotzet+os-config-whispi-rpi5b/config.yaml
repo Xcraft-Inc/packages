@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: carnotzet+os-config-whispi-rpi5b
-version: '0.1.0'
-$version: '0.1.0'
+version: 1.0.6-1
+$version: 1.0.6
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -23,16 +23,16 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-whispi-rpiz5b
+  - carnotzet+os-base-whispi-rpi5b
   - carnotzet+rescuefs-whispi-rpi5b
 data:
   get:
     uri: ''
     mirrors: []
-    ref: <THIS.$VERSION>
+    ref: ''
     $ref: ''
     out: ''
-    externals: true
+    externals: false
     prepare: ''
   type: src
   configure: ''
@@ -45,11 +45,16 @@ data:
       makeall: ''
       maketest: ''
       makeinstall: |-
-        cp('<PEON.ASSETS.GLOBAL>/conffiles', '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
-        cp('<PEON.ASSETS>/sources.list',     '<PEON.INSTALLDIR.X+BIN>/boot/sources.list');
-        cp('<PEON.ASSETS>/carnotzet.d',      '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.d');
-        cp('<PEON.ASSETS>/config.txt',       '<PEON.INSTALLDIR.X+BIN>/boot/config.txt');
-        cp('<PEON.ASSETS>/modules',          '<PEON.INSTALLDIR.X+BIN>/etc/modules');
+        const {genOSRelease} = imp('raspberry');
+
+        cp('<PEON.ASSETS>/conffiles',           '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+        cp('<PEON.ASSETS>/carnotzet.d',         '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.d');
+        cp('<PEON.ASSETS>/config.txt',          '<PEON.INSTALLDIR.X+BIN>/boot/config.txt');
+        cp('<PEON.ASSETS>/modules',             '<PEON.INSTALLDIR.X+BIN>/etc/modules');
+        cp('<PEON.ASSETS>/pisugar-server.json', '<PEON.INSTALLDIR.X+BIN>/etc/pisugar-server/config.json');
+        cp('<PEON.ASSETS>/eeprom.conf',         '<PEON.INSTALLDIR.X+BIN>/etc/eeprom.conf');
+
+        yield genOSRelease('<PEON.INSTALLDIR.X+BIN>/etc', 'Whispi', '<THIS.$VERSION>');
     test: none
     env: {}
   deploy: ''

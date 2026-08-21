@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: carnotzet+os-config-contelia-rpiz2w
-version: '0.1.0'
-$version: '0.1.0'
+version: 1.0.3
+$version: 1.0.3
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -23,16 +23,16 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-contelia-rpiz2w
+  - carnotzet+os-base-contelia-rpiz2w
   - carnotzet+rescuefs-contelia-rpiz2w
 data:
   get:
     uri: ''
     mirrors: []
-    ref: <THIS.$VERSION>
+    ref: ''
     $ref: ''
     out: ''
-    externals: true
+    externals: false
     prepare: ''
   type: src
   configure: ''
@@ -45,11 +45,14 @@ data:
       makeall: ''
       maketest: ''
       makeinstall: |-
+        const {genOSRelease} = imp('raspberry');
+
         cp('<PEON.ASSETS.GLOBAL>/sources.list', '<PEON.INSTALLDIR.X+BIN>/boot/sources.list');
         cp('<PEON.ASSETS.GLOBAL>/conffiles',    '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
         cp('<PEON.ASSETS>/carnotzet.d',         '<PEON.INSTALLDIR.X+BIN>/boot/carnotzet.d');
         cp('<PEON.ASSETS>/config.txt',          '<PEON.INSTALLDIR.X+BIN>/boot/config.txt');
         cp('<PEON.ASSETS>/modules',             '<PEON.INSTALLDIR.X+BIN>/etc/modules');
+        cp('<PEON.ASSETS>/pisugar-server.json', '<PEON.INSTALLDIR.X+BIN>/etc/pisugar-server/config.json');
 
         /* By default, disable most services */
         cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/bluealsa/down');
@@ -61,6 +64,8 @@ data:
         cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/network/down');
         cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/ntpd/down');
         cp('<PEON.ASSETS>/down', '<PEON.INSTALLDIR.X+BIN>/etc/sv/wifi/down');
+
+        yield genOSRelease('<PEON.INSTALLDIR.X+BIN>/etc', 'Contelia', '<THIS.$VERSION>');
     test: none
     env: {}
   deploy: ''

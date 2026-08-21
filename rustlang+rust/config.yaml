@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: rustlang+rust
-version: 1.91.1
-$version: 1.91.1
+version: 1.97.1
+$version: 1.97.1
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -13,6 +13,10 @@ description:
   brief: Language empowering everyone to build reliable and efficient software
   long: ''
 dependency:
+  install:
+    openssl+openssl3:
+      - version: ''
+        architecture: []
   build:
     xcraft+base-build:
       - version: ''

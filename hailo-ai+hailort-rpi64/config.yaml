@@ -1,0 +1,84 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: hailo-ai+hailort-rpi64
+version: 5.3.0-11
+$version: 5.3.0
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: High performance inference framework
+  long: An open source light-weight and high performance inference framework for Hailo devices
+dependency:
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+    ninja+ninja:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://github.com/hailo-ai/hailort/archive/refs/tags/v<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+    $hash: 5.3.0@5675291de522df6b55c1bd455b3524ceada538a205db854e4414a54600c2aa7a.tar.gz
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && sed -i 's,"en","fr",g' hailort/libhailort/examples/genai/speech2text_example/speech2text_example.cpp
+      && mkdir -p ./BUILD
+      && cd ./BUILD
+      && cmake -G Ninja
+               -DHAILO_BUILD_EXAMPLES=YES
+               -DHAILO_BUILD_OLLAMA=YES
+               -DCMAKE_INSTALL_PREFIX=<PEON.PREFIXDIR.X+BIN>
+               -DCMAKE_BUILD_TYPE=Release ..
+  rules:
+    type: script
+    location: data/hailort-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!ninja -C BUILD -j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: |-
+        !  ninja -C BUILD install
+        && cp -r <PEON.INSTALLDIR.X+BIN>/usr <PEON.INSTALLDIR>
+        && mkdir -p <PEON.INSTALLDIR.X+BIN>/usr/bin/examples
+        && cp BUILD/hailort/libhailort/examples/genai/speech2text_example/speech2text_example <PEON.INSTALLDIR.X+BIN>/usr/bin/examples
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+      CXX: aarch64-xcraft-linux-gnu-g++
+      CC_FOR_BUILD: gcc
+      CXX_FOR_BUILD: g++
+  deploy: |-
+    !  rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
+    && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib/cmake
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/bin/examples/hailopp_mot17_demo
+    && rm  -f <PEON.INSTALLDIR>/usr/include/expected.hpp
+    && rm  -f <PEON.INSTALLDIR>/usr/include/platform.h
+    && rm  -f <PEON.INSTALLDIR>/usr/include/hailotracker.h
+    && rm  -f <PEON.INSTALLDIR>/usr/include/status.h
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

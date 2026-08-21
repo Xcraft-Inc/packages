@@ -1,0 +1,79 @@
+subpackage:
+  - runtime*
+  - 'x+bin:linux-aarch64'
+name: dirkvdb+ffmpegthumbnailer-rpi64
+version: 2.3.0
+$version: 2.3.0
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - source
+description:
+  brief: Lightweight video thumbnailer
+  long: Lightweight video thumbnailer that can be used by file managers to create thumbnails for video files
+dependency:
+  install:
+    ffmpeg+ffmpeg-rpi64:
+      - version: ''
+        architecture: []
+    ffmpeg+ffmpeg-rpi64-x+bin:
+      - version: ''
+        architecture: []
+        subpackage:
+          - x+bin
+  build:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+    xcraft+build-essential:
+      - version: ''
+        architecture: []
+    x-aarch64-linux+gnu-gcc-glibc-cross:
+      - version: ''
+        architecture: []
+bump: []
+data:
+  get:
+    uri: 'https://github.com/dirkvdb/ffmpegthumbnailer/archive/refs/tags/v<THIS.$VERSION>.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    prepare: ''
+  type: src
+  configure: |-
+    !cd <THIS.DATA.RULES.LOCATION>
+      && mkdir -p ./BUILD
+      && cd ./BUILD
+      && cmake -G Ninja
+               -DCMAKE_INSTALL_PREFIX=<PEON.PREFIXDIR.X+BIN>
+               -DCMAKE_BUILD_TYPE=Release ..
+               -DENABLE_STATIC=ON
+               -DENABLE_SHARED=OFF
+               -DENABLE_TESTS=OFF
+               -DENABLE_FULL_STATIC=ON
+  rules:
+    type: script
+    location: data/ffmpegthumbnailer-<THIS.$VERSION>
+    args:
+      postinst: ''
+      prerm: ''
+      makeall: '!ninja -C BUILD -j<PEON.CPUS.COUNT>'
+      maketest: ''
+      makeinstall: |-
+        !  ninja -C BUILD install
+        && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/lib
+    test: none
+    env:
+      CC: aarch64-xcraft-linux-gnu-gcc
+      CXX: aarch64-xcraft-linux-gnu-g++
+  deploy: ''
+  env:
+    path: []
+    other: {}
+  embedded: true
+  runtime:
+    configure: ''

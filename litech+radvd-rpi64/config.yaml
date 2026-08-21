@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: litech+radvd-rpi64
-version: '2.20'
+version: 2.20-6
 $version: '2.20'
 distribution: raspberry/
 maintainer:
@@ -29,7 +29,7 @@ dependency:
       - version: ''
         architecture: []
 bump:
-  - carnotzet+os-whispi-rpiz2w
+  - carnotzet+os-base-whispi-rpi5b
 data:
   get:
     uri: 'https://radvd.litech.org/dist/radvd-<THIS.$VERSION>.tar.gz'
@@ -39,6 +39,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 2.20@af37c5a81d59f3bdc00d83056606ffa1810d4550beed6caa4f81181246494220.tar.gz
   type: src
   configure: |-
     !{bash}
@@ -54,7 +55,7 @@ data:
       prerm: ''
       makeall: '-j<PEON.CPUS.COUNT>'
       maketest: ''
-      makeinstall: 'install DESTDIR=<PEON.INSTALLDIR.X+BIN>'
+      makeinstall: install DESTDIR=<PEON.INSTALLDIR.X+BIN>
     test: none
     env:
       CC: aarch64-xcraft-linux-gnu-gcc

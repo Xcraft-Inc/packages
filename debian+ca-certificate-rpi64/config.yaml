@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: debian+ca-certificate-rpi64
-version: 1.0.0
+version: 1.0.0-9
 $version: 1.0.0
 distribution: raspberry/
 maintainer:
@@ -21,12 +21,10 @@ dependency:
     vanrossum+python3:
       - version: ''
         architecture: []
-    openssl+openssl:
+    openssl+openssl3:
       - version: ''
         architecture: []
-bump:
-  - carnotzet+os-rpi4b
-  - carnotzet+os-rpiz2w
+bump: []
 data:
   get:
     uri: 'https://salsa.debian.org/debian/ca-certificates/-/archive/<THIS.DATA.GET.REF>/ca-certificates-<THIS.DATA.GET.REF>.tar.gz'

@@ -55,8 +55,11 @@ data:
       CC: aarch64-xcraft-linux-gnu-gcc
       CXX: aarch64-xcraft-linux-gnu-g++
   deploy: |-
-    rm('<PEON.PREFIXDIR.X+BIN>/bin/strings');
-    rm('<PEON.PREFIXDIR.X+BIN>/share/info/dir');
+    !  rm  -f <PEON.PREFIXDIR.X+BIN>/bin/strings
+    && rm  -f <PEON.PREFIXDIR.X+BIN>/share/info/dir
+    && rm -rf <PEON.INSTALLDIR.X+BIN>/usr/include
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.a
+    && rm  -f <PEON.INSTALLDIR.X+BIN>/usr/lib/*.la
   env:
     path: []
     other: {}
