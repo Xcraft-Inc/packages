@@ -1,6 +1,6 @@
 name: microsoft+dotnet-sdk-darwin
-version: 23.1.0
-$version: 23.1.0
+version: 24.0.0
+$version: 24.0.0
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -8,7 +8,7 @@ maintainer:
 architecture:
   - darwin-amd64
 description:
-  brief: .NET Core SDK 6.0 and 8.0
+  brief: .NET Core SDK 6.0, 8.0 and 10.0 (if Darwin > 20)
   long: ''
 dependency:
   install:
@@ -30,6 +30,10 @@ dependency:
       - version: ''
         architecture:
           - darwin-amd64
+    microsoft+dotnet-sdk-100-darwin:
+      - version: ''
+        architecture:
+          - darwin-amd64
 bump: []
 data:
   get:
@@ -44,12 +48,19 @@ data:
     mkdir('root/opt/dotnet-sdk/bin');
     yield exec(
       'writefile',
-      '#!/bin/sh\nexport DYLD_LIBRARY_PATH=/usr/lib:${LIBRARY_PATH}\n"$(dirname "$0")/../dotnet" "$@"\n',
+      '#!/bin/sh\n#export DYLD_LIBRARY_PATH=/usr/lib:${LIBRARY_PATH}\n"$(dirname "$0")/../dotnet" "$@"\n',
       'root/opt/dotnet-sdk/bin/dotnet'
     );
     yield exec('chmod', 'a+x', 'root/opt/dotnet-sdk/bin/dotnet');
     cp('<PEON.ROOTDIR>/usr/share/microsoft/dotnet-sdk-60-darwin/cache/data', 'root/opt/dotnet-sdk');
     cp('<PEON.ROOTDIR>/usr/share/microsoft/dotnet-sdk-80-darwin/cache/data', 'root/opt/dotnet-sdk');
+
+    /* Deploy dotnet 10 only when the Darwin version is greater than 20 */
+    const os = require('node:os');
+    const maj = os.release().split('.')[0];
+    if (maj > 20) {
+      cp('<PEON.ROOTDIR>/usr/share/microsoft/dotnet-sdk-100-darwin/cache/data', 'root/opt/dotnet-sdk');
+    }
   rules:
     type: move
     location: root
