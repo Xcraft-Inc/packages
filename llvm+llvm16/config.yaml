@@ -75,7 +75,11 @@ data:
       maketest: ''
       makeinstall: '![ -d BUILD ] && ninja -C BUILD install || exit 0'
     test: none
-    env: {}
+    env:
+      CFLAGS: '-O2 -g0 -fPIC'
+      CXXFLAGS: ''
+      LDFLAGS: ''
+      CPPFLAGS: ''
   deploy: ''
   env:
     path: []
