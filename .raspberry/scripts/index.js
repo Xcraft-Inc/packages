@@ -104,6 +104,39 @@ class Scripts {
     await fse.ensureDir(outputDir);
     await fse.writeFile(path.join(outputDir, 'os-release'), osRelease);
   };
+
+  genUpdate = async (distribution, outputZip) => {
+    const {require, exec, cp, lsall} = this.#ctx;
+    const path = require('node:path');
+
+    const wpkg = (...args) => exec('wpkg_static', '--verbose', ...args);
+    const zip = (...args) => exec('zip', ...args);
+
+    const xConfig = require('xcraft-core-etc')().load('xcraft');
+    const {xcraftRoot} = xConfig;
+    const packagesDir = path.join(
+      xcraftRoot,
+      `var/wpkg.${distribution}`,
+      distribution
+    );
+    const packages = lsall(packagesDir, false, (item) =>
+      /-x[+][a-z0-9]+_.*/.test(item)
+    );
+
+    const repositoryDir = '__repository';
+    for (const pkg of packages) {
+      cp(pkg, path.join(repositoryDir, distribution, path.basename(pkg)));
+    }
+
+    /* prettier-ignore */
+    await wpkg(
+      '--recursive',
+      '--repository', repositoryDir,
+      '--create-index', path.join(repositoryDir, 'index.tar.gz')
+    );
+
+    await zip('-r', outputZip, repositoryDir);
+  };
 }
 
 module.exports = (ctx) => new Scripts(ctx);
