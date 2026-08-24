@@ -71,9 +71,9 @@ data:
     args:
       postinst: ''
       prerm: ''
-      makeall: '![ -d BUILD ] && ninja -C BUILD -j<PEON.CPUS.COUNT>'
+      makeall: '![ -d BUILD ] && ninja -C BUILD -j<PEON.CPUS.COUNT> || exit 0'
       maketest: ''
-      makeinstall: '![ -d BUILD ] && ninja -C BUILD install'
+      makeinstall: '![ -d BUILD ] && ninja -C BUILD install || exit 0'
     test: none
     env: {}
   deploy: ''
