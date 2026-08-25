@@ -25,6 +25,7 @@ data:
     $ref: ''
     out: Xcode1601.app.part2
     externals: true
+    $hash: 16.1@4c21651a4b8b8cf2c763c8543e916aaac5f9d9c7611be62a47ab3669d2876cd2.part2
   type: bin
   configure: ''
   rules:
