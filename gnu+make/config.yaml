@@ -1,7 +1,7 @@
 subpackage:
   - runtime*
 name: gnu+make
-version: '4.3'
+version: 4.3-2
 $version: '4.3'
 distribution: toolchain/
 maintainer:
@@ -26,7 +26,8 @@ bump: []
 data:
   get:
     uri: 'http://ftpmirror.gnu.org/make/make-<THIS.$VERSION>.tar.gz'
-    mirrors: []
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/make/make-<THIS.$VERSION>.tar.gz'
     ref: ''
     $ref: ''
     out: ''
