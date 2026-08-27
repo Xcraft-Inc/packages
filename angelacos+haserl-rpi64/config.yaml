@@ -38,8 +38,10 @@ data:
     prepare: ''
   type: src
   configure: |-
-    !cd <THIS.DATA.RULES.LOCATION> &&
-    ./configure --prefix=/usr
+    !cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=/usr
+                     --build=$MACHTYPE
+                     --host=aarch64-xcraft-linux-gnu
   rules:
     type: script
     location: data/haserl-<THIS.$VERSION>
