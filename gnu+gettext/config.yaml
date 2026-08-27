@@ -25,7 +25,9 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'http://ftp.gnu.org/pub/gnu/gettext/gettext-<THIS.$VERSION>.tar.gz'
+    uri: 'https://ftpmirror.gnu.org/gettext/gettext-<THIS.$VERSION>.tar.gz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/gettext/gettext-<THIS.$VERSION>.tar.gz'
     ref: ''
     out: ''
     externals: true
