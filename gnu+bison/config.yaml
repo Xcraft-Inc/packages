@@ -54,7 +54,10 @@ data:
       makeinstall: install
     test: none
     env: {}
-  deploy: rm('<PEON.PREFIXDIR>/share/info/dir');
+  deploy: |-
+    rm('<PEON.PREFIXDIR>/share/info/dir');
+    mkdir('<PEON.PREFIXDIR>/local/bin');
+    ln('../../bin/bison', '<PEON.PREFIXDIR>/local/bin/bison');
   env:
     path: []
     other:
