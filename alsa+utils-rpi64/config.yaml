@@ -47,6 +47,9 @@ dependency:
       - version: ''
         architecture:
           - linux-amd64
+    gnu+gettext:
+      - version: ''
+        architecture: []
 bump: []
 data:
   get:
