@@ -21,10 +21,14 @@ dependency:
     xcraft+base-build:
       - version: ''
         architecture: []
+bump: []
 data:
   get:
-    uri: 'http://ftp.gnu.org/gnu/automake/automake-<THIS.$VERSION>.tar.gz'
+    uri: 'https://ftpmirror.gnu.org/automake/automake-<THIS.$VERSION>.tar.gz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/automake/automake-<THIS.$VERSION>.tar.gz'
     ref: ''
+    $ref: ''
     out: ''
     externals: true
     $hash: 1.15@7946e945a96e28152ba5a6beb0625ca715c6e32ac55f2e353ef54def0c8ed924.tar.gz

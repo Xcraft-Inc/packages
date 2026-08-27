@@ -24,13 +24,15 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'http://ftp.gnu.org/gnu/autoconf/autoconf-<THIS.$VERSION>.tar.gz'
-    mirrors: []
+    uri: 'https://ftpmirror.gnu.org/autoconf/autoconf-<THIS.$VERSION>.tar.gz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/autoconf/autoconf-<THIS.$VERSION>.tar.gz'
     ref: ''
     $ref: ''
     out: ''
     externals: true
     prepare: ''
+    $hash: 2.72@afb181a76e1ee72832f6581c0eddf8df032b83e2e0239ef79ebedc4467d92d6e.tar.gz
   type: src
   configure: '!cd <THIS.DATA.RULES.LOCATION> && ./configure --prefix=<PEON.PREFIXDIR>'
   rules:
