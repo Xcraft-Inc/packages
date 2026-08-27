@@ -30,7 +30,8 @@ bump: []
 data:
   get:
     uri: 'http://ftpmirror.gnu.org/bison/bison-<THIS.$VERSION>.tar.gz'
-    mirrors: []
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/bison/bison-<THIS.$VERSION>.tar.gz'
     ref: ''
     $ref: ''
     out: ''

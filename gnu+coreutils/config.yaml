@@ -25,7 +25,8 @@ bump: []
 data:
   get:
     uri: 'http://ftpmirror.gnu.org/coreutils/coreutils-<THIS.$VERSION>.tar.xz'
-    mirrors: []
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/coreutils/coreutils-<THIS.$VERSION>.tar.gz'
     ref: ''
     $ref: ''
     out: ''
