@@ -26,8 +26,9 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/gzip/gzip-<THIS.$VERSION>.tar.xz'
-    mirrors: []
+    uri: 'https://ftpmirror.gnu.org/gzip/gzip-<THIS.$VERSION>.tar.xz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/gzip/gzip-<THIS.$VERSION>.tar.xz'
     ref: ''
     out: ''
     externals: true

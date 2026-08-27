@@ -19,7 +19,9 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/parallel/parallel-<THIS.$VERSION>.tar.bz2'
+    uri: 'https://ftpmirror.gnu.org/parallel/parallel-<THIS.$VERSION>.tar.bz2'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/parallel/parallel-<THIS.$VERSION>.tar.bz2'
     ref: ''
     out: ''
     externals: true

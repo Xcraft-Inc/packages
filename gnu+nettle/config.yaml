@@ -23,8 +23,9 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/nettle/nettle-<THIS.$VERSION>.tar.gz'
-    mirrors: []
+    uri: 'https://ftpmirror.gnu.org/nettle/nettle-<THIS.$VERSION>.tar.gz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/nettle/nettle-<THIS.$VERSION>.tar.gz'
     ref: ''
     out: ''
     externals: true

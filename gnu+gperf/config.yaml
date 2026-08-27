@@ -19,7 +19,9 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/gperf/gperf-<THIS.$VERSION>.tar.gz'
+    uri: 'https://ftpmirror.gnu.org/gperf/gperf-<THIS.$VERSION>.tar.gz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/gperf/gperf-<THIS.$VERSION>.tar.gz'
     ref: ''
     out: ''
     externals: true

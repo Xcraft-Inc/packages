@@ -23,8 +23,9 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/help2man/help2man-<THIS.$VERSION>.tar.gz'
-    mirrors: []
+    uri: 'https://ftpmirror.gnu.org/help2man/help2man-<THIS.$VERSION>.tar.gz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/help2man/help2man-<THIS.$VERSION>.tar.gz'
     ref: ''
     $ref: ''
     out: ''

@@ -24,8 +24,9 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/bash/bash-<THIS.$VERSION>.tar.gz'
-    mirrors: []
+    uri: 'https://ftpmirror.gnu.org/bash/bash-<THIS.$VERSION>.tar.gz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/bash/bash-<THIS.$VERSION>.tar.gz'
     ref: ''
     $ref: ''
     out: ''

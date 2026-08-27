@@ -27,8 +27,9 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/glibc/glibc-<THIS.$VERSION>.tar.xz'
-    mirrors: []
+    uri: 'https://ftpmirror.gnu.org/glibc/glibc-<THIS.$VERSION>.tar.xz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/glibc/glibc-<THIS.$VERSION>.tar.xz'
     ref: ''
     $ref: ''
     out: ''

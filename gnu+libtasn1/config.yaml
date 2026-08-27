@@ -19,7 +19,9 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/libtasn1/libtasn1-<THIS.$VERSION>.tar.gz'
+    uri: 'https://ftpmirror.gnu.org/libtasn1/libtasn1-<THIS.$VERSION>.tar.gz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/libtasn1/libtasn1-<THIS.$VERSION>.tar.gz'
     ref: ''
     out: ''
     externals: true

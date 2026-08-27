@@ -44,7 +44,7 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/libtool/libtool-<THIS.$VERSION>.tar.gz'
+    uri: 'https://ftpmirror.gnu.org/libtool/libtool-<THIS.$VERSION>.tar.gz'
     mirrors:
       - 'https://ftp.gnu.org/gnu/libtool/libtool-<THIS.$VERSION>.tar.gz'
     ref: ''

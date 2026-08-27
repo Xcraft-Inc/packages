@@ -18,8 +18,9 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/binutils/binutils-<THIS.$VERSION>.tar.gz'
-    mirrors: []
+    uri: 'https://ftpmirror.gnu.org/binutils/binutils-<THIS.$VERSION>.tar.gz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/binutils/binutils-<THIS.$VERSION>.tar.gz'
     ref: ''
     $ref: ''
     out: ''

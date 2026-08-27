@@ -41,9 +41,9 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/texinfo/texinfo-<THIS.$VERSION>.tar.xz'
+    uri: 'https://ftpmirror.gnu.org/texinfo/texinfo-<THIS.$VERSION>.tar.xz'
     mirrors:
-      - 'https://ftp.gnu.org/gnu/texinfo/texinfo-<THIS.$VERSION>.tar.gz'
+      - 'https://ftp.gnu.org/gnu/texinfo/texinfo-<THIS.$VERSION>.tar.xz'
     ref: ''
     $ref: ''
     out: ''

@@ -19,7 +19,9 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/cpio/cpio-<THIS.$VERSION>.tar.gz'
+    uri: 'https://ftpmirror.gnu.org/cpio/cpio-<THIS.$VERSION>.tar.gz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/cpio/cpio-<THIS.$VERSION>.tar.gz'
     ref: ''
     out: ''
     externals: true

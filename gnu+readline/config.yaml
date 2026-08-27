@@ -25,8 +25,9 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/readline/readline-<THIS.$VERSION>.tar.gz'
-    mirrors: []
+    uri: 'https://ftpmirror.gnu.org/readline/readline-<THIS.$VERSION>.tar.gz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/readline/readline-<THIS.$VERSION>.tar.gz'
     ref: ''
     out: ''
     externals: true

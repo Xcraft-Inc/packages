@@ -23,7 +23,9 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/gawk/gawk-<THIS.$VERSION>.tar.xz'
+    uri: 'https://ftpmirror.gnu.org/gawk/gawk-<THIS.$VERSION>.tar.xz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/gawk/gawk-<THIS.$VERSION>.tar.xz'
     ref: ''
     out: ''
     externals: true

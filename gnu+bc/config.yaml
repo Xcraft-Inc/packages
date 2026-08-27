@@ -25,7 +25,9 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/bc/bc-<THIS.$VERSION>.tar.gz'
+    uri: 'https://ftpmirror.gnu.org/bc/bc-<THIS.$VERSION>.tar.gz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/bc/bc-<THIS.$VERSION>.tar.gz'
     ref: ''
     out: ''
     externals: true

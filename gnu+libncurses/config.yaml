@@ -24,8 +24,9 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/ncurses/ncurses-<THIS.$VERSION>.tar.gz'
-    mirrors: []
+    uri: 'https://ftpmirror.gnu.org/ncurses/ncurses-<THIS.$VERSION>.tar.gz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/ncurses/ncurses-<THIS.$VERSION>.tar.gz'
     ref: ''
     out: ''
     externals: true

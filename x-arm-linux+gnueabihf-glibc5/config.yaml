@@ -21,13 +21,15 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/glibc/glibc-<THIS.$VERSION>.tar.xz'
+    uri: 'https://ftpmirror.gnu.org/glibc/glibc-<THIS.$VERSION>.tar.xz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/glibc/glibc-<THIS.$VERSION>.tar.xz'
     ref: ''
     out: ''
     externals: true
     $hash: 2.26@e54e0a934cd2bc94429be79da5e9385898d2306b9eaf3c92d5a77af96190f6bd.tar.xz
   type: bin
-  configure: 'mv(''data/glibc-<THIS.$VERSION>'', ''root/var/x-arm-linux/glibc5'');'
+  configure: "mv('data/glibc-<THIS.$VERSION>', 'root/var/x-arm-linux/glibc5');"
   rules:
     type: move
     location: root

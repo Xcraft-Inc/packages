@@ -23,7 +23,7 @@ dependency:
 bump: []
 data:
   get:
-    uri: 'http://ftpmirror.gnu.org/tar/tar-<THIS.$VERSION>.tar.gz'
+    uri: 'https://ftpmirror.gnu.org/tar/tar-<THIS.$VERSION>.tar.gz'
     mirrors:
       - 'https://ftp.gnu.org/gnu/tar/tar-<THIS.$VERSION>.tar.gz'
     ref: ''
