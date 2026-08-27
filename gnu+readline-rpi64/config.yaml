@@ -23,12 +23,14 @@ dependency:
         architecture: []
 data:
   get:
-    uri: 'ftp://ftp.cwru.edu/pub/bash/readline-<THIS.$VERSION>.tar.gz'
-    mirrors: []
+    uri: 'https://ftpmirror.gnu.org/readline/readline-<THIS.$VERSION>.tar.gz'
+    mirrors:
+      - 'https://ftp.gnu.org/gnu/readline/readline-<THIS.$VERSION>.tar.gz'
     ref: ''
     out: ''
     externals: true
     prepare: ''
+    $hash: 8.3@fe5383204467828cd495ee8d1d3c037a7eba1389c22bc6a041f627976f9061cc.tar.gz
   type: src
   configure: |-
     !{bash}
