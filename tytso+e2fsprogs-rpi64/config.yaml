@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: tytso+e2fsprogs-rpi64
-version: 1.47.3-11
-$version: 1.47.3
+version: 1.47.4
+$version: 1.47.4
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
@@ -41,7 +41,7 @@ data:
     out: ''
     externals: true
     prepare: ''
-    $hash: 1.47.3@7d4612f4e4f7ca6c2f669679028bcb02763e3b6280c9c19b2cf168eaf65e88af.tar.gz
+    $hash: 1.47.4@da274408bebbfd13a5a2fc3cfc66e3ffff17c48534673aa67f88d49b99123b96.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>

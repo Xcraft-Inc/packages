@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: tytso+e2fsprogs
-version: 1.46.6
-$version: 1.46.6
+version: 1.47.4
+$version: 1.47.4
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -27,6 +27,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 1.47.4@da274408bebbfd13a5a2fc3cfc66e3ffff17c48534673aa67f88d49b99123b96.tar.gz
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
