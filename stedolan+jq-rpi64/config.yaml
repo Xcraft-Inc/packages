@@ -34,9 +34,11 @@ data:
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
-       && ./configure --prefix=<PEON.PREFIXDIR.X+BIN>
-                      --disable-maintainer-mode
-                      --disable-valgrind
+      && ./configure --prefix=<PEON.PREFIXDIR.X+BIN>
+                     --build=$MACHTYPE
+                     --host=aarch64-xcraft-linux-gnu
+                     --disable-maintainer-mode
+                     --disable-valgrind
   rules:
     type: make
     location: data/jq-<THIS.$VERSION>
