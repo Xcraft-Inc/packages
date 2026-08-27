@@ -79,6 +79,9 @@ dependency:
     x-aarch64-linux+gnu-gcc-glibc-cross:
       - version: ''
         architecture: []
+    gnu+automake:
+      - version: ''
+        architecture: []
     gnu+autoconf:
       - version: ''
         architecture: []
