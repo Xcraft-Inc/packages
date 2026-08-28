@@ -1,0 +1,103 @@
+# Experiment on Darwin by using a gcc bootstrapper
+#
+diff --git a/x-mingw-w64+gnu-gcc-cross/config.yaml b/x-mingw-w64+gnu-gcc-cross/config.yaml
+index f055d91e..7d33be57 100644
+--- a/x-mingw-w64+gnu-gcc-cross/config.yaml
++++ b/x-mingw-w64+gnu-gcc-cross/config.yaml
+@@ -1,8 +1,8 @@
+ subpackage:
+   - runtime*
+ name: x-mingw-w64+gnu-gcc-cross
+-version: 14.3.0
+-$version: 14.3.0
++version: 14.4.0
++$version: 14.4.0
+ distribution: toolchain/
+ maintainer:
+   name: Mathieu Schroeter
+@@ -85,6 +85,7 @@ data:
+   configure: |-
+     mkdir('data/binutils');
+     mkdir('data/headers');
++    mkdir('data/gcc-bootstrap');
+     mkdir('data/gcc');
+     mkdir('data/crt');
+   rules:
+@@ -95,6 +96,39 @@ data:
+       prerm: ''
+       makeall: |-
+         !_CC="$CC" _CXX="$CXX" _CFLAGS="$CFLAGS" _CXXFLAGS="$CXXFLAGS" _LDFLAGS="$LDFLAGS" _CPPFLAGS="$CPPFLAGS"
++        && unset LIBRARY_PATH
++
++        && : /// gcc - bootstrap stage, native compiler ///
++          && cd gcc-bootstrap
++          && CONFIGURE="<PEON.ROOTDIR>/var/x-mingw-w64/gcc/configure"
++          && $CONFIGURE --prefix="$(pwd)/gcc-bootstrap"
++                        --enable-languages=c,c++
++                        --disable-bootstrap
++                        --disable-multilib
++                        --disable-nls
++                        --disable-libssp
++                        --disable-libgomp
++                        --disable-libquadmath
++                        --enable-lto
++                        --with-gmp=<PEON.ROOTDIR>/usr
++                        --with-mpfr=<PEON.ROOTDIR>/usr
++                        --with-mpc=<PEON.ROOTDIR>/usr
++                        --with-isl=<PEON.ROOTDIR>/usr
++        <PEON.OS=darwin?
++                        --with-sysroot={PEON.ENV.SDKROOT}
++        :>
++          && : /// keep all steps like with a cross-compiler, necessary with darwin ///
++          && make -j<PEON.CPUS.COUNT> all-gcc
++          && make install-gcc
++          && make -j<PEON.CPUS.COUNT> all-target-libgcc
++          && make install-target-libgcc
++          && make -j<PEON.CPUS.COUNT>
++          && make install
++          && cd ..
++          && CC="$(pwd)/gcc-bootstrap/gcc-bootstrap/bin/gcc"
++          && CXX="$(pwd)/gcc-bootstrap/gcc-bootstrap/bin/g++"
++          && _CC="$CC"
++          && _CXX="$CXX"
+ 
+         && : /// binutils ///
+           && cd binutils
+@@ -162,6 +195,7 @@ data:
+           && cd ..
+ 
+         && : /// gcc - stage 1 ///
++          && unset CPATH C_INCLUDE_PATH CPLUS_INCLUDE_PATH SDKROOT
+           && cd gcc
+           && export CC="$_CC" CXX="$_CXX" CFLAGS="$_CFLAGS" CXXFLAGS="$_CXXFLAGS" LDFLAGS="$_LDFLAGS" CPPFLAGS="$_CPPFLAGS"
+           && make -j<PEON.CPUS.COUNT> all-target-libgcc
+@@ -178,10 +212,15 @@ data:
+     test: none
+     env:
+       PATH: '<PEON.PREFIXDIR>/bin:<PEON.ENV.PATH>'
++      CFLAGS: '-O2 -g0 -fPIC -I<PEON.ROOTDIR>/usr/include -Wl,-rpath,<PEON.ROOTDIR>/usr/lib'
++      CXXFLAGS: '-O2 -g0 -fPIC -I<PEON.ROOTDIR>/usr/include -Wl,-rpath,<PEON.ROOTDIR>/usr/lib'
++      LDFLAGS: '-L<PEON.ROOTDIR>/usr/lib'
++      CPPFLAGS: '-I<PEON.ROOTDIR>/usr/include'
++      darwin/CPP: clang-cpp
+   deploy: |-
+     rm('<PEON.PREFIXDIR>/share/info');
+     rm('<PEON.PREFIXDIR>/share/man/man7');
+-    rm('<PEON.PREFIXDIR>/share/gcc-14.3.0');
++    rm('<PEON.PREFIXDIR>/share/gcc-14.4.0');
+     rm('<PEON.PREFIXDIR>/lib64');
+     rm('<PEON.PREFIXDIR>/lib/bfd-plugins/libdep.so');
+   env:
+diff --git a/x-mingw-w64+gnu-gcc/config.yaml b/x-mingw-w64+gnu-gcc/config.yaml
+index 5807e31e..99f3f0c9 100644
+--- a/x-mingw-w64+gnu-gcc/config.yaml
++++ b/x-mingw-w64+gnu-gcc/config.yaml
+@@ -1,6 +1,6 @@
+ name: x-mingw-w64+gnu-gcc
+-version: 14.3.0
+-$version: 14.3.0
++version: 14.4.0
++$version: 14.4.0
+ distribution: toolchain/
+ maintainer:
+   name: Mathieu Schroeter
