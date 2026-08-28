@@ -68,7 +68,9 @@ data:
           '<PEON.INSTALLDIR>/opt/img/carnotzet-os-contelia-<THIS.$VERSION>-rpiz2w.img'
         );
 
-        yield genUpdate('raspberry',
+        yield genUpdate(
+          'carnotzet+os-base-contelia-rpiz2w-x+bin', 'linux-aarch64',
+          'raspberry',
           '<PEON.INSTALLDIR>/opt/img/carnotzet-os-contelia-<THIS.$VERSION>-rpiz2w.update.zip'
         );
       maketest: ''

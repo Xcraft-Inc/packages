@@ -105,13 +105,14 @@ class Scripts {
     await fse.writeFile(path.join(outputDir, 'os-release'), osRelease);
   };
 
-  genUpdate = async (distribution, outputZip) => {
-    const {require, exec, cp, lsall} = this.#ctx;
+  genUpdate = async (topPackage, arch, distribution, outputZip) => {
+    const {require, exec, cp, lsall, cmd} = this.#ctx;
     const path = require('node:path');
 
     const wpkg = (...args) => exec('wpkg_static', '--verbose', ...args);
     const zip = (...args) => exec('zip', ...args);
 
+    /* List all packages available in the repository */
     const xConfig = require('xcraft-core-etc')().load('xcraft');
     const {xcraftRoot} = xConfig;
     const packagesDir = path.join(
@@ -119,13 +120,39 @@ class Scripts {
       `var/wpkg.${distribution}`,
       distribution
     );
-    const packages = lsall(packagesDir, false, (item) =>
+    const files = lsall(packagesDir, false, (item) =>
       /-x[+][a-z0-9]+_.*/.test(item)
     );
 
+    /* Extract the exact list of transitional dependencies for the package */
+    const extractDepends = async (pkg, arch, packages = new Set()) => {
+      if (packages.has(pkg)) {
+        return packages;
+      }
+
+      const packageRef = `${pkg}:${arch}`;
+      const {data} = await cmd('pacman.show', {packageRef, distribution});
+      if (data[packageRef].Depends === 'undefined') {
+        packages.add(pkg);
+        return packages;
+      }
+      packages.add(pkg);
+
+      const depends = data[packageRef].Depends.split(', ');
+      for (const depend of depends) {
+        await extractDepends(depend, arch, packages);
+      }
+      return packages;
+    };
+
+    const packages = await extractDepends(topPackage, arch);
+
+    /* Copy the necessary packages to the update repository */
     const repositoryDir = '__repository';
-    for (const pkg of packages) {
-      cp(pkg, path.join(repositoryDir, distribution, path.basename(pkg)));
+    for (const file of files.filter((file) =>
+      packages.has(path.basename(file).split('_', 1)[0])
+    )) {
+      cp(file, path.join(repositoryDir, distribution, path.basename(file)));
     }
 
     /* prettier-ignore */
