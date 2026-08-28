@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: llvm+llvm
-version: 19.1.1
-$version: 19.1.1
+version: 19.1.7
+$version: 19.1.7
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -46,6 +46,7 @@ data:
     out: ''
     externals: true
     prepare: ''
+    $hash: 19.1.7@82401fea7b79d0078043f7598b835284d6650a75b93e64b6f761ea7b63097501.tar.xz
   type: src
   configure: |-
     !if [ "$(uname -r | cut -d. -f1)" -lt 21 ]; then echo "Skip for this Darwin system" && exit 0; fi;
