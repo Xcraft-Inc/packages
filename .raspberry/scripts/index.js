@@ -148,7 +148,7 @@ class Scripts {
     const packages = await extractDepends(topPackage, arch);
 
     /* Copy the necessary packages to the update repository */
-    const repositoryDir = '__repository';
+    const repositoryDir = 'rpiz2w';
     for (const file of files.filter((file) =>
       packages.has(path.basename(file).split('_', 1)[0])
     )) {
