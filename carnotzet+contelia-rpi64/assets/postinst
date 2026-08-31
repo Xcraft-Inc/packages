@@ -3,6 +3,9 @@
 rm -rf /var/service/contelia
 ln -sf /etc/sv/contelia /var/service/contelia
 
-if [ ! -f /var/service/contelia/down ]; then
-  sv up contelia || :
-fi
+# Contelia is never started after a post-install, otherwise it poweroff the
+# system after 20s where it's possible that wpkg is still working. It's a
+# special case where a reboot is required.
+# if [ ! -f /var/service/contelia/down ]; then
+#   sv up contelia || :
+# fi
