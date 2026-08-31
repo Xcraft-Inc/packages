@@ -1,0 +1,19 @@
+#!/bin/sh
+
+wpkg_upgrade() {
+  local result=1
+  local sources="/boot/sources.list"
+  local backup="/tmp/sources.list.update"
+
+  cp -f "$sources" "$backup" || return 1
+  echo "wpkg file:///tmp/contelia_update/ rpiz2w/" >"$sources" || return 1
+
+  if wpkg --update && wpkg --upgrade && wpkg --autoremove; then
+    result=0
+  fi
+
+  cp -f "$backup" "$sources"
+  return $result
+}
+
+wpkg_upgrade

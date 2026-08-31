@@ -111,6 +111,9 @@ data:
     cp('<PEON.ASSETS>/postinst', '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
     cp('<PEON.ASSETS>/prerm',    '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
 
+    /* Special command to upgrade contelia */
+    cp('<PEON.ASSETS>/contelia_upgrade', '<PEON.PREFIXDIR.X+BIN>/bin/contelia_upgrade');
+
     /* Website contelia.schroetersa.ch */
     cp('<THIS.DATA.RULES.LOCATION>/doc/_site', '<PEON.INSTALLDIR.X+WWW>/var/httpd/www');
   env:
