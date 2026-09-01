@@ -20,6 +20,9 @@ dependency:
     seward+bzip2:
       - version: ''
         architecture: []
+    openssl+openssl3:
+      - version: ''
+        architecture: []
   build:
     xcraft+base-build:
       - version: ''
