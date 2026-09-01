@@ -16,4 +16,9 @@ wpkg_upgrade() {
   return $result
 }
 
-wpkg_upgrade
+if wpkg_upgrade; then
+  reboot -d 5 &
+  exit 0
+fi
+
+exit 1
