@@ -23,7 +23,7 @@ data:
     externals: true
     $hash: 1.16.15@28365c5c252970c10f2627dc0aa63a2ec3df04a92df4d45ed83dbe464732c3e0.tar.gz
   type: bin
-  configure: 'mv(''data/go'', ''root/opt/go-bootstrap-darwin'');'
+  configure: "mv('data/go', 'root/opt/go-bootstrap-darwin');"
   rules:
     type: move
     location: root
