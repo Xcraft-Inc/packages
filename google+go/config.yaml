@@ -28,7 +28,7 @@ dependency:
           - darwin-i386
           - darwin-amd64
           - darwin-aarch64
-    apple+macos-sdk-1013:
+    apple+macos-sdk-1201:
       - version: ''
         architecture:
           - darwin-i386
@@ -61,7 +61,7 @@ data:
         cp('../go', '<PEON.INSTALLDIR>/opt/go');
     test: none
     env:
-      darwin/SDKROOT: <PEON.ENV.MACOSSDK_1201>
+      darwin-amd64/SDKROOT: <PEON.ENV.MACOSSDK_1201>
       GOROOT_BOOTSTRAP: <PEON.ENV.GOROOT_BOOTSTRAP_17>
   deploy: ''
   env:
