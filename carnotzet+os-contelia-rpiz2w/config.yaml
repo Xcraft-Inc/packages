@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: carnotzet+os-contelia-rpiz2w
-version: 1.0.4
-$version: 1.0.4
+version: 1.0.5
+$version: 1.0.5
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
