@@ -1,21 +1,13 @@
 data:
   configure: |-
     !<PEON.OS=win? exit 0; :>
-    cd <THIS.DATA.RULES.LOCATION> &&
-    <PEON.OS=darwin?
-      SDKROOT="$MACOSSDK_1013"
-      MACOSX_DEPLOYMENT_TARGET=10.13
-    :> ./configure --prefix=<PEON.PREFIXDIR>
-                   --libdir=<PEON.PREFIXDIR.DEV>/lib
-                   --includedir=<PEON.PREFIXDIR.DEV>/include
-                   --static
+    cd <THIS.DATA.RULES.LOCATION>
+      && ./configure --prefix=<PEON.PREFIXDIR>
+                     --libdir=<PEON.PREFIXDIR.DEV>/lib
+                     --includedir=<PEON.PREFIXDIR.DEV>/include
+                     --static
   rules:
     args:
-      makeall: |-
-        !<PEON.OS=darwin?
-          SDKROOT="$MACOSSDK_1013"
-          MACOSX_DEPLOYMENT_TARGET=10.13
-        :> make <PEON.OS=win? -f win32/Makefile.gcc : -j{PEON.CPUS.COUNT}>
       makeinstall: |-
         !make BINARY_PATH=<PEON.PREFIXDIR>/bin
               INCLUDE_PATH=<PEON.PREFIXDIR.DEV>/include
@@ -26,3 +18,5 @@ data:
         :>    install
     env:
       CFLAGS: <PEON.ENV.CFLAGS> -Os
+      darwin-amd64/SDKROOT: <PEON.ENV.MACOSSDK_1013>
+      darwin-amd64/MACOSX_DEPLOYMENT_TARGET: 10.13
