@@ -29,6 +29,9 @@ dependency:
       - version: ''
         architecture:
           - darwin-amd64
+    google+go-bootstrap-darwin-arm:
+      - version: ''
+        architecture:
           - darwin-aarch64
     apple+macos-sdk-1201:
       - version: ''

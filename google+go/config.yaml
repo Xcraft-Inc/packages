@@ -27,6 +27,7 @@ dependency:
           - linux-aarch64
           - darwin-i386
           - darwin-amd64
+          - darwin-aarch64
     apple+macos-sdk-1013:
       - version: ''
         architecture:
