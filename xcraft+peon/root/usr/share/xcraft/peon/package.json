@@ -13,7 +13,7 @@
     "xcraft-core-fs": "^2.7.1",
     "xcraft-core-log": "^2.1.1",
     "xcraft-core-placeholder": "^1.4.0",
-    "xcraft-core-platform": "^1.1.0",
+    "xcraft-core-platform": "^1.2.0",
     "xcraft-core-uri": "^1.1.1"
   },
   "devDependencies": {
