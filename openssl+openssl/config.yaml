@@ -64,7 +64,7 @@ data:
     cd <THIS.DATA.RULES.LOCATION> &&
     CC="${CC:-cc} $CFLAGS"
     <PEON.OS=darwin?
-      ./Configure darwin64-{PEON.OS.ARCH2}-cc
+      ./Configure $PLATFORM-cc
     :>
     <PEON.OS=win?
       ./Configure --openssldir=/usr/ssl mingw64
@@ -84,7 +84,9 @@ data:
       maketest: ''
       makeinstall: '!make CFLAGS= LDFLAGS= install_sw'
     test: none
-    env: {}
+    env:
+      darwin-amd64/PLATFORM: darwin64-x86_64
+      darwin-aarch64/PLATFORM: darwin64-arm64
   deploy: ''
   env:
     path: []
