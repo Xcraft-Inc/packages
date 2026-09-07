@@ -8,6 +8,7 @@ rm -rf /var/run
 mkdir -p /var/run
 mount -t tmpfs none /var/run -o nodev,nosuid,size=1M,mode=0755
 
+echo >/dev/mdev.seq
 echo /sbin/mdev > /proc/sys/kernel/hotplug
 
 # Ensure that /sys/block/mmcblk0 exists
