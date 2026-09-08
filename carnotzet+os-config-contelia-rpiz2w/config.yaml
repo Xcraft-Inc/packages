@@ -2,8 +2,8 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: carnotzet+os-config-contelia-rpiz2w
-version: 1.0.8
-$version: 1.0.8
+version: 1.1.0
+$version: 1.1.0
 distribution: raspberry/
 maintainer:
   name: Mathieu Schroeter
