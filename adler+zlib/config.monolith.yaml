@@ -20,3 +20,4 @@ data:
       CFLAGS: <PEON.ENV.CFLAGS> -Os
       darwin-amd64/SDKROOT: <PEON.ENV.MACOSSDK_1013>
       darwin-amd64/MACOSX_DEPLOYMENT_TARGET: 10.13
+      darwin-aarch64/CC: clang -arch x86_64 -m64
