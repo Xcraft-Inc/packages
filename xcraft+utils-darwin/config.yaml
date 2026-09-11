@@ -15,6 +15,9 @@ dependency:
     xcraft+peon:
       - version: ''
         architecture: []
+    openssl+openssl3:
+      - version: ''
+        architecture: []
 data:
   get:
     uri: 'self:///root'
