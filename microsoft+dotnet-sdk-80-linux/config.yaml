@@ -1,6 +1,6 @@
 name: microsoft+dotnet-sdk-80-linux
-version: 8.0.408
-$version: 8.0.408
+version: 8.0.425
+$version: 8.0.425
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -28,7 +28,7 @@ data:
     $ref: ''
     out: ''
     externals: true
-    $hash: 8.0.408@2f8dcfb5b7e3dcf220c42d39ecc1b0333617aceeceb148862a9232207113e39b.tar.gz
+    $hash: 8.0.425@ec2c55738f3aa16c58b2c0c565ce10ad6fea83925574a6f08c920ba62a39712b.tar.gz
   type: bin
   configure: |-
     yield exec(

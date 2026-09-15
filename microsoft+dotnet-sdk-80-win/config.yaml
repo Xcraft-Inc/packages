@@ -1,6 +1,6 @@
 name: microsoft+dotnet-sdk-80-win
-version: 8.0.408
-$version: 8.0.408
+version: 8.0.425
+$version: 8.0.425
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -25,7 +25,7 @@ data:
     $ref: ''
     out: ''
     externals: true
-    $hash: 8.0.408@dd92f13c30239308bda478c31572fce20a4cde0870b9311a39bdc1158262e47a.zip
+    $hash: 8.0.425@cd6eb1df826dd168108e2c427673f9d627b7e0631963eeedf0fa7aef0913c53f.zip
   type: bin
   configure: ''
   rules:
