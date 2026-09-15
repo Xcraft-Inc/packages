@@ -1,6 +1,6 @@
 name: microsoft+dotnet-sdk-80-darwin-arm
-version: 8.0.425
-$version: 8.0.425
+version: 8.0.413
+$version: 8.0.413
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -28,7 +28,7 @@ data:
     $ref: ''
     out: ''
     externals: true
-    $hash: 8.0.425@6a2c4216473bd152497ee2bb074ba8bb8919e1ea4d87270e062ac6aee5991571.tar.gz
+    $hash: 8.0.413@2b9add064817f5bfe9496c07d8985b3e2956fd97f575423a62f4b616cee9725f.tar.gz
   type: bin
   configure: |-
     yield exec(
