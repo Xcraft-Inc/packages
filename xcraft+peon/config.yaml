@@ -1,6 +1,6 @@
 name: xcraft+peon
-version: 1.11.0
-$version: 1.11.0
+version: 1.12.0
+$version: 1.12.0
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
