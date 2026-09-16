@@ -1,8 +1,8 @@
 subpackage:
   - runtime*
 name: qtgroup+qt6
-version: 6.5.2
-$version: 6.5.2
+version: 6.6.3
+$version: 6.6.3
 distribution: monolith/
 maintainer:
   name: Mathieu Schroeter
@@ -101,7 +101,7 @@ data:
   get:
     uri: 'https://code.qt.io/qt/qt5.git'
     mirrors: []
-    ref: <THIS.DATA.GET.$REF>
+    ref: v<THIS.$VERSION>
     out: qt6
     externals: false
     prepare: |-
@@ -109,7 +109,6 @@ data:
         && git submodule deinit --all
         && git checkout v<THIS.$VERSION>
         && perl init-repository --module-subset=qtbase,qtshadertools,qtdeclarative,qtsvg
-    $ref: 54eb300535a828ea6778a882319a7cf691cde2e7
   type: src
   configure: |-
     !cd <THIS.DATA.RULES.LOCATION>
@@ -143,6 +142,7 @@ data:
                       --
                       -DCMAKE_INCLUDE_PATH=<PEON.PROD.ROOTDIR>/usr/include
                       -DCMAKE_LIBRARY_PATH=<PEON.PROD.ROOTDIR>/usr/lib
+                      -Wno-dev
   rules:
     type: script
     location: data/qt6
