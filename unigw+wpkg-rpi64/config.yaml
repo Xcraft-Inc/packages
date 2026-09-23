@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+bin:linux-aarch64'
 name: unigw+wpkg-rpi64
-version: 1.0.2-30
+version: 1.0.2-31
 $version: 1.0.2
 distribution: raspberry/
 maintainer:
@@ -84,6 +84,7 @@ data:
         cp('<PEON.ASSETS>/postinst',         '<PEON.INSTALLDIR.X+BIN>/WPKG/postinst');
         cp('<PEON.ASSETS>/prerm',            '<PEON.INSTALLDIR.X+BIN>/WPKG/prerm');
         cp('<PEON.ASSETS>/conffiles',        '<PEON.INSTALLDIR.X+BIN>/WPKG/conffiles');
+        cp('<PEON.ASSETS>/update-all',       '<PEON.INSTALLDIR.X+BIN>/usr/bin/update-all');
     test: none
     env: {}
   deploy: ''
