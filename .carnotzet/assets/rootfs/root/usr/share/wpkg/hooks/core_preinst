@@ -40,3 +40,5 @@ fi
 cat "$WPKG_SV" | sort -u | while IFS= read -r sv; do
   sv stop "$sv" || :
 done
+
+exit 0

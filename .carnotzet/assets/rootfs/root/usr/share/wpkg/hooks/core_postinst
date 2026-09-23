@@ -13,7 +13,8 @@ if [ ! -f "$WPKG_SV" ]; then
 fi
 
 cat "$WPKG_SV" | sort -u | while IFS= read -r sv; do
-  sv start "$sv"
+  sv start "$sv" || :
 done
 
 rm -f "$WPKG_SV"
+exit 0
