@@ -2,7 +2,7 @@ subpackage:
   - runtime*
   - 'x+tinfo:linux-aarch64'
 name: gnu+libncurses-rpi64
-version: 6.6
+version: 6.6-13
 $version: 6.6
 distribution: raspberry/
 maintainer:
