@@ -52,6 +52,8 @@ data:
       makeinstall: |-
         !make -C mozilla install CERTSDIR=<PEON.PREFIXDIR.X+BIN>/ssl/certs
          && openssl rehash <PEON.PREFIXDIR.X+BIN>/ssl/certs
+         && mkdir -p '<PEON.INSTALLDIR.X+BIN>/etc/profile.d'
+         && cp -f '<PEON.ASSETS>/certs.sh' '<PEON.INSTALLDIR.X+BIN>/etc/profile.d/certs.sh'
     test: none
     env: {}
   deploy: ''
