@@ -49,6 +49,7 @@ boot_normal()
 
   sysctl -p >/dev/null
   syslogd >/dev/null
+  klogd >/dev/null
   crond >/dev/null
 
   # Configure swap
