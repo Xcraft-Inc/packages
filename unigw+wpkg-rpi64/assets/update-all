@@ -3,15 +3,15 @@
 # keep going even if the session is gone (like broken ssh after glibc change)
 trap '' HUP
 
-echo "running id: $(id)" | logger -t carnotzet_upgrade
+echo "running id: $(id)" | logger -s -t carnotzet_upgrade
 
 wpkg_upgrade() {
   local result=1
   local log="/tmp/carnotzet_upgrade.log"
 
-  if (wpkg --update >"$log" 2>&1) && \
-     (wpkg --upgrade >"$log" 2>&1) && \
-     (wpkg --autoremove >"$log" 2>&1)
+  if (wpkg --update 2>&1 | tee -a "$log") && \
+     (wpkg --upgrade 2>&1 | tee -a "$log") && \
+     (wpkg --autoremove 2>&1 | tee -a "$log")
   then
     result=0
   fi
@@ -23,10 +23,10 @@ wpkg_upgrade() {
 }
 
 if wpkg_upgrade; then
-  echo "reboot after upgrade" | logger -t carnotzet_upgrade
-  nohup reboot -d 5 &
+  echo "reboot after upgrade" | logger -s -t carnotzet_upgrade
+  nohup reboot -d 5 >/dev/null &
   exit 0
 fi
 
-echo "upgrade error" | logger -t carnotzet_upgrade
+echo "upgrade error" | logger -s -t carnotzet_upgrade
 exit 1
