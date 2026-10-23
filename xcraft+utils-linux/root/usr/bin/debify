@@ -207,6 +207,17 @@ EOF
   mkdir -p debian/lib/systemd/system
   echo -e "${systemd}" > "debian/lib/systemd/system/${projectName}.service"
   chmod 0644 "debian/lib/systemd/system/${projectName}.service"
+elif [ ! -z "$postinst_cmd" ]; then
+  # Debian package hooks
+  cat <<EOF > "debian/DEBIAN/postinst"
+#!/bin/bash
+set -e
+set -o pipefail
+
+${postinst_cmd}
+EOF
+
+  chmod 0755 debian/DEBIAN/postinst
 fi
 
 cat <<EOF > debian/DEBIAN/control
