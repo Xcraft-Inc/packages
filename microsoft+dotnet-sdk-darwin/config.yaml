@@ -1,5 +1,5 @@
 name: microsoft+dotnet-sdk-darwin
-version: 24.0.0
+version: 24.0.0-1
 $version: 24.0.0
 distribution: toolchain/
 maintainer:

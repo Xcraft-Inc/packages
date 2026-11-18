@@ -1,6 +1,6 @@
 name: microsoft+dotnet-sdk-100-darwin-arm
-version: 10.0.401
-$version: 10.0.401
+version: 10.0.404
+$version: 10.0.404
 distribution: toolchain/
 maintainer:
   name: Mathieu Schroeter
@@ -29,6 +29,7 @@ data:
     $ref: ''
     out: ''
     externals: true
+    $hash: 10.0.404@acf7ebe726a030fa3d2bd03b06196971bd9ef123c579b9345d380bc0ef0d4e44.tar.gz
   type: bin
   configure: |-
     yield exec(
