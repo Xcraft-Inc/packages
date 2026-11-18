@@ -1,4 +1,4 @@
-name: hailo-ai+genai-whisper-medium
+name: hailo-ai+genai-whisper-medium-x+bin
 version: 5.5.0
 $version: 5.5.0
 distribution: raspberry/
