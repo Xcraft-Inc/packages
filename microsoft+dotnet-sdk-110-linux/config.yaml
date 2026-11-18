@@ -1,0 +1,51 @@
+name: microsoft+dotnet-sdk-110-linux
+version: 11.0.100
+$version: 11.0.100
+distribution: toolchain/
+maintainer:
+  name: Mathieu Schroeter
+  email: schroeter@epsitec.ch
+architecture:
+  - linux-amd64
+description:
+  brief: .NET SDK
+  long: ''
+dependency:
+  install:
+    xcraft+peon:
+      - version: ''
+        architecture: []
+  make:
+    xcraft+utils:
+      - version: ''
+        architecture: []
+bump:
+  - microsoft+dotnet-sdk-linux
+data:
+  get:
+    uri: 'https://builds.dotnet.microsoft.com/dotnet/Sdk/<THIS.$VERSION>/dotnet-sdk-<THIS.$VERSION>-linux-x64.tar.gz'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: true
+    $hash: 11.0.100@6fdb8822f47ccdba28f507dcd5d92e632d5b99cd27908d6838f0cc575be33baf.tar.gz
+  type: bin
+  configure: |-
+    yield exec(
+      'writefile',
+      '#!/bin/sh\ndotnet msbuild "$@"\n',
+      'data/sdk/<THIS.$VERSION>/msbuild'
+    );
+    yield exec('chmod', 'a+x', 'data/sdk/<THIS.$VERSION>/msbuild');
+  rules:
+    type: configure
+    location: data
+    args:
+      postinst: ''
+      prerm: ''
+    env: {}
+  env:
+    path: []
+    other: {}
+  embedded: true
