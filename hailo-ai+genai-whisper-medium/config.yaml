@@ -1,0 +1,35 @@
+name: hailo-ai+genai-whisper-medium
+version: 5.5.0
+$version: 5.5.0
+distribution: raspberry/
+maintainer:
+  name: Mathieu Schroeter
+  email: mathieu@schroetersa.ch
+architecture:
+  - all
+description:
+  brief: Whisper-Medium
+  long: Automatic Speech Recognition (ASR) transcribes spoken audio to text with multilingual support and speech translation to English
+dependency: {}
+bump: []
+data:
+  get:
+    uri: 'https://dev-public.hailo.ai/v<THIS.$VERSION>/blob/Whisper-Medium.hef'
+    mirrors: []
+    ref: ''
+    $ref: ''
+    out: ''
+    externals: false
+  type: bin
+  configure: "mv('Whisper-Medium.hef', 'root/opt/genai/whisper-medium.hef');"
+  rules:
+    type: move
+    location: root
+    args:
+      postinst: ''
+      prerm: ''
+    env: {}
+  env:
+    path: []
+    other: {}
+  embedded: true
