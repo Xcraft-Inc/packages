@@ -122,14 +122,20 @@ fi
 echo "Notarize $app"
 if ! notarize "$app" "$acUsername" "$acPassword" "$acTeamId"; then
   >&2 echo "Notarization of app $app has failed"
-  exit 4
+  if ! notarize "$app" "$acUsername" "$acPassword" "$acTeamId"; then
+    >&2 echo "Notarization of app $app has failed (last retry)"
+    exit 4
+  fi
 fi
 
 # Staple the ticket into the app
 echo "Staple ticket into $app"
 if ! staple "$app"; then
   >&2 echo "Staple of the ticket into $app has failed"
-  exit 5
+  if ! staple "$app"; then
+    >&2 echo "Staple of the ticket into $app has failed (last retry)"
+    exit 5
+  fi
 fi
 
 if [ "$zip" = "y" ]; then
