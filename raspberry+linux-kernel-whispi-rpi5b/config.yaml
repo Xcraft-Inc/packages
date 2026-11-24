@@ -80,6 +80,7 @@ data:
           && make ARCH=arm64
                   CROSS_COMPILE=aarch64-xcraft-linux-gnu-
                   INSTALL_MOD_PATH="<PEON.INSTALLDIR.X+MODULES>"
+                  HAILO_DRIVER=pcie
                   M="<PEON.PROD.ROOTDIR>/usr/src/hailort-drivers-module-5.5.0-src"
                   modules modules_install
           && cp -a arch/arm64/boot/Image "<PEON.INSTALLDIR.X+BIN>/boot/"
