@@ -3,7 +3,7 @@ subpackage:
   - 'x+bin:linux-aarch64'
   - 'x+modules:linux-aarch64'
 name: raspberry+linux-kernel-whispi-rpi5b
-version: 6.18.34-c8c74941-3
+version: 6.18.34-c8c74941-4
 $version: 6.18.34-c8c74941
 distribution: raspberry/
 maintainer:
